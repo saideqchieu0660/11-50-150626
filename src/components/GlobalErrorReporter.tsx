@@ -102,20 +102,20 @@ User Agent: ${navigator.userAgent}`;
   if (!errorLog) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-[9999] max-w-sm w-full bg-white dark:bg-zinc-800 rounded-xl shadow-2xl border-l-4 border-l-red-500 border border-t-stone-200 border-r-stone-200 border-b-stone-200 dark:border-t-zinc-700 dark:border-r-zinc-700 dark:border-b-zinc-700 p-4 animate-in slide-in-from-bottom-8">
+    <div className="fixed bottom-4 right-4 z-[9999] max-w-sm w-full bg-white dark:bg-zinc-800 rounded-xl shadow-2xl border-l-4 border-l-red-500 border border-t-zinc-200 border-r-zinc-200 border-b-zinc-200 dark:border-t-zinc-700 dark:border-r-zinc-700 dark:border-b-zinc-700 p-4 animate-in slide-in-from-bottom-8">
       <div className="flex items-start gap-3">
         <div className="p-2 bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 rounded-full shrink-0">
           <Bug className="w-5 h-5" />
         </div>
         <div className="flex-1 min-w-0 pr-6">
-          <h4 className="text-sm font-bold text-stone-800 dark:text-stone-200 mb-1">Đã phát hiện lỗi hệ thống</h4>
-          <p className="text-xs text-stone-500 dark:text-stone-400 line-clamp-2 break-words">
+          <h4 className="text-sm font-bold text-zinc-800 dark:text-zinc-200 mb-1">Đã phát hiện lỗi hệ thống</h4>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 break-words">
             {errorLog.message}
           </p>
         </div>
         <button 
           onClick={() => setErrorLog(null)}
-          className="absolute top-4 right-4 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"
+          className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
         >
           <X className="w-4 h-4" />
         </button>
@@ -128,7 +128,7 @@ User Agent: ${navigator.userAgent}`;
            "mt-3 w-full py-2.5 px-4 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all",
            isRedirecting 
              ? "bg-green-500 text-white" 
-             : "bg-stone-100 dark:bg-zinc-700 text-stone-700 dark:text-stone-200 hover:bg-red-50 dark:hover:bg-red-500/20 hover:text-red-600 dark:hover:text-red-400"
+             : "bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:bg-red-50 dark:hover:bg-red-500/20 hover:text-red-600 dark:hover:text-red-400"
         )}
       >
         <Send className={cn("w-4 h-4", isRedirecting && "animate-pulse")} />

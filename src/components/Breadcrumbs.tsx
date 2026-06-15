@@ -10,8 +10,8 @@ export function Breadcrumbs() {
   if (pathnames.length === 0) return null;
 
   return (
-    <nav className="flex items-center space-x-1 text-sm text-stone-500 dark:text-stone-400 my-4" aria-label="Breadcrumb">
-      <Link to="/dashboard" className="hover:text-amber-500 transition">Dashboard</Link>
+    <nav className="flex items-center space-x-1 text-sm text-zinc-500 dark:text-zinc-400 my-4" aria-label="Breadcrumb">
+      <Link to="/dashboard" className="hover:text-orange-500 transition">Dashboard</Link>
       {pathnames.map((value, index) => {
         const last = index === pathnames.length - 1;
         const to = `/${pathnames.slice(0, index + 1).join("/")}`;
@@ -31,9 +31,9 @@ export function Breadcrumbs() {
           <React.Fragment key={to}>
             <ChevronRight className="w-4 h-4" />
             {last ? (
-              <span className={`font-medium text-stone-800 dark:text-stone-200 ${isDeckTitle ? "" : "capitalize"}`}>{displayName}</span>
+              <span className={`font-medium text-zinc-800 dark:text-zinc-200 ${isDeckTitle ? "" : "capitalize"}`}>{displayName}</span>
             ) : (
-              <Link to={to} className={`hover:text-amber-500 transition ${isDeckTitle ? "" : "capitalize"}`}>{displayName}</Link>
+              <Link to={to} className={`hover:text-orange-500 transition ${isDeckTitle ? "" : "capitalize"}`}>{displayName}</Link>
             )}
           </React.Fragment>
         );

@@ -44,7 +44,7 @@ export function InteractiveTutorial({ isOpen, onClose }: InteractiveTutorialProp
     {
       title: "🏆 Đấu Trường Xếp Hạng (Leaderboard Tuần)",
       description: "Xem điểm số XP và thứ hạng chiến tích của ngài so với toàn bộ triết gia học thuật khác. Bảng xếp hạng cập nhật thời gian thực, tự động tôn vinh Top 3 kèm vầng hào quang rực rỡ nhất tuần. Thắng bại tại nỗ lực, hãy cống hiến hết mình nhé!",
-      icon: <Trophy className="w-6 h-6 text-yellow-500 animate-pulse" />
+      icon: <Trophy className="w-6 h-6 text-orange-500 animate-pulse" />
     },
     {
       title: "🔄 United Ingestion & Rotation Engine V8.0",
@@ -64,7 +64,7 @@ export function InteractiveTutorial({ isOpen, onClose }: InteractiveTutorialProp
     {
       title: "📊 Biểu Đồ Thống Kê Sắc Nét & Hoạt Động Feed",
       description: "Đọc vị mọi thói quen biểu đồ của ngài: Hệ thống bóng bong bóng phân rã XP thực chiến, Stoic Heatmap đúc kết lịch sử hằng ngày, và bảng hoạt động Real-time Activity Feed vinh danh những sự kiện học tập mới nhất của cộng đồng hăng hái.",
-      icon: <Sliders className="w-6 h-6 text-amber-500 animate-pulse" />
+      icon: <Sliders className="w-6 h-6 text-orange-500 animate-pulse" />
     },
     {
       title: "💾 Xuất Thống Kê Học Tập & Bộ Thẻ Excel",
@@ -125,7 +125,7 @@ export function InteractiveTutorial({ isOpen, onClose }: InteractiveTutorialProp
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-stone-950/75 dark:bg-black/85 backdrop-blur-sm transition-all" 
+          className="absolute inset-0 bg-zinc-950/75 dark:bg-black/85 backdrop-blur-sm transition-all" 
           onClick={onClose}
         />
       </AnimatePresence>
@@ -136,16 +136,16 @@ export function InteractiveTutorial({ isOpen, onClose }: InteractiveTutorialProp
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        className="relative z-50 bg-stone-900 border border-stone-800 dark:bg-zinc-950 dark:border-zinc-850 text-stone-100 rounded-3xl p-6 md:p-8 shadow-[0_25px_65px_rgba(0,0,0,0.8)] max-h-[85vh] overflow-y-auto scrollbar-thin w-full max-w-md mx-auto"
+        className="relative z-50 bg-zinc-900 border border-zinc-800 dark:bg-zinc-950 dark:border-zinc-850 text-zinc-100 rounded-3xl p-6 md:p-8 shadow-[0_25px_65px_rgba(0,0,0,0.8)] max-h-[85vh] overflow-y-auto scrollbar-thin w-full max-w-md mx-auto"
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 rounded-2xl bg-stone-800/80 border border-stone-700/50 shadow-inner flex items-center justify-center">
+            <div className="p-3 rounded-2xl bg-zinc-800/80 border border-zinc-700/50 shadow-inner flex items-center justify-center">
               {currentStepData.icon}
             </div>
             <div className="space-y-1">
-              <span className="text-[10px] sm:text-xs text-yellow-500 font-black uppercase tracking-widest block">
+              <span className="text-[10px] sm:text-xs text-orange-500 font-black uppercase tracking-widest block">
                 TÍNH NĂNG {currentStep + 1} / {steps.length}
               </span>
               <h4 className="text-sm sm:text-base font-black leading-tight tracking-tight text-neutral-100 uppercase font-display">
@@ -155,7 +155,7 @@ export function InteractiveTutorial({ isOpen, onClose }: InteractiveTutorialProp
           </div>
           <button 
             onClick={onClose}
-            className="text-stone-400 hover:text-white p-2 rounded-full bg-stone-800/50 hover:bg-stone-700 transition cursor-pointer shrink-0"
+            className="text-zinc-400 hover:text-white p-2 rounded-full bg-zinc-800/50 hover:bg-zinc-700 transition cursor-pointer shrink-0"
             title="Đóng Hướng Dẫn"
           >
             <X className="w-5 h-5" />
@@ -163,8 +163,8 @@ export function InteractiveTutorial({ isOpen, onClose }: InteractiveTutorialProp
         </div>
 
         {/* Description */}
-        <div className="bg-stone-800/30 border border-stone-800/50 rounded-2xl p-5 mb-8">
-          <p className="text-sm sm:text-base text-stone-300 leading-relaxed font-sans font-medium">
+        <div className="bg-zinc-800/30 border border-zinc-800/50 rounded-2xl p-5 mb-8">
+          <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-sans font-medium">
             {currentStepData.description}
           </p>
         </div>
@@ -175,17 +175,17 @@ export function InteractiveTutorial({ isOpen, onClose }: InteractiveTutorialProp
              <div 
                key={idx} 
                className={`h-1.5 rounded-full transition-all duration-300 ${
-                 idx === currentStep ? "w-6 bg-yellow-500" : "w-1.5 bg-stone-700"
+                 idx === currentStep ? "w-6 bg-orange-500" : "w-1.5 bg-zinc-700"
                }`} 
              />
           ))}
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-between pt-4 border-t border-stone-800/80">
+        <div className="flex items-center justify-between pt-4 border-t border-zinc-800/80">
           <button
             onClick={onClose}
-            className="text-stone-400 font-bold hover:text-white text-xs sm:text-sm uppercase tracking-wider transition hover:underline cursor-pointer"
+            className="text-zinc-400 font-bold hover:text-white text-xs sm:text-sm uppercase tracking-wider transition hover:underline cursor-pointer"
           >
             Bỏ qua (Skip)
           </button>
@@ -194,14 +194,14 @@ export function InteractiveTutorial({ isOpen, onClose }: InteractiveTutorialProp
             {currentStep > 0 && (
               <button
                 onClick={handleBack}
-                className="px-4 py-2 sm:py-2.5 rounded-xl bg-stone-800 hover:bg-stone-750 text-xs sm:text-sm font-black text-stone-200 transition-transform active:scale-95 flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2 sm:py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-750 text-xs sm:text-sm font-black text-zinc-200 transition-transform active:scale-95 flex items-center gap-1.5 cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" /> Quay lại
               </button>
             )}
             <button
               onClick={handleNext}
-              className="px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-500 hover:opacity-90 text-stone-950 text-xs sm:text-sm font-black transition-transform active:scale-95 shadow-lg shadow-amber-500/10 flex items-center gap-1.5 cursor-pointer"
+              className="px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-orange-500 hover:opacity-90 text-zinc-950 text-xs sm:text-sm font-black transition-transform active:scale-95 shadow-lg shadow-orange-500/10 flex items-center gap-1.5 cursor-pointer"
             >
               {isLastStep ? "Hoàn thành" : "Tiếp theo"}{" "}
               <ChevronRight className="w-4 h-4 font-bold" />

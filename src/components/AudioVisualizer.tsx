@@ -35,7 +35,7 @@ export const AudioVisualizer = () => {
         const percent = value / 255;
         const barHeight = height * percent;
         
-        ctx.fillStyle = `rgba(217, 119, 6, ${percent + 0.1})`; // amber-600 with varying opacity
+        ctx.fillStyle = `rgba(217, 119, 6, ${percent + 0.1})`; // orange-600 with varying opacity
         ctx.fillRect(x, height - barHeight, barWidth, barHeight);
 
         x += barWidth + 1;

@@ -175,9 +175,9 @@ export default function SetupProfileScreen() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="w-full max-w-md glass p-8 rounded-[12px] shadow-2xl border border-amber-600/30">
-        <h2 className="text-2xl font-bold text-center mb-1 text-stone-800 dark:text-stone-100 font-display">Thiết lập hồ sơ</h2>
-        <p className="text-xs text-stone-500 dark:text-stone-400 text-center mb-5 italic">
+      <div className="w-full max-w-md glass p-8 rounded-[12px] shadow-2xl border border-orange-600/30">
+        <h2 className="text-2xl font-bold text-center mb-1 text-zinc-800 dark:text-zinc-100 font-display">Thiết lập hồ sơ</h2>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400 text-center mb-5 italic">
           Cài đặt thông tin tài khoản Google của bạn để có thể sử dụng song song cả hình thức đăng nhập thông thường bằng Gmail và Password.
         </p>
         
@@ -190,31 +190,31 @@ export default function SetupProfileScreen() {
 
         <form onSubmit={handleSetup} className="space-y-4">
           {/* Avatar picker */}
-          <div className="flex flex-col items-center justify-center pb-4 space-y-2 border-b border-amber-500/10 mb-4 select-none">
+          <div className="flex flex-col items-center justify-center pb-4 space-y-2 border-b border-orange-500/10 mb-4 select-none">
             <div 
               className="relative group cursor-pointer" 
               onClick={() => fileInputRef.current?.click()}
               title="Nhấn để chọn ảnh hoặc chụp ảnh đại diện"
             >
-              <div className="w-20 h-20 rounded-full border-2 border-amber-500 overflow-hidden bg-stone-100 dark:bg-zinc-850 flex items-center justify-center transition-all group-hover:opacity-85 shadow-md">
+              <div className="w-20 h-20 rounded-full border-2 border-orange-500 overflow-hidden bg-zinc-100 dark:bg-zinc-850 flex items-center justify-center transition-all group-hover:opacity-85 shadow-md">
                 {photoBase64 ? (
                   <img src={photoBase64} alt="Avatar profile" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 ) : (
-                  <User className="w-10 h-10 text-stone-400 dark:text-stone-500" />
+                  <User className="w-10 h-10 text-zinc-400 dark:text-zinc-500" />
                 )}
               </div>
-              <div className="absolute bottom-0 right-0 bg-amber-500 text-white rounded-full p-1.5 shadow-md border border-white dark:border-zinc-900 group-hover:scale-110 transition-transform">
+              <div className="absolute bottom-0 right-0 bg-orange-500 text-white rounded-full p-1.5 shadow-md border border-white dark:border-zinc-900 group-hover:scale-110 transition-transform">
                 <Camera className="w-3.5 h-3.5" />
               </div>
             </div>
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="text-xs text-amber-600 dark:text-amber-400 font-extrabold hover:underline flex items-center gap-1"
+              className="text-xs text-orange-600 dark:text-orange-400 font-extrabold hover:underline flex items-center gap-1"
             >
               📸 Tải ảnh hoặc Chụp trực tiếp
             </button>
-            <span className="text-[9px] text-stone-400 dark:text-stone-500 text-center select-none block leading-tight max-w-[280px]">
+            <span className="text-[9px] text-zinc-400 dark:text-zinc-500 text-center select-none block leading-tight max-w-[280px]">
               Ảnh sẽ được tự động nén xuống siêu nhỏ (&lt; 4KB) để bảo vệ tài nguyên dữ liệu của ngài an toàn tuyệt đối!
             </span>
             <input
@@ -227,7 +227,7 @@ export default function SetupProfileScreen() {
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-bold uppercase tracking-widest pl-1 flex items-center gap-1.5 text-stone-600 dark:text-stone-400">
+            <label className="text-xs font-bold uppercase tracking-widest pl-1 flex items-center gap-1.5 text-zinc-600 dark:text-zinc-400">
               <User className="w-3.5 h-3.5" /> Tên hiển thị
             </label>
             <input
@@ -235,13 +235,13 @@ export default function SetupProfileScreen() {
               required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 bg-white/50 dark:bg-black/30 border border-amber-500/30 rounded-lg text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-amber-500"
+              className="w-full px-4 py-3 bg-white/50 dark:bg-black/30 border border-orange-500/30 rounded-lg text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-orange-500"
               placeholder="Tên của bạn"
             />
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-bold uppercase tracking-widest pl-1 flex items-center gap-1.5 text-stone-600 dark:text-stone-400">
+            <label className="text-xs font-bold uppercase tracking-widest pl-1 flex items-center gap-1.5 text-zinc-600 dark:text-zinc-400">
               <Lock className="w-3.5 h-3.5" /> Mật khẩu tài khoản
             </label>
             <div className="relative">
@@ -251,7 +251,7 @@ export default function SetupProfileScreen() {
                 autoComplete="new-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-white/50 dark:bg-black/30 border border-amber-500/30 rounded-lg pr-10 text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                className="w-full px-4 py-3 bg-white/50 dark:bg-black/30 border border-orange-500/30 rounded-lg pr-10 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-orange-500"
                 placeholder="Đặt mật khẩu bảo mật"
               />
               <button
@@ -265,7 +265,7 @@ export default function SetupProfileScreen() {
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-bold uppercase tracking-widest pl-1 flex items-center gap-1.5 text-stone-600 dark:text-stone-400">
+            <label className="text-xs font-bold uppercase tracking-widest pl-1 flex items-center gap-1.5 text-zinc-600 dark:text-zinc-400">
               <Key className="w-3.5 h-3.5" /> Mã phân quyền (không bắt buộc)
             </label>
             <div className="relative">
@@ -276,7 +276,7 @@ export default function SetupProfileScreen() {
                     style={{ WebkitTextSecurity: showAdminKey ? 'none' : 'disc' } as React.CSSProperties}
                     value={adminKey}
                     onChange={(e) => setAdminKey(e.target.value)}
-                    className="w-full px-4 py-3 bg-white/50 dark:bg-black/30 border border-amber-500/30 rounded-lg pr-10 text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                    className="w-full px-4 py-3 bg-white/50 dark:bg-black/30 border border-orange-500/30 rounded-lg pr-10 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-orange-500"
                     placeholder="Mã phân quyền"
                 />
                 <button
@@ -292,7 +292,7 @@ export default function SetupProfileScreen() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-gradient-to-r from-amber-500 to-yellow-600 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:opacity-95 transition-opacity disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:opacity-95 transition-opacity disabled:opacity-50"
           >
             {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Hoàn tất <ArrowRight className="w-5 h-5" /></>}
           </button>
@@ -302,10 +302,10 @@ export default function SetupProfileScreen() {
            <button 
              type="button"
              onClick={() => setShowDebug(!showDebug)}
-             className="opacity-10 hover:opacity-100 transition-opacity p-2 rounded-full hover:bg-stone-200 dark:hover:bg-zinc-800"
+             className="opacity-10 hover:opacity-100 transition-opacity p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800"
              title="Toggle Debug View"
            >
-             <Bug className="w-4 h-4 text-stone-500" />
+             <Bug className="w-4 h-4 text-zinc-500" />
            </button>
         </div>
 

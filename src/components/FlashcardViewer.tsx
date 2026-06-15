@@ -96,10 +96,10 @@ export default function FlashcardViewer({ deckId, userId, deckCards }: Flashcard
   };
 
   if (currentCardIndex === -1) {
-    return <div className="p-8 text-center animate-pulse text-stone-500">Loading deck progress...</div>;
+    return <div className="p-8 text-center animate-pulse text-zinc-500">Loading deck progress...</div>;
   }
   if (!deckCards || deckCards.length === 0) {
-    return <div className="p-8 text-center text-stone-500">No cards available in this deck.</div>;
+    return <div className="p-8 text-center text-zinc-500">No cards available in this deck.</div>;
   }
 
   const activeCard = deckCards[currentCardIndex];
@@ -120,9 +120,9 @@ export default function FlashcardViewer({ deckId, userId, deckCards }: Flashcard
     const hint = targetWord.charAt(0) + "_".repeat(targetWord.length - 1);
     
     return (
-        <p className="text-xl sm:text-2xl font-medium text-stone-800 dark:text-stone-200 leading-relaxed">
+        <p className="text-xl sm:text-2xl font-medium text-zinc-800 dark:text-zinc-200 leading-relaxed">
             {sentenceBefore}
-            <span className={`px-2 py-0.5 rounded ${isFlipped ? "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 font-bold" : "bg-stone-200 dark:bg-zinc-700 text-transparent"}`}>
+            <span className={`px-2 py-0.5 rounded ${isFlipped ? "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 font-bold" : "bg-zinc-200 dark:bg-zinc-700 text-transparent"}`}>
                 {isFlipped ? targetWord : (isHintRevealed ? hint : "________")}
             </span>
             {sentenceAfter}
@@ -135,7 +135,7 @@ export default function FlashcardViewer({ deckId, userId, deckCards }: Flashcard
       
       {/* Sleek Minimal UI Toast */}
       {toastMessage && (
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full mb-4 px-4 py-2 bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 text-xs font-bold rounded-full shadow-lg animate-in fade-in slide-in-from-top-4 z-50">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full mb-4 px-4 py-2 bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 text-xs font-bold rounded-full shadow-lg animate-in fade-in slide-in-from-top-4 z-50">
           {toastMessage}
         </div>
       )}
@@ -145,7 +145,7 @@ export default function FlashcardViewer({ deckId, userId, deckCards }: Flashcard
         <button
           onClick={() => setIsClozeMode(!isClozeMode)}
           className={`text-[10px] font-bold px-3 py-1 rounded-full border transition cursor-pointer ${
-            isClozeMode ? "bg-amber-500 text-black border-amber-500" : "bg-stone-100 dark:bg-zinc-800 text-stone-500 border-stone-200 dark:border-zinc-700"
+            isClozeMode ? "bg-orange-500 text-black border-orange-500" : "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 border-zinc-200 dark:border-zinc-700"
           }`}
         >
           {isClozeMode ? "🟢 Đang bật: Chế độ đục lỗ" : "⚪ Chế độ đục lỗ"}
@@ -162,11 +162,11 @@ export default function FlashcardViewer({ deckId, userId, deckCards }: Flashcard
 
       {/* Progress Track */}
       <div className="w-full">
-         <div className="flex justify-between text-xs font-bold text-stone-500 dark:text-stone-400 mb-2 uppercase tracking-widest">
+         <div className="flex justify-between text-xs font-bold text-zinc-500 dark:text-zinc-400 mb-2 uppercase tracking-widest">
             <span>Progress</span>
             <span>{currentCardIndex + 1} / {deckCards.length}</span>
          </div>
-         <div className="w-full h-2 bg-stone-200 dark:bg-zinc-800 rounded-full overflow-hidden">
+         <div className="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
             <div 
               className="h-full bg-blue-500 transition-all duration-300"
               style={{ width: `${((currentCardIndex + 1) / deckCards.length) * 100}%` }}
@@ -176,13 +176,13 @@ export default function FlashcardViewer({ deckId, userId, deckCards }: Flashcard
 
       {/* Card UI */}
       <div 
-        className="cursor-pointer w-full aspect-[4/3] sm:aspect-[3/2] bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-3xl shadow-xl flex flex-col items-center justify-center text-center p-8 sm:p-12 transition-transform active:scale-98"
+        className="cursor-pointer w-full aspect-[4/3] sm:aspect-[3/2] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-xl flex flex-col items-center justify-center text-center p-8 sm:p-12 transition-transform active:scale-98"
         onClick={() => setIsFlipped(!isFlipped)}
       >
         {isClozeMode && activeCard.example_sentence ? (
              renderClozeSentence()
         ) : (
-             <h2 className="text-2xl sm:text-4xl font-display font-bold text-stone-900 dark:text-stone-100 mb-6 leading-tight">
+             <h2 className="text-2xl sm:text-4xl font-display font-bold text-zinc-900 dark:text-zinc-100 mb-6 leading-tight">
                {isFlipped ? activeCard.back : activeCard.front}
              </h2>
         )}
@@ -190,8 +190,8 @@ export default function FlashcardViewer({ deckId, userId, deckCards }: Flashcard
         {/* Only show separator and meaning if not in Cloze Mode or flipped */}
         {!(isClozeMode && !isFlipped && activeCard.example_sentence) && (
             <>
-                <div className="w-16 h-1 bg-stone-200 dark:bg-zinc-800 rounded-full mb-6" />
-                <p className="text-lg sm:text-xl font-medium text-stone-600 dark:text-stone-400 max-w-lg leading-relaxed">
+                <div className="w-16 h-1 bg-zinc-200 dark:bg-zinc-800 rounded-full mb-6" />
+                <p className="text-lg sm:text-xl font-medium text-zinc-600 dark:text-zinc-400 max-w-lg leading-relaxed">
                   {isFlipped ? (isClozeMode ? activeCard.front : activeCard.front) : activeCard.back}
                 </p>
             </>
@@ -205,7 +205,7 @@ export default function FlashcardViewer({ deckId, userId, deckCards }: Flashcard
         <button 
           onClick={handlePrev} 
           disabled={currentCardIndex === 0} 
-          className="flex-1 px-6 py-4 bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 dark:hover:bg-zinc-700 text-stone-900 dark:text-stone-100 rounded-2xl font-bold transition disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 px-6 py-4 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-2xl font-bold transition disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Previous
         </button>

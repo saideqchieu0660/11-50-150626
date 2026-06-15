@@ -158,7 +158,7 @@ const ParsedTextContent = ({ text }: { text: string }) => {
                   ? "bg-blue-500/10 border-blue-500/30"
                   : i === 1
                     ? "bg-green-500/10 border-green-500/30"
-                    : "bg-stone-200/50 dark:bg-zinc-800/50 border-stone-300 dark:border-stone-700",
+                    : "bg-zinc-200/50 dark:bg-zinc-800/50 border-zinc-300 dark:border-zinc-700",
               )}
             >
               <p
@@ -168,7 +168,7 @@ const ParsedTextContent = ({ text }: { text: string }) => {
                     ? "text-blue-600 dark:text-blue-400"
                     : i === 1
                       ? "text-green-600 dark:text-green-400"
-                      : "text-stone-500 dark:text-stone-400",
+                      : "text-zinc-500 dark:text-zinc-400",
                 )}
               >
                 <span className="text-sm">
@@ -180,10 +180,10 @@ const ParsedTextContent = ({ text }: { text: string }) => {
                 className={cn(
                   "text-base md:text-lg leading-relaxed",
                   i === 0
-                    ? "font-semibold text-stone-900 dark:text-stone-50"
+                    ? "font-semibold text-zinc-900 dark:text-zinc-50"
                     : i === 1
-                      ? "font-medium text-stone-800 dark:text-stone-200"
-                      : "italic opacity-90 text-stone-700 dark:text-stone-300 text-sm md:text-base",
+                      ? "font-medium text-zinc-800 dark:text-zinc-200"
+                      : "italic opacity-90 text-zinc-700 dark:text-zinc-300 text-sm md:text-base",
                 )}
               >
                 {p}
@@ -219,6 +219,14 @@ export default function StudyRoom() {
   const isAdminMode = sessionStorage.getItem('isAdminMode') !== 'false' && 
                       (user?.role === "admin" || user?.role === "Admin" || user?.role === "teacher");
   const homePath = isAdminMode ? "/teacher" : "/dashboard";
+  const handleBack = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (window.history.length > 2) {
+      navigate(-1);
+    } else {
+      navigate(homePath);
+    }
+  };
   const { cooldownRemaining, startCooldown } = useAICooldown(user);
   const { deckId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -1203,7 +1211,7 @@ export default function StudyRoom() {
     if (!match) {
       // Fallback khi không khớp gì cả
       return (
-        <p className="text-lg sm:text-xl md:text-2xl font-medium text-stone-800 dark:text-stone-200 leading-relaxed text-center px-4">
+        <p className="text-lg sm:text-xl md:text-2xl font-medium text-zinc-800 dark:text-zinc-200 leading-relaxed text-center px-4">
           {sentence}
         </p>
       );
@@ -1215,7 +1223,7 @@ export default function StudyRoom() {
     const hint = targetWord.charAt(0) + "_".repeat(targetWord.length - 1);
     
     return (
-      <p className="text-lg sm:text-xl md:text-2xl font-medium text-stone-800 dark:text-stone-200 leading-relaxed text-center px-4">
+      <p className="text-lg sm:text-xl md:text-2xl font-medium text-zinc-800 dark:text-zinc-200 leading-relaxed text-center px-4">
         {sentenceBefore}
         <span 
           onClick={(e) => {
@@ -1229,7 +1237,7 @@ export default function StudyRoom() {
               ? "bg-green-100 text-green-800 dark:bg-green-950/40 dark:text-green-300 border-green-300 dark:border-green-800" 
               : isHintRevealed
                 ? "bg-blue-100 text-blue-800 dark:bg-blue-950/40 dark:text-blue-300 border-blue-300 dark:border-blue-800"
-                : "bg-amber-100 text-amber-800 dark:bg-amber-950/30 dark:text-amber-400 border-amber-350 dark:border-amber-800/50"
+                : "bg-orange-100 text-orange-800 dark:bg-orange-950/30 dark:text-orange-400 border-orange-350 dark:border-orange-800/50"
           )}
           title="Bấm để bật/tắt gợi ý từ này"
         >
@@ -1827,14 +1835,14 @@ export default function StudyRoom() {
               }}
               className="absolute -top-10 md:-top-16 left-1/2 -translate-x-1/2 pointer-events-none"
             >
-              <span className="text-4xl md:text-5xl font-black font-display text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500 drop-shadow-lg">
+              <span className="text-4xl md:text-5xl font-black font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-500 drop-shadow-lg">
                 GREAT JOB!
               </span>
             </motion.div>
-            <div className="mt-8 inline-flex items-center justify-center bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 px-4 py-1.5 rounded-full text-sm font-bold border border-yellow-500/20">
+            <div className="mt-8 inline-flex items-center justify-center bg-orange-500/10 text-orange-600 dark:text-orange-400 px-4 py-1.5 rounded-full text-sm font-bold border border-orange-500/20">
               🎉 HOÀN THÀNH PHIÊN HỌC
             </div>
-            <h2 className="text-3xl md:text-4xl font-black font-display text-stone-800 dark:text-stone-100 mt-4">
+            <h2 className="text-3xl md:text-4xl font-black font-display text-zinc-800 dark:text-zinc-100 mt-4">
               Chúc Mừng Bạn Đã Học Xong!
             </h2>
           </div>
@@ -1843,28 +1851,28 @@ export default function StudyRoom() {
             {/* Left Column: Metrics and Control Buttons */}
             <div className="lg:col-span-5 space-y-6">
               {/* Circular Percentage and quick view */}
-              <div className="bg-stone-200/50 dark:bg-zinc-800/40 p-6 rounded-2xl border border-amber-600/10 dark:border-amber-500/20 flex flex-col items-center">
+              <div className="bg-zinc-200/50 dark:bg-zinc-800/40 p-6 rounded-2xl border border-orange-600/10 dark:border-orange-500/20 flex flex-col items-center">
                 <div className="relative w-36 h-36 flex flex-col items-center justify-center mb-4">
-                  <div className="absolute inset-0 bg-yellow-500/10 rounded-full animate-pulse"></div>
-                  <span className="text-[10px] uppercase font-bold tracking-wider opacity-60 text-stone-500 dark:text-stone-400">
+                  <div className="absolute inset-0 bg-orange-500/10 rounded-full animate-pulse"></div>
+                  <span className="text-[10px] uppercase font-bold tracking-wider opacity-60 text-zinc-500 dark:text-zinc-400">
                     Tỷ lệ đúng
                   </span>
-                  <span className="text-4xl font-display font-black text-yellow-600 dark:text-yellow-400">
+                  <span className="text-4xl font-display font-black text-orange-600 dark:text-orange-400">
                     {percentage}%
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full text-center">
-                  <div className="bg-background/40 p-2 rounded-xl border border-stone-200/50 dark:border-zinc-850">
-                    <span className="block text-lg font-black text-stone-800 dark:text-stone-200">
+                  <div className="bg-background/40 p-2 rounded-xl border border-zinc-200/50 dark:border-zinc-850">
+                    <span className="block text-lg font-black text-zinc-800 dark:text-zinc-200">
                       {studyQueue.length}
                     </span>
                     <span className="text-[9px] uppercase font-bold opacity-60 block mt-0.5">
                       Đã ôn
                     </span>
                   </div>
-                  <div className="bg-background/40 p-2 rounded-xl border border-stone-200/50 dark:border-zinc-850">
-                    <span className="block text-lg font-black text-amber-600 dark:text-amber-400">
+                  <div className="bg-background/40 p-2 rounded-xl border border-zinc-200/50 dark:border-zinc-850">
+                    <span className="block text-lg font-black text-orange-600 dark:text-orange-400">
                       {Math.floor(sessionTimeSpent / 60) > 0
                         ? `${Math.floor(sessionTimeSpent / 60)}m `
                         : ""}
@@ -1874,7 +1882,7 @@ export default function StudyRoom() {
                       Thời gian
                     </span>
                   </div>
-                  <div className="bg-background/40 p-2 rounded-xl border border-stone-200/50 dark:border-zinc-850">
+                  <div className="bg-background/40 p-2 rounded-xl border border-zinc-200/50 dark:border-zinc-850">
                     <span
                       className={cn(
                         "block text-lg font-black",
@@ -1890,7 +1898,7 @@ export default function StudyRoom() {
                       Thông thạo
                     </span>
                   </div>
-                  <div className="bg-background/40 p-2 rounded-xl border border-stone-200/50 dark:border-zinc-850">
+                  <div className="bg-background/40 p-2 rounded-xl border border-zinc-200/50 dark:border-zinc-850">
                     <span className="block text-lg font-black text-blue-600 dark:text-blue-400">
                       +{memoryProjection}%
                     </span>
@@ -1902,7 +1910,7 @@ export default function StudyRoom() {
               </div>
 
               {/* Motivation quote card */}
-              <div className="p-5 bg-stone-200/40 dark:bg-zinc-800/20 rounded-2xl border-l-4 border-yellow-500 text-left">
+              <div className="p-5 bg-zinc-200/40 dark:bg-zinc-800/20 rounded-2xl border-l-4 border-orange-500 text-left">
                 <p className="font-serif italic text-sm opacity-85 leading-relaxed">
                   "{quote}"
                 </p>
@@ -1912,9 +1920,9 @@ export default function StudyRoom() {
               <div className="flex flex-col gap-3">
                 <button
                   onClick={startReviewAll}
-                  className="w-full px-5 py-3.5 rounded-xl bg-stone-300/60 dark:bg-zinc-800/80 font-bold hover:bg-black/20 dark:hover:bg-white/10 transition flex items-center justify-center gap-2 text-sm border border-stone-400/20 dark:border-zinc-700/40"
+                  className="w-full px-5 py-3.5 rounded-xl bg-zinc-300/60 dark:bg-zinc-800/80 font-bold hover:bg-black/20 dark:hover:bg-white/10 transition flex items-center justify-center gap-2 text-sm border border-zinc-400/20 dark:border-zinc-700/40"
                 >
-                  <RefreshCcw className="w-4 h-4 text-amber-500" />
+                  <RefreshCcw className="w-4 h-4 text-orange-500" />
                   Ôn tập lại từ đầu (Review All)
                 </button>
                 {weakCardIds.length > 0 && (
@@ -1926,27 +1934,27 @@ export default function StudyRoom() {
                     Ôn tập thẻ X ({weakCardIds.length})
                   </button>
                 )}
-                <Link
-                  to={homePath}
-                  className="w-full px-5 py-3.5 rounded-xl bg-yellow-500 text-black font-bold hover:bg-yellow-600 transition shadow-lg flex items-center justify-center gap-2 text-sm"
+                <button
+                  onClick={handleBack}
+                  className="w-full px-5 py-3.5 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-600 transition shadow-lg flex items-center justify-center gap-2 text-sm border-none cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   {isAdminMode ? "Trở về Admin View" : "Trở về Dashboard"}
-                </Link>
+                </button>
               </div>
             </div>
 
             {/* Right Column: Beautiful Interactive Session Progress Chart */}
-            <div className="lg:col-span-7 bg-stone-200/40 dark:bg-zinc-800/30 p-5 md:p-6 rounded-3xl border border-stone-200 dark:border-zinc-800 space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-stone-350 dark:border-zinc-800">
+            <div className="lg:col-span-7 bg-zinc-200/40 dark:bg-zinc-800/30 p-5 md:p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-350 dark:border-zinc-800">
                 <div className="flex items-center gap-2">
-                  <BarChart3 className="w-5 h-5 text-yellow-500" />
-                  <h3 className="font-bold text-stone-800 dark:text-stone-100 text-base font-display">
+                  <BarChart3 className="w-5 h-5 text-orange-500" />
+                  <h3 className="font-bold text-zinc-800 dark:text-zinc-100 text-base font-display">
                     Biểu Đồ Tiến Trình Phiên Học
                   </h3>
                 </div>
-                <div className="flex gap-1 bg-stone-300/40 dark:bg-zinc-900/50 p-1 rounded-lg self-start">
-                  <span className="text-[11px] font-bold text-yellow-600 dark:text-yellow-400 px-2 py-1 font-mono uppercase bg-yellow-500/10 rounded-md">
+                <div className="flex gap-1 bg-zinc-300/40 dark:bg-zinc-900/50 p-1 rounded-lg self-start">
+                  <span className="text-[11px] font-bold text-orange-600 dark:text-orange-400 px-2 py-1 font-mono uppercase bg-orange-500/10 rounded-md">
                     Chính Xác & Độ Thông Thạo
                   </span>
                 </div>
@@ -2098,7 +2106,7 @@ export default function StudyRoom() {
                             </span>
                           </div>
                           <p
-                            className="font-semibold text-stone-800 dark:text-stone-200 line-clamp-2"
+                            className="font-semibold text-zinc-800 dark:text-zinc-200 line-clamp-2"
                             title={item.front}
                           >
                             {item.front}
@@ -2117,17 +2125,17 @@ export default function StudyRoom() {
           </div>
 
           {/* Performance Benchmark Card */}
-          <div className="bg-stone-200/40 dark:bg-zinc-800/20 p-6 rounded-3xl border border-stone-200 dark:border-zinc-800/80 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-stone-300 dark:border-zinc-800">
+          <div className="bg-zinc-200/40 dark:bg-zinc-800/20 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800/80 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-300 dark:border-zinc-800">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 rounded-xl">
+                <div className="p-2.5 bg-orange-500/10 text-orange-600 dark:text-orange-400 rounded-xl">
                   <BarChart3 className="w-5 h-5 px-0.5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-stone-800 dark:text-stone-100 text-lg font-display">
+                  <h3 className="font-bold text-zinc-800 dark:text-zinc-100 text-lg font-display">
                     Bảng So Sánh Chỉ Số Thông Thạo (Benchmarks)
                   </h3>
-                  <p className="text-xs text-stone-500 dark:text-stone-400">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
                     Đo lường sự tiến bộ của phiên này đối với phong độ thông
                     thạo hàng tuần của bạn
                   </p>
@@ -2139,7 +2147,7 @@ export default function StudyRoom() {
                     ▲ Vượt chỉ số tuần: +{deltaMastery}%
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 bg-amber-500/10 text-amber-700 dark:text-amber-400 text-xs font-bold px-3 py-1.5 rounded-full border border-amber-500/20">
+                  <span className="inline-flex items-center gap-1 bg-orange-500/10 text-orange-700 dark:text-orange-400 text-xs font-bold px-3 py-1.5 rounded-full border border-orange-500/20">
                     ▼ Dưới chỉ số tuần: {deltaMastery}%
                   </span>
                 )}
@@ -2149,15 +2157,15 @@ export default function StudyRoom() {
             {/* Benchmark Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1: Current Session average card */}
-              <div className="bg-stone-300/40 dark:bg-zinc-900/40 p-5 rounded-2xl border border-stone-400/10 dark:border-zinc-800 flex flex-col justify-between">
+              <div className="bg-zinc-300/40 dark:bg-zinc-900/40 p-5 rounded-2xl border border-zinc-400/10 dark:border-zinc-800 flex flex-col justify-between">
                 <div>
-                  <span className="text-xs uppercase font-bold text-stone-500 dark:text-stone-400">
+                  <span className="text-xs uppercase font-bold text-zinc-500 dark:text-zinc-400">
                     Phiên học này
                   </span>
-                  <div className="text-4xl font-extrabold font-display text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-amber-500 dark:from-yellow-400 dark:to-amber-300 mt-1">
+                  <div className="text-4xl font-extrabold font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500 dark:from-orange-400 dark:to-orange-300 mt-1">
                     {sessionCardsMasteryAvg}%
                   </div>
-                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-2 leading-relaxed">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
                     Mức độ thông thạo trung bình các thẻ đã trả lời trong phiên
                     này.
                   </p>
@@ -2169,7 +2177,7 @@ export default function StudyRoom() {
                       sessionCardsMasteryAvg >= 80
                         ? "text-green-600 dark:text-green-400"
                         : sessionCardsMasteryAvg >= 50
-                          ? "text-yellow-600 dark:text-yellow-400"
+                          ? "text-orange-600 dark:text-orange-400"
                           : "text-red-500",
                     )}
                   >
@@ -2183,15 +2191,15 @@ export default function StudyRoom() {
               </div>
 
               {/* Card 2: Weekly average card */}
-              <div className="bg-stone-300/40 dark:bg-zinc-900/40 p-5 rounded-2xl border border-stone-400/10 dark:border-zinc-800 flex flex-col justify-between">
+              <div className="bg-zinc-300/40 dark:bg-zinc-900/40 p-5 rounded-2xl border border-zinc-400/10 dark:border-zinc-800 flex flex-col justify-between">
                 <div>
-                  <span className="text-xs uppercase font-bold text-stone-500 dark:text-stone-400">
+                  <span className="text-xs uppercase font-bold text-zinc-500 dark:text-zinc-400">
                     Chỉ số Trung Bình Tuần
                   </span>
                   <div className="text-4xl font-extrabold font-display text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500 dark:from-blue-400 dark:to-indigo-300 mt-1">
                     {weeklyAvgMastery}%
                   </div>
-                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-2 leading-relaxed">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
                     Phong độ thông thạo bao gồm tất cả các thẻ bạn đã ôn trong
                     tuần qua.
                   </p>
@@ -2205,13 +2213,13 @@ export default function StudyRoom() {
               </div>
 
               {/* Card 3: Comparison and performance advice card */}
-              <div className="bg-stone-300/40 dark:bg-zinc-900/40 p-5 rounded-2xl border border-stone-400/10 dark:border-zinc-800 flex flex-col justify-between">
+              <div className="bg-zinc-300/40 dark:bg-zinc-900/40 p-5 rounded-2xl border border-zinc-400/10 dark:border-zinc-800 flex flex-col justify-between">
                 <div>
-                  <span className="text-xs uppercase font-bold text-stone-500 dark:text-stone-400">
+                  <span className="text-xs uppercase font-bold text-zinc-500 dark:text-zinc-400">
                     Phân Tích & Gợi Ý
                   </span>
                   <div className="mt-2">
-                    <p className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed font-semibold">
+                    <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed font-semibold">
                       {deltaMastery > 0
                         ? `🎉 Thật tuyệt vời! Phiên học này của bạn vượt mức trung bình tuần (+${deltaMastery}%). Hãy luôn giữ nhịp độ này để bứt phá học tập!`
                         : deltaMastery === 0
@@ -2221,18 +2229,18 @@ export default function StudyRoom() {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <div className="w-full bg-stone-300 dark:bg-zinc-800 h-2.5 rounded-full overflow-hidden">
+                  <div className="w-full bg-zinc-300 dark:bg-zinc-800 h-2.5 rounded-full overflow-hidden">
                     <div
                       className={cn(
                         "h-full rounded-full transition-all duration-500",
-                        deltaMastery >= 0 ? "bg-green-500" : "bg-amber-500",
+                        deltaMastery >= 0 ? "bg-green-500" : "bg-orange-500",
                       )}
                       style={{
                         width: `${Math.min(100, Math.max(10, 50 + deltaMastery * 2))}%`,
                       }}
                     ></div>
                   </div>
-                  <div className="flex justify-between text-[9px] text-stone-500 dark:text-stone-400 font-bold mt-1 uppercase font-mono tracking-wider">
+                  <div className="flex justify-between text-[9px] text-zinc-500 dark:text-zinc-400 font-bold mt-1 uppercase font-mono tracking-wider">
                     <span>Thấp hơn</span>
                     <span>Tương đương</span>
                     <span>Vượt trội</span>
@@ -2242,24 +2250,24 @@ export default function StudyRoom() {
             </div>
 
             {/* Visual comparative bar scale */}
-            <div className="bg-stone-300/20 dark:bg-zinc-900/20 p-4 rounded-2xl border border-stone-400/5 dark:border-zinc-800/50 space-y-4">
-              <span className="text-xs uppercase font-bold text-stone-500 dark:text-stone-400 block mb-1">
+            <div className="bg-zinc-300/20 dark:bg-zinc-900/20 p-4 rounded-2xl border border-zinc-400/5 dark:border-zinc-800/50 space-y-4">
+              <span className="text-xs uppercase font-bold text-zinc-500 dark:text-zinc-400 block mb-1">
                 Thang So Sánh Điểm Số Trực Quan (%)
               </span>
               <div className="space-y-4">
                 {/* Current Session Bar */}
                 <div>
                   <div className="flex justify-between text-xs font-semibold mb-1">
-                    <span className="text-stone-700 dark:text-stone-300 font-medium">
+                    <span className="text-zinc-700 dark:text-zinc-300 font-medium">
                       Chỉ số Thông Thạo Phiên Học Nay
                     </span>
-                    <span className="font-extrabold text-amber-600 dark:text-yellow-400">
+                    <span className="font-extrabold text-orange-600 dark:text-orange-400">
                       {sessionCardsMasteryAvg}%
                     </span>
                   </div>
-                  <div className="w-full bg-stone-300/50 dark:bg-zinc-850 h-2.5 rounded-full overflow-hidden">
+                  <div className="w-full bg-zinc-300/50 dark:bg-zinc-850 h-2.5 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-amber-500 rounded-full"
+                      className="h-full bg-orange-500 rounded-full"
                       style={{ width: `${sessionCardsMasteryAvg}%` }}
                     ></div>
                   </div>
@@ -2268,7 +2276,7 @@ export default function StudyRoom() {
                 {/* Weekly Average Bar */}
                 <div>
                   <div className="flex justify-between text-xs font-semibold mb-1">
-                    <span className="text-stone-700 dark:text-stone-300 font-medium">
+                    <span className="text-zinc-700 dark:text-zinc-300 font-medium">
                       Chỉ số Trung Bình Hoạt Động Tuần (Weekly Average
                       Benchmark)
                     </span>
@@ -2276,7 +2284,7 @@ export default function StudyRoom() {
                       {weeklyAvgMastery}%
                     </span>
                   </div>
-                  <div className="w-full bg-stone-300/50 dark:bg-zinc-850 h-2.5 rounded-full overflow-hidden">
+                  <div className="w-full bg-zinc-300/50 dark:bg-zinc-850 h-2.5 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-blue-500 rounded-full"
                       style={{ width: `${weeklyAvgMastery}%` }}
@@ -2287,16 +2295,16 @@ export default function StudyRoom() {
                 {/* Current Deck Bar */}
                 <div>
                   <div className="flex justify-between text-xs font-semibold mb-1">
-                    <span className="text-stone-700 dark:text-stone-300 font-medium">
+                    <span className="text-zinc-700 dark:text-zinc-300 font-medium">
                       Chỉ số Thông Thạo Của Bộ Thẻ Đang Học (Deck Average)
                     </span>
-                    <span className="font-extrabold text-zinc-650 dark:text-stone-400">
+                    <span className="font-extrabold text-zinc-650 dark:text-zinc-400">
                       {currentDeckMasteryAvg}%
                     </span>
                   </div>
-                  <div className="w-full bg-stone-300/50 dark:bg-zinc-850 h-2.5 rounded-full overflow-hidden">
+                  <div className="w-full bg-zinc-300/50 dark:bg-zinc-850 h-2.5 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-stone-400/60 dark:bg-zinc-600 rounded-full"
+                      className="h-full bg-zinc-400/60 dark:bg-zinc-600 rounded-full"
                       style={{ width: `${currentDeckMasteryAvg}%` }}
                     ></div>
                   </div>
@@ -2311,15 +2319,15 @@ export default function StudyRoom() {
 
   if (accessDenied) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-stone-500 text-center max-w-md mx-auto p-4">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-zinc-500 text-center max-w-md mx-auto p-4">
         <div className="text-4xl">🔒</div>
-        <div className="text-lg font-bold text-stone-800 dark:text-stone-100 font-display">Quyền truy cập bị từ chối</div>
-        <div className="text-sm text-stone-500">Bộ học này là bộ thẻ cá nhân riêng tư. Chỉ người tạo mới được quyền truy cập học tập.</div>
+        <div className="text-lg font-bold text-zinc-800 dark:text-zinc-100 font-display">Quyền truy cập bị từ chối</div>
+        <div className="text-sm text-zinc-500">Bộ học này là bộ thẻ cá nhân riêng tư. Chỉ người tạo mới được quyền truy cập học tập.</div>
         <button
-          onClick={() => navigate(homePath)}
-          className="mt-4 px-6 py-2.5 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-black font-extrabold rounded-xl transition border-none cursor-pointer"
+          onClick={handleBack}
+          className="mt-4 px-6 py-2.5 bg-gradient-to-r from-orange-500 to-orange-500 hover:from-orange-600 hover:to-orange-600 text-black font-extrabold rounded-xl transition border-none cursor-pointer"
         >
-          Quay lại Bảng điều khiển
+          Quay lại
         </button>
       </div>
     );
@@ -2327,8 +2335,8 @@ export default function StudyRoom() {
 
   if (isLoading)
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-stone-500">
-        <div className="w-8 h-8 rounded-full border-4 border-amber-500 border-t-transparent animate-spin" />
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-zinc-500">
+        <div className="w-8 h-8 rounded-full border-4 border-orange-500 border-t-transparent animate-spin" />
         <div>Đang tải phòng học...</div>
       </div>
     );
@@ -2337,12 +2345,12 @@ export default function StudyRoom() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <div>Không tìm thấy bộ thẻ (Deck not found).</div>
-        <Link
-          to={homePath}
-          className="px-6 py-2 rounded-lg bg-yellow-500 text-black font-bold hover:bg-yellow-600 transition"
+        <button
+          onClick={handleBack}
+          className="px-6 py-2 rounded-lg bg-orange-500 text-black font-bold hover:bg-orange-600 transition border-none cursor-pointer"
         >
           {isAdminMode ? "Về Admin View" : "Về Dashboard"}
-        </Link>
+        </button>
       </div>
     );
 
@@ -2352,7 +2360,7 @@ export default function StudyRoom() {
         <div>No cards in this view.</div>
         <button
           onClick={startReviewAll}
-          className="px-6 py-2 rounded-lg bg-yellow-500 text-black font-bold hover:bg-yellow-600 transition"
+          className="px-6 py-2 rounded-lg bg-orange-500 text-black font-bold hover:bg-orange-600 transition"
         >
           Quay lại bộ đầy đủ
         </button>
@@ -2365,12 +2373,12 @@ export default function StudyRoom() {
         <div className="lg:col-span-8 space-y-6 w-full max-w-xl mx-auto">
           <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mb-4">
             <div className="flex items-center justify-between sm:justify-start gap-4 flex-wrap">
-              <Link
-                to={homePath}
-                className="flex items-center gap-2 opacity-60 hover:opacity-100 transition w-fit"
+              <button
+                onClick={handleBack}
+                className="flex items-center gap-2 opacity-60 hover:opacity-100 transition w-fit bg-transparent border-none text-inherit cursor-pointer p-0 font-medium"
               >
                 <ArrowLeft className="w-4 h-4" /> Back
-              </Link>
+              </button>
 
               {showRemindToast && (
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg font-bold text-sm animate-in slide-in-from-top flex items-center gap-2">
@@ -2381,7 +2389,7 @@ export default function StudyRoom() {
 
               <button
                 onClick={handleToggleMute}
-                className="p-2 bg-stone-200/60 dark:bg-zinc-800/50 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition"
+                className="p-2 bg-zinc-200/60 dark:bg-zinc-800/50 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition"
                 title={!isSoundEnabled ? "Unmute sounds" : "Mute sounds"}
                 aria-label={!isSoundEnabled ? "Unmute sounds" : "Mute sounds"}
               >
@@ -2397,19 +2405,19 @@ export default function StudyRoom() {
                    navigator.clipboard.writeText(window.location.href);
                    alert("Đã copy link! Gửi cho bạn bè để cùng học set này nhé.");
                 }}
-                className="flex items-center gap-1.5 p-2 px-3 bg-stone-200/60 dark:bg-zinc-800/50 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition text-xs font-bold"
+                className="flex items-center gap-1.5 p-2 px-3 bg-zinc-200/60 dark:bg-zinc-800/50 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition text-xs font-bold"
                 title="Chia sẻ link"
               >
                 <Share2 className="w-4 h-4" /> Share Link
               </button>
-              <div className="flex items-center gap-2 bg-stone-200/60 dark:bg-zinc-800/50 px-3 py-1.5 rounded-full border border-amber-600/10 dark:border-amber-500/10">
+              <div className="flex items-center gap-2 bg-zinc-200/60 dark:bg-zinc-800/50 px-3 py-1.5 rounded-full border border-orange-600/10 dark:border-orange-500/10">
                 <Clock className="w-4 h-4 opacity-70" />
                 <span className="font-mono font-bold text-sm min-w-[40px] text-center">
                   {formatTime(timerSeconds)}
                 </span>
                 <button
                   onClick={toggleTimer}
-                  className="hover:text-yellow-600 dark:hover:text-yellow-400 transition"
+                  className="hover:text-orange-600 dark:hover:text-orange-400 transition"
                   title={isTimerRunning ? "Pause Timer" : "Start Pomodoro"}
                   aria-label={isTimerRunning ? "Pause Timer" : "Start Pomodoro"}
                 >
@@ -2433,7 +2441,7 @@ export default function StudyRoom() {
                   "p-2 rounded-full transition flex items-center justify-center relative",
                   isOfflineSaved
                     ? "bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/30 font-bold"
-                    : "bg-stone-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 text-stone-600 dark:text-stone-300"
+                    : "bg-zinc-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 text-zinc-600 dark:text-zinc-300"
                 )}
                 title={isOfflineSaved ? "Xóa bản lưu ngoại tuyến" : "Tải xuống dùng khi ngoại tuyến"}
                 aria-label="Toggle Offline Mode"
@@ -2443,7 +2451,7 @@ export default function StudyRoom() {
               </button>
               <button
                 onClick={handleExportDeck}
-                className="p-2 bg-stone-200/60 dark:bg-zinc-800/50 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition text-stone-600 dark:text-stone-300"
+                className="p-2 bg-zinc-200/60 dark:bg-zinc-800/50 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition text-zinc-600 dark:text-zinc-300"
                 title="Xuất bộ thẻ (JSON)"
                 aria-label="Export Deck"
               >
@@ -2454,8 +2462,8 @@ export default function StudyRoom() {
                 className={cn(
                   "px-3 py-1 rounded text-sm font-bold transition",
                   studyMode === "all"
-                    ? "bg-yellow-500 text-black shadow"
-                    : "bg-stone-200/60 dark:bg-zinc-800/50 opacity-70",
+                    ? "bg-orange-500 text-black shadow"
+                    : "bg-zinc-200/60 dark:bg-zinc-800/50 opacity-70",
                 )}
               >
                 Tất cả
@@ -2466,7 +2474,7 @@ export default function StudyRoom() {
                   "px-3 py-1 rounded text-sm font-bold transition flex items-center gap-1",
                   studyMode === "weak"
                     ? "bg-red-500 text-white shadow"
-                    : "bg-stone-200/60 dark:bg-zinc-800/50 opacity-70",
+                    : "bg-zinc-200/60 dark:bg-zinc-800/50 opacity-70",
                 )}
               >
                 Thẻ X{" "}
@@ -2479,10 +2487,10 @@ export default function StudyRoom() {
                   setListSearchQuery("");
                   setIsListModalOpen(true);
                 }}
-                className="px-3 py-1 rounded text-sm font-bold bg-stone-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 text-stone-700 dark:text-stone-300 transition flex items-center gap-1.5 focus:outline-none cursor-pointer"
+                className="px-3 py-1 rounded text-sm font-bold bg-zinc-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 text-zinc-700 dark:text-zinc-300 transition flex items-center gap-1.5 focus:outline-none cursor-pointer"
                 title="Xem danh sách toàn bộ thẻ"
               >
-                <Eye className="w-4 h-4 text-yellow-500" />
+                <Eye className="w-4 h-4 text-orange-500" />
                 <span>Xem danh sách</span>
               </button>
               <button
@@ -2494,8 +2502,8 @@ export default function StudyRoom() {
                 className={cn(
                   "px-3 py-1 rounded text-sm font-bold transition flex items-center gap-1.5 cursor-pointer",
                   isClozeMode
-                    ? "bg-amber-500 text-black shadow"
-                    : "bg-stone-200/60 dark:bg-zinc-800/50 text-stone-700 dark:text-stone-300 opacity-70 hover:opacity-100",
+                    ? "bg-orange-500 text-black shadow"
+                    : "bg-zinc-200/60 dark:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 opacity-70 hover:opacity-100",
                 )}
                 title="Bật/Tắt chế độ đục lỗ (học qua câu ví dụ)"
               >
@@ -2538,7 +2546,7 @@ export default function StudyRoom() {
                       }
                     }
                   }}
-                  className="text-xs text-yellow-600 dark:text-yellow-400 font-bold hover:underline bg-yellow-500/10 dark:bg-yellow-500/5 px-2 py-0.5 rounded flex items-center gap-1 transition-all"
+                  className="text-xs text-orange-600 dark:text-orange-400 font-bold hover:underline bg-orange-500/10 dark:bg-orange-500/5 px-2 py-0.5 rounded flex items-center gap-1 transition-all"
                 >
                   <RefreshCcw className="w-2.5 h-2.5" /> Học lại từ đầu
                 </button>
@@ -2562,13 +2570,13 @@ export default function StudyRoom() {
               }}
             >
               {/* Front */}
-              <div className="absolute inset-0 backface-hidden bg-white dark:bg-zinc-900 border border-stone-200/50 dark:border-zinc-800/50 shadow-xl rounded-3xl text-center h-full overflow-y-auto w-full">
+              <div className="absolute inset-0 backface-hidden bg-white dark:bg-zinc-900 border border-zinc-200/50 dark:border-zinc-800/50 shadow-xl rounded-3xl text-center h-full overflow-y-auto w-full">
                 <div className="w-full min-h-full flex flex-col items-center justify-center p-8">
                   {canEditDeck &&
                     !isEditing && (
                       <button
                         onClick={handleEditOpen}
-                        className="absolute top-4 right-4 z-20 p-2 bg-stone-300/60 dark:bg-zinc-800/80 rounded-full hover:bg-black/20 dark:hover:bg-white/20 transition"
+                        className="absolute top-4 right-4 z-20 p-2 bg-zinc-300/60 dark:bg-zinc-800/80 rounded-full hover:bg-black/20 dark:hover:bg-white/20 transition"
                       >
                         <Edit3 className="w-5 h-5 text-blue-500" />
                       </button>
@@ -2592,7 +2600,7 @@ export default function StudyRoom() {
                                 : currentCard.wordForm
                                       .toLowerCase()
                                       .includes("adj")
-                                  ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50"
+                                  ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 border border-orange-200 dark:border-orange-800/50"
                                   : currentCard.wordForm
                                         .toLowerCase()
                                         .includes("adv")
@@ -2604,7 +2612,7 @@ export default function StudyRoom() {
                                           .toLowerCase()
                                           .includes("colloc")
                                       ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 border border-purple-200 dark:border-purple-800/50"
-                                      : "bg-stone-200 text-stone-600 dark:bg-zinc-800 dark:text-stone-400 border border-stone-300 dark:border-zinc-700",
+                                      : "bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700",
                           )}
                         >
                           [{currentCard.wordForm}]
@@ -2657,15 +2665,15 @@ export default function StudyRoom() {
                             <AlertCircle className="w-8 h-8" />
                           </div>
                           <div className="space-y-1">
-                            <h4 className="text-base font-bold text-stone-900 dark:text-stone-100">Xác nhận xóa thẻ học</h4>
-                            <p className="text-xs text-stone-500 dark:text-stone-400">
+                            <h4 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Xác nhận xóa thẻ học</h4>
+                            <p className="text-xs text-zinc-500 dark:text-zinc-400">
                               Bạn có chắc chắn muốn xóa? Thẻ sẽ bị xóa sau <span className="font-extrabold text-red-500 text-sm animate-pulse">{deleteCountdown}s</span>...
                             </p>
                           </div>
                           <div className="flex gap-3 w-full">
                             <button
                               onClick={(e) => cancelDeleteCountdown(e)}
-                              className="flex-1 py-2 bg-stone-200 hover:bg-stone-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-stone-700 dark:text-stone-200 rounded-xl text-xs font-bold transition cursor-pointer"
+                              className="flex-1 py-2 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 rounded-xl text-xs font-bold transition cursor-pointer"
                             >
                               Hủy bỏ
                             </button>
@@ -2689,21 +2697,21 @@ export default function StudyRoom() {
                       ) : (
                         <>
                           <textarea
-                            className="w-full p-4 rounded-xl bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-stone-900 dark:text-stone-100 text-center"
+                            className="w-full p-4 rounded-xl bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-zinc-900 dark:text-zinc-100 text-center"
                             value={editFront}
                             onChange={(e) => setEditFront(e.target.value)}
                             placeholder="Mặt trước..."
                             rows={2}
                           />
                           <textarea
-                            className="w-full p-4 rounded-xl bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-stone-900 dark:text-stone-100 text-sm text-center"
+                            className="w-full p-4 rounded-xl bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-zinc-900 dark:text-zinc-100 text-sm text-center"
                             value={editBack}
                             onChange={(e) => setEditBack(e.target.value)}
                             placeholder="Mặt sau..."
                             rows={3}
                           />
                           <textarea
-                            className="w-full p-3 rounded-xl bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-stone-900 dark:text-stone-100 text-xs text-center animate-in slide-in-from-top-2 duration-200"
+                            className="w-full p-3 rounded-xl bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-zinc-900 dark:text-zinc-100 text-xs text-center animate-in slide-in-from-top-2 duration-200"
                             value={editExampleSentence}
                             onChange={(e) => setEditExampleSentence(e.target.value)}
                             placeholder="Câu ví dụ đục lỗ. Đặt từ cần đố trong ngoặc vuông, ví dụ: 'To [debunk] a myth is to prove it wrong.'..."
@@ -2730,13 +2738,13 @@ export default function StudyRoom() {
                 </div>
               </div>
               {/* Back */}
-              <div className="absolute inset-0 backface-hidden rotate-y-180 bg-white dark:bg-zinc-900 border border-stone-200/50 dark:border-zinc-800/50 shadow-xl rounded-3xl text-center h-full overflow-y-auto w-full">
+              <div className="absolute inset-0 backface-hidden rotate-y-180 bg-white dark:bg-zinc-900 border border-zinc-200/50 dark:border-zinc-800/50 shadow-xl rounded-3xl text-center h-full overflow-y-auto w-full">
                 <div className="w-full min-h-full flex flex-col items-center justify-center p-8 text-lg opacity-90">
                   {canEditDeck &&
                     !isEditing && (
                       <button
                         onClick={handleEditOpen}
-                        className="absolute top-4 right-4 z-20 p-2 bg-stone-300/60 dark:bg-zinc-800/80 rounded-full hover:bg-black/20 dark:hover:bg-white/20 transition"
+                        className="absolute top-4 right-4 z-20 p-2 bg-zinc-300/60 dark:bg-zinc-800/80 rounded-full hover:bg-black/20 dark:hover:bg-white/20 transition"
                       >
                         <Edit3 className="w-5 h-5 text-blue-500" />
                       </button>
@@ -2781,15 +2789,15 @@ export default function StudyRoom() {
                             <AlertCircle className="w-8 h-8" />
                           </div>
                           <div className="space-y-1">
-                            <h4 className="text-base font-bold text-stone-900 dark:text-stone-100">Xác nhận xóa thẻ học</h4>
-                            <p className="text-xs text-stone-500 dark:text-stone-400">
+                            <h4 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Xác nhận xóa thẻ học</h4>
+                            <p className="text-xs text-zinc-500 dark:text-zinc-400">
                               Bạn có chắc chắn muốn xóa? Thẻ sẽ bị xóa sau <span className="font-extrabold text-red-500 text-sm animate-pulse">{deleteCountdown}s</span>...
                             </p>
                           </div>
                           <div className="flex gap-3 w-full">
                             <button
                               onClick={(e) => cancelDeleteCountdown(e)}
-                              className="flex-1 py-2 bg-stone-200 hover:bg-stone-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-stone-700 dark:text-stone-200 rounded-xl text-xs font-bold transition cursor-pointer"
+                              className="flex-1 py-2 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 rounded-xl text-xs font-bold transition cursor-pointer"
                             >
                               Hủy bỏ
                             </button>
@@ -2813,21 +2821,21 @@ export default function StudyRoom() {
                       ) : (
                         <>
                           <textarea
-                            className="w-full p-3 rounded-xl bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-stone-900 dark:text-stone-100 text-base"
+                            className="w-full p-3 rounded-xl bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-zinc-900 dark:text-zinc-100 text-base"
                             value={editFront}
                             onChange={(e) => setEditFront(e.target.value)}
                             placeholder="Mặt trước..."
                             rows={2}
                           />
                           <textarea
-                            className="w-full p-3 rounded-xl bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-stone-900 dark:text-stone-100 text-sm"
+                            className="w-full p-3 rounded-xl bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-zinc-900 dark:text-zinc-100 text-sm"
                             value={editBack}
                             onChange={(e) => setEditBack(e.target.value)}
                             placeholder="Mặt sau..."
                             rows={3}
                           />
                           <textarea
-                            className="w-full p-3 rounded-xl bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-stone-900 dark:text-stone-100 text-xs animate-in slide-in-from-top-2 duration-200"
+                            className="w-full p-3 rounded-xl bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 resize-none outline-none focus:ring-2 focus:ring-blue-500 transition text-zinc-900 dark:text-zinc-100 text-xs animate-in slide-in-from-top-2 duration-200"
                             value={editExampleSentence}
                             onChange={(e) => setEditExampleSentence(e.target.value)}
                             placeholder="Câu ví dụ đục lỗ. Đặt từ cần đố trong ngoặc vuông, ví dụ: 'To [debunk] a myth is to prove it wrong.'..."
@@ -2858,7 +2866,7 @@ export default function StudyRoom() {
 
           <div className="flex flex-col gap-4 pt-4">
             {/* Buttons now ALWAYS SHOW on both front and back sides */}
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-300 border-amber-600/20 dark:border-amber-500/30">
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-300 border-orange-600/20 dark:border-orange-500/30">
               <div className="flex justify-center gap-4 md:gap-6 items-center flex-wrap">
                 {/* Lùi Thẻ */}
                 <div className="flex flex-col items-center gap-2">
@@ -2870,11 +2878,11 @@ export default function StudyRoom() {
                     disabled={currentIndex === 0}
                     title="Quay lại thẻ trước [← khi chưa lật]"
                     aria-label="Quay lại thẻ trước"
-                    className="w-12 h-12 rounded-full bg-stone-100 dark:bg-zinc-800/80 hover:bg-stone-200 dark:hover:bg-zinc-700 text-stone-600 dark:text-stone-300 flex items-center justify-center transition shadow-sm hover:scale-105 active:scale-95 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+                    className="w-12 h-12 rounded-full bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 flex items-center justify-center transition shadow-sm hover:scale-105 active:scale-95 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
                   >
                     <ArrowLeft className="w-5 h-5" />
                   </button>
-                  <span className="text-[10px] uppercase font-bold text-stone-400 dark:text-stone-500 flex flex-col items-center tracking-wider">
+                  <span className="text-[10px] uppercase font-bold text-zinc-400 dark:text-zinc-500 flex flex-col items-center tracking-wider">
                     <span>Lùi thẻ</span>
                     <span className="text-[8px] opacity-70 font-mono">← chưa lật</span>
                   </span>
@@ -2889,8 +2897,8 @@ export default function StudyRoom() {
                   >
                     <X className="w-8 h-8" />
                   </button>
-                  <span className="text-[10px] uppercase font-bold text-stone-400 dark:text-stone-500 flex items-center gap-1 tracking-widest">
-                    <kbd className="px-1 py-0.5 border border-stone-300 dark:border-stone-700 rounded-md font-mono text-[9px]">
+                  <span className="text-[10px] uppercase font-bold text-zinc-400 dark:text-zinc-500 flex items-center gap-1 tracking-widest">
+                    <kbd className="px-1 py-0.5 border border-zinc-300 dark:border-zinc-700 rounded-md font-mono text-[9px]">
                       ←
                     </kbd>{" "}
                     Quên
@@ -2906,8 +2914,8 @@ export default function StudyRoom() {
                   >
                     <BellPlus className="w-5 h-5" />
                   </button>
-                  <span className="text-[10px] uppercase font-bold text-stone-400 dark:text-stone-500 flex items-center gap-1 tracking-widest">
-                    <kbd className="px-1 py-0.5 border border-stone-300 dark:border-stone-700 rounded-md font-mono text-[9px]">
+                  <span className="text-[10px] uppercase font-bold text-zinc-400 dark:text-zinc-500 flex items-center gap-1 tracking-widest">
+                    <kbd className="px-1 py-0.5 border border-zinc-300 dark:border-zinc-700 rounded-md font-mono text-[9px]">
                       ↓
                     </kbd>{" "}
                     Sau
@@ -2923,8 +2931,8 @@ export default function StudyRoom() {
                   >
                     <Check className="w-8 h-8" />
                   </button>
-                  <span className="text-[10px] uppercase font-bold text-stone-400 dark:text-stone-500 flex items-center gap-1 tracking-widest">
-                    <kbd className="px-1 py-0.5 border border-stone-300 dark:border-stone-700 rounded-md font-mono text-[9px]">
+                  <span className="text-[10px] uppercase font-bold text-zinc-400 dark:text-zinc-500 flex items-center gap-1 tracking-widest">
+                    <kbd className="px-1 py-0.5 border border-zinc-300 dark:border-zinc-700 rounded-md font-mono text-[9px]">
                       →
                     </kbd>{" "}
                     Nhớ
@@ -2940,11 +2948,11 @@ export default function StudyRoom() {
                     }}
                     title="Qua thẻ tiếp theo [→ khi chưa lật]"
                     aria-label="Qua thẻ tiếp theo"
-                    className="w-12 h-12 rounded-full bg-stone-100 dark:bg-zinc-800/80 hover:bg-stone-200 dark:hover:bg-zinc-700 text-stone-600 dark:text-stone-300 flex items-center justify-center transition shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
+                    className="w-12 h-12 rounded-full bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 flex items-center justify-center transition shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
                   >
                     <ArrowRight className="w-5 h-5" />
                   </button>
-                  <span className="text-[10px] uppercase font-bold text-stone-400 dark:text-stone-500 flex flex-col items-center tracking-wider">
+                  <span className="text-[10px] uppercase font-bold text-zinc-400 dark:text-zinc-500 flex flex-col items-center tracking-wider">
                     <span>Kế tiếp</span>
                     <span className="text-[8px] opacity-70 font-mono">→ chưa lật</span>
                   </span>
@@ -2952,15 +2960,15 @@ export default function StudyRoom() {
               </div>
               <div className="text-center mt-3 opacity-50 text-[11px] font-medium hidden sm:block">
                 Mẹo: Nhấn{" "}
-                <kbd className="px-1.5 py-0.5 bg-stone-300 dark:bg-zinc-800 rounded font-mono text-[10px] text-stone-600 dark:text-stone-300 shadow-sm border border-stone-400 dark:border-stone-600">
+                <kbd className="px-1.5 py-0.5 bg-zinc-300 dark:bg-zinc-800 rounded font-mono text-[10px] text-zinc-600 dark:text-zinc-300 shadow-sm border border-zinc-400 dark:border-zinc-600">
                   Space
                 </kbd>{" "}
                 hoặc{" "}
-                <kbd className="px-1.5 py-0.5 bg-stone-300 dark:bg-zinc-800 rounded font-mono text-[10px] text-stone-600 dark:text-stone-300 shadow-sm border border-stone-400 dark:border-stone-600">
+                <kbd className="px-1.5 py-0.5 bg-zinc-300 dark:bg-zinc-800 rounded font-mono text-[10px] text-zinc-600 dark:text-zinc-300 shadow-sm border border-zinc-400 dark:border-zinc-600">
                   ↑
                 </kbd>{" "}
                 để lật thẻ,{" "}
-                <kbd className="px-1.5 py-0.5 bg-stone-300 dark:bg-zinc-800 rounded font-mono text-[10px] text-stone-600 dark:text-stone-300 shadow-sm border border-stone-400 dark:border-stone-600">
+                <kbd className="px-1.5 py-0.5 bg-zinc-300 dark:bg-zinc-800 rounded font-mono text-[10px] text-zinc-600 dark:text-zinc-300 shadow-sm border border-zinc-400 dark:border-zinc-600">
                   L
                 </kbd>{" "}
                 để nghe phát âm
@@ -2975,7 +2983,7 @@ export default function StudyRoom() {
               </div>
             </div>
 
-            <div className="w-full h-px bg-amber-600/20 dark:bg-amber-500/30 my-2" />
+            <div className="w-full h-px bg-orange-600/20 dark:bg-orange-500/30 my-2" />
 
             {/* Agent 2 Deep Extract Button */}
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
@@ -2984,14 +2992,14 @@ export default function StudyRoom() {
                   onClick={handleAgent2}
                   disabled={isExtracting || cooldownRemaining > 0}
                   className={cn(
-                    "w-full flex items-center justify-center gap-2 p-3 glass rounded-xl text-md font-bold border border-yellow-500/30 hover:border-yellow-500 hover:bg-yellow-500/10 transition text-yellow-700 dark:text-yellow-400 shadow-sm",
+                    "w-full flex items-center justify-center gap-2 p-3 glass rounded-xl text-md font-bold border border-orange-500/30 hover:border-orange-500 hover:bg-orange-500/10 transition text-orange-700 dark:text-orange-400 shadow-sm",
                     cooldownRemaining > 0 &&
-                      "opacity-50 cursor-not-allowed border-yellow-500/10",
+                      "opacity-50 cursor-not-allowed border-orange-500/10",
                   )}
                 >
                   <Sparkles
                     className={cn(
-                      "w-5 h-5 text-yellow-500",
+                      "w-5 h-5 text-orange-500",
                       cooldownRemaining > 0 && "animate-pulse",
                     )}
                   />
@@ -3006,7 +3014,7 @@ export default function StudyRoom() {
               {deepExplanation && (
                 <div
                   className={cn(
-                    "text-base animate-in fade-in leading-relaxed border-t-4 border-yellow-500 shadow-lg bg-gradient-to-b from-yellow-500/10 to-background",
+                    "text-base animate-in fade-in leading-relaxed border-t-4 border-orange-500 shadow-lg bg-gradient-to-b from-orange-500/10 to-background",
                     isSerif ? "font-serif" : "font-sans",
                     isPinned
                       ? isMinimized
@@ -3019,15 +3027,15 @@ export default function StudyRoom() {
                   }}
                 >
                   {isPinned && isMinimized ? (
-                    <div className="flex items-center justify-center font-bold text-yellow-600 dark:text-yellow-400 gap-2">
+                    <div className="flex items-center justify-center font-bold text-orange-600 dark:text-orange-400 gap-2">
                       <Sparkles className="w-4 h-4" />
                       <span>Agent 2</span>
                       <Maximize2 className="w-4 h-4 ml-2" />
                     </div>
                   ) : (
                     <>
-                      <div className="flex justify-between items-center mb-4 pb-2 border-b border-amber-600/20 dark:border-amber-500/30 sticky top-0 bg-background/80 backdrop-blur-md z-10 p-2 -mx-2 -mt-2">
-                        <span className="font-bold flex items-center gap-2 text-yellow-600 dark:text-yellow-400">
+                      <div className="flex justify-between items-center mb-4 pb-2 border-b border-orange-600/20 dark:border-orange-500/30 sticky top-0 bg-background/80 backdrop-blur-md z-10 p-2 -mx-2 -mt-2">
+                        <span className="font-bold flex items-center gap-2 text-orange-600 dark:text-orange-400">
                           <Sparkles className="w-5 h-5" />
                           Agent 2
                         </span>
@@ -3037,7 +3045,7 @@ export default function StudyRoom() {
                               e.stopPropagation();
                               setIsSerif(!isSerif);
                             }}
-                            className="p-2 bg-stone-200/60 dark:bg-zinc-800/50 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition"
+                            className="p-2 bg-zinc-200/60 dark:bg-zinc-800/50 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition"
                             title="Toggle Font"
                           >
                             <Type className="w-4 h-4" />
@@ -3051,8 +3059,8 @@ export default function StudyRoom() {
                             className={cn(
                               "p-2 rounded-lg transition",
                               isPinned
-                                ? "bg-yellow-500 text-black shadow-sm"
-                                : "bg-stone-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10",
+                                ? "bg-orange-500 text-black shadow-sm"
+                                : "bg-zinc-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10",
                             )}
                             title={isPinned ? "Unpin" : "Pin"}
                           >
@@ -3068,7 +3076,7 @@ export default function StudyRoom() {
                                 e.stopPropagation();
                                 setIsMinimized(true);
                               }}
-                              className="p-2 bg-stone-200/60 dark:bg-zinc-800/50 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition"
+                              className="p-2 bg-zinc-200/60 dark:bg-zinc-800/50 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition"
                               title="Minimize"
                             >
                               <Minimize2 className="w-4 h-4" />
@@ -3092,7 +3100,7 @@ export default function StudyRoom() {
                             });
                             window.dispatchEvent(event);
                           }}
-                          className="flex items-center gap-2 px-4 py-2 bg-yellow-500/10 hover:bg-yellow-500/20 border border-yellow-500/30 text-sm font-medium text-yellow-700 dark:text-yellow-400 rounded-lg transition"
+                          className="flex items-center gap-2 px-4 py-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 text-sm font-medium text-orange-700 dark:text-orange-400 rounded-lg transition"
                         >
                           <Bot className="w-4 h-4" /> Hỏi tiếp Agent 3
                         </button>
@@ -3106,11 +3114,11 @@ export default function StudyRoom() {
 
           {/* MỚI: FLASHCARD LIST MANAGER FOR TEACHER & ADMIN */}
           {canEditDeck && (
-            <div className="glass p-6 rounded-2xl border border-stone-200 dark:border-zinc-800 mt-12 animate-in fade-in slide-in-from-bottom-8 duration-300">
-              <div className="flex justify-between items-center mb-6 pb-2 border-b border-stone-200 dark:border-zinc-850">
+            <div className="glass p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 mt-12 animate-in fade-in slide-in-from-bottom-8 duration-300">
+              <div className="flex justify-between items-center mb-6 pb-2 border-b border-zinc-200 dark:border-zinc-850">
                 <div>
-                  <h3 className="text-lg font-bold font-display flex items-center gap-2 text-stone-800 dark:text-stone-100">
-                    <BrainCircuit className="w-5 h-5 text-yellow-500" /> Quản lý
+                  <h3 className="text-lg font-bold font-display flex items-center gap-2 text-zinc-800 dark:text-zinc-100">
+                    <BrainCircuit className="w-5 h-5 text-orange-500" /> Quản lý
                     danh sách Thẻ ({deck?.cards.length})
                   </h3>
                   <p className="text-xs opacity-60">
@@ -3120,7 +3128,7 @@ export default function StudyRoom() {
                 <button
                   onClick={handleAddCard}
                   disabled={isUpdatingCard}
-                  className="flex items-center gap-1.5 bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1.5 rounded-lg text-xs font-bold transition disabled:opacity-50"
+                  className="flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-black px-3 py-1.5 rounded-lg text-xs font-bold transition disabled:opacity-50"
                 >
                   <Plus className="w-3.5 h-3.5" /> Thêm thẻ học
                 </button>
@@ -3134,9 +3142,9 @@ export default function StudyRoom() {
               )}
 
               {/* DECK METADATA EDITOR */}
-              <div className="mb-6 p-4 bg-stone-100/60 dark:bg-zinc-800/40 rounded-xl border border-stone-200/50 dark:border-zinc-700/30">
+              <div className="mb-6 p-4 bg-zinc-100/60 dark:bg-zinc-800/40 rounded-xl border border-zinc-200/50 dark:border-zinc-700/30">
                 <div className="flex justify-between items-center mb-3">
-                  <h4 className="font-bold text-sm text-stone-700 dark:text-stone-300">
+                  <h4 className="font-bold text-sm text-zinc-700 dark:text-zinc-300">
                     Thông tin bộ bài (Metadata)
                   </h4>
                   {!isEditingMetadata && canEditDeck ? (
@@ -3149,7 +3157,7 @@ export default function StudyRoom() {
                   ) : (
                     <button
                       onClick={() => setIsEditingMetadata(false)}
-                      className="text-xs text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 font-bold transition"
+                      className="text-xs text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 font-bold transition"
                     >
                       Hủy bỏ
                     </button>
@@ -3168,7 +3176,7 @@ export default function StudyRoom() {
                       <span className="font-bold opacity-60">
                         Phân loại (Category):
                       </span>{" "}
-                      <span className="bg-stone-200 dark:bg-zinc-700 px-2 py-0.5 rounded text-xs uppercase tracking-wider">
+                      <span className="bg-zinc-200 dark:bg-zinc-700 px-2 py-0.5 rounded text-xs uppercase tracking-wider">
                         {typeof deck?.subject === "string"
                           ? deck.subject
                           : deck?.subject
@@ -3187,7 +3195,7 @@ export default function StudyRoom() {
                         type="text"
                         value={deckEditTitle}
                         onChange={(e) => setDeckEditTitle(e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-black border border-stone-300 dark:border-zinc-700 outline-none focus:ring-2 focus:ring-amber-500 text-sm"
+                        className="w-full px-3 py-2 rounded-lg bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 outline-none focus:ring-2 focus:ring-orange-500 text-sm"
                         placeholder="Nhập tên bộ bài..."
                       />
                     </div>
@@ -3207,7 +3215,7 @@ export default function StudyRoom() {
                                 setDeckEditSubject(e.target.value);
                               }
                             }}
-                            className="flex-1 px-3 py-2 rounded-lg bg-white dark:bg-black border border-stone-300 dark:border-zinc-700 outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-stone-50 dark:bg-zinc-900"
+                            className="flex-1 px-3 py-2 rounded-lg bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-zinc-50 dark:bg-zinc-900"
                           >
                             <option value="">-- Chọn phân loại hiện có --</option>
                             {existingSubjects.map((s) => (
@@ -3240,7 +3248,7 @@ export default function StudyRoom() {
                             type="text"
                             value={deckEditSubject}
                             onChange={(e) => setDeckEditSubject(e.target.value)}
-                            className="flex-1 px-3 py-2 rounded-lg bg-white dark:bg-black border border-stone-300 dark:border-zinc-700 outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                            className="flex-1 px-3 py-2 rounded-lg bg-white dark:bg-black border border-zinc-300 dark:border-zinc-700 outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                             placeholder="Nhập danh mục mới (VD: Sinh học)"
                             autoFocus
                           />
@@ -3250,7 +3258,7 @@ export default function StudyRoom() {
                               setIsCreatingNewSubjectDeck(false);
                               setDeckEditSubject(existingSubjects[0] || "general");
                             }}
-                            className="px-3 bg-stone-200 dark:bg-zinc-800 hover:bg-stone-300 text-stone-800 dark:text-stone-200 rounded-lg text-xs font-bold shrink-0"
+                            className="px-3 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 text-zinc-800 dark:text-zinc-200 rounded-lg text-xs font-bold shrink-0"
                           >
                             Quay lại
                           </button>
@@ -3288,18 +3296,18 @@ export default function StudyRoom() {
 
         <div className="lg:col-span-4 w-full space-y-6 lg:sticky lg:top-24 mt-6 lg:mt-0">
           {/* Quick Notes Scratchpad Card */}
-          <div className="glass p-5 rounded-2xl border border-amber-600/10 dark:border-amber-500/10 shadow-lg flex flex-col space-y-3 bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md">
-            <div className="flex items-center justify-between pb-2 border-b border-stone-200/50 dark:border-zinc-800">
+          <div className="glass p-5 rounded-2xl border border-orange-600/10 dark:border-orange-500/10 shadow-lg flex flex-col space-y-3 bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md">
+            <div className="flex items-center justify-between pb-2 border-b border-zinc-200/50 dark:border-zinc-800">
               <div className="flex items-center gap-2">
-                <Edit3 className="w-4 h-4 text-amber-500" />
-                <h3 className="font-extrabold text-sm text-stone-800 dark:text-stone-100 font-display uppercase tracking-wider">
+                <Edit3 className="w-4 h-4 text-orange-500" />
+                <h3 className="font-extrabold text-sm text-zinc-800 dark:text-zinc-100 font-display uppercase tracking-wider">
                   Ghi chú nhanh
                 </h3>
               </div>
               <div className="flex items-center gap-1 text-[10px] font-mono">
                 {isNotesSaving ? (
-                  <span className="text-amber-500 animate-pulse flex items-center gap-1 bg-amber-500/10 px-2 py-0.5 rounded-full font-bold">
-                    <span className="w-1 h-1 rounded-full bg-amber-500 animate-ping" />
+                  <span className="text-orange-500 animate-pulse flex items-center gap-1 bg-orange-500/10 px-2 py-0.5 rounded-full font-bold">
+                    <span className="w-1 h-1 rounded-full bg-orange-500 animate-ping" />
                     Đang lưu...
                   </span>
                 ) : lastNotesSavedTime ? (
@@ -3308,7 +3316,7 @@ export default function StudyRoom() {
                     Đã lưu {lastNotesSavedTime}
                   </span>
                 ) : (
-                  <span className="text-stone-400 dark:text-stone-500 bg-stone-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full font-bold">Sẵn sàng</span>
+                  <span className="text-zinc-400 dark:text-zinc-500 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full font-bold">Sẵn sàng</span>
                 )}
               </div>
             </div>
@@ -3317,7 +3325,7 @@ export default function StudyRoom() {
               value={scratchpadText}
               onChange={(e) => setScratchpadText(e.target.value)}
               placeholder="✍️ Nhập nhanh kiến thức trọng tâm, mẹo nhớ, từ khóa vào đây để học lâu nhớ sâu..."
-              className="w-full h-44 p-3 text-xs md:text-sm bg-stone-50/50 dark:bg-zinc-950/40 border border-stone-250 dark:border-zinc-800/80 rounded-xl font-sans resize-none outline-none focus:ring-2 focus:ring-yellow-500/40 transition-all text-stone-900 dark:text-stone-100 placeholder:text-stone-400 dark:placeholder:text-stone-500 leading-relaxed"
+              className="w-full h-44 p-3 text-xs md:text-sm bg-zinc-50/50 dark:bg-zinc-950/40 border border-zinc-250 dark:border-zinc-800/80 rounded-xl font-sans resize-none outline-none focus:ring-2 focus:ring-orange-500/40 transition-all text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 leading-relaxed"
             />
             
             <div className="text-[9px] opacity-60 flex justify-between items-center px-1 font-mono">
@@ -3331,18 +3339,18 @@ export default function StudyRoom() {
       </div>
 
       {isListModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-md animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/80 backdrop-blur-md animate-in fade-in duration-300">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-stone-50 dark:bg-zinc-900 border border-amber-600/20 dark:border-amber-500/30 rounded-2xl p-6 shadow-2xl max-w-4xl w-full flex flex-col h-[85vh]"
+            className="bg-zinc-50 dark:bg-zinc-900 border border-orange-600/20 dark:border-orange-500/30 rounded-2xl p-6 shadow-2xl max-w-4xl w-full flex flex-col h-[85vh]"
           >
             {/* Modal Header */}
-            <div className="flex justify-between items-start border-b border-stone-200 dark:border-zinc-800 pb-4">
+            <div className="flex justify-between items-start border-b border-zinc-200 dark:border-zinc-800 pb-4">
               <div className="space-y-1">
-                <h3 className="text-xl font-bold font-display text-stone-800 dark:text-stone-100 flex items-center gap-2">
-                  <Eye className="w-5 h-5 text-amber-500 animate-pulse" /> Danh sách thẻ học
+                <h3 className="text-xl font-bold font-display text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
+                  <Eye className="w-5 h-5 text-orange-500 animate-pulse" /> Danh sách thẻ học
                 </h3>
                 <p className="text-xs opacity-60">
                   Bộ bài: <span className="font-bold">{deck?.title || "Chưa đặt tên"}</span> • Tổng số {deck?.cards?.length || 0} thẻ
@@ -3350,7 +3358,7 @@ export default function StudyRoom() {
               </div>
               <button
                 onClick={() => setIsListModalOpen(false)}
-                className="p-1.5 rounded-full hover:bg-stone-200 dark:hover:bg-zinc-800 text-stone-500 hover:text-stone-800 dark:hover:text-stone-200 transition cursor-pointer"
+                className="p-1.5 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 transition cursor-pointer"
                 title="Đóng modal [Esc]"
               >
                 <X className="w-5 h-5" />
@@ -3365,13 +3373,13 @@ export default function StudyRoom() {
                   placeholder="Tìm kiếm mặt trước, mặt sau hoặc phân loại..."
                   value={listSearchQuery}
                   onChange={(e) => setListSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-stone-300 dark:border-zinc-700 outline-none focus:ring-2 focus:ring-amber-500 dark:bg-zinc-800 text-sm text-stone-850 dark:text-stone-200"
+                  className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 outline-none focus:ring-2 focus:ring-orange-500 dark:bg-zinc-800 text-sm text-zinc-850 dark:text-zinc-200"
                 />
                 <span className="absolute left-3.5 top-3.5 opacity-50 text-xs">🔍</span>
                 {listSearchQuery && (
                   <button
                     onClick={() => setListSearchQuery("")}
-                    className="absolute right-3.5 top-3 text-xs bg-stone-200 dark:bg-zinc-700 hover:bg-stone-300 px-2 py-0.5 rounded transition cursor-pointer text-stone-700 dark:text-stone-300"
+                    className="absolute right-3.5 top-3 text-xs bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 px-2 py-0.5 rounded transition cursor-pointer text-zinc-700 dark:text-zinc-300"
                   >
                     Xóa
                   </button>
@@ -3390,7 +3398,7 @@ export default function StudyRoom() {
                   <p className="text-sm opacity-60">Không tìm thấy thẻ học nào khớp với từ khóa của ngài.</p>
                   <button
                     onClick={() => setListSearchQuery("")}
-                    className="mt-2 text-xs text-amber-500 hover:underline font-bold"
+                    className="mt-2 text-xs text-orange-500 hover:underline font-bold"
                   >
                     Xóa từ khóa tìm kiếm
                   </button>
@@ -3401,30 +3409,30 @@ export default function StudyRoom() {
                   return (
                     <div
                       key={card.id}
-                      className="p-4 bg-stone-100/60 dark:bg-zinc-800/40 rounded-xl border border-stone-200/40 dark:border-zinc-700/20 hover:border-amber-500/30 transition flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+                      className="p-4 bg-zinc-100/60 dark:bg-zinc-800/40 rounded-xl border border-zinc-200/40 dark:border-zinc-700/20 hover:border-orange-500/30 transition flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
                     >
                       <div className="flex-1 space-y-2 min-w-0 w-full">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-700/50 text-stone-700 dark:text-stone-300">
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-700/50 text-zinc-700 dark:text-zinc-300">
                             Thẻ #{originalIndex + 1}
                           </span>
                           {card.wordForm && (
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20">
                               {card.wordForm}
                             </span>
                           )}
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="p-3 bg-white dark:bg-zinc-900 rounded-lg border border-stone-250 dark:border-zinc-800/80 text-stone-850 dark:text-stone-200 font-sans min-h-[50px] flex flex-col justify-center">
-                            <span className="text-[9px] font-bold text-stone-400 dark:text-stone-500 block mb-1 uppercase tracking-wider">Mặt trước (Front)</span>
+                          <div className="p-3 bg-white dark:bg-zinc-900 rounded-lg border border-zinc-250 dark:border-zinc-800/80 text-zinc-850 dark:text-zinc-200 font-sans min-h-[50px] flex flex-col justify-center">
+                            <span className="text-[9px] font-bold text-zinc-400 dark:text-zinc-500 block mb-1 uppercase tracking-wider">Mặt trước (Front)</span>
                             <div className="text-sm select-text break-words">
                               <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
                                 {card.front || ""}
                               </ReactMarkdown>
                             </div>
                           </div>
-                          <div className="p-3 bg-white dark:bg-zinc-900 rounded-lg border border-stone-250 dark:border-zinc-800/80 text-stone-850 dark:text-stone-200 font-sans min-h-[50px] flex flex-col justify-center">
-                            <span className="text-[9px] font-bold text-stone-400 dark:text-stone-500 block mb-1 uppercase tracking-wider">Mặt sau (Back)</span>
+                          <div className="p-3 bg-white dark:bg-zinc-900 rounded-lg border border-zinc-250 dark:border-zinc-800/80 text-zinc-850 dark:text-zinc-200 font-sans min-h-[50px] flex flex-col justify-center">
+                            <span className="text-[9px] font-bold text-zinc-400 dark:text-zinc-500 block mb-1 uppercase tracking-wider">Mặt sau (Back)</span>
                             <div className="text-sm select-text break-words">
                               <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
                                 {card.back || ""}
@@ -3435,7 +3443,7 @@ export default function StudyRoom() {
                       </div>
                       <button
                         onClick={() => handleSelectCardFromList(card)}
-                        className="w-full md:w-auto shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-black font-extrabold rounded-lg text-xs transition active:scale-95 shadow cursor-pointer self-stretch md:self-center"
+                        className="w-full md:w-auto shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gradient-to-r from-orange-500 to-orange-500 hover:from-orange-600 hover:to-orange-600 text-black font-extrabold rounded-lg text-xs transition active:scale-95 shadow cursor-pointer self-stretch md:self-center"
                         title="Nhảy đến thẻ này để học ngay lập tức"
                       >
                         <Play className="w-3.5 h-3.5 fill-black" />
@@ -3448,11 +3456,11 @@ export default function StudyRoom() {
             </div>
             
             {/* Footer */}
-            <div className="border-t border-stone-200 dark:border-zinc-800 pt-4 flex justify-between items-center text-xs opacity-50">
+            <div className="border-t border-zinc-200 dark:border-zinc-800 pt-4 flex justify-between items-center text-xs opacity-50">
               <span>Bấm nút "Học thẻ này" để bắt đầu ôn từ thẻ đó</span>
               <button
                 onClick={() => setIsListModalOpen(false)}
-                className="px-4 py-1.5 bg-stone-200 dark:bg-zinc-800 hover:bg-stone-300 dark:hover:bg-zinc-700 rounded-lg font-bold transition text-stone-700 dark:text-stone-300 cursor-pointer"
+                className="px-4 py-1.5 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 rounded-lg font-bold transition text-zinc-700 dark:text-zinc-300 cursor-pointer"
               >
                 Đóng
               </button>

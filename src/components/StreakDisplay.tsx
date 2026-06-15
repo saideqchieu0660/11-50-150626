@@ -41,18 +41,18 @@ export function StreakDisplay() {
              animate={{ opacity: 1, y: 0, scale: 1 }}
              exit={{ opacity: 0, y: 10, scale: 0.95 }}
              transition={{ duration: 0.2 }}
-             className="absolute top-10 right-0 w-72 bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-2xl shadow-xl p-4 z-50 flex flex-col gap-4"
+             className="absolute top-10 right-0 w-72 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl shadow-xl p-4 z-50 flex flex-col gap-4"
           >
             {/* Milestone Progress Section */}
             <div>
                <div className="flex justify-between items-end mb-2">
-                 <h4 className="text-xs font-semibold text-stone-600 dark:text-stone-400 uppercase tracking-wider flex items-center gap-1">
+                 <h4 className="text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-1">
                    <Target className="w-3.5 h-3.5" /> Mục tiêu tiếp theo
                  </h4>
                  <span className="text-xs font-bold text-orange-500">{currentStreak} / {nextMilestone}</span>
                </div>
                
-               <div className="h-2 w-full bg-stone-200 dark:bg-stone-800 rounded-full overflow-hidden">
+               <div className="h-2 w-full bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
                  <motion.div 
                    initial={{ width: 0 }}
                    animate={{ width: `${progressPercent}%` }}
@@ -60,16 +60,16 @@ export function StreakDisplay() {
                    className="h-full bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"
                  />
                </div>
-               <p className="text-[10px] text-stone-500 dark:text-stone-400 mt-1.5 text-right">
+               <p className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-1.5 text-right">
                  Còn <strong className="text-orange-500">{remainingDays} ngày</strong> để đạt cột mốc mới!
                </p>
             </div>
 
-            <hr className="border-stone-200 dark:border-stone-800" />
+            <hr className="border-zinc-200 dark:border-zinc-800" />
             
             {/* Chart Section */}
             <div className="h-32">
-               <h4 className="text-xs font-semibold mb-2 text-stone-600 dark:text-stone-400 uppercase tracking-wider">Hoạt động 7 ngày qua</h4>
+               <h4 className="text-xs font-semibold mb-2 text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">Hoạt động 7 ngày qua</h4>
                <ResponsiveContainer width="100%" height="80%">
                   <BarChart data={data}>
                      <XAxis dataKey="day" tick={{fontSize: 10, fill: '#888'}} tickLine={false} axisLine={false} />

@@ -128,9 +128,9 @@ export const NetworkStatus = () => {
             initial={{ opacity: 0, y: -30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -30, scale: 0.9 }}
-            className="flex items-center gap-2.5 px-5 py-2 rounded-full shadow-xl border border-yellow-500/30 bg-amber-500/10 dark:bg-yellow-500/10 text-amber-700 dark:text-yellow-400 font-bold backdrop-blur-md"
+            className="flex items-center gap-2.5 px-5 py-2 rounded-full shadow-xl border border-orange-500/30 bg-orange-500/10 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400 font-bold backdrop-blur-md"
           >
-            <CheckCircle className="w-4.5 h-4.5 text-yellow-500" />
+            <CheckCircle className="w-4.5 h-4.5 text-orange-500" />
             <span className="text-xs uppercase tracking-wide">{syncNotification}</span>
           </motion.div>
         )}

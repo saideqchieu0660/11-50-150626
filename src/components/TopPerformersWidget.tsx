@@ -16,7 +16,7 @@ interface TopPerformersWidgetProps {
 export const getTier = (points: number) => {
     if (points >= 100) return { name: "Grandmaster", color: "text-purple-500 bg-purple-500/10 border-purple-500/30", gradient: "from-purple-500 to-fuchsia-600", icon: <Crown className="w-3 h-3" /> };
     if (points >= 50) return { name: "Diamond", color: "text-cyan-500 bg-cyan-500/10 border-cyan-500/30", gradient: "from-cyan-400 to-blue-500", icon: <Sparkles className="w-3 h-3" /> };
-    if (points >= 20) return { name: "Gold", color: "text-yellow-500 bg-yellow-500/10 border-yellow-500/30", gradient: "from-yellow-400 to-amber-600", icon: <Trophy className="w-3 h-3" /> };
+    if (points >= 20) return { name: "Gold", color: "text-orange-500 bg-orange-500/10 border-orange-500/30", gradient: "from-orange-400 to-orange-600", icon: <Trophy className="w-3 h-3" /> };
     if (points >= 10) return { name: "Silver", color: "text-gray-400 bg-gray-400/10 border-gray-400/30", gradient: "from-gray-300 to-gray-500", icon: <Award className="w-3 h-3" /> };
     return { name: "Bronze", color: "text-orange-500 bg-orange-500/10 border-orange-500/30", gradient: "from-orange-400 to-red-500", icon: <Shield className="w-3 h-3" /> };
 };
@@ -36,23 +36,23 @@ const LeaderboardRow = React.memo<LeaderboardRowProps>(({ user, index, currentUs
   const isThird = index === 2;
   const isTop3 = index < 3;
 
-  let bgClass = "bg-white/40 dark:bg-black/40 border-stone-200 dark:border-stone-800";
-  let ringClass = user.id === currentUserId ? "ring-2 ring-amber-500 ring-offset-2 ring-offset-white dark:ring-offset-black" : "";
+  let bgClass = "bg-white/40 dark:bg-black/40 border-zinc-200 dark:border-zinc-800";
+  let ringClass = user.id === currentUserId ? "ring-2 ring-orange-500 ring-offset-2 ring-offset-white dark:ring-offset-black" : "";
   let shadowClass = "";
   let rankIcon = null;
-  let rankBadgeBg = "bg-stone-200/60 dark:bg-zinc-800 text-stone-600 dark:text-stone-300";
+  let rankBadgeBg = "bg-zinc-200/60 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300";
 
   if (isFirst) {
-    bgClass = "bg-gradient-to-r from-amber-500/10 to-yellow-500/15 border-yellow-500/40 shadow-[0_0_20px_-5px_rgba(234,179,8,0.15)]";
+    bgClass = "bg-gradient-to-r from-orange-500/10 to-orange-500/15 border-orange-500/40 shadow-[0_0_20px_-5px_rgba(234,179,8,0.15)]";
     shadowClass = "shadow-[0_0_15px_-3px_rgba(234,179,8,0.3)]";
-    rankIcon = <Crown className="w-4 h-4 text-yellow-500 animate-pulse shrink-0" />;
-    rankBadgeBg = "bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-600 text-black border shadow-yellow-500/30";
+    rankIcon = <Crown className="w-4 h-4 text-orange-500 animate-pulse shrink-0" />;
+    rankBadgeBg = "bg-gradient-to-br from-orange-300 via-orange-400 to-orange-600 text-black border shadow-orange-500/30";
   } else if (isSecond) {
     bgClass = "bg-gradient-to-r from-slate-400/10 to-gray-500/15 border-slate-400/30";
     rankIcon = <Trophy className="w-4 h-4 text-slate-400 shrink-0" />;
     rankBadgeBg = "bg-gradient-to-br from-gray-100 via-gray-300 to-gray-500 text-black border shadow-gray-400/30";
   } else if (isThird) {
-    bgClass = "bg-gradient-to-r from-orange-400/10 to-amber-600/15 border-orange-400/35";
+    bgClass = "bg-gradient-to-r from-orange-400/10 to-orange-600/15 border-orange-400/35";
     rankIcon = <Award className="w-4 h-4 text-orange-500 shrink-0" />;
     rankBadgeBg = "bg-gradient-to-br from-orange-200 via-orange-400 to-orange-600 text-black border shadow-orange-500/30";
   }
@@ -69,7 +69,7 @@ const LeaderboardRow = React.memo<LeaderboardRowProps>(({ user, index, currentUs
         bgClass,
         ringClass,
         isTop3 ? "py-4" : "py-2.5",
-        user.id === currentUserId ? "border-amber-500/50" : ""
+        user.id === currentUserId ? "border-orange-500/50" : ""
       )}
     >
       <div className="flex items-center gap-3 overflow-hidden">
@@ -92,14 +92,14 @@ const LeaderboardRow = React.memo<LeaderboardRowProps>(({ user, index, currentUs
               {user.name}
             </h4>
             {user.id === currentUserId && (
-              <span className="text-[9px] bg-yellow-500 text-black px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold shrink-0">
+              <span className="text-[9px] bg-orange-500 text-black px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold shrink-0">
                 You
               </span>
             )}
           </div>
 
           <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
-            <span className="text-[10px] font-mono font-bold bg-stone-200 dark:bg-stone-800 text-stone-600 dark:text-stone-300 px-1.5 py-0.5 rounded border border-stone-300 dark:border-stone-700">
+            <span className="text-[10px] font-mono font-bold bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 px-1.5 py-0.5 rounded border border-zinc-300 dark:border-zinc-700">
               Lv.{user.level || getLevelInfo(user.points || 0).currentLevel}
             </span>
             <span className={cn("text-[8px] sm:text-[9px] font-bold px-1.5 py-0.5 rounded border", getCustomTitleBadgeClass(user.title, getLevelInfo(user.points || 0).badgeColors))}>
@@ -119,7 +119,7 @@ const LeaderboardRow = React.memo<LeaderboardRowProps>(({ user, index, currentUs
       </div>
 
       <div className="text-right shrink-0 pl-2">
-        <span className="text-sm font-mono font-black text-stone-800 dark:text-stone-200">
+        <span className="text-sm font-mono font-black text-zinc-800 dark:text-zinc-200">
           {user.points || 0}
         </span>
         <span className="text-[10px] opacity-50 ml-1 font-sans">pts</span>
@@ -135,9 +135,9 @@ export const TopPerformersWidget: React.FC<TopPerformersWidgetProps> = ({ users,
 
   return (
     <div className="glass p-6 rounded-2xl">
-      <div className="flex items-center gap-2 mb-6 border-b border-amber-600/20 dark:border-amber-500/30 pb-3">
-        <Trophy className="w-5 h-5 text-yellow-500" />
-        <h3 className="font-bold text-lg font-display text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">
+      <div className="flex items-center gap-2 mb-6 border-b border-orange-600/20 dark:border-orange-500/30 pb-3">
+        <Trophy className="w-5 h-5 text-orange-500" />
+        <h3 className="font-bold text-lg font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">
             Top Phong Độ Tuần Nay
         </h3>
       </div>

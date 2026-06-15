@@ -1609,7 +1609,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
       }
       className={cn(
         isEcoMode
-          ? "p-6 md:p-8 rounded-2xl border-2 border-stone-400 dark:border-zinc-800 bg-white dark:bg-black relative mt-8 max-w-4xl mx-auto shadow-none backdrop-blur-none transition-none duration-0"
+          ? "p-6 md:p-8 rounded-2xl border-2 border-zinc-400 dark:border-zinc-800 bg-white dark:bg-black relative mt-8 max-w-4xl mx-auto shadow-none backdrop-blur-none transition-none duration-0"
           : "glass p-6 md:p-8 rounded-2xl border border-blue-500/10 dark:border-blue-400/10 shadow-lg relative overflow-hidden mt-8 max-w-4xl mx-auto",
       )}
     >
@@ -1617,9 +1617,9 @@ Acknowledge this protocol. Execute all text transformations deterministically at
         Kênh Hồi Sức AI
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b border-stone-200/50 dark:border-zinc-800/80 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b border-zinc-200/50 dark:border-zinc-800/80 pb-6">
         <div>
-          <h3 className="text-3xl font-display font-semibold flex items-center gap-2 text-stone-900 dark:text-stone-100 mb-1">
+          <h3 className="text-3xl font-display font-semibold flex items-center gap-2 text-zinc-900 dark:text-zinc-100 mb-1">
             <Sparkles className="w-7 h-7 text-blue-500" /> Nạp Thẻ Học Bằng Cơm
           </h3>
           <p className="text-sm opacity-70">
@@ -1641,7 +1641,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
       </div>
 
       {/* Navigation Tabs for Flow Selector */}
-      <div className="flex border-b border-stone-200 dark:border-zinc-800/80 mb-6 gap-2">
+      <div className="flex border-b border-zinc-200 dark:border-zinc-800/80 mb-6 gap-2">
         <button
           onClick={() => {
             if (!isAutomating && !isProcessing) setActiveTab("automated");
@@ -1650,7 +1650,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
             "flex-1 pb-3 text-base font-bold transition flex items-center justify-center gap-2 border-b-2 px-4 py-2",
             activeTab === "automated"
               ? "border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-500"
-              : "border-transparent text-stone-500 hover:text-stone-700 dark:text-zinc-400 dark:hover:text-zinc-200",
+              : "border-transparent text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200",
           )}
         >
           <Layers className="w-4 h-4" /> Kênh Tự Động Hoá (Flashcard Pipeline)
@@ -1663,7 +1663,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
             "flex-1 pb-3 text-base font-bold transition flex items-center justify-center gap-2 border-b-2 px-4 py-2",
             activeTab === "manual"
               ? "border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-500"
-              : "border-transparent text-stone-500 hover:text-stone-700 dark:text-zinc-400 dark:hover:text-zinc-200",
+              : "border-transparent text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200",
           )}
         >
           <Edit3 className="w-4 h-4" /> Bảng Nhập Tay (Raw JSON Copy)
@@ -1721,7 +1721,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
 
           {/* Target Deck Configuration */}
           <div className="p-4 bg-blue-50/40 dark:bg-zinc-900/35 border border-blue-100/60 dark:border-zinc-800/60 rounded-xl space-y-4">
-            <label className="text-xs font-black uppercase tracking-wide text-stone-850 dark:text-stone-200">
+            <label className="text-xs font-black uppercase tracking-wide text-zinc-850 dark:text-zinc-200">
               THÊM THẺ HỌC VÀO BỘ THẺ SẴN CÓ
             </label>
             <CustomDeckSelect
@@ -1744,9 +1744,9 @@ Acknowledge this protocol. Execute all text transformations deterministically at
             />
 
             {!isAddToExisting && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-200 pt-2 border-t border-stone-200/40 dark:border-zinc-800/40">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-200 pt-2 border-t border-zinc-200/40 dark:border-zinc-800/40">
                 <div>
-                  <label className="text-sm font-semibold opacity-85 mb-2 block text-stone-800 dark:text-stone-300">
+                  <label className="text-sm font-semibold opacity-85 mb-2 block text-zinc-800 dark:text-zinc-300">
                     Tên Bộ Thẻ Học Mới:
                   </label>
                   <input
@@ -1754,12 +1754,12 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     value={deckTitle}
                     onChange={(e) => setDeckTitle(e.target.value)}
                     placeholder="Ví dụ: 1000 Từ khóa Khoa Học Đời Sống"
-                    className="w-full bg-white dark:bg-zinc-950 border border-stone-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
+                    className="w-full bg-white dark:bg-zinc-950 border border-zinc-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
                     disabled={isAutomating}
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-semibold opacity-85 mb-2 block text-stone-800 dark:text-stone-300">
+                  <label className="text-sm font-semibold opacity-85 mb-2 block text-zinc-800 dark:text-zinc-300">
                     Danh mục / Phân loại:
                   </label>
                   {!isCreatingNewSubject ? (
@@ -1775,7 +1775,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                           }
                         }}
                         disabled={isAutomating}
-                        className="flex-1 bg-white dark:bg-zinc-950 border border-stone-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
+                        className="flex-1 bg-white dark:bg-zinc-950 border border-zinc-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
                       >
                         <option value="">-- Chọn danh mục hiện có --</option>
                         {existingCategories.map((cat, idx) => (
@@ -1785,7 +1785,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                         ))}
                         <option
                           value="__NEW__"
-                          className="text-amber-500 font-bold"
+                          className="text-orange-500 font-bold"
                         >
                           + Thêm danh mục mới...
                         </option>
@@ -1797,7 +1797,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                           setIsCreatingNewSubject(true);
                           setDeckSubject("");
                         }}
-                        className="p-3 bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 dark:hover:bg-zinc-700 text-stone-900 dark:text-stone-100 rounded-xl flex items-center justify-center border border-stone-200/50 dark:border-zinc-800 focus:outline-none disabled:opacity-50"
+                        className="p-3 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-xl flex items-center justify-center border border-zinc-200/50 dark:border-zinc-800 focus:outline-none disabled:opacity-50"
                       >
                         <Plus className="w-4 h-4" />
                       </button>
@@ -1810,7 +1810,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                         onChange={(e) => setDeckSubject(e.target.value)}
                         disabled={isAutomating}
                         placeholder="Ví dụ: Thượng tầng, AI, Lập trình..."
-                        className="flex-1 bg-white dark:bg-zinc-950 border border-stone-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
+                        className="flex-1 bg-white dark:bg-zinc-950 border border-zinc-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
                       />
                       <button
                         type="button"
@@ -1819,7 +1819,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                           setIsCreatingNewSubject(false);
                           setDeckSubject("");
                         }}
-                        className="px-4 bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 dark:hover:bg-zinc-700 rounded-xl text-xs font-bold border border-stone-200/50 dark:border-zinc-800 disabled:opacity-50"
+                        className="px-4 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-xl text-xs font-bold border border-zinc-200/50 dark:border-zinc-800 disabled:opacity-50"
                       >
                         Quay lại
                       </button>
@@ -1835,8 +1835,8 @@ Acknowledge this protocol. Execute all text transformations deterministically at
               className={cn(
                 "p-4 rounded-xl space-y-3 border shadow-none",
                 isEcoMode
-                  ? "bg-amber-600 dark:bg-amber-700 text-white border-amber-700 transition-none animate-none duration-0"
-                  : "bg-amber-500/10 border border-amber-500/20 animate-in fade-in duration-350",
+                  ? "bg-orange-600 dark:bg-orange-700 text-white border-orange-700 transition-none animate-none duration-0"
+                  : "bg-orange-500/10 border border-orange-500/20 animate-in fade-in duration-350",
               )}
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -1846,7 +1846,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                       "font-bold flex items-center gap-2 text-base",
                       isEcoMode
                         ? "text-white"
-                        : "text-amber-700 dark:text-amber-400",
+                        : "text-orange-700 dark:text-orange-400",
                     )}
                   >
                     <AlertTriangle
@@ -1854,7 +1854,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                         "w-5 h-5",
                         isEcoMode
                           ? "text-white"
-                          : "text-amber-500 animate-pulse",
+                          : "text-orange-500 animate-pulse",
                       )}
                     />{" "}
                     Phát Hiện Tiến Trình Bị Gián Đoạn!
@@ -1864,7 +1864,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                       "text-sm font-medium mt-1",
                       isEcoMode
                         ? "text-white"
-                        : "text-slate-900 dark:text-stone-200",
+                        : "text-slate-900 dark:text-zinc-200",
                     )}
                   >
                     Hệ thống đã tự động sao lưu tiến trình băm thẻ dở cho bộ{" "}
@@ -1879,9 +1879,9 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     onClick={handleResumePipeline}
                     disabled={isAutomating}
                     className={cn(
-                      "bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm disabled:opacity-50",
+                      "bg-orange-600 hover:bg-orange-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm disabled:opacity-50",
                       isEcoMode
-                        ? "border border-amber-700 shadow-none transition-none animate-none duration-0"
+                        ? "border border-orange-700 shadow-none transition-none animate-none duration-0"
                         : "transition active:scale-95 animate-pulse",
                     )}
                   >
@@ -1890,7 +1890,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                   <button
                     onClick={handleDiscardSavedPipeline}
                     disabled={isAutomating}
-                    className="text-stone-500 dark:text-zinc-400 hover:bg-stone-200 dark:hover:bg-zinc-800 py-2.5 px-4 rounded-xl text-sm font-semibold transition disabled:opacity-50"
+                    className="text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 py-2.5 px-4 rounded-xl text-sm font-semibold transition disabled:opacity-50"
                   >
                     Xóa bỏ
                   </button>
@@ -1904,7 +1904,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
               Nhập tệp dữ liệu từ vựng thô (Một từ/câu mỗi dòng là tốt nhất):
             </label>
             <textarea
-              className="w-full h-64 bg-stone-100/50 dark:bg-zinc-900/50 border border-stone-200 dark:border-zinc-800 rounded-xl p-4 text-base font-mono resize-y focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-stone-800 dark:text-stone-200 transition"
+              className="w-full h-64 bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 text-base font-mono resize-y focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-zinc-800 dark:text-zinc-200 transition"
               placeholder="vibration&#10;break down (v) - hỏng hóc&#10;mitigate (v) - giảm thiểu mức ảnh hưởng..."
               value={rawTextLines}
               onChange={(e) => setRawTextLines(e.target.value)}
@@ -1920,7 +1920,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                   ? { transform: "translateZ(0)", willChange: "transform" }
                   : undefined
               }
-              className="p-4 bg-black/90 dark:bg-zinc-950 rounded-xl border border-zinc-800 text-stone-300 font-mono text-sm space-y-3 shadow-none"
+              className="p-4 bg-black/90 dark:bg-zinc-950 rounded-xl border border-zinc-800 text-zinc-300 font-mono text-sm space-y-3 shadow-none"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-zinc-800 pb-3 gap-2">
                 <div className="flex flex-col">
@@ -1934,14 +1934,14 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     Trạng thái Hàng đợi AI
                   </span>
                   {autoProgress.totalLines && (
-                    <span className="text-[11px] text-yellow-500 font-bold font-mono mt-0.5 animate-pulse">
+                    <span className="text-[11px] text-orange-500 font-bold font-mono mt-0.5 animate-pulse">
                       Đang tạo thẻ: {autoProgress.processedCards} /{" "}
                       {autoProgress.totalLines}
                     </span>
                   )}
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
-                  <span className="text-xs text-stone-400 font-mono bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800">
+                  <span className="text-xs text-zinc-400 font-mono bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800">
                     Cụm: {autoProgress.currentChunk}/{autoProgress.totalChunks}
                   </span>
                   {activeProcessingChunkIndex !== null && (
@@ -1965,7 +1965,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     ? { transform: "translateZ(0)", willChange: "transform" }
                     : undefined
                 }
-                className="max-h-40 overflow-y-auto space-y-1 scrollbar-thin text-stone-200"
+                className="max-h-40 overflow-y-auto space-y-1 scrollbar-thin text-zinc-200"
               >
                 {autoProgress.logs.map((log, lIdx) => (
                   <div key={lIdx} className="text-xs leading-relaxed">
@@ -2010,17 +2010,17 @@ Acknowledge this protocol. Execute all text transformations deterministically at
 
           {/* Real-time Telemetry & Logging Dashboard Panel for AI Rotation & Pacing Monitoring */}
           {telemetryLogs.length > 0 && (
-            <div className="p-5 bg-white dark:bg-zinc-950 rounded-2xl border border-stone-200 dark:border-zinc-800 space-y-4">
-              <div className="flex items-center justify-between border-b border-stone-100 dark:border-zinc-800 pb-3">
+            <div className="p-5 bg-white dark:bg-zinc-950 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+              <div className="flex items-center justify-between border-b border-zinc-100 dark:border-zinc-800 pb-3">
                 <div className="flex items-center gap-2">
                   <div className="p-1.5 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-lg">
                     <Activity className="w-5 h-5 animate-pulse" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-stone-800 dark:text-stone-200">
+                    <h3 className="text-sm font-bold text-zinc-800 dark:text-zinc-200">
                       Bảng Giám sát Telemetry & Phân tích Đột biến AI
                     </h3>
-                    <p className="text-xs text-stone-400 dark:text-zinc-500">
+                    <p className="text-xs text-zinc-400 dark:text-zinc-500">
                       Ghi nhận token, độ mất mát dữ liệu và luân phiên API keys
                       theo thời gian thực
                     </p>
@@ -2029,7 +2029,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                 <button
                   type="button"
                   onClick={fetchTelemetryLogs}
-                  className="p-1 px-2.5 text-xs bg-stone-100 hover:bg-stone-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 rounded-lg transition text-stone-600 dark:text-stone-300 flex items-center gap-1 cursor-pointer"
+                  className="p-1 px-2.5 text-xs bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 rounded-lg transition text-zinc-600 dark:text-zinc-300 flex items-center gap-1 cursor-pointer"
                 >
                   <RefreshCw className="w-3 h-3" /> Tẩy mới
                 </button>
@@ -2038,7 +2038,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs font-mono">
                   <thead>
-                    <tr className="border-b border-stone-150 dark:border-zinc-800/80 text-stone-400 dark:text-zinc-500">
+                    <tr className="border-b border-zinc-150 dark:border-zinc-800/80 text-zinc-400 dark:text-zinc-500">
                       <th className="pb-2 font-semibold">
                         Tập tin / Thời gian
                       </th>
@@ -2059,7 +2059,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-stone-100 dark:divide-zinc-900/50">
+                  <tbody className="divide-y divide-zinc-100 dark:divide-zinc-900/50">
                     {telemetryLogs.map((log: any, idx: number) => {
                       const timeStr = new Date(
                         log.timestamp,
@@ -2067,16 +2067,16 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                       return (
                         <tr
                           key={log.id || idx}
-                          className="hover:bg-stone-50 dark:hover:bg-zinc-900/20 transition-colors"
+                          className="hover:bg-zinc-50 dark:hover:bg-zinc-900/20 transition-colors"
                         >
-                          <td className="py-2.5 text-stone-500 dark:text-stone-400">
+                          <td className="py-2.5 text-zinc-500 dark:text-zinc-400">
                             <div>{timeStr}</div>
-                            <div className="text-[10px] text-stone-400 dark:text-zinc-650 font-mono">
+                            <div className="text-[10px] text-zinc-400 dark:text-zinc-650 font-mono">
                               Len: {log.inputLength} kí tự
                             </div>
                           </td>
                           <td className="py-2.5 text-center">
-                            <span className="inline-flex items-center gap-1 bg-stone-100 dark:bg-zinc-900 px-2 py-0.5 rounded border border-stone-200 dark:border-zinc-850 font-bold text-[11px] text-blue-500">
+                            <span className="inline-flex items-center gap-1 bg-zinc-100 dark:bg-zinc-900 px-2 py-0.5 rounded border border-zinc-200 dark:border-zinc-850 font-bold text-[11px] text-blue-500">
                               🗝️ #{log.keyIndex}{" "}
                               <span className="text-[10px] text-zinc-400">
                                 ({log.keyMasked})
@@ -2096,16 +2096,16 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                                 >
                                   {log.tokenUsage?.promptTokens || 0}
                                 </span>
-                                <span className="text-stone-400 mx-1">+</span>
+                                <span className="text-zinc-400 mx-1">+</span>
                                 <span
                                   className="text-indigo-500 font-bold"
                                   title="Completion Tokens"
                                 >
                                   {log.tokenUsage?.completionTokens || 0}
                                 </span>
-                                <span className="text-stone-400 mx-1">=</span>
+                                <span className="text-zinc-400 mx-1">=</span>
                                 <strong
-                                  className="text-amber-500"
+                                  className="text-orange-500"
                                   title="Tổng Tokens"
                                 >
                                   {log.tokenUsage?.totalTokens || 0}
@@ -2120,14 +2120,14 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               <span
                                 className={cn(
                                   log.isLossy
-                                    ? "text-yellow-600 dark:text-yellow-400"
+                                    ? "text-orange-600 dark:text-orange-400"
                                     : "text-emerald-500",
                                 )}
                               >
                                 {log.actualCardsCount}
                               </span>
                             )}
-                            <span className="text-stone-400 dark:text-zinc-600 font-normal">
+                            <span className="text-zinc-400 dark:text-zinc-600 font-normal">
                               {" "}
                               / {log.targetMin}-{log.targetMax}
                             </span>
@@ -2142,7 +2142,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               </span>
                             ) : log.isLossy ? (
                               <span
-                                className="inline-flex items-center gap-1 text-yellow-600 bg-yellow-50 dark:bg-yellow-950/20 px-2 py-0.5 rounded border border-yellow-200 dark:border-yellow-905/30 text-[10px] font-bold"
+                                className="inline-flex items-center gap-1 text-orange-600 bg-orange-50 dark:bg-orange-950/20 px-2 py-0.5 rounded border border-orange-200 dark:border-orange-905/30 text-[10px] font-bold"
                                 title="Số thẻ tạo ra thấp hơn mức tối thiểu yêu cầu cho cụm này."
                               >
                                 🟡 Mất thông tin (Lossy)
@@ -2153,7 +2153,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               </span>
                             )}
                           </td>
-                          <td className="py-2.5 text-right font-bold text-stone-600 dark:text-neutral-400">
+                          <td className="py-2.5 text-right font-bold text-zinc-600 dark:text-neutral-400">
                             {log.latencyMs
                               ? `${(log.latencyMs / 1000).toFixed(1)}s`
                               : "Chờ"}
@@ -2196,7 +2196,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-5 h-5 text-yellow-300" /> Kích Hoạt
+                  <Sparkles className="w-5 h-5 text-orange-300" /> Kích Hoạt
                   Kênh Tự Động Hoá (Hỗ trợ Song song CC)
                 </>
               )}
@@ -2228,11 +2228,11 @@ Acknowledge this protocol. Execute all text transformations deterministically at
               className={cn(
                 "p-4 border rounded-xl space-y-3 mt-4 shadow-none",
                 isEcoMode
-                  ? "bg-white dark:bg-black border-stone-400 dark:border-zinc-800 transition-none duration-0"
-                  : "bg-stone-100/40 dark:bg-zinc-950/40 border-stone-200/50 dark:border-zinc-800/80 animate-in fade-in duration-300",
+                  ? "bg-white dark:bg-black border-zinc-400 dark:border-zinc-800 transition-none duration-0"
+                  : "bg-zinc-100/40 dark:bg-zinc-950/40 border-zinc-200/50 dark:border-zinc-800/80 animate-in fade-in duration-300",
               )}
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-250 dark:border-zinc-800 pb-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-250 dark:border-zinc-800 pb-2">
                 <span
                   className={cn(
                     "flex items-center gap-2 font-bold text-sm",
@@ -2252,7 +2252,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
               </div>
 
               {autoCreatedCards.length > 30 && (
-                <p className="text-[11px] text-amber-500 font-bold mb-2">
+                <p className="text-[11px] text-orange-500 font-bold mb-2">
                   ⚠️ Đang hiển thị 30 thẻ mới nhất được băm để xem và chỉnh sửa
                   nhanh. Toàn bộ {autoCreatedCards.length} thẻ vẫn được tự động
                   ghi nhận trực tiếp realtime vào cơ sở dữ liệu.
@@ -2273,13 +2273,13 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     className={cn(
                       "p-3 bg-white dark:bg-zinc-900 rounded-lg border relative group",
                       isEcoMode
-                        ? "bg-white dark:bg-black border-stone-400 dark:border-zinc-800 shadow-none transition-none duration-0"
-                        : "border-stone-250/50 dark:border-zinc-800/80 hover:border-blue-500 dark:hover:border-blue-400/50 transition",
+                        ? "bg-white dark:bg-black border-zinc-400 dark:border-zinc-800 shadow-none transition-none duration-0"
+                        : "border-zinc-250/50 dark:border-zinc-800/80 hover:border-blue-500 dark:hover:border-blue-400/50 transition",
                     )}
                   >
                     <button
                       onClick={() => handleDeleteAutoCard(c.id)}
-                      className="absolute top-2 right-2 p-1 text-stone-400 hover:text-red-500 hover:bg-red-500/10 rounded transition"
+                      className="absolute top-2 right-2 p-1 text-zinc-400 hover:text-red-500 hover:bg-red-500/10 rounded transition"
                       title="Xóa thẻ"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -2296,7 +2296,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                           onChange={(e) =>
                             handleUpdateAutoCard(c.id, "front", e.target.value)
                           }
-                          className="w-full bg-stone-50 dark:bg-black/40 border border-stone-200 dark:border-zinc-850 rounded px-2 py-1 text-stone-900 dark:text-stone-100 font-bold focus:outline-none focus:border-blue-500"
+                          className="w-full bg-zinc-50 dark:bg-black/40 border border-zinc-200 dark:border-zinc-850 rounded px-2 py-1 text-zinc-900 dark:text-zinc-100 font-bold focus:outline-none focus:border-blue-500"
                         />
                       </div>
                       <div>
@@ -2309,7 +2309,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                           onChange={(e) =>
                             handleUpdateAutoCard(c.id, "back", e.target.value)
                           }
-                          className="w-full bg-stone-50 dark:bg-black/40 border border-stone-200 dark:border-zinc-850 rounded px-2 py-1 text-stone-800 dark:text-stone-200 font-semibold focus:outline-none focus:border-blue-500 resize-none"
+                          className="w-full bg-zinc-50 dark:bg-black/40 border border-zinc-200 dark:border-zinc-850 rounded px-2 py-1 text-zinc-800 dark:text-zinc-200 font-semibold focus:outline-none focus:border-blue-500 resize-none"
                         />
                       </div>
                     </div>
@@ -2331,7 +2331,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     onClick={handleRetryAllFailedChunks}
                     disabled={retryAllLoading || processingErrorIndex !== null}
                     className={cn(
-                      "text-xs bg-amber-600 hover:bg-amber-700 text-white font-bold py-1.5 px-3 rounded-lg flex items-center gap-1 disabled:opacity-50",
+                      "text-xs bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded-lg flex items-center gap-1 disabled:opacity-50",
                       !isEcoMode && "transition active:scale-95 duration-150",
                     )}
                   >
@@ -2394,7 +2394,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                       {isEditing ? (
                         <div className="space-y-2">
                           <textarea
-                            className="w-full h-32 text-xs font-mono p-2 bg-stone-900 border border-zinc-700 rounded text-stone-200 focus:outline-none focus:border-blue-500"
+                            className="w-full h-32 text-xs font-mono p-2 bg-zinc-900 border border-zinc-700 rounded text-zinc-200 focus:outline-none focus:border-blue-500"
                             value={editingErrorText}
                             onChange={(e) =>
                               setEditingErrorText(e.target.value)
@@ -2403,7 +2403,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                           <div className="flex justify-end gap-2">
                             <button
                               onClick={() => setEditingErrorIndex(null)}
-                              className="text-xs text-stone-400 hover:text-stone-250 font-semibold px-2 py-1 rounded"
+                              className="text-xs text-zinc-400 hover:text-zinc-250 font-semibold px-2 py-1 rounded"
                             >
                               Hủy
                             </button>
@@ -2428,7 +2428,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                         </div>
                       ) : (
                         <>
-                          <pre className="text-[11px] font-mono p-2 bg-black/40 dark:bg-black/60 rounded border border-zinc-900/40 overflow-x-auto text-stone-300 max-h-24 leading-relaxed">
+                          <pre className="text-[11px] font-mono p-2 bg-black/40 dark:bg-black/60 rounded border border-zinc-900/40 overflow-x-auto text-zinc-300 max-h-24 leading-relaxed">
                             {errItem.content}
                           </pre>
                           <div className="flex justify-end gap-2 text-xs pt-1">
@@ -2490,15 +2490,15 @@ Acknowledge this protocol. Execute all text transformations deterministically at
         >
           {!previewCards ? (
             <div className="space-y-4">
-              <div className="flex bg-stone-100 dark:bg-zinc-900/50 p-1 rounded-xl border border-stone-200 dark:border-zinc-800 gap-1 w-fit">
+              <div className="flex bg-zinc-100 dark:bg-zinc-900/50 p-1 rounded-xl border border-zinc-200 dark:border-zinc-800 gap-1 w-fit">
                 <button
                   type="button"
                   onClick={() => setManualMode("form")}
                   className={cn(
                     "px-4 py-1.5 rounded-lg text-xs font-bold transition border-none cursor-pointer",
                     manualMode === "form"
-                      ? "bg-white dark:bg-zinc-800 text-yellow-600 dark:text-yellow-450 shadow-sm"
-                      : "text-stone-500 hover:text-stone-700 dark:text-zinc-400 dark:hover:text-zinc-200",
+                      ? "bg-white dark:bg-zinc-800 text-orange-600 dark:text-orange-450 shadow-sm"
+                      : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200",
                   )}
                 >
                   📝 Nhập Thủ Công (Gõ Tay)
@@ -2509,8 +2509,8 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                   className={cn(
                     "px-4 py-1.5 rounded-lg text-xs font-bold transition border-none cursor-pointer",
                     manualMode === "json"
-                      ? "bg-white dark:bg-zinc-800 text-yellow-600 dark:text-yellow-450 shadow-sm"
-                      : "text-stone-500 hover:text-stone-700 dark:text-zinc-400 dark:hover:text-zinc-200",
+                      ? "bg-white dark:bg-zinc-800 text-orange-600 dark:text-orange-450 shadow-sm"
+                      : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200",
                   )}
                 >
                   ⚙️ Dán JSON Raw
@@ -2547,7 +2547,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               copy[idx].front = e.target.value;
                               setManualRows(copy);
                             }}
-                            className="bg-stone-100/50 dark:bg-zinc-900/50 border border-stone-200 dark:border-zinc-800 rounded-xl p-3 text-xs focus:ring-1 focus:ring-yellow-500/50 outline-none font-medium text-stone-900 dark:text-stone-100"
+                            className="bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-xs focus:ring-1 focus:ring-orange-500/50 outline-none font-medium text-zinc-900 dark:text-zinc-100"
                           />
                           <input
                             type="text"
@@ -2558,7 +2558,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               copy[idx].back = e.target.value;
                               setManualRows(copy);
                             }}
-                            className="bg-stone-100/50 dark:bg-zinc-900/50 border border-stone-200 dark:border-zinc-800 rounded-xl p-3 text-xs focus:ring-1 focus:ring-yellow-500/50 outline-none font-medium text-stone-900 dark:text-stone-100"
+                            className="bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-xs focus:ring-1 focus:ring-orange-500/50 outline-none font-medium text-zinc-900 dark:text-zinc-100"
                           />
                         </div>
                         {manualRows.length > 1 && (
@@ -2585,7 +2585,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                       onClick={() =>
                         setManualRows([...manualRows, { front: "", back: "" }])
                       }
-                      className="flex items-center gap-1.5 px-4 py-2 bg-stone-100 hover:bg-stone-200 dark:bg-zinc-900 dark:hover:bg-zinc-850 text-stone-700 dark:text-stone-300 rounded-xl text-xs font-bold transition active:scale-95 border-none cursor-pointer"
+                      className="flex items-center gap-1.5 px-4 py-2 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-850 text-zinc-700 dark:text-zinc-300 rounded-xl text-xs font-bold transition active:scale-95 border-none cursor-pointer"
                     >
                       <Plus className="w-4 h-4" /> Thêm dòng mới
                     </button>
@@ -2609,7 +2609,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                         }));
                         setPreviewCards(mapped);
                       }}
-                      className="flex items-center gap-2 px-5 py-2 bg-yellow-500 hover:bg-yellow-600 disabled:opacity-50 text-black rounded-xl text-xs font-black transition shadow-sm active:scale-95 border-none cursor-pointer ml-auto"
+                      className="flex items-center gap-2 px-5 py-2 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-black rounded-xl text-xs font-black transition shadow-sm active:scale-95 border-none cursor-pointer ml-auto"
                     >
                       Xác nhận & Chuyển sang Nạp (
                       {
@@ -2651,8 +2651,8 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                         className={cn(
                           "flex flex-wrap items-center gap-2 p-3 rounded-xl border",
                           isEcoMode
-                            ? "bg-white dark:bg-zinc-950 border-stone-400 dark:border-zinc-800 transition-none animate-none duration-0"
-                            : "bg-stone-100 dark:bg-zinc-800 border-stone-200 dark:border-zinc-700 animate-in fade-in slide-in-from-top-1 duration-200",
+                            ? "bg-white dark:bg-zinc-950 border-zinc-400 dark:border-zinc-800 transition-none animate-none duration-0"
+                            : "bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 animate-in fade-in slide-in-from-top-1 duration-200",
                         )}
                       >
                         <button
@@ -2694,8 +2694,8 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     className={cn(
                       "border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer flex flex-col items-center justify-center gap-2",
                       isEcoMode
-                        ? "bg-white dark:bg-black border-stone-400 dark:border-zinc-800 text-stone-900 dark:text-stone-100 shadow-none transition-none duration-0"
-                        : "border-stone-300 dark:border-zinc-800 bg-stone-50/50 dark:bg-zinc-950/20 hover:bg-stone-50 dark:hover:bg-zinc-950/40 hover:border-blue-500 dark:hover:border-blue-500/50 transition duration-200 animate-in fade-in",
+                        ? "bg-white dark:bg-black border-zinc-400 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-none transition-none duration-0"
+                        : "border-zinc-300 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/20 hover:bg-zinc-50 dark:hover:bg-zinc-950/40 hover:border-blue-500 dark:hover:border-blue-500/50 transition duration-200 animate-in fade-in",
                     )}
                     id="manual-drop-zone"
                   >
@@ -2710,7 +2710,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     {jsonFileName ? (
                       <>
                         <FileText className="w-10 h-10 text-emerald-500" />
-                        <p className="text-base font-bold text-stone-800 dark:text-stone-200">
+                        <p className="text-base font-bold text-zinc-800 dark:text-zinc-200">
                           Đã nạp thành công:{" "}
                           <span className="text-emerald-500">
                             {jsonFileName}
@@ -2735,7 +2735,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                             !isEcoMode && "animate-pulse",
                           )}
                         />
-                        <p className="text-base font-bold text-stone-700 dark:text-stone-300">
+                        <p className="text-base font-bold text-zinc-700 dark:text-zinc-300">
                           Kéo thả hoặc nhấn để tải tệp JSON / TXT lên
                         </p>
                         <p className="text-xs opacity-60">
@@ -2751,7 +2751,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                       Hoặc dán tay chuỗi JSON vào đây:
                     </label>
                     <textarea
-                      className="w-full h-48 bg-stone-100/50 dark:bg-zinc-900/50 border border-stone-200 dark:border-zinc-800 rounded-xl p-4 text-xs font-mono resize-y focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-stone-800 dark:text-stone-200"
+                      className="w-full h-48 bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 text-xs font-mono resize-y focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-zinc-800 dark:text-zinc-200"
                       placeholder='[\n  {\n    "front": "Từ khóa",\n    "back": "Định nghĩa"\n  }\n]'
                       value={jsonInput}
                       onChange={(e) => setJsonInput(e.target.value)}
@@ -2841,7 +2841,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
 
               {/* Target Deck Configuration */}
               <div className="p-4 bg-blue-50/40 dark:bg-zinc-900/35 border border-blue-100/60 dark:border-zinc-800/60 rounded-xl space-y-4">
-                <label className="text-xs font-black uppercase tracking-wide text-stone-850 dark:text-stone-200">
+                <label className="text-xs font-black uppercase tracking-wide text-zinc-850 dark:text-zinc-200">
                   THÊM THẺ HỌC VÀO BỘ THẺ SẴN CÓ
                 </label>
                 <CustomDeckSelect
@@ -2864,7 +2864,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                 />
 
                 {!isAddToExisting && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-200 pt-2 border-t border-stone-200/40 dark:border-zinc-800/40">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-200 pt-2 border-t border-zinc-200/40 dark:border-zinc-800/40">
                     <div>
                       <label className="text-sm font-semibold opacity-80 mb-2 block">
                         Tên Bộ Thẻ:
@@ -2874,7 +2874,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                         value={deckTitle}
                         onChange={(e) => setDeckTitle(e.target.value)}
                         placeholder="VD: IELTS Vocabulary Unit 1"
-                        className="w-full bg-white dark:bg-zinc-950 border border-stone-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        className="w-full bg-white dark:bg-zinc-950 border border-zinc-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
                         disabled={isProcessing}
                       />
                     </div>
@@ -2895,7 +2895,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               }
                             }}
                             disabled={isProcessing}
-                            className="flex-1 bg-white dark:bg-zinc-950 border border-stone-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            className="flex-1 bg-white dark:bg-zinc-950 border border-zinc-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
                           >
                             <option value="">
                               -- Chọn danh mục hiện có --
@@ -2907,7 +2907,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                             ))}
                             <option
                               value="__NEW__"
-                              className="text-amber-600 dark:text-yellow-450 font-bold"
+                              className="text-orange-600 dark:text-orange-450 font-bold"
                             >
                               + Thêm danh mục mới...
                             </option>
@@ -2919,7 +2919,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               setIsCreatingNewSubject(true);
                               setDeckSubject("");
                             }}
-                            className="p-3 bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 dark:hover:bg-zinc-700 text-stone-900 dark:text-stone-100 rounded-xl flex items-center justify-center border border-stone-200/50 dark:border-zinc-800 focus:outline-none disabled:opacity-50"
+                            className="p-3 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-xl flex items-center justify-center border border-zinc-200/50 dark:border-zinc-800 focus:outline-none disabled:opacity-50"
                           >
                             <Plus className="w-4 h-4" />
                           </button>
@@ -2932,7 +2932,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                             onChange={(e) => setDeckSubject(e.target.value)}
                             disabled={isProcessing}
                             placeholder="English, Tiếng Nhật, Lịch sử..."
-                            className="flex-1 bg-white dark:bg-zinc-950 border border-stone-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            className="flex-1 bg-white dark:bg-zinc-950 border border-zinc-200/50 dark:border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
                           />
                           <button
                             type="button"
@@ -2941,7 +2941,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               setIsCreatingNewSubject(false);
                               setDeckSubject("");
                             }}
-                            className="px-4 bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 dark:hover:bg-zinc-700 rounded-xl text-xs font-bold border border-stone-200/50 dark:border-zinc-800 disabled:opacity-50"
+                            className="px-4 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-xl text-xs font-bold border border-zinc-200/50 dark:border-zinc-800 disabled:opacity-50"
                           >
                             Quay lại
                           </button>
@@ -2953,7 +2953,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
               </div>
 
               {previewCards.length > 40 && (
-                <p className="text-[11px] text-amber-500 font-bold mb-2">
+                <p className="text-[11px] text-orange-500 font-bold mb-2">
                   ⚠️ Đang hiển thị bản nháp xem trước của 40 thẻ đầu tiên để tối
                   ưu hóa hiệu năng thiết bị. Toàn bộ {previewCards.length} thẻ
                   vẫn được nạp đầy đủ vào hệ thống.
@@ -2974,13 +2974,13 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     className={cn(
                       "p-4 rounded-xl relative group border shadow-none",
                       isEcoMode
-                        ? "bg-white dark:bg-black border-stone-400 dark:border-zinc-850 transition-none duration-0"
-                        : "bg-stone-100/60 dark:bg-zinc-900/60 border-stone-200/50 dark:border-zinc-800",
+                        ? "bg-white dark:bg-black border-zinc-400 dark:border-zinc-850 transition-none duration-0"
+                        : "bg-zinc-100/60 dark:bg-zinc-900/60 border-zinc-200/50 dark:border-zinc-800",
                     )}
                   >
                     <div
                       className={cn(
-                        "absolute -left-1 -top-1 bg-stone-800 dark:bg-stone-200 text-stone-100 dark:text-stone-900 text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold",
+                        "absolute -left-1 -top-1 bg-zinc-800 dark:bg-zinc-200 text-zinc-100 dark:text-zinc-900 text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold",
                         !isEcoMode && "shadow-sm",
                       )}
                     >
@@ -2989,7 +2989,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                     <button
                       onClick={() => handleDeletePreviewCard(card.id)}
                       className={cn(
-                        "absolute top-2 right-2 p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-500/10 rounded-lg",
+                        "absolute top-2 right-2 p-1.5 text-zinc-400 hover:text-red-500 hover:bg-red-500/10 rounded-lg",
                         isEcoMode
                           ? "transition-none shadow-none duration-0"
                           : "transition",
@@ -3017,7 +3017,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               e.target.value,
                             )
                           }
-                          className="w-full bg-white dark:bg-black border border-stone-200/50 dark:border-zinc-800 rounded-lg px-3 py-2 text-stone-900 dark:text-stone-100 font-semibold focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className="w-full bg-white dark:bg-black border border-zinc-200/50 dark:border-zinc-800 rounded-lg px-3 py-2 text-zinc-900 dark:text-zinc-100 font-semibold focus:outline-none focus:ring-1 focus:ring-blue-500"
                         />
                       </div>
                       <div>
@@ -3033,7 +3033,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                               e.target.value,
                             )
                           }
-                          className="w-full h-16 resize-none bg-white dark:bg-black border border-stone-200/50 dark:border-zinc-800 rounded-lg px-3 py-2 text-stone-900 dark:text-stone-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className="w-full h-16 resize-none bg-white dark:bg-black border border-zinc-200/50 dark:border-zinc-800 rounded-lg px-3 py-2 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         />
                       </div>
                     </div>
@@ -3041,14 +3041,14 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                 ))}
               </div>
 
-              <div className="pt-4 border-t border-stone-200/50 dark:border-zinc-800">
+              <div className="pt-4 border-t border-zinc-200/50 dark:border-zinc-800">
                 {progress !== null && (
                   <div className="mb-4">
                     <div className="flex justify-between text-[10px] font-bold uppercase mb-1">
                       <span>Tiến độ Nạp</span>
                       <span className="text-blue-500">{progress}%</span>
                     </div>
-                    <div className="w-full h-2 bg-stone-200 rounded-full overflow-hidden">
+                    <div className="w-full h-2 bg-zinc-200 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-blue-500"
                         style={{ width: `${progress}%` }}
@@ -3094,19 +3094,19 @@ Acknowledge this protocol. Execute all text transformations deterministically at
             className={cn(
               "w-full max-w-2xl rounded-2xl border overflow-hidden shadow-none",
               isEcoMode
-                ? "border-stone-400 dark:border-zinc-800 bg-white dark:bg-black p-2 transition-none duration-0"
-                : "bg-white dark:bg-zinc-900 modal-glass-content border-stone-200 dark:border-zinc-800 shadow-xl animate-in zoom-in-95 duration-200",
+                ? "border-zinc-400 dark:border-zinc-800 bg-white dark:bg-black p-2 transition-none duration-0"
+                : "bg-white dark:bg-zinc-900 modal-glass-content border-zinc-200 dark:border-zinc-800 shadow-xl animate-in zoom-in-95 duration-200",
             )}
           >
-            <div className="px-6 py-4 flex justify-between items-center border-b border-stone-200/50 dark:border-zinc-800/50">
-              <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-stone-900 dark:text-stone-100">
+            <div className="px-6 py-4 flex justify-between items-center border-b border-zinc-200/50 dark:border-zinc-800/50">
+              <h3 className="font-display font-semibold text-lg flex items-center gap-2 text-zinc-900 dark:text-zinc-100">
                 <Sparkles className="w-5 h-5 text-indigo-500" /> Bản Thiết Kế
                 Prompt Hệ Cực Hạn
               </h3>
               <button
                 onClick={() => setShowToolModal(false)}
                 className={cn(
-                  "p-1.5 hover:bg-stone-100 dark:hover:bg-zinc-800 rounded-lg text-stone-500",
+                  "p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg text-zinc-500",
                   isEcoMode
                     ? "transition-none shadow-none duration-0"
                     : "transition",
@@ -3128,7 +3128,7 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                 <h4 className="font-bold text-indigo-700 dark:text-indigo-400 mb-2 flex items-center gap-2">
                   <Database className="w-4 h-4" /> Bản Khuyên Dùng
                 </h4>
-                <p className="text-sm opacity-100 font-medium mb-4 flex-grow text-stone-600 dark:text-stone-300">
+                <p className="text-sm opacity-100 font-medium mb-4 flex-grow text-zinc-600 dark:text-zinc-300">
                   Google AI Studio chuyên dụng đã tối giản hoá token và tự động
                   ghi chú mảng.
                 </p>
@@ -3151,14 +3151,14 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                 className={cn(
                   "p-4 rounded-xl border flex flex-col h-full shadow-none",
                   isEcoMode
-                    ? "border-stone-400 bg-stone-50 dark:bg-zinc-950 transition-none duration-0 text-stone-900 dark:text-stone-100"
-                    : "border-stone-200 dark:border-zinc-800 bg-stone-50 dark:bg-zinc-800/20",
+                    ? "border-zinc-400 bg-zinc-50 dark:bg-zinc-950 transition-none duration-0 text-zinc-900 dark:text-zinc-100"
+                    : "border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/20",
                 )}
               >
-                <h4 className="font-bold mb-2 flex items-center gap-2 text-stone-700 dark:text-zinc-200">
+                <h4 className="font-bold mb-2 flex items-center gap-2 text-zinc-700 dark:text-zinc-200">
                   <Layers className="w-4 h-4" /> Gemini Web System
                 </h4>
-                <p className="text-sm opacity-100 font-medium mb-4 flex-grow text-stone-600 dark:text-stone-300">
+                <p className="text-sm opacity-100 font-medium mb-4 flex-grow text-zinc-600 dark:text-zinc-300">
                   Sử dụng Prompt tối ưu hóa để gò ép cấu trúc mảng JSON hoàn hảo
                   khi làm thủ công.
                 </p>

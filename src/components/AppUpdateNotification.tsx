@@ -35,7 +35,7 @@ export function AppUpdateNotification() {
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-4 py-3 rounded-2xl shadow-2xl border border-white/10"
+          className="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-4 py-3 rounded-2xl shadow-2xl border border-white/10"
         >
           <div className="flex flex-col">
             <span className="font-bold text-sm">Có phiên bản mới! 🚀</span>
@@ -44,7 +44,7 @@ export function AppUpdateNotification() {
           <div className="flex items-center gap-2 ml-2">
             <button
               onClick={handleRefresh}
-              className="flex items-center gap-1.5 bg-yellow-500 text-stone-900 px-3 py-1.5 rounded-xl font-bold text-xs hover:bg-yellow-400 transition transform active:scale-95"
+              className="flex items-center gap-1.5 bg-orange-500 text-zinc-900 px-3 py-1.5 rounded-xl font-bold text-xs hover:bg-orange-400 transition transform active:scale-95"
             >
               <RefreshCw className="w-3.5 h-3.5" /> Khởi động lại
             </button>

@@ -451,22 +451,22 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
   return (
     <>
       {/* Sidebar Widget Card */}
-      <section className="glass p-6 rounded-xl border border-amber-600/10 dark:border-amber-500/10 hover:border-amber-500/30 transition relative overflow-hidden group">
-        <div className="absolute right-0 top-0 translate-x-4 -translate-y-4 w-28 h-28 bg-amber-500/5 blur-2xl rounded-full group-hover:scale-110 transition-transform" />
+      <section className="glass p-6 rounded-xl border border-orange-600/10 dark:border-orange-500/10 hover:border-orange-500/30 transition relative overflow-hidden group">
+        <div className="absolute right-0 top-0 translate-x-4 -translate-y-4 w-28 h-28 bg-orange-500/5 blur-2xl rounded-full group-hover:scale-110 transition-transform" />
         <div className="flex items-start gap-4">
-          <div className="p-3 bg-gradient-to-br from-amber-500/10 to-yellow-500/15 rounded-xl border border-amber-500/20 text-amber-600 dark:text-amber-400">
+          <div className="p-3 bg-gradient-to-br from-orange-500/10 to-orange-500/15 rounded-xl border border-orange-500/20 text-orange-600 dark:text-orange-400">
             <FileDown className="w-6 h-6" />
           </div>
           <div className="space-y-1 flex-1">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <h3 className="text-lg font-display font-black text-stone-900 dark:text-stone-50 leading-tight">
+              <h3 className="text-lg font-display font-black text-zinc-900 dark:text-zinc-50 leading-tight">
                 Xuất Thống Kê & Bộ Thẻ
               </h3>
-              <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 uppercase font-mono tracking-wider">
+              <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-orange-500/10 text-orange-600 dark:text-orange-400 uppercase font-mono tracking-wider">
                 A11y PDF
               </span>
             </div>
-            <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
               In danh sách từ vựng/học liệu cần ôn tập gấp hoặc kết xuất báo cáo thông thạo của ngài để học ngoại tuyến.
             </p>
             <div className="pt-3 flex gap-2">
@@ -475,14 +475,14 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
                   setReportType("standard");
                   setShowModal(true);
                 }}
-                className="flex-1 bg-stone-900 dark:bg-stone-100 hover:bg-stone-800 dark:hover:bg-white text-white dark:text-stone-950 font-bold py-2 px-3 rounded-lg text-xs flex items-center justify-center gap-1.5 transition active:scale-[0.98] shadow-md border border-black/10 dark:border-white/10"
+                className="flex-1 bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-white text-white dark:text-zinc-950 font-bold py-2 px-3 rounded-lg text-xs flex items-center justify-center gap-1.5 transition active:scale-[0.98] shadow-md border border-black/10 dark:border-white/10"
               >
                 <Printer className="w-3.5 h-3.5" />
                 <span>In ấn / PDF</span>
               </button>
               <button 
                 onClick={handleCopyText}
-                className="bg-stone-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 text-stone-800 dark:text-stone-200 p-2 rounded-lg text-xs flex items-center justify-center font-bold tracking-wide transition border border-transparent hover:border-amber-500/20 active:scale-95 shrink-0"
+                className="bg-zinc-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 text-zinc-800 dark:text-zinc-200 p-2 rounded-lg text-xs flex items-center justify-center font-bold tracking-wide transition border border-transparent hover:border-orange-500/20 active:scale-95 shrink-0"
                 title="Sao chép định dạng Markdown"
               >
                 {isCopied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
@@ -495,40 +495,40 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
       {/* Export Report / Modal Preview */}
       {showModal && (
         <div id="export-report-modal" className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
-          <div className="w-full max-w-4xl max-h-[90vh] bg-stone-50/98 dark:bg-zinc-950/98 backdrop-blur-xl border border-stone-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+          <div className="w-full max-w-4xl max-h-[90vh] bg-zinc-50/98 dark:bg-zinc-950/98 backdrop-blur-xl border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
             
             {/* Header */}
-            <div className="p-6 bg-gradient-to-r from-amber-500/10 to-yellow-500/5 border-b border-stone-200 dark:border-zinc-800 flex items-center justify-between">
+            <div className="p-6 bg-gradient-to-r from-orange-500/10 to-orange-500/5 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
               <div>
-                <h4 className="text-xl font-display font-black text-stone-900 dark:text-stone-50 uppercase tracking-tight flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-amber-500" /> Cấu hình bản in / xuất tập tin
+                <h4 className="text-xl font-display font-black text-zinc-900 dark:text-zinc-50 uppercase tracking-tight flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-orange-500" /> Cấu hình bản in / xuất tập tin
                 </h4>
-                <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                   Ngài có thể chọn in toàn bộ báo cáo tổng hợp hoặc gom riêng các thẻ học yếu nhất để in danh sách gấp.
                 </p>
               </div>
               <button 
                 onClick={() => setShowModal(false)}
-                className="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 font-bold p-1 rounded-lg text-lg focus:outline-none"
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 font-bold p-1 rounded-lg text-lg focus:outline-none"
               >
                 ✕
               </button>
             </div>
 
             {/* Selection Options Bar */}
-            <div className="px-6 py-4 bg-stone-100 dark:bg-zinc-900/50 border-b border-stone-200 dark:border-zinc-800 flex flex-wrap gap-4 items-center justify-between">
+            <div className="px-6 py-4 bg-zinc-100 dark:bg-zinc-900/50 border-b border-zinc-200 dark:border-zinc-800 flex flex-wrap gap-4 items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-bold text-stone-500 uppercase tracking-widest">ĐỊNH DẠNG:</span>
-                <div className="flex bg-stone-200 dark:bg-zinc-800 p-1 rounded-lg">
+                <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">ĐỊNH DẠNG:</span>
+                <div className="flex bg-zinc-200 dark:bg-zinc-800 p-1 rounded-lg">
                   <button 
                     onClick={() => setReportType("standard")}
-                    className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${reportType === "standard" ? "bg-stone-50 dark:bg-zinc-950 text-amber-700 dark:text-amber-400 shadow" : "text-stone-600 dark:text-stone-400"}`}
+                    className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${reportType === "standard" ? "bg-zinc-50 dark:bg-zinc-950 text-orange-700 dark:text-orange-400 shadow" : "text-zinc-600 dark:text-zinc-400"}`}
                   >
                     Bản chuẩn đầy đủ
                   </button>
                   <button 
                     onClick={() => setReportType("weak_only")}
-                    className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${reportType === "weak_only" ? "bg-stone-50 dark:bg-zinc-950 text-amber-700 dark:text-amber-400 shadow" : "text-stone-600 dark:text-stone-400"}`}
+                    className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${reportType === "weak_only" ? "bg-zinc-50 dark:bg-zinc-950 text-orange-700 dark:text-orange-400 shadow" : "text-zinc-600 dark:text-zinc-400"}`}
                   >
                     Chỉ lọc thẻ yếu (&lt;60%)
                   </button>
@@ -538,14 +538,14 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
               <div className="flex items-center gap-2">
                 <button 
                   onClick={handleCopyText}
-                  className="px-4 py-2 bg-stone-200/80 dark:bg-zinc-800/80 hover:bg-stone-300 dark:hover:bg-zinc-700 rounded-xl text-xs font-bold transition flex items-center gap-1.5 font-mono"
+                  className="px-4 py-2 bg-zinc-200/80 dark:bg-zinc-800/80 hover:bg-zinc-300 dark:hover:bg-zinc-700 rounded-xl text-xs font-bold transition flex items-center gap-1.5 font-mono"
                 >
                   {isCopied ? <Check className="w-3.5 h-3.5 text-green-500 animate-bounce" /> : <Copy className="w-3.5 h-3.5" />}
                   <span>{isCopied ? "Đã sao chép!" : "Sao chép Markdown"}</span>
                 </button>
                 <button 
                   onClick={handlePrint}
-                  className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white font-black rounded-xl text-xs shadow-lg transition flex items-center gap-1.5"
+                  className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-black rounded-xl text-xs shadow-lg transition flex items-center gap-1.5"
                 >
                   <Printer className="w-3.5 h-3.5" />
                   <span>XUẤT PDF / IN NGAY 🖨️</span>
@@ -557,25 +557,25 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
             <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
               
               {/* Report Header Wrapper */}
-              <div className="p-6 bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl shadow-inner space-y-6 max-w-3xl mx-auto text-stone-900 dark:text-stone-100">
-                <div className="flex justify-between items-start border-b-2 border-dashed border-amber-600/30 pb-4">
+              <div className="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner space-y-6 max-w-3xl mx-auto text-zinc-900 dark:text-zinc-100">
+                <div className="flex justify-between items-start border-b-2 border-dashed border-orange-600/30 pb-4">
                   <div className="space-y-1">
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-amber-600 dark:text-amber-400 font-bold block">Bản xem trước tài liệu</span>
-                    <h5 className="text-xl font-display font-black tracking-tight text-stone-900 dark:text-white uppercase">
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-orange-600 dark:text-orange-400 font-bold block">Bản xem trước tài liệu</span>
+                    <h5 className="text-xl font-display font-black tracking-tight text-zinc-900 dark:text-white uppercase">
                       {getReportTitle()}
                     </h5>
-                    <p className="text-xs text-stone-500 dark:text-stone-400 italic">
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 italic">
                       {getReportSubtitle()}
                     </p>
                   </div>
-                  <div className="text-right font-mono text-[10px] text-stone-400 leading-normal">
+                  <div className="text-right font-mono text-[10px] text-zinc-400 leading-normal">
                     <div>XUẤT BẢN: {new Date().toLocaleDateString("vi-VN")}</div>
                     <div>ĐỒNG HÀNH: Henosis Web</div>
                   </div>
                 </div>
 
                 {/* Adaptive Motivational Quote */}
-                <div className="p-4 bg-amber-50/50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl italic font-serif text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+                <div className="p-4 bg-orange-50/50 dark:bg-orange-950/10 border-l-4 border-orange-500 rounded-r-xl italic font-serif text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                   "{avgMastery >= 75 
                     ? "Hãy hướng tới đỉnh cao thông thạo tuyệt đối. Những gì bạn đạt được hôm nay là bệ phóng cho ngày mai vĩ đại hơn. - Epictetus"
                     : avgMastery < 40 
@@ -586,26 +586,26 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
 
                 {/* General Stats overview */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="p-3 bg-stone-100 dark:bg-zinc-800/40 rounded-lg text-center space-y-1 border border-stone-200/50 dark:border-zinc-800/50">
-                    <div className="text-[10px] uppercase font-mono text-stone-400 font-bold">Điểm tổng</div>
-                    <div className="text-lg font-bold text-amber-600 dark:text-amber-400 font-mono flex items-center justify-center gap-1">
+                  <div className="p-3 bg-zinc-100 dark:bg-zinc-800/40 rounded-lg text-center space-y-1 border border-zinc-200/50 dark:border-zinc-800/50">
+                    <div className="text-[10px] uppercase font-mono text-zinc-400 font-bold">Điểm tổng</div>
+                    <div className="text-lg font-bold text-orange-600 dark:text-orange-400 font-mono flex items-center justify-center gap-1">
                       <Trophy className="w-4 h-4" /> {user?.points || 0}
                     </div>
                   </div>
-                  <div className="p-3 bg-stone-100 dark:bg-zinc-800/40 rounded-lg text-center space-y-1 border border-stone-200/50 dark:border-zinc-800/50">
-                    <div className="text-[10px] uppercase font-mono text-stone-400 font-bold">Streak</div>
-                    <div className="text-lg font-bold text-yellow-600 dark:text-yellow-400 font-mono flex items-center justify-center gap-1">
+                  <div className="p-3 bg-zinc-100 dark:bg-zinc-800/40 rounded-lg text-center space-y-1 border border-zinc-200/50 dark:border-zinc-800/50">
+                    <div className="text-[10px] uppercase font-mono text-zinc-400 font-bold">Streak</div>
+                    <div className="text-lg font-bold text-orange-600 dark:text-orange-400 font-mono flex items-center justify-center gap-1">
                       <Flame className="w-4 h-4" /> {user?.streak || 0} ngày
                     </div>
                   </div>
-                  <div className="p-3 bg-stone-100 dark:bg-zinc-800/40 rounded-lg text-center space-y-1 border border-stone-200/50 dark:border-zinc-800/50">
-                    <div className="text-[10px] uppercase font-mono text-stone-400 font-bold">Thông thạo</div>
+                  <div className="p-3 bg-zinc-100 dark:bg-zinc-800/40 rounded-lg text-center space-y-1 border border-zinc-200/50 dark:border-zinc-800/50">
+                    <div className="text-[10px] uppercase font-mono text-zinc-400 font-bold">Thông thạo</div>
                     <div className="text-lg font-bold text-green-600 dark:text-green-400 font-mono flex items-center justify-center gap-1">
                       <BrainCircuit className="w-4 h-4" /> {avgMastery}%
                     </div>
                   </div>
-                  <div className="p-3 bg-stone-100 dark:bg-zinc-800/40 rounded-lg text-center space-y-1 border border-stone-200/50 dark:border-zinc-800/50">
-                    <div className="text-[10px] uppercase font-mono text-stone-400 font-bold">Thẻ yếu cần học</div>
+                  <div className="p-3 bg-zinc-100 dark:bg-zinc-800/40 rounded-lg text-center space-y-1 border border-zinc-200/50 dark:border-zinc-800/50">
+                    <div className="text-[10px] uppercase font-mono text-zinc-400 font-bold">Thẻ yếu cần học</div>
                     <div className="text-lg font-bold text-red-500 font-mono flex items-center justify-center gap-1">
                       <AlertTriangle className="w-4 h-4" /> {weakCards.length}
                     </div>
@@ -615,7 +615,7 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
                 {/* Section Decks scale (if standard layout has been selected) */}
                 {reportType === "standard" && (
                   <div className="space-y-3">
-                    <div className="text-xs uppercase font-mono font-bold text-stone-400 flex items-center gap-1.5">
+                    <div className="text-xs uppercase font-mono font-bold text-zinc-400 flex items-center gap-1.5">
                       <BookOpen className="w-4 h-4" /> Thống kê bộ bài ({totalDecks} bộ bài)
                     </div>
                     <div className="grid sm:grid-cols-2 gap-3">
@@ -625,14 +625,14 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
                           ? Math.round(dCards.reduce((s, c) => s + (c.mastery || 0), 0) / dCards.length)
                           : 0;
                         return (
-                          <div key={d.id} className="p-3 rounded-lg border border-stone-200 dark:border-zinc-800 bg-stone-50 dark:bg-zinc-950 flex flex-col justify-between">
+                          <div key={d.id} className="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 flex flex-col justify-between">
                             <div className="flex justify-between items-start">
-                              <span className="font-bold text-xs font-sans text-stone-800 dark:text-stone-200 break-all">{d.title}</span>
-                              <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded font-mono ${dMastery >= 75 ? 'bg-green-500/10 text-green-600 dark:text-green-400' : 'bg-amber-500/10 text-amber-600'}`}>
+                              <span className="font-bold text-xs font-sans text-zinc-800 dark:text-zinc-200 break-all">{d.title}</span>
+                              <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded font-mono ${dMastery >= 75 ? 'bg-green-500/10 text-green-600 dark:text-green-400' : 'bg-orange-500/10 text-orange-600'}`}>
                                 {dMastery}%
                               </span>
                             </div>
-                            <span className="text-[10px] text-stone-400 mt-2">Chủ đề: {d.subject || "Chung"} | Quy mô: {dCards.length} thẻ</span>
+                            <span className="text-[10px] text-zinc-400 mt-2">Chủ đề: {d.subject || "Chung"} | Quy mô: {dCards.length} thẻ</span>
                           </div>
                         );
                       })}
@@ -641,29 +641,29 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
                 )}
 
                 {/* Section list details of failing flashcards */}
-                <div className="space-y-3 pt-4 border-t border-stone-150 dark:border-zinc-800">
-                  <div className="text-xs uppercase font-mono font-bold text-stone-400 flex items-center gap-1.5">
+                <div className="space-y-3 pt-4 border-t border-zinc-150 dark:border-zinc-800">
+                  <div className="text-xs uppercase font-mono font-bold text-zinc-400 flex items-center gap-1.5">
                     <AlertTriangle className="w-4 h-4 text-red-500" />
                     Danh sách chi tiết từ vựng/học liệu học yếu ({weakCards.length} thẻ có độ thạo thấp &lt;60%)
                   </div>
                   
                   {weakCards.length > 0 ? (
-                    <div className="overflow-x-auto rounded-lg border border-stone-200 dark:border-zinc-800">
+                    <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
                       <table className="w-full text-left border-collapse">
                         <thead>
-                          <tr className="bg-stone-100 dark:bg-zinc-800 text-[10px] text-stone-500 uppercase tracking-wider font-bold">
-                            <th className="p-3 border-b border-stone-200 dark:border-zinc-800">Khối bài</th>
-                            <th className="p-3 border-b border-stone-200 dark:border-zinc-800">Mặt trước (Hỏi)</th>
-                            <th className="p-3 border-b border-stone-200 dark:border-zinc-800">Mặt sau (Đáp)</th>
-                            <th className="p-3 border-b border-stone-200 dark:border-zinc-800 text-center">Thạo</th>
+                          <tr className="bg-zinc-100 dark:bg-zinc-800 text-[10px] text-zinc-500 uppercase tracking-wider font-bold">
+                            <th className="p-3 border-b border-zinc-200 dark:border-zinc-800">Khối bài</th>
+                            <th className="p-3 border-b border-zinc-200 dark:border-zinc-800">Mặt trước (Hỏi)</th>
+                            <th className="p-3 border-b border-zinc-200 dark:border-zinc-800">Mặt sau (Đáp)</th>
+                            <th className="p-3 border-b border-zinc-200 dark:border-zinc-800 text-center">Thạo</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-stone-150 dark:divide-zinc-800 text-xs">
+                        <tbody className="divide-y divide-zinc-150 dark:divide-zinc-800 text-xs">
                           {weakCards.slice(0, 15).map((c, index) => (
-                            <tr key={c.id || index} className="hover:bg-stone-50/50 dark:hover:bg-zinc-900/50">
-                              <td className="p-3 font-semibold text-[10px] font-mono text-amber-700 dark:text-amber-400 break-all">{c.deckTitle}</td>
-                              <td className="p-3 font-medium font-sans text-stone-800 dark:text-stone-200 break-all">{c.front}</td>
-                              <td className="p-3 text-stone-600 dark:text-stone-400 break-all">{c.back}</td>
+                            <tr key={c.id || index} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/50">
+                              <td className="p-3 font-semibold text-[10px] font-mono text-orange-700 dark:text-orange-400 break-all">{c.deckTitle}</td>
+                              <td className="p-3 font-medium font-sans text-zinc-800 dark:text-zinc-200 break-all">{c.front}</td>
+                              <td className="p-3 text-zinc-600 dark:text-zinc-400 break-all">{c.back}</td>
                               <td className="p-3 text-center">
                                 <span className="px-1.5 py-0.5 rounded text-[10px] font-black font-mono bg-red-500/10 text-red-650 dark:text-red-450 border border-red-500/10">
                                   {c.mastery}%
@@ -674,13 +674,13 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
                         </tbody>
                       </table>
                       {weakCards.length > 15 && (
-                        <div className="p-3 bg-stone-100 dark:bg-zinc-900/80 text-center text-[10px] font-bold text-stone-400 uppercase tracking-widest border-t border-stone-200 dark:border-zinc-800 flex items-center justify-center gap-1">
+                        <div className="p-3 bg-zinc-100 dark:bg-zinc-900/80 text-center text-[10px] font-bold text-zinc-400 uppercase tracking-widest border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-center gap-1">
                           <Info className="w-3.5 h-3.5" /> Còn {weakCards.length - 15} thẻ ghi nhớ yếu khác sẽ được kết xuất đầy đủ khi in hoặc xuất PDF!
                         </div>
                       )}
                     </div>
                   ) : (
-                    <div className="p-8 text-center text-xs text-stone-400 dark:text-zinc-500 flex flex-col items-center justify-center gap-2">
+                    <div className="p-8 text-center text-xs text-zinc-400 dark:text-zinc-500 flex flex-col items-center justify-center gap-2">
                       <CheckCircle2 className="w-8 h-8 text-green-500 animate-pulse" />
                       <span>Không tìm thấy từ vựng hay thẻ học nào bị phân loại yếu! Điểm số thông thạo của ngài cực kỳ tuyệt vời.</span>
                     </div>
@@ -692,20 +692,20 @@ export const ExportStudyReport: React.FC<ExportStudyReportProps> = ({
             </div>
 
             {/* Footer buttons row */}
-            <div className="p-6 bg-stone-100 dark:bg-zinc-900/80 border-t border-stone-200 dark:border-zinc-800 flex justify-between items-center">
-              <span className="text-[10px] uppercase font-mono text-stone-400 font-bold block">
+            <div className="p-6 bg-zinc-100 dark:bg-zinc-900/80 border-t border-zinc-200 dark:border-zinc-800 flex justify-between items-center">
+              <span className="text-[10px] uppercase font-mono text-zinc-400 font-bold block">
                 Henosis A11y Export Studio - V1.1.2
               </span>
               <div className="flex gap-3">
                 <button 
                   onClick={() => setShowModal(false)}
-                  className="px-5 py-2.5 bg-stone-200 dark:bg-zinc-800 text-stone-700 dark:text-zinc-300 rounded-xl text-xs font-bold transition hover:bg-stone-300 dark:hover:bg-zinc-700 focus:outline-none"
+                  className="px-5 py-2.5 bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-xl text-xs font-bold transition hover:bg-zinc-300 dark:hover:bg-zinc-700 focus:outline-none"
                 >
                   Đóng lại
                 </button>
                 <button 
                   onClick={handlePrint}
-                  className="px-6 py-2.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white font-extrabold rounded-xl text-xs shadow-lg transition transform active:scale-95 flex items-center gap-2"
+                  className="px-6 py-2.5 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-extrabold rounded-xl text-xs shadow-lg transition transform active:scale-95 flex items-center gap-2"
                 >
                   <Printer className="w-4 h-4" />
                   <span>XUẤT FILE PDF / IN</span>

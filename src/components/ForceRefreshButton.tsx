@@ -36,9 +36,9 @@ export function ForceRefreshButton() {
         >
            <button 
               onClick={handleRefresh}
-              className="group flex items-center gap-2 bg-stone-900 border border-stone-700 text-white px-4 py-2.5 rounded-full shadow-2xl hover:bg-stone-800 transition transform hover:scale-105 active:scale-95"
+              className="group flex items-center gap-2 bg-zinc-900 border border-zinc-700 text-white px-4 py-2.5 rounded-full shadow-2xl hover:bg-zinc-800 transition transform hover:scale-105 active:scale-95"
            >
-              <RefreshCw className="w-4 h-4 text-amber-500 group-hover:rotate-180 transition-transform duration-500" />
+              <RefreshCw className="w-4 h-4 text-orange-500 group-hover:rotate-180 transition-transform duration-500" />
               <span className="text-sm font-medium tracking-wide">Cập nhật phiên bản mới</span>
            </button>
         </motion.div>

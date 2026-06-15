@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Link, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Moon, Sun, LogOut, MessageCircle, Flame, Volume2, VolumeX, Home, BookOpen, Shield, User as UserIcon, Settings, X, ChevronRight, Cpu, RefreshCw, Check, Maximize, Minimize, Sparkles, Key } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, MotionConfig } from "motion/react";
 import { useTheme, ThemeProvider } from "./components/ThemeProvider";
 import { SoundProvider, useSoundContext } from "./components/SoundProvider";
 import { MarcusAureliusIcon } from "./components/MarcusAureliusIcon";
@@ -41,8 +41,8 @@ import { ConfirmModal } from "./components/ConfirmModal";
 import { Keyboard } from "lucide-react";
 
 const PageLoader = () => (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-stone-500">
-         <div className="w-8 h-8 rounded-full border-4 border-amber-500 border-t-transparent animate-spin" />
+    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-zinc-500">
+         <div className="w-8 h-8 rounded-full border-4 border-orange-500 border-t-transparent animate-spin" />
     </div>
 );
 
@@ -855,9 +855,10 @@ function Layout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div 
-      className="min-h-screen flex flex-col font-sans transition-colors duration-300 overflow-x-hidden"
-    >
+    <MotionConfig reducedMotion={isEcoMode ? "always" : "user"}>
+      <div 
+        className="min-h-screen flex flex-col font-sans transition-colors duration-300 overflow-x-hidden"
+      >
       <CustomCursor />
       <ParticleBackground />
       <NetworkStatus />
@@ -867,9 +868,9 @@ function Layout({ children }: { children: React.ReactNode }) {
              animate={pulse ? { rotate: [0, 15, -15, 10, -10, 0], scale: [1, 1.2, 1] } : {}}
              transition={{ duration: 0.6 }}
           >
-            <MarcusAureliusIcon className="w-6 h-6 text-yellow-600 dark:text-yellow-500" />
+            <MarcusAureliusIcon className="w-6 h-6 text-orange-600 dark:text-orange-500" />
           </motion.div>
-          <span className="italic font-serif tracking-widest uppercase font-light text-xl md:text-2xl text-yellow-600 dark:text-yellow-500">HENOSIS</span>
+          <span className="italic font-serif tracking-widest uppercase font-light text-xl md:text-2xl text-orange-600 dark:text-orange-500">HENOSIS</span>
         </div>
         
         <div className="flex items-center gap-1.5 md:gap-4">
@@ -881,16 +882,16 @@ function Layout({ children }: { children: React.ReactNode }) {
           )}
           {user && (
             <a href="https://t.me/+O50q6ltXTzwxMzk1" target="_blank" rel="noopener noreferrer" 
-               className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-amber-500/20 dark:border-amber-500/40 bg-amber-500/10 hover:bg-yellow-500 hover:text-black transition text-stone-800 dark:text-stone-200 font-medium text-xs md:text-sm"
+               className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-orange-500/20 dark:border-orange-500/40 bg-orange-500/10 hover:bg-orange-500 hover:text-black transition text-zinc-800 dark:text-zinc-200 font-medium text-xs md:text-sm"
                title="Hỗ trợ (Telegram)">
-              <MessageCircle className="w-4 h-4 text-yellow-600 dark:text-yellow-500" />
+              <MessageCircle className="w-4 h-4 text-orange-600 dark:text-orange-500" />
               <span>Hỗ trợ Telegram</span>
             </a>
           )}
 
           <button 
             onClick={toggleEcoMode} 
-            className={`hidden md:flex p-1.5 md:p-2 rounded-full transition flex-shrink-0 items-center justify-center gap-1 text-[11px] font-bold px-2 md:px-2.5 py-1 ${isEcoMode ? "bg-green-500/20 text-green-500 border border-green-500/30" : "hover:bg-black/5 dark:hover:bg-white/10 text-stone-600 dark:text-stone-400"}`}
+            className={`hidden md:flex p-1.5 md:p-2 rounded-full transition flex-shrink-0 items-center justify-center gap-1 text-[11px] font-bold px-2 md:px-2.5 py-1 ${isEcoMode ? "bg-green-500/20 text-green-500 border border-green-500/30" : "hover:bg-black/5 dark:hover:bg-white/10 text-zinc-600 dark:text-zinc-400"}`}
             title={isEcoMode ? "Chế độ mượt đang Bật" : "Bật Chế độ Mượt (Fix Lag)"}
             aria-label="Toggle Eco Mode"
           >
@@ -899,11 +900,11 @@ function Layout({ children }: { children: React.ReactNode }) {
           </button>
 
           <button onClick={toggleTheme} className="hidden md:flex p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition flex-shrink-0" aria-label="Toggle Theme">
-            {theme === "dark" ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-stone-700 dark:text-stone-300" />}
+            {theme === "dark" ? <Sun className="w-5 h-5 text-orange-500" /> : <Moon className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />}
           </button>
 
-          <button onClick={toggleFullscreen} className="hidden md:flex p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition flex-shrink-0 text-stone-700 dark:text-stone-300" title={isFullscreen ? "Thoát toàn màn hình" : "Toàn màn hình"} aria-label="Toggle Fullscreen">
-            {isFullscreen ? <Minimize className="w-5 h-5 text-yellow-600 dark:text-yellow-500" /> : <Maximize className="w-5 h-5 hover:scale-105 transition-transform" />}
+          <button onClick={toggleFullscreen} className="hidden md:flex p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition flex-shrink-0 text-zinc-700 dark:text-zinc-300" title={isFullscreen ? "Thoát toàn màn hình" : "Toàn màn hình"} aria-label="Toggle Fullscreen">
+            {isFullscreen ? <Minimize className="w-5 h-5 text-orange-600 dark:text-orange-500" /> : <Maximize className="w-5 h-5 hover:scale-105 transition-transform" />}
           </button>
 
           <div className="hidden md:flex items-center gap-1 flex-shrink-0">
@@ -914,7 +915,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                {isSoundEnabled ? <Volume2 className="w-5 h-5 text-yellow-600 dark:text-yellow-500" /> : <VolumeX className="w-5 h-5 text-stone-600 dark:text-stone-400" />}
+                {isSoundEnabled ? <Volume2 className="w-5 h-5 text-orange-600 dark:text-orange-500" /> : <VolumeX className="w-5 h-5 text-zinc-600 dark:text-zinc-400" />}
               </motion.div>
             </button>
             {isSoundEnabled && <AudioVisualizer />}
@@ -925,10 +926,10 @@ function Layout({ children }: { children: React.ReactNode }) {
               {isUserAdminOrTeacher && (
                 <button 
                   onClick={toggleAdminMode}
-                  className="px-3 py-1.5 flex items-center gap-1.5 text-xs md:text-sm font-bold rounded-full border border-amber-500/30 bg-amber-500/10 hover:bg-yellow-500 hover:text-black transition"
+                  className="px-3 py-1.5 flex items-center gap-1.5 text-xs md:text-sm font-bold rounded-full border border-orange-500/30 bg-orange-500/10 hover:bg-orange-500 hover:text-black transition"
                   title="Chuyển đổi chế độ"
                 >
-                  {isAdminMode ? <BookOpen className="w-4 h-4 text-amber-500" /> : <UserIcon className="w-4 h-4 text-emerald-500" />}
+                  {isAdminMode ? <BookOpen className="w-4 h-4 text-orange-500" /> : <UserIcon className="w-4 h-4 text-emerald-500" />}
                   <span className="text-[10px] md:text-xs font-bold whitespace-nowrap">{isAdminMode ? "Admin View" : "Student View"}</span>
                 </button>
               )}
@@ -938,33 +939,33 @@ function Layout({ children }: { children: React.ReactNode }) {
                     <img 
                       src={currentUserObj?.photoURL || user?.photoURL || ""} 
                       alt="Avatar" 
-                      className="w-9 h-9 rounded-full border-2 border-yellow-500/30 object-cover shadow-sm bg-stone-100 dark:bg-zinc-800"
+                      className="w-9 h-9 rounded-full border-2 border-orange-500/30 object-cover shadow-sm bg-zinc-100 dark:bg-zinc-800"
                       referrerPolicy="no-referrer"
                     />
                   ) : (
-                    <div className="w-9 h-9 rounded-full bg-stone-100 dark:bg-zinc-800/80 flex items-center justify-center border-2 border-stone-200 dark:border-zinc-700 text-stone-600 dark:text-stone-400 shadow-sm">
+                    <div className="w-9 h-9 rounded-full bg-zinc-100 dark:bg-zinc-800/80 flex items-center justify-center border-2 border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 shadow-sm">
                       <UserIcon className="w-4 h-4" />
                     </div>
                   )}
                   {/* Floating Yellow Badge above top right corner of avatar with true dynamically updated rank */}
                   {currentUserRank !== null && (
-                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-yellow-500 text-[9px] font-extrabold text-black border border-white dark:border-zinc-900 shadow-md animate-pulse z-10" title={`Hạng ${currentUserRank} Tuần Này`}>
+                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 text-[9px] font-extrabold text-black border border-white dark:border-zinc-900 shadow-md animate-pulse z-10" title={`Hạng ${currentUserRank} Tuần Này`}>
                       {currentUserRank}
                     </span>
                   )}
                 </div>
                 <div className="hidden sm:flex flex-col text-left">
-                  <span className="font-semibold text-xs md:text-sm text-stone-800 dark:text-stone-200 leading-none">
+                  <span className="font-semibold text-xs md:text-sm text-zinc-800 dark:text-zinc-200 leading-none">
                     {currentUserObj?.name || user?.displayName || user?.email?.split("@")[0] || "User"}
                   </span>
                   {currentUserObj?.role !== 'admin' && currentUserObj?.role !== 'Admin' && (() => {
                     const xpInfo = getLevelInfo(currentUserObj?.points || 0);
                     return (
                       <div className="flex items-center gap-1.5 mt-1">
-                        <span className="text-[9px] font-extrabold text-stone-500 dark:text-stone-400">Lv.{currentUserObj?.level || xpInfo.currentLevel}</span>
-                        <div className="w-12 h-1 bg-stone-200 dark:bg-stone-700 rounded-full overflow-hidden">
+                        <span className="text-[9px] font-extrabold text-zinc-500 dark:text-zinc-400">Lv.{currentUserObj?.level || xpInfo.currentLevel}</span>
+                        <div className="w-12 h-1 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">
                           <div 
-                            className="h-full bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full"
+                            className="h-full bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"
                             style={{ width: `${xpInfo.progressPercentage}%` }}
                           />
                         </div>
@@ -973,7 +974,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                   })()}
                 </div>
               </div>
-              <button onClick={() => setShowSettingsModal(true)} className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition text-stone-700 dark:text-stone-300" title="Cài đặt" aria-label="Cài đặt">
+              <button onClick={() => setShowSettingsModal(true)} className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition text-zinc-700 dark:text-zinc-300" title="Cài đặt" aria-label="Cài đặt">
                 <Settings className="w-5 h-5" />
               </button>
             </div>
@@ -1030,10 +1031,10 @@ function Layout({ children }: { children: React.ReactNode }) {
                     aria-label={tab.name}
                     onClick={tab.action ? tab.action : () => navigate(tab.path!)}
                     className={`flex flex-col items-center justify-center p-2 min-w-[64px] transition-all duration-300 ${
-                      isActive ? "text-yellow-600 dark:text-yellow-400 transform -translate-y-1" : "text-stone-500 dark:text-stone-400 hover:text-stone-800/80 dark:hover:text-stone-200/80"
+                      isActive ? "text-orange-600 dark:text-orange-400 transform -translate-y-1" : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800/80 dark:hover:text-zinc-200/80"
                     }`}
                   >
-                    <Icon className={`w-6 h-6 mb-1 transition-all duration-300 ${isActive ? "fill-yellow-500/20" : ""}`} />
+                    <Icon className={`w-6 h-6 mb-1 transition-all duration-300 ${isActive ? "fill-orange-500/20" : ""}`} />
                     <span className="text-[11px] font-medium">{tab.name}</span>
                   </button>
                 );
@@ -1062,7 +1063,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                   setAppFontSize(16);
                   localStorage.setItem("henosis-font-size", "16");
                }}
-               className="fixed bottom-24 left-4 md:bottom-6 md:left-6 z-30 flex items-center gap-2 px-3 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs rounded-full shadow-lg border border-amber-600/30 cursor-pointer transition-all duration-300 capitalize font-cyber"
+               className="fixed bottom-24 left-4 md:bottom-6 md:left-6 z-30 flex items-center gap-2 px-3 py-2 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs rounded-full shadow-lg border border-orange-600/30 cursor-pointer transition-all duration-300 capitalize font-cyber"
                title="Đặt lại cỡ chữ gốc"
                aria-label="Đặt lại cỡ chữ"
             >
@@ -1086,11 +1087,11 @@ function Layout({ children }: { children: React.ReactNode }) {
                   exit={{ x: '100%', opacity: 0.5 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   onClick={(e) => e.stopPropagation()}
-                  className="w-full max-w-sm h-full bg-white dark:bg-zinc-900 border-l border-stone-200 dark:border-zinc-800 shadow-2xl flex flex-col"
+                  className="w-full max-w-sm h-full bg-white dark:bg-zinc-900 border-l border-zinc-200 dark:border-zinc-800 shadow-2xl flex flex-col"
                >
-                  <div className="flex items-center justify-between p-6 border-b border-stone-100 dark:border-zinc-800">
+                  <div className="flex items-center justify-between p-6 border-b border-zinc-100 dark:border-zinc-800">
                      <h3 className="text-xl font-display font-bold flex items-center gap-2">
-                        <Settings className="w-5 h-5 text-amber-500" />
+                        <Settings className="w-5 h-5 text-orange-500" />
                         Cài Đặt
                      </h3>
                      <button 
@@ -1103,11 +1104,11 @@ function Layout({ children }: { children: React.ReactNode }) {
 
                   <div className="flex-1 overflow-y-auto p-6 space-y-8">
                      <div className="space-y-4">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500">Cỡ Chữ Hệ Thống</h4>
-                        <div className="p-4 rounded-xl border border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-800/50 transition flex flex-col gap-3">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500">Cỡ Chữ Hệ Thống</h4>
+                        <div className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition flex flex-col gap-3">
                            <div className="flex items-center justify-between">
                               <span className="font-medium text-sm">Điều chỉnh phóng to:</span>
-                              <span className="font-bold text-sm text-yellow-600 dark:text-yellow-500">{Math.round((appFontSize / 16) * 100)}% ({appFontSize}px)</span>
+                              <span className="font-bold text-sm text-orange-600 dark:text-orange-500">{Math.round((appFontSize / 16) * 100)}% ({appFontSize}px)</span>
                            </div>
                            <input 
                               type="range" 
@@ -1119,10 +1120,10 @@ function Layout({ children }: { children: React.ReactNode }) {
                                  setAppFontSize(val);
                                  localStorage.setItem("henosis-font-size", val.toString());
                               }}
-                              className="w-full h-2 bg-stone-200 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-yellow-505"
+                              className="w-full h-2 bg-zinc-200 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-orange-505"
                               style={{ accentColor: "#d97706" }}
                            />
-                           <div className="flex justify-between text-[10px] text-stone-400 font-bold">
+                           <div className="flex justify-between text-[10px] text-zinc-400 font-bold">
                               <span>Nhỏ (12px)</span>
                               <span>Trực quan</span>
                               <span>Gấp đôi (32px)</span>
@@ -1132,10 +1133,10 @@ function Layout({ children }: { children: React.ReactNode }) {
 
                       {/* Trình giám sát độ tương phản thông minh (A11y Contrast Monitor) */}
                       <div className="space-y-4">
-                         <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500">Giám Sát Độ Tương Phản (A11y)</h4>
-                         <div className="p-4 rounded-xl border border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-800/50 transition flex flex-col gap-3 bg-stone-50/50 dark:bg-zinc-800/20">
+                         <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500">Giám Sát Độ Tương Phản (A11y)</h4>
+                         <div className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition flex flex-col gap-3 bg-zinc-50/50 dark:bg-zinc-800/20">
                             <div className="flex items-center justify-between">
-                               <span className="font-medium text-xs font-mono text-stone-500 dark:text-stone-400">ĐỘ TƯƠNG PHẢN CHỮ:</span>
+                               <span className="font-medium text-xs font-mono text-zinc-500 dark:text-zinc-400">ĐỘ TƯƠNG PHẢN CHỮ:</span>
                                {contrastStatus.failingCount === 0 ? (
                                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20 animate-pulse">
                                      ĐẠT WCAG AA
@@ -1147,17 +1148,17 @@ function Layout({ children }: { children: React.ReactNode }) {
                                 )}
                             </div>
                             
-                            <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                            <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                                {contrastStatus.failingCount === 0 
                                   ? "Hệ thống đã quét toàn bộ và tất cả văn bản đều đủ độ tương phản cho hành trình học thuật của ngài!"
                                   : "Ngài vừa điều chỉnh cỡ chữ khiến hệ thống phát hiện ra vài thành phần bị nhạt màu, khó đọc. Xem chi tiết bên dưới để biết chỗ mờ nhé!"
                                }
                             </p>
 
-                            <div className="pt-2 border-t border-stone-200 dark:border-zinc-800/60 flex flex-col gap-2">
+                            <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800/60 flex flex-col gap-2">
                                <button
                                   onClick={autoFixContrast}
-                                  className="w-full py-2 px-3 text-xs font-black rounded-xl transition-all duration-200 bg-amber-500 hover:bg-amber-600 text-stone-950 flex items-center justify-center gap-2 cursor-pointer border border-amber-600 active:scale-95 shadow-sm font-sans"
+                                  className="w-full py-2 px-3 text-xs font-black rounded-xl transition-all duration-200 bg-orange-500 hover:bg-orange-600 text-zinc-950 flex items-center justify-center gap-2 cursor-pointer border border-orange-600 active:scale-95 shadow-sm font-sans"
                                >
                                   <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                                   Tự Động Sửa Tương Phản (Auto-Fix)
@@ -1166,7 +1167,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                                   <motion.p 
                                      initial={{ opacity: 0, y: -5 }}
                                      animate={{ opacity: 1, y: 0 }}
-                                     className="text-[10px] text-amber-600 dark:text-amber-400 font-extrabold leading-relaxed text-center"
+                                     className="text-[10px] text-orange-600 dark:text-orange-400 font-extrabold leading-relaxed text-center"
                                   >
                                      {autofixFeedback}
                                   </motion.p>
@@ -1174,20 +1175,20 @@ function Layout({ children }: { children: React.ReactNode }) {
                             </div>
 
                             {contrastStatus.failingCount > 0 && (
-                               <div className="mt-1 space-y-2 pt-2 border-t border-stone-200 dark:border-zinc-800">
-                                  <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">Cần cải thiện độ đậm/màu:</span>
+                               <div className="mt-1 space-y-2 pt-2 border-t border-zinc-200 dark:border-zinc-800">
+                                  <span className="text-[10px] uppercase font-bold text-zinc-400 block tracking-wider">Cần cải thiện độ đậm/màu:</span>
                                   <div className="max-h-[140px] overflow-y-auto space-y-1.5 pr-1">
                                      {contrastStatus.failingElements.map((el, idx) => (
-                                        <div key={idx} className="flex justify-between items-center text-[10px] p-2 bg-stone-100/80 dark:bg-zinc-950/40 rounded border border-stone-200/50 dark:border-zinc-800/60 transition hover:bg-stone-200/50">
+                                        <div key={idx} className="flex justify-between items-center text-[10px] p-2 bg-zinc-100/80 dark:bg-zinc-950/40 rounded border border-zinc-200/50 dark:border-zinc-800/60 transition hover:bg-zinc-200/50">
                                            <div className="flex flex-col truncate max-w-[140px]">
-                                              <span className="truncate font-medium text-stone-800 dark:text-stone-200 font-mono">"{el.text}"</span>
-                                              <span className="text-[9px] text-stone-400 lowercase italic">thẻ {el.tag}</span>
+                                              <span className="truncate font-medium text-zinc-800 dark:text-zinc-200 font-mono">"{el.text}"</span>
+                                              <span className="text-[9px] text-zinc-400 lowercase italic">thẻ {el.tag}</span>
                                            </div>
                                            <div className="text-right flex flex-col items-end">
                                               <span className="text-rose-600 dark:text-rose-400 font-bold font-mono">
                                                  {el.ratio}:1
                                               </span>
-                                              <span className="text-stone-400 text-[9px] block font-mono">
+                                              <span className="text-zinc-400 text-[9px] block font-mono">
                                                  y/c &ge; {el.required}:1
                                               </span>
                                            </div>
@@ -1202,31 +1203,31 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 
                      <div className="space-y-4">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500">Người Dùng</h4>
-                        <div className="p-4 rounded-xl bg-stone-50 dark:bg-zinc-800/50 border border-stone-200 dark:border-zinc-700 flex flex-col gap-3">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500">Người Dùng</h4>
+                        <div className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 flex flex-col gap-3">
                            <div>
-                              <p className="font-bold text-stone-900 dark:text-white truncate">{user?.email}</p>
-                              <p className="text-xs text-stone-500 mt-1 capitalize">Role: {currentUserObj?.role || 'Student'}</p>
+                              <p className="font-bold text-zinc-900 dark:text-white truncate">{user?.email}</p>
+                              <p className="text-xs text-zinc-500 mt-1 capitalize">Role: {currentUserObj?.role || 'Student'}</p>
                            </div>
 
                            {!isUserAdminOrTeacher && (
-                              <div className="pt-3 border-t border-stone-200 dark:border-zinc-700 space-y-2">
-                                 <p className="text-xs text-stone-600 dark:text-stone-400 font-medium">Nhập mã phân quyền để nâng cấp (dành cho Giáo viên/Admin):</p>
+                              <div className="pt-3 border-t border-zinc-200 dark:border-zinc-700 space-y-2">
+                                 <p className="text-xs text-zinc-600 dark:text-zinc-400 font-medium">Nhập mã phân quyền để nâng cấp (dành cho Giáo viên/Admin):</p>
                                  <div className="flex items-center gap-2">
                                     <div className="relative flex-grow">
-                                       <Key className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                                       <Key className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
                                        <input 
                                           type="password"
                                           placeholder="Mã phân quyền" 
                                           value={adminKeyInput}
                                           onChange={(e) => setAdminKeyInput(e.target.value)}
-                                          className="w-full pl-9 pr-3 py-2 bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-700 rounded-lg text-sm focus:outline-none focus:border-amber-500 transition-colors placeholder:text-stone-400"
+                                          className="w-full pl-9 pr-3 py-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition-colors placeholder:text-zinc-400"
                                        />
                                     </div>
                                     <button 
                                        onClick={handleVerifyAdminKey}
                                        disabled={isVerifyingAdmin || !adminKeyInput.trim()}
-                                       className="px-3 py-2 bg-amber-500 hover:bg-amber-600 text-stone-950 text-xs font-bold rounded-lg transition-colors shrink-0 disabled:opacity-50 flex items-center justify-center gap-1 min-w-[70px]"
+                                       className="px-3 py-2 bg-orange-500 hover:bg-orange-600 text-zinc-950 text-xs font-bold rounded-lg transition-colors shrink-0 disabled:opacity-50 flex items-center justify-center gap-1 min-w-[70px]"
                                     >
                                        {isVerifyingAdmin ? <RefreshCw className="w-4 h-4 animate-spin" /> : "Xác nhận"}
                                     </button>
@@ -1243,9 +1244,9 @@ function Layout({ children }: { children: React.ReactNode }) {
 
                      {isUserAdminOrTeacher && (
                         <div className="space-y-4">
-                           <h4 className="text-xs font-bold uppercase tracking-wider text-amber-500 dark:text-amber-400">Quyền Trực Quan & Chế Độ</h4>
-                           <div className="p-4 rounded-xl bg-amber-500/5 dark:bg-amber-500/10 border border-amber-500/30 flex flex-col gap-3">
-                              <p className="text-xs text-stone-600 dark:text-stone-300">
+                           <h4 className="text-xs font-bold uppercase tracking-wider text-orange-500 dark:text-orange-400">Quyền Trực Quan & Chế Độ</h4>
+                           <div className="p-4 rounded-xl bg-orange-500/5 dark:bg-orange-500/10 border border-orange-500/30 flex flex-col gap-3">
+                              <p className="text-xs text-zinc-600 dark:text-zinc-300">
                                  Bạn đang đăng nhập với quyền <strong>{currentUserObj?.role}</strong>. Chọn chế độ xem phù hợp:
                               </p>
                               <div className="flex gap-2">
@@ -1257,8 +1258,8 @@ function Layout({ children }: { children: React.ReactNode }) {
                                     }}
                                     className={`flex-grow py-2 px-3 text-xs font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-1.5 border ${
                                        isAdminMode 
-                                          ? "bg-amber-500 text-black border-amber-600 shadow-sm" 
-                                          : "bg-stone-100 dark:bg-zinc-800 text-stone-600 dark:text-stone-400 border-stone-200 dark:border-zinc-700 hover:bg-stone-200 dark:hover:bg-zinc-700"
+                                          ? "bg-orange-500 text-black border-orange-600 shadow-sm" 
+                                          : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700"
                                     }`}
                                  >
                                     <Shield className="w-3.5 h-3.5" />
@@ -1272,8 +1273,8 @@ function Layout({ children }: { children: React.ReactNode }) {
                                     }}
                                     className={`flex-grow py-2 px-3 text-xs font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-1.5 border ${
                                        !isAdminMode 
-                                          ? "bg-amber-500 text-black border-amber-600 shadow-sm" 
-                                          : "bg-stone-100 dark:bg-zinc-800 text-stone-600 dark:text-stone-400 border-stone-200 dark:border-zinc-700 hover:bg-stone-200 dark:hover:bg-zinc-700"
+                                          ? "bg-orange-500 text-black border-orange-600 shadow-sm" 
+                                          : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700"
                                     }`}
                                  >
                                     <UserIcon className="w-3.5 h-3.5" />
@@ -1285,41 +1286,41 @@ function Layout({ children }: { children: React.ReactNode }) {
                      )}
 
                       <div className="space-y-4 flex flex-col gap-2">
-                         <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500">Tùy Chọn Cơ Bản</h4>
+                         <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500">Tùy Chọn Cơ Bản</h4>
                          
-                         <div className="flex items-center justify-between p-4 rounded-xl border border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-800/50 transition">
+                         <div className="flex items-center justify-between p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
                             <div className="flex items-center gap-3">
-                               {theme === "dark" ? <Moon className="w-5 h-5 text-stone-400" /> : <Sun className="w-5 h-5 text-amber-500" />}
+                               {theme === "dark" ? <Moon className="w-5 h-5 text-zinc-400" /> : <Sun className="w-5 h-5 text-orange-500" />}
                                <span className="font-medium text-sm">Giao Diện (Sáng/Tối)</span>
                             </div>
-                            <button onClick={toggleTheme} className="px-3 py-1.5 rounded-lg bg-stone-200 dark:bg-zinc-700 text-xs font-bold shadow-xs">
+                            <button onClick={toggleTheme} className="px-3 py-1.5 rounded-lg bg-zinc-200 dark:bg-zinc-700 text-xs font-bold shadow-xs">
                                Chuyển
                             </button>
                          </div>
 
-                         <div className="flex items-center justify-between p-4 rounded-xl border border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-800/50 transition">
+                         <div className="flex items-center justify-between p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
                             <div className="flex items-center gap-3">
-                               {isSoundEnabled ? <Volume2 className="w-5 h-5 text-amber-500" /> : <VolumeX className="w-5 h-5 text-stone-400" />}
+                               {isSoundEnabled ? <Volume2 className="w-5 h-5 text-orange-500" /> : <VolumeX className="w-5 h-5 text-zinc-400" />}
                                <span className="font-medium text-sm">Hiệu Ứng Âm Thanh</span>
                             </div>
-                            <button onClick={toggleSound} className="px-3 py-1.5 rounded-lg bg-stone-200 dark:bg-zinc-700 text-xs font-bold shadow-xs">
+                            <button onClick={toggleSound} className="px-3 py-1.5 rounded-lg bg-zinc-200 dark:bg-zinc-700 text-xs font-bold shadow-xs">
                                {isSoundEnabled ? "Tắt" : "Bật"}
                             </button>
                          </div>
 
-                         <div className="flex items-center justify-between p-4 rounded-xl border border-stone-200 dark:border-zinc-805 hover:bg-stone-50 dark:hover:bg-zinc-800/50 transition border border-stone-200 dark:border-zinc-800">
+                         <div className="flex items-center justify-between p-4 rounded-xl border border-zinc-200 dark:border-zinc-805 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition border border-zinc-200 dark:border-zinc-800">
                             <div className="flex items-center gap-3">
-                               <Cpu className={`w-5 h-5 ${isEcoMode ? "text-green-500" : "text-stone-400"}`} />
+                               <Cpu className={`w-5 h-5 ${isEcoMode ? "text-green-500" : "text-zinc-400"}`} />
                                <span className="font-medium text-sm">Chế độ Mượt (Fix Lag)</span>
                             </div>
-                            <button onClick={toggleEcoMode} className={`px-3 py-1.5 rounded-lg text-xs font-bold shadow-xs ${isEcoMode ? "bg-green-500/20 text-green-500" : "bg-stone-200 dark:bg-zinc-700 text-stone-600 dark:text-stone-300"}`}>
+                            <button onClick={toggleEcoMode} className={`px-3 py-1.5 rounded-lg text-xs font-bold shadow-xs ${isEcoMode ? "bg-green-500/20 text-green-500" : "bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300"}`}>
                                {isEcoMode ? "Đang Bật" : "Bật"}
                             </button>
                          </div>
 
-                         <div className="flex items-center justify-between p-4 rounded-xl border border-stone-200 dark:border-zinc-808 hover:bg-stone-50 dark:hover:bg-zinc-800/50 transition border border-stone-200 dark:border-zinc-800">
+                         <div className="flex items-center justify-between p-4 rounded-xl border border-zinc-200 dark:border-zinc-808 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition border border-zinc-200 dark:border-zinc-800">
                             <div className="flex items-center gap-3">
-                               <Keyboard className="w-5 h-5 text-amber-500 animate-pulse" />
+                               <Keyboard className="w-5 h-5 text-orange-500 animate-pulse" />
                                <span className="font-medium text-sm">Phím Tắt & Cẩm Nang</span>
                             </div>
                             <button 
@@ -1327,16 +1328,16 @@ function Layout({ children }: { children: React.ReactNode }) {
                                   setShowSettingsModal(false);
                                   setShowShortcutsModal(true);
                                }} 
-                               className="px-3 py-1.5 rounded-lg bg-amber-500 text-stone-950 text-xs font-black shadow-xs hover:bg-amber-600 transition cursor-pointer"
+                               className="px-3 py-1.5 rounded-lg bg-orange-500 text-zinc-950 text-xs font-black shadow-xs hover:bg-orange-600 transition cursor-pointer"
                             >
                                Xem
                             </button>
                          </div>
                       </div>
 
-                     <div className="space-y-4 flex flex-col gap-2 pt-4 border-t border-stone-100 dark:border-zinc-800">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500">Đồng bộ dữ liệu</h4>
-                         <div className="p-4 rounded-xl border border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-800/50 transition flex items-center justify-between">
+                     <div className="space-y-4 flex flex-col gap-2 pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-500">Đồng bộ dữ liệu</h4>
+                         <div className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition flex items-center justify-between">
                             <div className="flex items-center gap-3 text-left">
                                <span className="text-xl shrink-0 select-none">🔔</span>
                                <div className="flex flex-col">
@@ -1348,20 +1349,20 @@ function Layout({ children }: { children: React.ReactNode }) {
                                onClick={toggleNotifReminder}
                                className={`px-3 py-1.5 rounded-lg text-xs font-bold shadow-xs transition cursor-pointer shrink-0 ${
                                   notifReminder 
-                                     ? "bg-amber-500 hover:bg-amber-600 text-black font-extrabold" 
-                                     : "bg-stone-200 dark:bg-zinc-700 text-stone-600 dark:text-stone-300 hover:bg-stone-300 dark:hover:bg-zinc-650"
+                                     ? "bg-orange-500 hover:bg-orange-600 text-black font-extrabold" 
+                                     : "bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-650"
                                }`}
                             >
                                {notifReminder ? "Đang Bật" : "Tắt"}
                             </button>
                          </div>
-                        <div className="p-4 rounded-xl border border-stone-200 dark:border-zinc-805 hover:bg-stone-50/80 dark:hover:bg-zinc-800/30 transition flex flex-col gap-3">
+                        <div className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-805 hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition flex flex-col gap-3">
                            <div className="flex items-center justify-between gap-2">
                               <div className="flex items-center gap-3">
-                                 <RefreshCw className={`w-5 h-5 ${isSyncing ? "animate-spin text-amber-500" : "text-stone-400"}`} />
+                                 <RefreshCw className={`w-5 h-5 ${isSyncing ? "animate-spin text-orange-500" : "text-zinc-400"}`} />
                                  <div className="flex flex-col">
-                                    <span className="font-bold text-sm text-stone-900 dark:text-stone-100">Cưỡng Bức Đồng Bộ</span>
-                                    <span className="text-[10px] text-stone-500 dark:text-stone-400 font-mono">FORCE RESET FIREBASE</span>
+                                    <span className="font-bold text-sm text-zinc-900 dark:text-zinc-100">Cưỡng Bức Đồng Bộ</span>
+                                    <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono">FORCE RESET FIREBASE</span>
                                  </div>
                               </div>
                               <button 
@@ -1374,8 +1375,8 @@ function Layout({ children }: { children: React.ReactNode }) {
                                     syncSuccess 
                                        ? "bg-emerald-500 text-white" 
                                        : isSyncing 
-                                          ? "bg-stone-100 dark:bg-zinc-800 text-stone-400 cursor-not-allowed" 
-                                          : "bg-amber-500 text-stone-950 hover:bg-amber-600 cursor-pointer"
+                                          ? "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed" 
+                                          : "bg-orange-500 text-zinc-950 hover:bg-orange-600 cursor-pointer"
                                  }`}
                               >
                                  {syncSuccess ? (
@@ -1390,20 +1391,20 @@ function Layout({ children }: { children: React.ReactNode }) {
                                  )}
                               </button>
                            </div>
-                           <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed md:leading-normal">
+                           <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed md:leading-normal">
                               Nếu ngài bị lệch tiến trình học, điểm số, streak, hoặc thẻ X hiển thị 0 so với thiết bị khác, nút này sẽ reload trực tiếp từ Firebase Firestore về để đồng nhất 100%.
                            </p>
                         </div>
                      </div>
 
-                     <div className="space-y-4 pt-4 border-t border-stone-100 dark:border-zinc-800">
+                     <div className="space-y-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
                         {user?.isAnonymous ? (
                          <button 
                             onClick={async () => {
                                setShowSettingsModal(false);
                                setShowLogoutConfirm(true);
                             }}
-                            className="w-full flex items-center justify-between p-4 rounded-xl border border-amber-500/20 bg-amber-500/5 hover:bg-amber-500/10 text-amber-500 transition group cursor-pointer"
+                            className="w-full flex items-center justify-between p-4 rounded-xl border border-orange-500/20 bg-orange-500/5 hover:bg-orange-500/10 text-orange-500 transition group cursor-pointer"
                          >
                             <div className="flex items-center gap-3">
                                <UserIcon className="w-5 h-5" />
@@ -1451,6 +1452,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         isDestructive={true}
       />
     </div>
+    </MotionConfig>
   );
 }
 

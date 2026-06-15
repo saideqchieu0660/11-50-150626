@@ -40,15 +40,15 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
   const canDelete = isMine || userRole === 'admin' || userRole === 'Admin' || userRole === 'teacher';
   const isAdminUser = userRole === 'admin' || userRole === 'Admin';
   
-  let typeIcon = <MessageSquare className="w-4 h-4 text-amber-500" />;
-  let typeBg = "bg-amber-500/10 border-amber-500/20";
+  let typeIcon = <MessageSquare className="w-4 h-4 text-orange-500" />;
+  let typeBg = "bg-orange-500/10 border-orange-500/20";
   
   if (item.type === 'streak') {
     typeIcon = <Flame className="w-4 h-4 text-orange-500" />;
     typeBg = "bg-orange-500/10 border-orange-500/20";
   } else if (item.type === 'match') {
-    typeIcon = <Trophy className="w-4 h-4 text-yellow-500 animate-pulse" />;
-    typeBg = "bg-yellow-500/10 border-yellow-500/20";
+    typeIcon = <Trophy className="w-4 h-4 text-orange-500 animate-pulse" />;
+    typeBg = "bg-orange-500/10 border-orange-500/20";
   } else if (item.type === 'custom') {
     typeIcon = <Activity className="w-4 h-4 text-blue-500" />;
     typeBg = "bg-blue-500/10 border-blue-500/20";
@@ -74,15 +74,15 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
       className={cn(
         "relative flex gap-3 p-3.5 rounded-xl border backdrop-blur-md transition-all duration-300",
         item.isPinned
-          ? "bg-amber-500/10 dark:bg-yellow-500/[0.05] border-amber-500/40 shadow-md ring-1 ring-amber-500/25"
+          ? "bg-orange-500/10 dark:bg-orange-500/[0.05] border-orange-500/40 shadow-md ring-1 ring-orange-500/25"
           : isMine 
-            ? "bg-amber-500/5 dark:bg-yellow-500/[0.03] border-amber-500/30 shadow-inner" 
-            : "bg-white/40 dark:bg-zinc-900/40 border-stone-200/50 dark:border-zinc-800/30 hover:border-stone-300 dark:hover:border-zinc-700/50"
+            ? "bg-orange-500/5 dark:bg-orange-500/[0.03] border-orange-500/30 shadow-inner" 
+            : "bg-white/40 dark:bg-zinc-900/40 border-zinc-200/50 dark:border-zinc-800/30 hover:border-zinc-300 dark:hover:border-zinc-700/50"
       )}
     >
       {item.isPinned && (
-        <div className="absolute top-2 right-2 flex items-center gap-1 text-[9px] font-black text-amber-600 dark:text-yellow-450 uppercase tracking-widest bg-amber-550/10 px-1.5 py-0.5 rounded shadow-sm">
-          <Pin className="w-2.5 h-2.5 fill-amber-600 dark:fill-yellow-500" />
+        <div className="absolute top-2 right-2 flex items-center gap-1 text-[9px] font-black text-orange-600 dark:text-orange-450 uppercase tracking-widest bg-orange-550/10 px-1.5 py-0.5 rounded shadow-sm">
+          <Pin className="w-2.5 h-2.5 fill-orange-600 dark:fill-orange-500" />
           <span>Ghim</span>
         </div>
       )}
@@ -94,12 +94,12 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
       <div className="flex-1 min-w-0">
         <div className="flex justify-between items-start gap-2 flex-wrap">
           <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-xs font-black text-stone-800 dark:text-stone-200 truncate max-w-[120px]">
+            <span className="text-xs font-black text-zinc-800 dark:text-zinc-200 truncate max-w-[120px]">
               {item.userName}
             </span>
             {roleBadge}
             {isMine && (
-              <span className="text-[9px] bg-yellow-500 text-black px-1 py-0.2 rounded-full font-extrabold uppercase scale-90">
+              <span className="text-[9px] bg-orange-500 text-black px-1 py-0.2 rounded-full font-extrabold uppercase scale-90">
                 You
               </span>
             )}
@@ -109,14 +109,14 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
           </span>
         </div>
 
-        <div className="mt-1.5 text-xs text-stone-700 dark:text-stone-300 leading-relaxed overflow-hidden markdown-body pr-2">
+        <div className="mt-1.5 text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed overflow-hidden markdown-body pr-2">
           <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
             {item.content}
           </ReactMarkdown>
         </div>
 
         {/* Reactions and Delete control buttons */}
-        <div className="mt-3 flex flex-wrap items-center gap-1.5 pt-2 border-t border-stone-100 dark:border-zinc-800/50">
+        <div className="mt-3 flex flex-wrap items-center gap-1.5 pt-2 border-t border-zinc-100 dark:border-zinc-800/50">
           {/* Reaction bubbles */}
           {Object.entries(item.reactions || {}).map(([emoji, userIds]) => {
             if (!Array.isArray(userIds) || userIds.length === 0) return null;
@@ -128,8 +128,8 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
                 className={cn(
                   "flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold transition border cursor-pointer",
                   hasReacted
-                    ? "bg-amber-500/15 border-amber-500/40 text-amber-600 dark:text-yellow-400"
-                    : "bg-stone-50 dark:bg-zinc-900 border-stone-200/50 dark:border-zinc-800/80 text-stone-500 dark:text-stone-300 hover:border-stone-300"
+                    ? "bg-orange-500/15 border-orange-500/40 text-orange-600 dark:text-orange-400"
+                    : "bg-zinc-50 dark:bg-zinc-900 border-zinc-200/50 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-300 hover:border-zinc-300"
                 )}
                 title={`Thả bởi: ${userIds.length} người`}
               >
@@ -145,8 +145,8 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
               <button 
                 onClick={() => setShowPicker(prev => !prev)}
                 className={cn(
-                  "flex items-center justify-center w-5.5 h-5.5 rounded-full bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 text-[10px] text-stone-500 hover:text-stone-800 transition cursor-pointer border-none",
-                  showPicker && "bg-amber-500/20 text-amber-600"
+                  "flex items-center justify-center w-5.5 h-5.5 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 text-[10px] text-zinc-500 hover:text-zinc-800 transition cursor-pointer border-none",
+                  showPicker && "bg-orange-500/20 text-orange-600"
                 )}
                 title="Bày tỏ cảm xúc"
               >
@@ -169,7 +169,7 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
                       initial={{ opacity: 0, scale: 0.8, y: 5 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.8, y: 5 }}
-                      className="absolute bottom-full left-0 mb-1 grid grid-cols-6 bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 shadow-xl rounded-2xl p-1.5 gap-1.5 z-20 origin-bottom-left ring-4 ring-black/5 min-w-[172px]"
+                      className="absolute bottom-full left-0 mb-1 grid grid-cols-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl rounded-2xl p-1.5 gap-1.5 z-20 origin-bottom-left ring-4 ring-black/5 min-w-[172px]"
                     >
                       {EMOJIS.map(emoji => {
                         const userIds = item.reactions?.[emoji] || [];
@@ -184,7 +184,7 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
                             }}
                             className={cn(
                               "w-6 h-6 flex items-center justify-center text-xs hover:scale-130 transition-transform duration-100 cursor-pointer border-none bg-transparent rounded-full",
-                              hasReacted && "bg-amber-500/20"
+                              hasReacted && "bg-orange-500/20"
                             )}
                           >
                             {emoji}
@@ -207,12 +207,12 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
               className={cn(
                 "p-1 rounded transition cursor-pointer border-none bg-transparent",
                 item.isPinned 
-                  ? "text-yellow-500 hover:text-stone-400" 
-                  : "text-stone-400 hover:text-yellow-550"
+                  ? "text-orange-500 hover:text-zinc-400" 
+                  : "text-zinc-400 hover:text-orange-550"
               )}
               title={item.isPinned ? "Bỏ ghim chia sẻ này" : "Ghim chia sẻ này"}
             >
-              <Pin className={cn("w-3.5 h-3.5", item.isPinned && "fill-yellow-500")} />
+              <Pin className={cn("w-3.5 h-3.5", item.isPinned && "fill-orange-500")} />
             </button>
           )}
 
@@ -224,7 +224,7 @@ const FeedItemRow = React.memo<FeedItemRowProps>(({ item, currentUserId, userRol
                   onDelete?.(item.id);
                 }
               }}
-              className="p-1 rounded text-stone-400 hover:text-red-500 hover:bg-red-500/10 dark:hover:bg-red-500/20 transition cursor-pointer border-none bg-transparent"
+              className="p-1 rounded text-zinc-400 hover:text-red-500 hover:bg-red-500/10 dark:hover:bg-red-500/20 transition cursor-pointer border-none bg-transparent"
               title="Xóa chia sẻ này"
             >
               <Trash2 className="w-3.5 h-3.5" />
@@ -582,10 +582,10 @@ export function GlobalActivityFeed() {
 
   const renderInnerContent = (maximized: boolean) => (
     <>
-      <div className="flex justify-between items-center mb-4 pb-2 border-b border-amber-600/10 dark:border-amber-500/20">
+      <div className="flex justify-between items-center mb-4 pb-2 border-b border-orange-600/10 dark:border-orange-500/20">
         <div className="flex items-center gap-2">
-          <Activity className="w-5 h-5 text-yellow-500 animate-pulse shrink-0" />
-          <h3 className="text-md font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">
+          <Activity className="w-5 h-5 text-orange-500 animate-pulse shrink-0" />
+          <h3 className="text-md font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">
             Bảng Tin Hoạt Động Chung
           </h3>
         </div>
@@ -593,7 +593,7 @@ export function GlobalActivityFeed() {
           {!isAdding && (
             <button 
               onClick={() => setIsAdding(true)}
-              className="p-1.5 rounded-lg bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 dark:hover:text-yellow-900 border border-yellow-500/30 hover:bg-yellow-500 hover:text-white transition group cursor-pointer"
+              className="p-1.5 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400 dark:hover:text-orange-900 border border-orange-500/30 hover:bg-orange-500 hover:text-white transition group cursor-pointer"
               title="Chia sẻ trạng thái"
             >
               <Plus className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -601,7 +601,7 @@ export function GlobalActivityFeed() {
           )}
           <button
             onClick={() => setIsMaximized(!maximized)}
-            className="p-1.5 rounded-lg bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 dark:hover:text-yellow-900 border border-yellow-500/30 hover:bg-yellow-500 hover:text-white transition group cursor-pointer animate-in fade-in"
+            className="p-1.5 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400 dark:hover:text-orange-900 border border-orange-500/30 hover:bg-orange-500 hover:text-white transition group cursor-pointer animate-in fade-in"
             title={maximized ? "Thu nhỏ bảng tin" : "Phóng to bảng tin (80%)"}
           >
             {maximized ? (
@@ -622,9 +622,9 @@ export function GlobalActivityFeed() {
 
       {/* Quick-access Ribbon of Pinned Items */}
       {pinnedItems.length > 0 && (
-        <div className="mb-3 p-2.5 bg-amber-500/10 dark:bg-yellow-500/[0.04] border border-amber-500/30 rounded-xl flex flex-col gap-1.5 shadow-sm">
-          <div className="flex items-center gap-1 text-[11px] font-black text-amber-700 dark:text-yellow-450 uppercase tracking-wider">
-            <Pin className="w-3 h-3 animate-bounce shrink-0 text-amber-600 dark:text-yellow-450 fill-amber-650 dark:fill-yellow-500" />
+        <div className="mb-3 p-2.5 bg-orange-500/10 dark:bg-orange-500/[0.04] border border-orange-500/30 rounded-xl flex flex-col gap-1.5 shadow-sm">
+          <div className="flex items-center gap-1 text-[11px] font-black text-orange-700 dark:text-orange-450 uppercase tracking-wider">
+            <Pin className="w-3 h-3 animate-bounce shrink-0 text-orange-600 dark:text-orange-450 fill-orange-650 dark:fill-orange-500" />
             <span>TIN GHIM ({pinnedItems.length})</span>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-1 custom-scrollbar scroll-smooth snap-x">
@@ -635,23 +635,23 @@ export function GlobalActivityFeed() {
                   const element = document.getElementById(`feed-item-${p.id}`);
                   if (element) {
                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    element.classList.add('ring-4', 'ring-amber-500/70', 'scale-[1.02]', 'duration-500');
+                    element.classList.add('ring-4', 'ring-orange-500/70', 'scale-[1.02]', 'duration-500');
                     setTimeout(() => {
-                      element.classList.remove('ring-4', 'ring-amber-500/70', 'scale-[1.02]');
+                      element.classList.remove('ring-4', 'ring-orange-500/70', 'scale-[1.02]');
                     }, 2500);
                   }
                 }}
-                className="snap-start shrink-0 flex flex-col gap-0.5 px-3 py-1.5 rounded-lg bg-white/70 dark:bg-zinc-950/80 border border-stone-200/50 dark:border-zinc-800/80 hover:border-amber-500/40 text-left text-[10px] w-[160px] cursor-pointer transition-all hover:scale-[1.01] active:scale-95 shadow-xs"
+                className="snap-start shrink-0 flex flex-col gap-0.5 px-3 py-1.5 rounded-lg bg-white/70 dark:bg-zinc-950/80 border border-zinc-200/50 dark:border-zinc-800/80 hover:border-orange-500/40 text-left text-[10px] w-[160px] cursor-pointer transition-all hover:scale-[1.01] active:scale-95 shadow-xs"
               >
                 <div className="flex justify-between items-center w-full">
-                  <span className="font-extrabold text-stone-800 dark:text-stone-100 truncate block max-w-[70px]">
+                  <span className="font-extrabold text-zinc-800 dark:text-zinc-100 truncate block max-w-[70px]">
                     {p.userName}
                   </span>
                   <span className="text-[7.5px] opacity-40 font-mono">
                     {new Date(p.timestamp).toLocaleDateString('vi-VN', { month: 'numeric', day: 'numeric' })}
                   </span>
                 </div>
-                <span className="text-stone-600 dark:text-stone-300 line-clamp-1 truncate w-full">
+                <span className="text-zinc-600 dark:text-zinc-300 line-clamp-1 truncate w-full">
                   {p.content}
                 </span>
               </button>
@@ -667,7 +667,7 @@ export function GlobalActivityFeed() {
               initial={{ opacity: 0, height: 0, scale: 0.95 }}
               animate={{ opacity: 1, height: 'auto', scale: 1 }}
               exit={{ opacity: 0, height: 0, scale: 0.95 }}
-              className="bg-white/60 dark:bg-black/40 backdrop-blur-md rounded-xl p-3 border border-yellow-500/40 shadow-inner"
+              className="bg-white/60 dark:bg-black/40 backdrop-blur-md rounded-xl p-3 border border-orange-500/40 shadow-inner"
             >
               <textarea
                 autoFocus
@@ -679,7 +679,7 @@ export function GlobalActivityFeed() {
                   }
                 }}
                 placeholder="Share a thought or note... (Markdown supported)"
-                className="w-full bg-transparent border-none outline-none resize-none text-xs min-h-[70px] text-stone-800 dark:text-stone-200 placeholder:text-stone-400"
+                className="w-full bg-transparent border-none outline-none resize-none text-xs min-h-[70px] text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400"
               />
               {(currentUser?.role === 'admin' || currentUser?.role === 'Admin') && (
                 <div className="flex items-center gap-2 mb-2 p-1.5 bg-red-500/10 dark:bg-red-500/20 rounded-lg text-red-500 dark:text-red-400 border border-red-500/20">
@@ -695,17 +695,17 @@ export function GlobalActivityFeed() {
                   </label>
                 </div>
               )}
-              <div className="flex justify-end gap-2 mt-2 border-t border-amber-500/10 pt-2">
-                <button onClick={() => setIsAdding(false)} disabled={isSending} className="p-1 px-2 text-[10px] font-bold text-stone-500 hover:text-red-500 transition-colors disabled:opacity-40">
+              <div className="flex justify-end gap-2 mt-2 border-t border-orange-500/10 pt-2">
+                <button onClick={() => setIsAdding(false)} disabled={isSending} className="p-1 px-2 text-[10px] font-bold text-zinc-500 hover:text-red-500 transition-colors disabled:opacity-40">
                   Hủy
                 </button>
                 <button 
                   onClick={handleAddActivity} 
                   disabled={isSending}
-                  className="py-1 px-3 bg-yellow-500 text-stone-900 dark:text-yellow-900 font-bold text-[10px] rounded-lg shadow-md hover:bg-yellow-600 transition-colors flex items-center gap-1 disabled:opacity-50"
+                  className="py-1 px-3 bg-orange-500 text-zinc-900 dark:text-orange-900 font-bold text-[10px] rounded-lg shadow-md hover:bg-orange-600 transition-colors flex items-center gap-1 disabled:opacity-50"
                 >
                   {isSending ? (
-                    <RefreshCw className="w-3 h-3 animate-spin text-stone-900" />
+                    <RefreshCw className="w-3 h-3 animate-spin text-zinc-900" />
                   ) : (
                     <Check className="w-3 h-3" />
                   )} 
@@ -716,15 +716,15 @@ export function GlobalActivityFeed() {
           )}
 
           {isLoading ? (
-            <div className="flex flex-col items-center justify-center py-12 gap-2 text-stone-500">
-              <RefreshCw className="w-5 h-5 animate-spin text-yellow-500" />
+            <div className="flex flex-col items-center justify-center py-12 gap-2 text-zinc-500">
+              <RefreshCw className="w-5 h-5 animate-spin text-orange-500" />
               <span className="text-xs">Đang đồng bộ bảng tin...</span>
             </div>
           ) : items.length === 0 ? (
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center opacity-60 py-10 text-[11px] italic border-2 border-dashed border-stone-300 dark:border-stone-700/50 rounded-xl"
+              className="text-center opacity-60 py-10 text-[11px] italic border-2 border-dashed border-zinc-300 dark:border-zinc-700/50 rounded-xl"
             >
               Chưa có chia sẻ nào trong 24 giờ qua. Hãy là người chia sẻ đầu tiên!
             </motion.div>
@@ -751,17 +751,17 @@ export function GlobalActivityFeed() {
       {isMaximized ? (
         <>
           {/* Layout placeholder to preserve visual grids structure */}
-          <section className="glass p-6 border border-stone-200/50 dark:border-zinc-800/50 shadow-md flex flex-col h-[600px] rounded-2xl relative overflow-hidden items-center justify-center text-center">
-            <Activity className="w-8 h-8 text-yellow-500 animate-pulse mb-2" />
-            <h3 className="text-sm font-display font-black text-amber-757 dark:text-amber-200">
+          <section className="glass p-6 border border-zinc-200/50 dark:border-zinc-800/50 shadow-md flex flex-col h-[600px] rounded-2xl relative overflow-hidden items-center justify-center text-center">
+            <Activity className="w-8 h-8 text-orange-500 animate-pulse mb-2" />
+            <h3 className="text-sm font-display font-black text-orange-757 dark:text-orange-200">
               Bảng Tin Hoạt Động Chung
             </h3>
-            <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-1">
+            <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1">
               Đang phóng to bảng tin (80%)...
             </p>
             <button
               onClick={() => setIsMaximized(false)}
-              className="mt-4 px-3 py-1.5 bg-yellow-500 text-stone-900 dark:text-yellow-900 text-xs font-bold rounded-lg hover:bg-yellow-600 transition cursor-pointer"
+              className="mt-4 px-3 py-1.5 bg-orange-500 text-zinc-900 dark:text-orange-900 text-xs font-bold rounded-lg hover:bg-orange-600 transition cursor-pointer"
             >
               Thu nhỏ lại
             </button>
@@ -771,10 +771,10 @@ export function GlobalActivityFeed() {
           {createPortal(
             <>
               <div 
-                className="fixed inset-0 bg-stone-900/60 dark:bg-black/70 backdrop-blur-md z-[990] transition-all duration-300 ease-out animate-in fade-in cursor-pointer"
+                className="fixed inset-0 bg-zinc-900/60 dark:bg-black/70 backdrop-blur-md z-[990] transition-all duration-300 ease-out animate-in fade-in cursor-pointer"
                 onClick={() => setIsMaximized(false)}
               />
-              <section className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95vw] h-[90vh] sm:w-[80vw] sm:h-[80vh] z-[1000] bg-white dark:bg-zinc-950 shadow-2xl rounded-2xl p-6 border border-stone-200/50 dark:border-zinc-800/50 flex flex-col transition-all duration-300 overflow-hidden animate-in zoom-in-95">
+              <section className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95vw] h-[90vh] sm:w-[80vw] sm:h-[80vh] z-[1000] bg-white dark:bg-zinc-950 shadow-2xl rounded-2xl p-6 border border-zinc-200/50 dark:border-zinc-800/50 flex flex-col transition-all duration-300 overflow-hidden animate-in zoom-in-95">
                 {renderInnerContent(true)}
               </section>
             </>,
@@ -782,7 +782,7 @@ export function GlobalActivityFeed() {
           )}
         </>
       ) : (
-        <section className="glass p-6 border border-stone-200/50 dark:border-zinc-800/50 shadow-md transition-all duration-300 flex flex-col h-[600px] rounded-2xl">
+        <section className="glass p-6 border border-zinc-200/50 dark:border-zinc-800/50 shadow-md transition-all duration-300 flex flex-col h-[600px] rounded-2xl">
           {renderInnerContent(false)}
         </section>
       )}

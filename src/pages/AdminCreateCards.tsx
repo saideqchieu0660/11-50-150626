@@ -395,11 +395,11 @@ export default function AdminCreateCards() {
           <ChevronLeft className="w-6 h-6" />
         </button>
         <div>
-          <h1 className="text-3xl font-display font-bold tracking-tight text-stone-800 dark:text-stone-100 flex items-center gap-3">
-            <BrainCircuit className="w-8 h-8 text-yellow-500" />
+          <h1 className="text-3xl font-display font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center gap-3">
+            <BrainCircuit className="w-8 h-8 text-orange-500" />
             Tạo Thẻ Học Chuyên Sâu
           </h1>
-          <p className="text-stone-500 dark:text-stone-400 mt-1 flex items-center gap-2">
+          <p className="text-zinc-500 dark:text-zinc-400 mt-1 flex items-center gap-2">
             <span className="uppercase text-xs font-bold tracking-widest text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-full">
               Admin Route
             </span>
@@ -419,7 +419,7 @@ export default function AdminCreateCards() {
         {/* LEFT COLUMN: Deck & Card Builder */}
         <div className="lg:col-span-7 space-y-6">
           {/* Deck Selection Layer */}
-          <div className="glass p-6 md:p-8 rounded-3xl border border-stone-200 dark:border-zinc-800 shadow-sm relative overflow-hidden group">
+          <div className="glass p-6 md:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-sm relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
             <h2 className="text-lg font-bold mb-4 flex items-center gap-2 relative z-10">
@@ -440,7 +440,7 @@ export default function AdminCreateCards() {
                   <input
                     type="text"
                     placeholder="Tên bộ bài (VD: 3000 Từ Vựng Toeic)"
-                    className="p-4 bg-stone-100/50 dark:bg-zinc-800/50 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-zinc-900 transition"
+                    className="p-4 bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 rounded-xl outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-zinc-900 transition"
                     value={newDeckTitle}
                     onChange={(e) => setNewDeckTitle(e.target.value)}
                     disabled={editingBatchCardId !== null}
@@ -458,7 +458,7 @@ export default function AdminCreateCards() {
                           }
                         }}
                         disabled={editingBatchCardId !== null}
-                        className="flex-1 p-4 bg-stone-100/50 dark:bg-zinc-800/50 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-zinc-900 transition text-stone-900 dark:text-stone-100"
+                        className="flex-1 p-4 bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 rounded-xl outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-zinc-900 transition text-zinc-900 dark:text-zinc-100"
                       >
                         <option value="">-- Chọn danh mục --</option>
                         {existingSubjects.map((s) => (
@@ -491,7 +491,7 @@ export default function AdminCreateCards() {
                       <input
                         type="text"
                         placeholder="Danh mục (VD: Tiếng Anh)"
-                        className="flex-1 p-4 bg-stone-100/50 dark:bg-zinc-800/50 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-zinc-900 transition text-stone-900 dark:text-stone-100"
+                        className="flex-1 p-4 bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 rounded-xl outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-zinc-900 transition text-zinc-900 dark:text-zinc-100"
                         value={newDeckSubject}
                         onChange={(e) => setNewDeckSubject(e.target.value)}
                         disabled={editingBatchCardId !== null}
@@ -504,7 +504,7 @@ export default function AdminCreateCards() {
                           setNewDeckSubject(existingSubjects[0] || "general");
                         }}
                         disabled={editingBatchCardId !== null}
-                        className="px-4 bg-stone-200 dark:bg-zinc-800 hover:bg-stone-300 text-stone-800 dark:text-stone-200 rounded-xl text-xs font-bold"
+                        className="px-4 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 text-zinc-800 dark:text-zinc-200 rounded-xl text-xs font-bold"
                       >
                         Quay lại
                       </button>
@@ -517,13 +517,13 @@ export default function AdminCreateCards() {
 
           {/* Card Builder Layer */}
           <div
-            className={`glass p-6 md:p-8 rounded-3xl border ${editingBatchCardId ? "border-amber-400 dark:border-amber-500/50 shadow-amber-500/20 shadow-xl" : "border-stone-200 dark:border-zinc-800 shadow-lg"} relative transition-all duration-300`}
+            className={`glass p-6 md:p-8 rounded-3xl border ${editingBatchCardId ? "border-orange-400 dark:border-orange-500/50 shadow-orange-500/20 shadow-xl" : "border-zinc-200 dark:border-zinc-800 shadow-lg"} relative transition-all duration-300`}
           >
-            <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-yellow-400/10 blur-3xl rounded-full" />
+            <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-orange-400/10 blur-3xl rounded-full" />
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-bold flex items-center gap-2">
                 <Plus
-                  className={`w-6 h-6 ${editingBatchCardId ? "text-amber-500" : "text-yellow-600 dark:text-yellow-500"}`}
+                  className={`w-6 h-6 ${editingBatchCardId ? "text-orange-500" : "text-orange-600 dark:text-orange-500"}`}
                 />
                 {editingBatchCardId
                   ? "Cập Nhật Thông Tin Thẻ"
@@ -533,7 +533,7 @@ export default function AdminCreateCards() {
                 <button
                   type="button"
                   onClick={handleCancelEdit}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 dark:bg-zinc-800 hover:bg-stone-200 dark:hover:bg-zinc-700 text-stone-600 dark:text-stone-300 text-sm font-semibold rounded-lg transition"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 text-sm font-semibold rounded-lg transition"
                 >
                   <X className="w-4 h-4" /> Bỏ qua
                 </button>
@@ -548,7 +548,7 @@ export default function AdminCreateCards() {
                 <input
                   ref={frontInputRef}
                   type="text"
-                  className="w-full text-lg p-5 bg-white/70 dark:bg-black/40 border border-stone-200 dark:border-zinc-700 shadow-inner rounded-xl outline-none focus:ring-2 focus:ring-yellow-500/50 transition font-medium"
+                  className="w-full text-lg p-5 bg-white/70 dark:bg-black/40 border border-zinc-200 dark:border-zinc-700 shadow-inner rounded-xl outline-none focus:ring-2 focus:ring-orange-500/50 transition font-medium"
                   placeholder="Nhập từ vựng, câu hỏi..."
                   value={front}
                   onChange={(e) => setFront(e.target.value)}
@@ -563,7 +563,7 @@ export default function AdminCreateCards() {
                 </label>
                 <input
                   type="text"
-                  className="w-full p-4 bg-stone-100/50 dark:bg-zinc-800/50 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:border-yellow-500 transition text-sm font-mono"
+                  className="w-full p-4 bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 rounded-xl outline-none focus:border-orange-500 transition text-sm font-mono"
                   placeholder="VD: Noun, Verb, /'stʌdi/..."
                   value={wordForm}
                   onChange={(e) => setWordForm(e.target.value)}
@@ -579,7 +579,7 @@ export default function AdminCreateCards() {
                     type="button"
                     onClick={handleGenerateBack}
                     disabled={isGeneratingAI || !front.trim()}
-                    className="px-2 py-1 bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-600 dark:text-yellow-500 font-bold text-[10px] rounded flex items-center gap-1 transition disabled:opacity-50"
+                    className="px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-500 font-bold text-[10px] rounded flex items-center gap-1 transition disabled:opacity-50"
                   >
                     {isGeneratingAI ? <Loader2 className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
                     AI Khuyến Nghị
@@ -587,7 +587,7 @@ export default function AdminCreateCards() {
                 </div>
                 <textarea
                   rows={4}
-                  className="w-full p-5 bg-white/70 dark:bg-black/40 border border-stone-200 dark:border-zinc-700 shadow-inner rounded-xl outline-none focus:ring-2 focus:ring-yellow-500/50 transition resize-none leading-relaxed"
+                  className="w-full p-5 bg-white/70 dark:bg-black/40 border border-zinc-200 dark:border-zinc-700 shadow-inner rounded-xl outline-none focus:ring-2 focus:ring-orange-500/50 transition resize-none leading-relaxed"
                   placeholder="Giải thích chi tiết, ý nghĩa, ví dụ tiếng Việt..."
                   value={back}
                   onChange={(e) => setBack(e.target.value)}
@@ -608,8 +608,8 @@ export default function AdminCreateCards() {
                   className={`px-6 py-3 font-bold rounded-xl transition flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-95 duration-200
                         ${
                           editingBatchCardId
-                            ? "bg-amber-500 hover:bg-amber-600 text-white"
-                            : "bg-stone-800 hover:bg-black dark:bg-white dark:hover:bg-stone-200 text-white dark:text-black"
+                            ? "bg-orange-500 hover:bg-orange-600 text-white"
+                            : "bg-zinc-800 hover:bg-black dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black"
                         }
                      `}
                 >
@@ -625,10 +625,10 @@ export default function AdminCreateCards() {
 
         {/* RIGHT COLUMN: Batch Preview & Bulk Submission */}
         <div className="lg:col-span-5 h-full">
-          <div className="glass p-6 rounded-3xl border border-stone-200 dark:border-zinc-800 flex flex-col h-full sticky top-28 shadow-sm">
+          <div className="glass p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 flex flex-col h-full sticky top-28 shadow-sm">
             <div className="flex items-center justify-between mx-2 mb-4">
               <h3 className="font-bold text-lg">Danh sách chờ lưu</h3>
-              <div className="px-3 py-1 bg-yellow-500/20 text-yellow-700 dark:text-yellow-400 font-bold rounded-full text-sm flex items-center gap-2 transition-all">
+              <div className="px-3 py-1 bg-orange-500/20 text-orange-700 dark:text-orange-400 font-bold rounded-full text-sm flex items-center gap-2 transition-all">
                 {batchCards.length} Thẻ
               </div>
             </div>
@@ -656,13 +656,13 @@ export default function AdminCreateCards() {
                       exit={{ opacity: 0, scale: 0.9 }}
                       className={`p-4 bg-white/50 dark:bg-zinc-900/50 rounded-2xl group flex flex-col gap-3 transition-colors duration-200 relative overflow-hidden ${
                         editingBatchCardId === card.id
-                          ? "border-2 border-amber-400 dark:border-amber-500 bg-amber-50 dark:bg-amber-900/10"
-                          : "border border-stone-200 dark:border-zinc-800 hover:border-stone-300 dark:hover:border-zinc-700"
+                          ? "border-2 border-orange-400 dark:border-orange-500 bg-orange-50 dark:bg-orange-900/10"
+                          : "border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700"
                       }`}
                     >
                       {editingBatchCardId === card.id && (
                         <div
-                          className="absolute top-0 right-0 w-8 h-8 bg-amber-400 dark:bg-amber-500"
+                          className="absolute top-0 right-0 w-8 h-8 bg-orange-400 dark:bg-orange-500"
                           style={{
                             clipPath: "polygon(100% 0, 0 0, 100% 100%)",
                           }}
@@ -675,7 +675,7 @@ export default function AdminCreateCards() {
                             <div className="text-xs font-bold opacity-40 mb-1 flex items-center gap-1.5">
                               # {idx + 1}
                               {editingBatchCardId === card.id && (
-                                <span className="text-amber-600 dark:text-amber-400 opacity-100">
+                                <span className="text-orange-600 dark:text-orange-400 opacity-100">
                                   (Đang sửa)
                                 </span>
                               )}
@@ -701,8 +701,8 @@ export default function AdminCreateCards() {
                               onClick={() => handleEditCard(card.id)}
                               className={`p-2 rounded-lg transition flex items-center justify-center transform active:scale-95 ${
                                 editingBatchCardId === card.id
-                                  ? "bg-amber-500 text-white shadow-md"
-                                  : "bg-amber-500/10 text-amber-600 dark:text-amber-500 hover:bg-amber-500 hover:text-white"
+                                  ? "bg-orange-500 text-white shadow-md"
+                                  : "bg-orange-500/10 text-orange-600 dark:text-orange-500 hover:bg-orange-500 hover:text-white"
                               }`}
                               title="Sửa thẻ"
                             >

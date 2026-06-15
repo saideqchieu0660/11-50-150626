@@ -39,8 +39,8 @@ export const getLevelInfo = (xp: number) => {
   if (currentLevel >= 20) title = "Á Thần Olympus";
   if (currentLevel >= 30) title = "Chân Lý Logos";
 
-  let titleColor = "text-stone-500 font-medium";
-  let badgeColors = "from-stone-400 to-stone-500 text-stone-900";
+  let titleColor = "text-zinc-500 font-medium";
+  let badgeColors = "from-zinc-400 to-zinc-500 text-zinc-900";
   
   if (currentLevel >= 3) {
     titleColor = "text-blue-500 font-semibold";
@@ -51,20 +51,20 @@ export const getLevelInfo = (xp: number) => {
     badgeColors = "from-purple-400 to-purple-600 text-white shadow-purple-500/30";
   }
   if (currentLevel >= 10) {
-    titleColor = "text-amber-500 font-bold";
-    badgeColors = "from-amber-400 to-orange-500 text-white shadow-amber-500/40";
+    titleColor = "text-orange-500 font-bold";
+    badgeColors = "from-orange-400 to-orange-500 text-white shadow-orange-500/40";
   }
   if (currentLevel >= 15) {
     titleColor = "text-red-500 font-bold";
     badgeColors = "from-rose-500 to-red-600 text-white shadow-red-500/50";
   }
   if (currentLevel >= 20) {
-    titleColor = "text-yellow-600 font-black animate-pulse";
-    badgeColors = "from-yellow-300 via-amber-500 to-yellow-600 text-white shadow-yellow-500/60 ring-2 ring-yellow-400/50";
+    titleColor = "text-orange-600 font-black animate-pulse";
+    badgeColors = "from-orange-300 via-orange-500 to-orange-600 text-white shadow-orange-500/60 ring-2 ring-orange-400/50";
   }
   if (currentLevel >= 30) {
-    titleColor = "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-fuchsia-500 to-amber-400 font-black";
-    badgeColors = "from-blue-500 via-purple-500 to-amber-500 text-white shadow-fuchsia-500/60 ring-2 ring-purple-400/50";
+    titleColor = "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-fuchsia-500 to-orange-400 font-black";
+    badgeColors = "from-blue-500 via-purple-500 to-orange-500 text-white shadow-fuchsia-500/60 ring-2 ring-purple-400/50";
   }
 
   return {
@@ -83,15 +83,15 @@ export const getLevelInfo = (xp: number) => {
 export const getCustomTitleTextClass = (title?: string, fallbackClass?: string) => {
   if (title === "Quân Vương Triết Học") {
     // 7 colors
-    return "text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-rainbow-text font-black drop-shadow-sm";
+    return "text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-500 via-green-500 via-blue-500 to-purple-500 animate-rainbow-text font-black drop-shadow-sm";
   }
   if (title === "Thủ Lĩnh Sparta") {
-    return "text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-emerald-500 font-black drop-shadow-sm";
+    return "text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-emerald-500 font-black drop-shadow-sm";
   }
   if (title === "Học Giả Bách Khoa") {
-    return "text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-600 font-black drop-shadow-sm";
+    return "text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 font-black drop-shadow-sm";
   }
-  return title ? "text-amber-600 dark:text-amber-400 font-bold" : (fallbackClass || "");
+  return title ? "text-orange-600 dark:text-orange-400 font-bold" : (fallbackClass || "");
 };
 
 export const BORDERS_REGISTRY = [
@@ -102,25 +102,25 @@ export const BORDERS_REGISTRY = [
   { id: "diamond", label: "Huy hiệu Kim Cương", color: "ring-4 ring-[#00ffff] shadow-[0_0_20px_rgba(0,255,255,0.6)] animate-pulse" },
   { id: "streak_3", label: "Vòng Ánh Sáng Động Thạch", color: "ring-4 ring-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.3)]" },
   { id: "points_100", label: "Viền Tinh Thạch Học Giả", color: "ring-4 ring-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.3)]" },
-  { id: "streak_10", label: "Khung Ý Chí Khắc Kỷ", color: "ring-4 ring-yellow-500/80 shadow-[0_0_20px_rgba(234,179,8,0.5)]" },
+  { id: "streak_10", label: "Khung Ý Chí Khắc Kỷ", color: "ring-4 ring-orange-500/80 shadow-[0_0_20px_rgba(234,179,8,0.5)]" },
   { id: "points_1000", label: "Viền Kim Long Cấp", color: "ring-4 ring-[#ffd700] ring-offset-2 ring-offset-transparent shadow-[0_0_20px_rgba(255,215,0,0.5)]" },
   { id: "streak_50", label: "Hào Quang Bán Thần", color: "border-4 border-transparent bg-gradient-to-br from-purple-400 to-fuchsia-600 bg-clip-border shadow-[0_0_30px_rgba(192,132,252,0.6)] animate-pulse" },
   { id: "mastery_95", label: "Lời Nguyền Từ Các Nữ Thần", color: "border-4 border-fuchsia-500 shadow-[0_0_30px_rgba(217,70,239,0.7)]" },
-  { id: "top1_10", label: "Đế Cung Ánh Sáng", color: "ring-[6px] ring-yellow-400 shadow-[0_0_40px_rgba(250,204,21,0.8)] animate-rainbow-bg" },
+  { id: "top1_10", label: "Đế Cung Ánh Sáng", color: "ring-[6px] ring-orange-400 shadow-[0_0_40px_rgba(250,204,21,0.8)] animate-rainbow-bg" },
   { id: "time_600", label: "Vầng Sáng Sáng Thế", color: "ring-4 ring-rose-500 shadow-[0_0_30px_rgba(244,63,94,0.6)] animate-pulse" },
 ];
 
 export const getCustomTitleBadgeClass = (title?: string, fallbackClass?: string) => {
   if (title === "Quân Vương Triết Học") {
-    return "bg-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 font-black ring-2 ring-red-500/50 shadow-[0_0_15px_rgba(239,68,68,0.5)] animate-rainbow-text";
+    return "bg-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-500 via-green-500 via-blue-500 to-purple-500 font-black ring-2 ring-red-500/50 shadow-[0_0_15px_rgba(239,68,68,0.5)] animate-rainbow-text";
   }
   if (title === "Thủ Lĩnh Sparta") {
-    return "bg-emerald-950 text-emerald-400 font-black ring-2 ring-yellow-500/50 shadow-[0_0_15px_rgba(16,185,129,0.3)]";
+    return "bg-emerald-950 text-emerald-400 font-black ring-2 ring-orange-500/50 shadow-[0_0_15px_rgba(16,185,129,0.3)]";
   }
   if (title === "Học Giả Bách Khoa") {
-    return "bg-amber-950 text-amber-400 font-black ring-2 ring-yellow-500/80 shadow-[0_0_20px_rgba(245,158,11,0.4)]";
+    return "bg-orange-950 text-orange-400 font-black ring-2 ring-orange-500/80 shadow-[0_0_20px_rgba(245,158,11,0.4)]";
   }
-  return title ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold" : (fallbackClass || "");
+  return title ? "bg-orange-500/10 text-orange-600 dark:text-orange-400 font-bold" : (fallbackClass || "");
 };
 
 export const getUnlockedBorders = (points: number, streak: number, top1Weeks: number, studyTime: number, mastery: number, currentBorder?: string) => {
@@ -141,7 +141,7 @@ export const getUnlockedBorders = (points: number, streak: number, top1Weeks: nu
       BORDERS_REGISTRY.push({
          id: currentBorder,
          label: `Đặc biệt: ${currentBorder}`,
-         color: "ring-4 ring-stone-400 shadow-xl"
+         color: "ring-4 ring-zinc-400 shadow-xl"
       });
     }
   }

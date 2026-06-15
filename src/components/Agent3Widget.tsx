@@ -430,7 +430,7 @@ export default function Agent3Widget() {
           transition={{ duration: 0.3 }}
           onClick={() => setIsOpen(true)}
           id="agent3-side-widget-anchor"
-          className="fixed bottom-24 right-6 w-14 h-14 bg-yellow-500 text-black rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition z-50 group cursor-pointer"
+          className="fixed bottom-24 right-6 w-14 h-14 bg-orange-500 text-black rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition z-50 group cursor-pointer"
         >
           <Bot className="w-6 h-6 group-hover:animate-bounce" />
         </motion.button>
@@ -444,7 +444,7 @@ export default function Agent3Widget() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-stone-900/40 dark:bg-black/40 backdrop-blur-md z-40 transition-all duration-[350ms] ease-out"
+            className="fixed inset-0 bg-zinc-900/40 dark:bg-black/40 backdrop-blur-md z-40 transition-all duration-[350ms] ease-out"
             onClick={() => setIsOpen(false)}
           />
           <motion.div 
@@ -454,15 +454,15 @@ export default function Agent3Widget() {
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 350, damping: 25 }}
             className={cn(
-            "fixed z-50 flex flex-col bg-white/95 dark:bg-zinc-950/98 sm:bg-stone-50/90 sm:dark:bg-zinc-950/90 backdrop-blur-md sm:backdrop-blur-none sm:glass rounded-none sm:rounded-2xl overflow-hidden shadow-2xl sm:border sm:border-stone-200/50 dark:sm:border-white/[0.08]",
+            "fixed z-50 flex flex-col bg-white/95 dark:bg-zinc-950/98 sm:bg-zinc-50/90 sm:dark:bg-zinc-950/90 backdrop-blur-md sm:backdrop-blur-none sm:glass rounded-none sm:rounded-2xl overflow-hidden shadow-2xl sm:border sm:border-zinc-200/50 dark:sm:border-white/[0.08]",
             isMaximized 
               ? "inset-0 sm:inset-auto sm:top-[10%] sm:left-[10%] sm:w-[80vw] sm:h-[80vh] sm:translate-x-0 sm:translate-y-0" 
               : "inset-0 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[380px] sm:h-[550px]"
           )}>
-            <div className="bg-yellow-500 text-black p-4 flex justify-between items-center shrink-0">
+            <div className="bg-orange-500 text-black p-4 flex justify-between items-center shrink-0">
              <div className="flex items-center gap-2">
                <Bot className="w-5 h-5 animate-pulse" />
-               <h3 className="font-bold tracking-tight text-stone-950">Agent 3 - Socratic Coach</h3>
+               <h3 className="font-bold tracking-tight text-zinc-950">Agent 3 - Socratic Coach</h3>
              </div>
              <div className="flex justify-end gap-1 items-center">
                <button 
@@ -481,14 +481,14 @@ export default function Agent3Widget() {
 
            {/* Behavior Settings Window */}
            {showSettings && (
-             <div className="bg-amber-500/10 dark:bg-zinc-900 px-4 py-3 border-b border-stone-200/50 dark:border-white/10 space-y-3 shrink-0 text-left animate-in slide-in-from-top duration-200">
+             <div className="bg-orange-500/10 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200/50 dark:border-white/10 space-y-3 shrink-0 text-left animate-in slide-in-from-top duration-200">
                <div className="flex items-center justify-between">
-                 <h4 className="text-[11px] font-extrabold uppercase text-amber-700 dark:text-yellow-500 tracking-wider flex items-center gap-1.5">
+                 <h4 className="text-[11px] font-extrabold uppercase text-orange-700 dark:text-orange-500 tracking-wider flex items-center gap-1.5">
                    ⚙️ Cài đặt hành vi Agent 3
                  </h4>
                  <button 
                    onClick={() => setShowSettings(false)} 
-                   className="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 text-xs font-bold"
+                   className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-xs font-bold"
                  >
                    Đóng
                  </button>
@@ -496,17 +496,17 @@ export default function Agent3Widget() {
                
                <div className="space-y-3">
                  <div className="flex flex-col gap-1">
-                   <span className="text-[10px] font-bold text-stone-600 dark:text-stone-300">
+                   <span className="text-[10px] font-bold text-zinc-600 dark:text-zinc-300">
                      Độ chi tiết:
                    </span>
-                   <div className="grid grid-cols-3 gap-1 bg-stone-200/55 dark:bg-zinc-800 p-0.5 rounded-lg border border-stone-300/30">
+                   <div className="grid grid-cols-3 gap-1 bg-zinc-200/55 dark:bg-zinc-800 p-0.5 rounded-lg border border-zinc-300/30">
                      <button
                        onClick={() => handleToggleResponseLength("concise")}
                        className={cn(
                          "py-1 rounded text-[10px] font-bold transition-all cursor-pointer",
                          responseLength === "concise"
-                           ? "bg-yellow-500 text-black shadow-xs"
-                           : "text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+                           ? "bg-orange-500 text-black shadow-xs"
+                           : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
                        )}
                        title="Súc tích - Trả lời 1-3 câu siêu ngắn gọn"
                      >
@@ -517,8 +517,8 @@ export default function Agent3Widget() {
                        className={cn(
                          "py-1 rounded text-[10px] font-bold transition-all cursor-pointer",
                          responseLength === "detailed"
-                           ? "bg-yellow-500 text-black shadow-xs"
-                           : "text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+                           ? "bg-orange-500 text-black shadow-xs"
+                           : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
                        )}
                        title="Chi tiết - Giải thích 200-300 chữ kèm ví dụ"
                      >
@@ -529,8 +529,8 @@ export default function Agent3Widget() {
                        className={cn(
                          "py-1 rounded text-[10px] font-bold transition-all cursor-pointer",
                          responseLength === "super_detailed"
-                           ? "bg-yellow-500 text-black shadow-xs"
-                           : "text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+                           ? "bg-orange-500 text-black shadow-xs"
+                           : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
                        )}
                        title="Siêu chi tiết - Phân tích sâu sắc cặn kẽ 100%"
                      >
@@ -545,18 +545,18 @@ export default function Agent3Widget() {
            )}
 
           {/* Mode Switcher Bar */}
-          <div className="bg-stone-100 dark:bg-zinc-900 px-4 py-2 border-b border-stone-200/50 dark:border-white/10 flex justify-between items-center shrink-0 text-left">
-            <span className="text-xs font-bold text-stone-500 dark:text-stone-400">
+          <div className="bg-zinc-100 dark:bg-zinc-900 px-4 py-2 border-b border-zinc-200/50 dark:border-white/10 flex justify-between items-center shrink-0 text-left">
+            <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400">
               Chế độ trả lời:
             </span>
-            <div className="flex bg-stone-200/60 dark:bg-zinc-800/80 p-0.5 rounded-lg border border-stone-300/30">
+            <div className="flex bg-zinc-200/60 dark:bg-zinc-800/80 p-0.5 rounded-lg border border-zinc-300/30">
               <button
                 onClick={() => handleToggleResponseMode("socratic")}
                 className={cn(
                   "px-2 py-1 rounded text-[10px] font-bold transition-all cursor-pointer",
                   responseMode === "socratic"
-                    ? "bg-yellow-500 text-black shadow-xs"
-                    : "text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+                    ? "bg-orange-500 text-black shadow-xs"
+                    : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
                 )}
                 title="Gợi mở (Socrates) - Đặt câu hỏi gợi ý để bạn tự suy luận"
               >
@@ -567,8 +567,8 @@ export default function Agent3Widget() {
                 className={cn(
                   "px-2 py-1 rounded text-[10px] font-bold transition-all cursor-pointer",
                   responseMode === "direct"
-                    ? "bg-yellow-500 text-black shadow-xs"
-                    : "text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+                    ? "bg-orange-500 text-black shadow-xs"
+                    : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
                 )}
                 title="Trực diện (Direct) - Trả lời thẳng vào câu hỏi trực tiếp"
               >
@@ -579,8 +579,8 @@ export default function Agent3Widget() {
                 className={cn(
                   "px-2 py-1 rounded text-[10px] font-bold transition-all cursor-pointer",
                   responseMode === "debate"
-                    ? "bg-yellow-500 text-black shadow-xs"
-                    : "text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+                    ? "bg-orange-500 text-black shadow-xs"
+                    : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
                 )}
                 title="Tranh biện (Debate) - Đóng vai phản biện sắc bén"
               >
@@ -589,7 +589,7 @@ export default function Agent3Widget() {
             </div>
           </div>
           
-          <div className="flex-1 min-h-0 relative overflow-y-auto p-4 space-y-4 bg-stone-50/90 dark:bg-zinc-950/40 sm:bg-transparent sm:dark:bg-transparent">
+          <div className="flex-1 min-h-0 relative overflow-y-auto p-4 space-y-4 bg-zinc-50/90 dark:bg-zinc-950/40 sm:bg-transparent sm:dark:bg-transparent">
              <AnimatePresence>
              {messages.map((m, i) => (
                 <motion.div 
@@ -603,7 +603,7 @@ export default function Agent3Widget() {
                 >
                   <div className={cn(
                     "p-3 rounded-xl break-words transition-all duration-300 relative z-10 w-full", 
-                    m.role === "user" ? "bg-yellow-500/30 dark:bg-yellow-500/20 rounded-tr-none text-stone-900 dark:text-stone-100" : "bg-stone-200/50 dark:bg-white/10 rounded-tl-none text-stone-800 dark:text-stone-200",
+                    m.role === "user" ? "bg-orange-500/30 dark:bg-orange-500/20 rounded-tr-none text-zinc-900 dark:text-zinc-100" : "bg-zinc-200/50 dark:bg-white/10 rounded-tl-none text-zinc-800 dark:text-zinc-200",
                     isMaximized ? "text-lg" : "text-sm"
                   )}>
                      <ReactMarkdown 
@@ -618,7 +618,7 @@ export default function Agent3Widget() {
                              return <MermaidRenderer code={codeContent} onAddCard={handleQuickAddNode} />;
                            }
                            return (
-                             <code className={cn(className, "bg-stone-100 dark:bg-zinc-900 rounded px-1.5 py-0.5 font-mono text-xs text-amber-600 dark:text-amber-400")} {...props}>
+                             <code className={cn(className, "bg-zinc-100 dark:bg-zinc-900 rounded px-1.5 py-0.5 font-mono text-xs text-orange-600 dark:text-orange-400")} {...props}>
                                {children}
                              </code>
                            );
@@ -631,7 +631,7 @@ export default function Agent3Widget() {
                   {m.role === "ai" && (
                     <button
                       onClick={() => handleSaveToSetClicked(m.text, i)}
-                      className="text-[11px] text-yellow-600 dark:text-yellow-400 font-extrabold flex items-center gap-1 mt-1 hover:underline self-start pl-1 cursor-pointer transition duration-200"
+                      className="text-[11px] text-orange-600 dark:text-orange-400 font-extrabold flex items-center gap-1 mt-1 hover:underline self-start pl-1 cursor-pointer transition duration-200"
                     >
                       <Plus className="w-3 h-3" /> Thêm vào bộ thẻ
                     </button>
@@ -646,12 +646,12 @@ export default function Agent3Widget() {
                    initial={{ opacity: 0, y: 10 }}
                    animate={{ opacity: 1, y: 0 }}
                    exit={{ opacity: 0, scale: 0.9, y: 5 }}
-                   className="bg-stone-200/50 dark:bg-white/10 p-3 rounded-xl rounded-tl-none w-fit relative z-10"
+                   className="bg-zinc-200/50 dark:bg-white/10 p-3 rounded-xl rounded-tl-none w-fit relative z-10"
                 >
                    <div className="flex gap-1.5 h-4 items-center justify-center">
-                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0 }} className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></motion.div>
-                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0.15 }} className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></motion.div>
-                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0.3 }} className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></motion.div>
+                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0 }} className="w-1.5 h-1.5 bg-orange-500 rounded-full"></motion.div>
+                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0.15 }} className="w-1.5 h-1.5 bg-orange-500 rounded-full"></motion.div>
+                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0.3 }} className="w-1.5 h-1.5 bg-orange-500 rounded-full"></motion.div>
                    </div>
                 </motion.div>
              )}
@@ -659,16 +659,16 @@ export default function Agent3Widget() {
              
              {/* Glassmorphic Placeholder State for Cooldown Energy Charging */}
              {cooldownRemaining > 0 && (
-                <div className="absolute inset-0 z-20 bg-stone-50/40 dark:bg-zinc-950/40 backdrop-blur-sm transition-all duration-500 flex flex-col items-center justify-center p-4">
-                   <div className="glass px-6 py-4 flex flex-col items-center gap-3 animate-in zoom-in-95 duration-300 border border-yellow-500/20">
+                <div className="absolute inset-0 z-20 bg-zinc-50/40 dark:bg-zinc-950/40 backdrop-blur-sm transition-all duration-500 flex flex-col items-center justify-center p-4">
+                   <div className="glass px-6 py-4 flex flex-col items-center gap-3 animate-in zoom-in-95 duration-300 border border-orange-500/20">
                      <div className="relative w-12 h-12 flex items-center justify-center">
-                        <div className="absolute inset-0 border-4 border-yellow-500/20 rounded-full"></div>
+                        <div className="absolute inset-0 border-4 border-orange-500/20 rounded-full"></div>
                         <svg className="absolute inset-0 w-12 h-12 -rotate-90" viewBox="0 0 100 100">
-                          <circle cx="50" cy="50" r="46" fill="transparent" stroke="currentColor" strokeWidth="8" strokeDasharray="289" strokeDashoffset={289 - (289 * (10 - cooldownRemaining)) / 10} className="text-yellow-500 transition-all duration-1000 ease-linear" />
+                          <circle cx="50" cy="50" r="46" fill="transparent" stroke="currentColor" strokeWidth="8" strokeDasharray="289" strokeDashoffset={289 - (289 * (10 - cooldownRemaining)) / 10} className="text-orange-500 transition-all duration-1000 ease-linear" />
                         </svg>
-                        <Bot className="w-5 h-5 text-yellow-500 animate-pulse relative z-10" />
+                        <Bot className="w-5 h-5 text-orange-500 animate-pulse relative z-10" />
                      </div>
-                     <span className="font-medium text-sm text-stone-900 dark:text-stone-100 italic font-sans flex items-center gap-1.5"><Flame className="w-4 h-4 text-yellow-500" /> Sạc năng lượng hệ thống...</span>
+                     <span className="font-medium text-sm text-zinc-900 dark:text-zinc-100 italic font-sans flex items-center gap-1.5"><Flame className="w-4 h-4 text-orange-500" /> Sạc năng lượng hệ thống...</span>
                    </div>
                 </div>
              )}
@@ -676,8 +676,8 @@ export default function Agent3Widget() {
              <div ref={messagesEndRef} className="h-4 w-full" />
           </div>
 
-          <div className="p-4 sm:p-3 border-t border-stone-200/50 dark:border-white/10 bg-stone-100/90 dark:bg-zinc-900/60 sm:bg-stone-50/50 sm:dark:bg-white/5 sticky bottom-0 pb-8 sm:pb-3 shrink-0">
-            <div className="flex gap-2 items-center bg-stone-200/40 dark:bg-zinc-800/40 border border-stone-300/60 dark:border-zinc-700/60 rounded-xl px-2.5 py-1.5 shadow-inner focus-within:ring-2 focus-within:ring-yellow-500/50 focus-within:border-yellow-500 transition-all">
+          <div className="p-4 sm:p-3 border-t border-zinc-200/50 dark:border-white/10 bg-zinc-100/90 dark:bg-zinc-900/60 sm:bg-zinc-50/50 sm:dark:bg-white/5 sticky bottom-0 pb-8 sm:pb-3 shrink-0">
+            <div className="flex gap-2 items-center bg-zinc-200/40 dark:bg-zinc-800/40 border border-zinc-300/60 dark:border-zinc-700/60 rounded-xl px-2.5 py-1.5 shadow-inner focus-within:ring-2 focus-within:ring-orange-500/50 focus-within:border-orange-500 transition-all">
               <input 
                 value={input}
                 onChange={e => setInput(e.target.value)}
@@ -685,7 +685,7 @@ export default function Agent3Widget() {
                 disabled={cooldownRemaining > 0}
                 placeholder={cooldownRemaining > 0 ? `Chờ ${cooldownRemaining}s...` : "Hỏi Gia sư Socrates..."}
                 className={cn(
-                  "flex-1 bg-transparent border-none focus:outline-none text-stone-900 dark:text-stone-100 placeholder:text-stone-500 dark:placeholder:text-stone-400 transition-all duration-300 min-w-0",
+                  "flex-1 bg-transparent border-none focus:outline-none text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 transition-all duration-300 min-w-0",
                   cooldownRemaining > 0 && "opacity-50 cursor-not-allowed",
                   isMaximized ? "text-lg py-1" : "text-sm py-0.5"
                 )}
@@ -693,11 +693,11 @@ export default function Agent3Widget() {
               <button 
                 onClick={handleSend}
                 disabled={isLoading || !input.trim() || cooldownRemaining > 0}
-                className="p-1.5 bg-yellow-500 text-black rounded-lg disabled:opacity-50 hover:bg-yellow-600 transition cursor-pointer flex items-center justify-center shrink-0 w-8 h-8"
+                className="p-1.5 bg-orange-500 text-black rounded-lg disabled:opacity-50 hover:bg-orange-600 transition cursor-pointer flex items-center justify-center shrink-0 w-8 h-8"
                 title={cooldownRemaining > 0 ? `Đang trong cooldown 10s (Còn lại ${cooldownRemaining}s)` : "Gửi"}
               >
                 {cooldownRemaining > 0 ? (
-                  <span className="text-[10px] font-black font-mono text-stone-900">{cooldownRemaining}s</span>
+                  <span className="text-[10px] font-black font-mono text-zinc-900">{cooldownRemaining}s</span>
                 ) : (
                   <Send className="w-3.5 h-3.5" />
                 )}
@@ -710,17 +710,17 @@ export default function Agent3Widget() {
       </AnimatePresence>
 
       {isSaveModalOpen && (
-        <div className="fixed inset-0 bg-stone-900/60 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[60] animate-in fade-in">
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl max-w-md w-full shadow-2xl border border-stone-200 dark:border-zinc-800 p-6 flex flex-col space-y-4 animate-in zoom-in-95 relative text-left">
+        <div className="fixed inset-0 bg-zinc-900/60 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[60] animate-in fade-in">
+          <div className="bg-white dark:bg-zinc-900 rounded-2xl max-w-md w-full shadow-2xl border border-zinc-200 dark:border-zinc-800 p-6 flex flex-col space-y-4 animate-in zoom-in-95 relative text-left">
             <button 
               onClick={() => setIsSaveModalOpen(false)}
-              className="absolute top-4 right-4 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 cursor-pointer"
+              className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <h3 className="text-lg font-display font-black text-stone-900 dark:text-stone-50 flex items-center gap-2">
-              <Plus className="w-5 h-5 text-yellow-500" /> Thêm thẻ học mới
+            <h3 className="text-lg font-display font-black text-zinc-900 dark:text-zinc-50 flex items-center gap-2">
+              <Plus className="w-5 h-5 text-orange-500" /> Thêm thẻ học mới
             </h3>
 
             {saveErrorMsg && (
@@ -736,7 +736,7 @@ export default function Agent3Widget() {
             )}
 
             {/* Toggle Tab chuyển đổi giữa thêm vào bộ sẵn có và tạo bộ mới */}
-            <div className="flex bg-stone-100 dark:bg-zinc-800/40 p-1 rounded-xl gap-1 border border-stone-200/55 dark:border-zinc-850">
+            <div className="flex bg-zinc-100 dark:bg-zinc-800/40 p-1 rounded-xl gap-1 border border-zinc-200/55 dark:border-zinc-850">
               <button
                 type="button"
                 onClick={() => {
@@ -749,8 +749,8 @@ export default function Agent3Widget() {
                 className={cn(
                   "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1 cursor-pointer",
                   !isCreateNewSet 
-                    ? "bg-amber-500 text-stone-900 shadow-xs" 
-                    : "text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+                    ? "bg-orange-500 text-zinc-900 shadow-xs" 
+                    : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
                 )}
               >
                 Bộ Thẻ Có Sẵn
@@ -761,8 +761,8 @@ export default function Agent3Widget() {
                 className={cn(
                   "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1 cursor-pointer",
                   isCreateNewSet 
-                    ? "bg-amber-500 text-stone-900 shadow-xs" 
-                    : "text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+                    ? "bg-orange-500 text-zinc-900 shadow-xs" 
+                    : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
                 )}
               >
                 <FolderPlus className="w-3.5 h-3.5" /> Tạo Bộ Mới Tinh
@@ -771,13 +771,13 @@ export default function Agent3Widget() {
 
             <div className="space-y-3">
               <div>
-                <label className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider">Bộ Thẻ Mục Tiêu *</label>
+                <label className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Bộ Thẻ Mục Tiêu *</label>
                 {existingSets.length === 0 ? (
                   <div className="text-xs text-red-500 dark:text-red-400 font-bold mt-1 bg-red-500/5 p-2 rounded-lg border border-red-500/15 max-w-xs break-words">
                     Ngài chưa có bộ thẻ học cá nhân nào. Hệ thống đã kích hoạt chế độ "Tạo Bộ Mới Tinh" bên dưới để hỗ trợ ngài!
                   </div>
                 ) : !isCreateNewSet ? (
-                  <div className="space-y-2.5 mt-1 p-2.5 rounded-xl bg-stone-50 dark:bg-zinc-900 border border-stone-200/60 dark:border-zinc-800 animate-in fade-in-30">
+                  <div className="space-y-2.5 mt-1 p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800 animate-in fade-in-30">
                     {/* Search set input and optionally Selected Target Deck state header */}
                     <div className="flex gap-2">
                       <input
@@ -791,13 +791,13 @@ export default function Agent3Widget() {
                             setSelectedCategory(null);
                           }
                         }}
-                        className="w-full bg-white dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 outline-none rounded-lg px-2.5 py-1.5 text-xs text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:border-amber-500/55 transition"
+                        className="w-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 outline-none rounded-lg px-2.5 py-1.5 text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:border-orange-500/55 transition"
                       />
                       {selectedCategory && !searchQuery && (
                         <button
                           type="button"
                           onClick={() => setSelectedCategory(null)}
-                          className="px-2 py-1 text-[10px] uppercase font-bold bg-stone-200 dark:bg-zinc-750 hover:bg-stone-300 dark:hover:bg-zinc-700 rounded-lg transition text-stone-600 dark:text-stone-300 shrink-0 cursor-pointer"
+                          className="px-2 py-1 text-[10px] uppercase font-bold bg-zinc-200 dark:bg-zinc-750 hover:bg-zinc-300 dark:hover:bg-zinc-700 rounded-lg transition text-zinc-600 dark:text-zinc-300 shrink-0 cursor-pointer"
                         >
                           ⬅️ Quay Lại
                         </button>
@@ -819,7 +819,7 @@ export default function Agent3Widget() {
                         </button>
                       </div>
                     ) : (
-                      <div className="text-[9px] text-amber-600 dark:text-amber-400 font-bold bg-amber-500/5 p-2 rounded-lg border border-amber-500/10 animate-in fade-in">
+                      <div className="text-[9px] text-orange-600 dark:text-orange-400 font-bold bg-orange-500/5 p-2 rounded-lg border border-orange-500/10 animate-in fade-in">
                         👋 Ngài chưa chọn bộ thẻ nào cả! Hãy tích chọn 1 bộ học ở danh sách bên dưới:
                       </div>
                     )}
@@ -834,7 +834,7 @@ export default function Agent3Widget() {
                             (s.subject || "").toLowerCase().includes(searchQuery.toLowerCase())
                           );
                           if (matched.length === 0) {
-                            return <div className="text-center py-4 text-stone-400 text-[11px]">Không tìm thấy bộ thẻ nào khớp với từ khoá 😢</div>;
+                            return <div className="text-center py-4 text-zinc-400 text-[11px]">Không tìm thấy bộ thẻ nào khớp với từ khoá 😢</div>;
                           }
                           return matched.map(set => (
                             <button
@@ -847,12 +847,12 @@ export default function Agent3Widget() {
                               className={cn(
                                 "w-full text-left p-2 rounded-lg border transition-all flex items-center justify-between gap-1.5 cursor-pointer text-xs",
                                 selectedSetId === set.id
-                                  ? "bg-amber-500/10 border-amber-500 text-amber-600 dark:text-amber-400"
-                                  : "bg-white dark:bg-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-750 border-stone-150 dark:border-zinc-750 text-stone-700 dark:text-stone-300"
+                                  ? "bg-orange-500/10 border-orange-500 text-orange-600 dark:text-orange-400"
+                                  : "bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-750 border-zinc-150 dark:border-zinc-750 text-zinc-700 dark:text-zinc-300"
                               )}
                             >
                               <span className="font-bold truncate">{set.title}</span>
-                              <span className="text-[8px] uppercase font-black px-1 py-0.5 bg-stone-100 dark:bg-zinc-700 text-stone-500 rounded shrink-0">{set.subject || "Chưa phân loại"}</span>
+                              <span className="text-[8px] uppercase font-black px-1 py-0.5 bg-zinc-100 dark:bg-zinc-700 text-zinc-500 rounded shrink-0">{set.subject || "Chưa phân loại"}</span>
                             </button>
                           ));
                         })()
@@ -862,9 +862,9 @@ export default function Agent3Widget() {
                           const categorySets = existingSets.filter(s => (s.subject || "Chưa phân loại") === selectedCategory);
                           return (
                             <div className="space-y-1">
-                              <div className="text-[9px] uppercase font-black text-stone-400 tracking-wider mb-1 flex items-center justify-between">
+                              <div className="text-[9px] uppercase font-black text-zinc-400 tracking-wider mb-1 flex items-center justify-between">
                                 <span>Chuyên mục: {selectedCategory}</span>
-                                <button type="button" onClick={() => setSelectedCategory(null)} className="text-amber-500 hover:underline cursor-pointer">📂Xem các chủ đề khác</button>
+                                <button type="button" onClick={() => setSelectedCategory(null)} className="text-orange-500 hover:underline cursor-pointer">📂Xem các chủ đề khác</button>
                               </div>
                               {categorySets.map(set => (
                                 <button
@@ -877,8 +877,8 @@ export default function Agent3Widget() {
                                   className={cn(
                                     "w-full text-left p-2 rounded-lg border transition-all flex items-center justify-between gap-1.5 cursor-pointer text-xs",
                                     selectedSetId === set.id
-                                      ? "bg-amber-500/10 border-amber-500 text-amber-600 dark:text-amber-400"
-                                      : "bg-white dark:bg-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-750 border-stone-150 dark:border-zinc-750 text-stone-700 dark:text-stone-300"
+                                      ? "bg-orange-500/10 border-orange-500 text-orange-600 dark:text-orange-400"
+                                      : "bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-750 border-zinc-150 dark:border-zinc-750 text-zinc-700 dark:text-zinc-300"
                                   )}
                                 >
                                   <span className="font-bold truncate">{set.title}</span>
@@ -902,13 +902,13 @@ export default function Agent3Widget() {
                               key={cat}
                               type="button"
                               onClick={() => setSelectedCategory(cat)}
-                              className="w-full text-left p-2 rounded-lg border bg-white dark:bg-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-750 border-stone-150 dark:border-zinc-750 text-stone-700 dark:text-stone-300 transition-all flex items-center justify-between cursor-pointer group text-xs"
+                              className="w-full text-left p-2 rounded-lg border bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-750 border-zinc-150 dark:border-zinc-750 text-zinc-700 dark:text-zinc-300 transition-all flex items-center justify-between cursor-pointer group text-xs"
                             >
                               <div className="flex items-center gap-2 truncate">
                                 <span className="text-sm shrink-0">📂</span>
-                                <span className="font-bold truncate group-hover:text-amber-500">{cat}</span>
+                                <span className="font-bold truncate group-hover:text-orange-500">{cat}</span>
                               </div>
-                              <span className="text-[9px] font-mono bg-stone-100 dark:bg-zinc-700 px-1.5 py-0.5 rounded text-stone-500 shrink-0 font-bold">
+                              <span className="text-[9px] font-mono bg-zinc-100 dark:bg-zinc-700 px-1.5 py-0.5 rounded text-zinc-500 shrink-0 font-bold">
                                 {count} bộ thẻ
                               </span>
                             </button>
@@ -918,84 +918,84 @@ export default function Agent3Widget() {
                     </div>
                   </div>
                 ) : (
-                  <div className="text-xs text-amber-500 dark:text-amber-400 font-bold mt-1 bg-amber-500/5 p-2 rounded-lg border border-amber-500/10 max-w-xs animate-in slide-in-from-top-1">
+                  <div className="text-xs text-orange-500 dark:text-orange-400 font-bold mt-1 bg-orange-500/5 p-2 rounded-lg border border-orange-500/10 max-w-xs animate-in slide-in-from-top-1">
                     ✨ Đang ở chế độ tạo bộ mới dẫu vậy có thể đổi ý bằng tab bên trên!
                   </div>
                 )}
               </div>
 
               {isCreateNewSet && (
-                <div className="space-y-3 p-3 bg-amber-500/5 rounded-xl border border-amber-500/15 animate-in slide-in-from-top-1 duration-200">
+                <div className="space-y-3 p-3 bg-orange-500/5 rounded-xl border border-orange-500/15 animate-in slide-in-from-top-1 duration-200">
                   <div>
-                    <label className="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Tên Bộ Thẻ Học Mới *</label>
+                    <label className="text-[10px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">Tên Bộ Thẻ Học Mới *</label>
                     <input
                       type="text"
                       placeholder="ví dụ: Từ vựng Gia sư Socrates..."
                       value={newSetTitle}
                       onChange={e => setNewSetTitle(e.target.value)}
                       disabled={savingCard}
-                      className="w-full mt-1 bg-stone-100 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-stone-900 dark:text-stone-100 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30"
+                      className="w-full mt-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30"
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Môn Học / Chủ Đề (Tùy chọn)</label>
+                    <label className="text-[10px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">Môn Học / Chủ Đề (Tùy chọn)</label>
                     <input
                       type="text"
                       placeholder="ví dụ: English, Triết học, Tech..."
                       value={newSetSubject}
                       onChange={e => setNewSetSubject(e.target.value)}
                       disabled={savingCard}
-                      className="w-full mt-1 bg-stone-100 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-stone-900 dark:text-stone-100 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/30"
+                      className="w-full mt-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30"
                     />
                   </div>
                 </div>
               )}
 
               <div>
-                <label className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider">Khái niệm / Mặt trước *</label>
+                <label className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Khái niệm / Mặt trước *</label>
                 <input
                   type="text"
                   placeholder="Nhập thuật ngữ, từ vựng hoặc câu hỏi..."
                   value={editingCard.front}
                   onChange={e => setEditingCard({ ...editingCard, front: e.target.value })}
                   disabled={savingCard}
-                  className="w-full mt-1 bg-stone-100 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-stone-900 dark:text-stone-100"
+                  className="w-full mt-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100"
                 />
               </div>
 
               <div>
-                <label className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider">Giải nghĩa / Mặt sau *</label>
+                <label className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Giải nghĩa / Mặt sau *</label>
                 <textarea
                   rows={4}
                   placeholder="Nhập phần giải nghĩa, định nghĩa hoặc câu trả lời..."
                   value={editingCard.back}
                   onChange={e => setEditingCard({ ...editingCard, back: e.target.value })}
                   disabled={savingCard}
-                  className="w-full mt-1 bg-stone-100 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-stone-900 dark:text-stone-100 resize-none"
+                  className="w-full mt-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 resize-none"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider">Phần phiên âm (Phụ)</label>
+                  <label className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Phần phiên âm (Phụ)</label>
                   <input
                     type="text"
                     placeholder="ví dụ: /heˈnoʊ.sɪs/"
                     value={editingCard.ipa}
                     onChange={e => setEditingCard({ ...editingCard, ipa: e.target.value })}
                     disabled={savingCard}
-                    className="w-full mt-1 bg-stone-100 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-stone-900 dark:text-stone-100"
+                    className="w-full mt-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100"
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider">Ví dụ minh họa (Phụ)</label>
+                  <label className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Ví dụ minh họa (Phụ)</label>
                   <textarea
                     rows={1}
                     placeholder="Đặt câu mẫu..."
                     value={editingCard.example}
                     onChange={e => setEditingCard({ ...editingCard, example: e.target.value })}
                     disabled={savingCard}
-                    className="w-full mt-1 bg-stone-100 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-stone-900 dark:text-stone-100 resize-none"
+                    className="w-full mt-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 outline-none rounded-xl px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 resize-none"
                   />
                 </div>
               </div>
@@ -1006,7 +1006,7 @@ export default function Agent3Widget() {
                 type="button"
                 onClick={() => setIsSaveModalOpen(false)}
                 disabled={savingCard}
-                className="flex-1 py-2.5 rounded-xl text-stone-500 hover:bg-stone-100 dark:hover:bg-zinc-800 text-xs font-bold transition border border-stone-200 dark:border-zinc-700 cursor-pointer"
+                className="flex-1 py-2.5 rounded-xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-bold transition border border-zinc-200 dark:border-zinc-700 cursor-pointer"
               >
                 Hủy bỏ
               </button>
@@ -1014,7 +1014,7 @@ export default function Agent3Widget() {
                 type="button"
                 onClick={handleSaveToSetConfirm}
                 disabled={savingCard || (!isCreateNewSet && existingSets.length === 0)}
-                className="flex-1 py-2.5 rounded-xl bg-yellow-500 text-black hover:bg-yellow-600 text-xs font-black uppercase tracking-wider transition flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                className="flex-1 py-2.5 rounded-xl bg-orange-500 text-black hover:bg-orange-600 text-xs font-black uppercase tracking-wider transition flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {savingCard ? (
                   <>
@@ -1252,15 +1252,15 @@ const MermaidRenderer = ({ code, onAddCard }: { code: string; onAddCard: (text: 
     const shapeClasses = cn(
       "px-3 py-1.5 text-xs font-bold transition-all shadow-sm rounded-xl cursor-pointer flex items-center justify-between border select-none max-w-xs sm:max-w-md",
       node.shape === "circle" 
-        ? "bg-yellow-500/15 text-yellow-700 dark:text-yellow-400 border-yellow-500/35 hover:bg-yellow-500/25 active:scale-95"
+        ? "bg-orange-500/15 text-orange-700 dark:text-orange-400 border-orange-500/35 hover:bg-orange-500/25 active:scale-95"
         : node.shape === "square"
-        ? "bg-stone-100 dark:bg-zinc-900 text-stone-800 dark:text-zinc-200 border-stone-300 dark:border-zinc-700/80 hover:bg-stone-200/50 dark:hover:bg-zinc-800 active:scale-95"
-        : "bg-amber-500/5 text-amber-800 dark:text-amber-300 border-amber-500/20 dark:border-amber-500/15 hover:bg-amber-500/10 active:scale-95"
+        ? "bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 border-zinc-300 dark:border-zinc-700/80 hover:bg-zinc-200/50 dark:hover:bg-zinc-800 active:scale-95"
+        : "bg-orange-500/5 text-orange-800 dark:text-orange-300 border-orange-500/20 dark:border-orange-500/15 hover:bg-orange-500/10 active:scale-95"
     );
 
     return (
-      <div key={node.id} className="flex flex-col items-start pl-4 border-l border-stone-200 dark:border-zinc-800/80 my-1.5 py-1 relative w-full">
-        <div className="absolute left-0 top-[1.1rem] w-3 border-t border-stone-200 dark:border-zinc-800/80" />
+      <div key={node.id} className="flex flex-col items-start pl-4 border-l border-zinc-200 dark:border-zinc-800/80 my-1.5 py-1 relative w-full">
+        <div className="absolute left-0 top-[1.1rem] w-3 border-t border-zinc-200 dark:border-zinc-800/80" />
         
         <div className="flex items-center gap-1.5 relative z-10 max-w-full group/node">
           <div className={shapeClasses} onClick={() => onAddCard(node.label)}>
@@ -1269,7 +1269,7 @@ const MermaidRenderer = ({ code, onAddCard }: { code: string; onAddCard: (text: 
           
           <button
             onClick={() => onAddCard(node.label)}
-            className="w-5 h-5 rounded-full bg-stone-200/80 hover:bg-yellow-500 dark:bg-zinc-850 dark:hover:bg-yellow-500 hover:text-black text-stone-500 dark:text-stone-400 flex items-center justify-center transition-all cursor-pointer text-[10px] shrink-0 opacity-0 group-hover/node:opacity-100 focus:opacity-100"
+            className="w-5 h-5 rounded-full bg-zinc-200/80 hover:bg-orange-500 dark:bg-zinc-850 dark:hover:bg-orange-500 hover:text-black text-zinc-500 dark:text-zinc-400 flex items-center justify-center transition-all cursor-pointer text-[10px] shrink-0 opacity-0 group-hover/node:opacity-100 focus:opacity-100"
             title="Thêm nhanh khái niệm này vào bộ thẻ học"
           >
             <Plus className="w-3 h-3" />
@@ -1286,15 +1286,15 @@ const MermaidRenderer = ({ code, onAddCard }: { code: string; onAddCard: (text: 
   };
 
   return (
-    <div className="my-4 border border-stone-200/60 dark:border-zinc-800/80 rounded-2xl overflow-hidden bg-white/40 dark:bg-zinc-950/20 shadow-md relative w-full">
-      <div className="flex items-center justify-between px-3.5 py-2 bg-stone-100/50 dark:bg-zinc-900/30 border-b border-stone-200/50 dark:border-zinc-850/80 relative z-20">
-        <span className="text-[10px] font-black tracking-wider text-stone-500 dark:text-zinc-400 flex items-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5 text-yellow-500 shrink-0" />
+    <div className="my-4 border border-zinc-200/60 dark:border-zinc-800/80 rounded-2xl overflow-hidden bg-white/40 dark:bg-zinc-950/20 shadow-md relative w-full">
+      <div className="flex items-center justify-between px-3.5 py-2 bg-zinc-100/50 dark:bg-zinc-900/30 border-b border-zinc-200/50 dark:border-zinc-850/80 relative z-20">
+        <span className="text-[10px] font-black tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
+          <Sparkles className="w-3.5 h-3.5 text-orange-500 shrink-0" />
           SƠ ĐỒ TƯ DUY AI
         </span>
         
         <div className="flex gap-2 items-center">
-          <div className="flex items-center gap-1 border-r border-stone-300 dark:border-zinc-700 pr-2">
+          <div className="flex items-center gap-1 border-r border-zinc-300 dark:border-zinc-700 pr-2">
             {imageUrl && !imageError && (
               <button 
                 onClick={() => {
@@ -1315,7 +1315,7 @@ const MermaidRenderer = ({ code, onAddCard }: { code: string; onAddCard: (text: 
                        window.open(imageUrl, '_blank');
                     });
                 }}
-                className="hover:bg-stone-200 dark:hover:bg-zinc-800 p-1.5 rounded transition-colors text-stone-500 dark:text-zinc-400 cursor-pointer flex items-center gap-1"
+                className="hover:bg-zinc-200 dark:hover:bg-zinc-800 p-1.5 rounded transition-colors text-zinc-500 dark:text-zinc-400 cursor-pointer flex items-center gap-1"
                 title="Tải ảnh (SVG)"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -1334,7 +1334,7 @@ const MermaidRenderer = ({ code, onAddCard }: { code: string; onAddCard: (text: 
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
               }}
-              className="hover:bg-stone-200 dark:hover:bg-zinc-800 p-1.5 rounded transition-colors text-stone-500 dark:text-zinc-400 cursor-pointer flex items-center gap-1"
+              className="hover:bg-zinc-200 dark:hover:bg-zinc-800 p-1.5 rounded transition-colors text-zinc-500 dark:text-zinc-400 cursor-pointer flex items-center gap-1"
               title="Tải mã Mermaid"
             >
               <FileCode className="w-3.5 h-3.5" />
@@ -1342,15 +1342,15 @@ const MermaidRenderer = ({ code, onAddCard }: { code: string; onAddCard: (text: 
             </button>
           </div>
         
-          <div className="flex bg-stone-200/50 dark:bg-zinc-850/80 p-0.5 rounded-lg shrink-0">
+          <div className="flex bg-zinc-200/50 dark:bg-zinc-850/80 p-0.5 rounded-lg shrink-0">
           {parsedRoot && (
             <button
               onClick={() => setActiveTab("interactive")}
               className={cn(
                 "px-2.5 py-1 text-[10px] font-bold rounded-md transition-all cursor-pointer",
                 activeTab === "interactive" 
-                  ? "bg-white dark:bg-zinc-900 shadow-xs text-stone-900 dark:text-white"
-                  : "text-stone-500 dark:text-zinc-400 hover:text-stone-800 dark:hover:text-stone-200"
+                  ? "bg-white dark:bg-zinc-900 shadow-xs text-zinc-900 dark:text-white"
+                  : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200"
               )}
             >
               Phân rã
@@ -1362,8 +1362,8 @@ const MermaidRenderer = ({ code, onAddCard }: { code: string; onAddCard: (text: 
               className={cn(
                 "px-2.5 py-1 text-[10px] font-bold rounded-md transition-all cursor-pointer",
                 activeTab === "image" 
-                  ? "bg-white dark:bg-zinc-900 shadow-xs text-stone-900 dark:text-white"
-                  : "text-stone-500 dark:text-zinc-400 hover:text-stone-800 dark:hover:text-stone-200"
+                  ? "bg-white dark:bg-zinc-900 shadow-xs text-zinc-900 dark:text-white"
+                  : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200"
               )}
             >
               Sơ đồ
@@ -1374,8 +1374,8 @@ const MermaidRenderer = ({ code, onAddCard }: { code: string; onAddCard: (text: 
             className={cn(
               "px-2.5 py-1 text-[10px] font-bold rounded-md transition-all cursor-pointer",
               activeTab === "code" 
-                ? "bg-white dark:bg-zinc-900 shadow-xs text-stone-900 dark:text-white"
-                : "text-stone-500 dark:text-zinc-400 hover:text-stone-800 dark:hover:text-stone-200"
+                ? "bg-white dark:bg-zinc-900 shadow-xs text-zinc-900 dark:text-white"
+                : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200"
             )}
           >
             Mã
@@ -1408,12 +1408,12 @@ const MermaidRenderer = ({ code, onAddCard }: { code: string; onAddCard: (text: 
 
         {activeTab === "code" && (
           <div className="w-full text-left relative">
-            <pre className="font-mono text-[11px] text-stone-700 dark:text-zinc-300 overflow-x-auto p-2 bg-stone-100/40 dark:bg-zinc-900/40 rounded-xl max-w-full whitespace-pre-wrap">
+            <pre className="font-mono text-[11px] text-zinc-700 dark:text-zinc-300 overflow-x-auto p-2 bg-zinc-100/40 dark:bg-zinc-900/40 rounded-xl max-w-full whitespace-pre-wrap">
               {code}
             </pre>
             <button
               onClick={handleCopy}
-              className="absolute top-2 right-2 text-[10px] bg-stone-200 hover:bg-stone-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-stone-600 dark:text-zinc-350 px-2 py-0.5 rounded font-bold cursor-pointer transition"
+              className="absolute top-2 right-2 text-[10px] bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-350 px-2 py-0.5 rounded font-bold cursor-pointer transition"
             >
               {copied ? "Copied" : "Copy"}
             </button>

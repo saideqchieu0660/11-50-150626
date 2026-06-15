@@ -68,7 +68,7 @@ export const CustomCursor = () => {
       transition={{ duration: 0.15 }}
     >
       <motion.div
-        className="w-1.5 h-1.5 bg-amber-500 rounded-full"
+        className="w-1.5 h-1.5 bg-orange-500 rounded-full"
         animate={{
           scale: isHovering ? 0 : 1,
           opacity: isHovering ? 0 : 1

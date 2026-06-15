@@ -84,9 +84,9 @@ export function MasteryHeatmap({ data }: MasteryHeatmapProps) {
           
           tooltip.transition().duration(200).style('opacity', 1);
           tooltip.html(`
-            <div class="font-bold text-stone-800 dark:text-stone-200">${d.deckTitle}</div>
-            <div class="text-stone-500 dark:text-stone-400">${d.day}</div>
-            <div class="mt-1 font-bold text-yellow-600 dark:text-yellow-400">Mastery: ${d.mastery}%</div>
+            <div class="font-bold text-zinc-800 dark:text-zinc-200">${d.deckTitle}</div>
+            <div class="text-zinc-500 dark:text-zinc-400">${d.day}</div>
+            <div class="mt-1 font-bold text-orange-600 dark:text-orange-400">Mastery: ${d.mastery}%</div>
           `)
             .style('left', (event.pageX + 10) + 'px')
             .style('top', (event.pageY - 28) + 'px');

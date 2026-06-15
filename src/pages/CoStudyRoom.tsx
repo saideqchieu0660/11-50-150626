@@ -278,7 +278,7 @@ export default function CoStudyRoom() {
                initial={{ opacity: 0, y: -20 }}
                animate={{ opacity: 1, y: 0 }}
                exit={{ opacity: 0, scale: 0.9 }}
-               className="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-amber-500 text-white px-6 py-3 rounded-2xl shadow-xl font-bold flex items-center gap-3 drop-shadow-xl"
+               className="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-orange-500 text-white px-6 py-3 rounded-2xl shadow-xl font-bold flex items-center gap-3 drop-shadow-xl"
             >
                <Sparkles className="w-5 h-5 animate-pulse" />
                {nudgeToast}
@@ -294,11 +294,11 @@ export default function CoStudyRoom() {
           <ArrowLeft className="w-5 h-5" /> Trở về
         </button>
         <div className="flex items-center gap-4">
-           <div className="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-4 py-1.5 rounded-full font-bold flex items-center gap-2 shadow-sm">
+           <div className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-4 py-1.5 rounded-full font-bold flex items-center gap-2 shadow-sm">
              <Award className="w-4 h-4" /> {earnedXp} XP 
              <span className="text-xs opacity-60 font-medium">Phiên này</span>
            </div>
-           <h2 className="text-2xl font-display font-bold text-amber-600 dark:text-amber-400 flex items-center gap-2 hidden md:flex">
+           <h2 className="text-2xl font-display font-bold text-orange-600 dark:text-orange-400 flex items-center gap-2 hidden md:flex">
              <Users className="w-6 h-6" /> Tự Học Chung
            </h2>
         </div>
@@ -309,10 +309,10 @@ export default function CoStudyRoom() {
            {/* Mobile Top Bar */}
            <div className="flex md:hidden items-center justify-between w-full mb-6 z-28 gap-4">
              {/* Mobile Sound Control Widget */}
-             <div className="flex items-center gap-2 bg-white/50 dark:bg-zinc-900/50 p-2 rounded-xl border border-stone-200 dark:border-zinc-800 shadow-sm backdrop-blur-md">
-                <Headphones className="w-4 h-4 text-stone-500" />
+             <div className="flex items-center gap-2 bg-white/50 dark:bg-zinc-900/50 p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm backdrop-blur-md">
+                <Headphones className="w-4 h-4 text-zinc-500" />
                 <select 
-                  className="bg-transparent outline-none text-sm font-medium text-stone-700 dark:text-stone-300 cursor-pointer appearance-none pr-4"
+                  className="bg-transparent outline-none text-sm font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer appearance-none pr-4"
                   value={ambientTrack.id}
                   onChange={(e) => setAmbientTrack(AMBIENT_TRACKS.find(t => t.id === e.target.value) || AMBIENT_TRACKS[0])}
                 >
@@ -324,7 +324,7 @@ export default function CoStudyRoom() {
              {/* Mobile Checklist Toggle Widget */}
              <button 
                 onClick={() => setShowChecklist(!showChecklist)}
-                className={cn("p-2.5 rounded-xl transition shadow-sm backdrop-blur-md border", showChecklist ? "bg-amber-500 text-white border-amber-600" : "bg-white/50 dark:bg-zinc-900/50 border-stone-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-800")}
+                className={cn("p-2.5 rounded-xl transition shadow-sm backdrop-blur-md border", showChecklist ? "bg-orange-500 text-white border-orange-600" : "bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-800")}
                 title="Checklist công việc"
              >
                 <ListTodo className="w-5 h-5" />
@@ -332,10 +332,10 @@ export default function CoStudyRoom() {
            </div>
            
            {/* Ambient Sound Control Widget */}
-           <div className="absolute top-6 left-6 z-20 hidden md:flex items-center gap-2 bg-white/50 dark:bg-zinc-900/50 p-2 rounded-xl border border-stone-200 dark:border-zinc-800 shadow-sm backdrop-blur-md">
-              <Headphones className="w-4 h-4 text-stone-500" />
+           <div className="absolute top-6 left-6 z-20 hidden md:flex items-center gap-2 bg-white/50 dark:bg-zinc-900/50 p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm backdrop-blur-md">
+              <Headphones className="w-4 h-4 text-zinc-500" />
               <select 
-                className="bg-transparent outline-none text-sm font-medium text-stone-700 dark:text-stone-300 cursor-pointer appearance-none pr-4"
+                className="bg-transparent outline-none text-sm font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer appearance-none pr-4"
                 value={ambientTrack.id}
                 onChange={(e) => setAmbientTrack(AMBIENT_TRACKS.find(t => t.id === e.target.value) || AMBIENT_TRACKS[0])}
               >
@@ -349,7 +349,7 @@ export default function CoStudyRoom() {
            <div className="absolute top-6 right-6 z-20 hidden md:block">
               <button 
                  onClick={() => setShowChecklist(!showChecklist)}
-                 className={cn("p-3 rounded-xl transition shadow-sm backdrop-blur-md border", showChecklist ? "bg-amber-500 text-white border-amber-600" : "bg-white/50 dark:bg-zinc-900/50 border-stone-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-800")}
+                 className={cn("p-3 rounded-xl transition shadow-sm backdrop-blur-md border", showChecklist ? "bg-orange-500 text-white border-orange-600" : "bg-white/50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-800")}
                  title="Checklist công việc"
               >
                  <ListTodo className="w-5 h-5" />
@@ -363,10 +363,10 @@ export default function CoStudyRoom() {
                    initial={{ opacity: 0, scale: 0.95, y: -20, x: 20 }}
                    animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
                    exit={{ opacity: 0, scale: 0.95, y: -20, x: 20 }}
-                   className="absolute top-24 right-4 md:top-20 md:right-6 z-30 w-72 bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[60vh]"
+                   className="absolute top-24 right-4 md:top-20 md:right-6 z-30 w-72 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[60vh]"
                 >
-                   <div className="p-3 bg-stone-100 dark:bg-zinc-800 border-b border-stone-200 dark:border-zinc-700 flex justify-between items-center">
-                     <span className="font-bold text-sm flex items-center gap-2"><ListTodo className="w-4 h-4 text-amber-500" /> Nhiệm vụ rèn luyện</span>
+                   <div className="p-3 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700 flex justify-between items-center">
+                     <span className="font-bold text-sm flex items-center gap-2"><ListTodo className="w-4 h-4 text-orange-500" /> Nhiệm vụ rèn luyện</span>
                      <button onClick={() => setShowChecklist(false)} className="opacity-50 hover:opacity-100"><X className="w-4 h-4" /></button>
                    </div>
                    <div className="p-3 flex-1 overflow-y-auto space-y-2">
@@ -375,7 +375,7 @@ export default function CoStudyRoom() {
                      ) : (
                         tasks.map(t => (
                            <div key={t.id} className="flex items-start gap-2 group">
-                              <button onClick={() => toggleTask(t.id)} className={cn("mt-0.5 w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 transition", t.done ? "bg-green-500 border-green-500 text-white" : "border-stone-400 dark:border-zinc-600")}>
+                              <button onClick={() => toggleTask(t.id)} className={cn("mt-0.5 w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 transition", t.done ? "bg-green-500 border-green-500 text-white" : "border-zinc-400 dark:border-zinc-600")}>
                                  {t.done && <Check className="w-3 h-3" />}
                               </button>
                               <span className={cn("text-sm flex-1", t.done && "line-through opacity-50")}>{t.text}</span>
@@ -384,29 +384,29 @@ export default function CoStudyRoom() {
                         ))
                      )}
                    </div>
-                   <form onSubmit={handleAddTask} className="p-2 border-t border-stone-200 dark:border-zinc-800 flex gap-2">
+                   <form onSubmit={handleAddTask} className="p-2 border-t border-zinc-200 dark:border-zinc-800 flex gap-2">
                      <input 
                        type="text" 
                        value={newTaskText} 
                        onChange={e => setNewTaskText(e.target.value)} 
-                       className="flex-1 text-sm p-2 bg-stone-100 dark:bg-zinc-800 rounded-lg outline-none" 
+                       className="flex-1 text-sm p-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg outline-none" 
                        placeholder="Nhiệm vụ mới..." 
                      />
-                     <button type="submit" disabled={!newTaskText.trim()} className="p-2 bg-amber-500 text-white rounded-lg disabled:opacity-50"><Plus className="w-4 h-4" /></button>
+                     <button type="submit" disabled={!newTaskText.trim()} className="p-2 bg-orange-500 text-white rounded-lg disabled:opacity-50"><Plus className="w-4 h-4" /></button>
                    </form>
                 </motion.div>
              )}
            </AnimatePresence>
 
            <div className="w-full max-w-sm mb-8 z-10 transition-all duration-300">
-              <div className="flex items-center gap-2 bg-stone-200/80 dark:bg-zinc-800/80 rounded-xl p-3 border border-stone-300 dark:border-zinc-700 shadow-inner focus-within:ring-2 ring-amber-500/50">
-                 <Target className="w-5 h-5 text-amber-600 ml-2" />
+              <div className="flex items-center gap-2 bg-zinc-200/80 dark:bg-zinc-800/80 rounded-xl p-3 border border-zinc-300 dark:border-zinc-700 shadow-inner focus-within:ring-2 ring-orange-500/50">
+                 <Target className="w-5 h-5 text-orange-600 ml-2" />
                  <input 
                     type="text" 
                     value={task} 
                     onChange={(e) => setTask(e.target.value)}
                     placeholder="Bạn đang tập trung vào việc gì?"
-                    className="bg-transparent border-none focus:ring-0 w-full font-bold text-stone-900 dark:text-stone-100 placeholder:text-stone-500"
+                    className="bg-transparent border-none focus:ring-0 w-full font-bold text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500"
                  />
               </div>
            </div>
@@ -414,13 +414,13 @@ export default function CoStudyRoom() {
            <div className="z-10 flex gap-4 mb-12">
              <button 
                 onClick={() => { setMode("focus"); setTimeLeft(25 * 60); setIsFocusing(false); }}
-                className={cn("px-6 py-2 rounded-full font-bold transition", mode === "focus" ? "bg-amber-600 text-white" : "bg-stone-200 dark:bg-zinc-800 opacity-60 hover:opacity-100")}
+                className={cn("px-6 py-2 rounded-full font-bold transition", mode === "focus" ? "bg-orange-600 text-white" : "bg-zinc-200 dark:bg-zinc-800 opacity-60 hover:opacity-100")}
              >
                 Pomodoro (25p)
              </button>
              <button 
                 onClick={() => { setMode("break"); setTimeLeft(5 * 60); setIsFocusing(false); }}
-                className={cn("px-6 py-2 rounded-full font-bold transition", mode === "break" ? "bg-green-600 text-white" : "bg-stone-200 dark:bg-zinc-800 opacity-60 hover:opacity-100")}
+                className={cn("px-6 py-2 rounded-full font-bold transition", mode === "break" ? "bg-green-600 text-white" : "bg-zinc-200 dark:bg-zinc-800 opacity-60 hover:opacity-100")}
              >
                 Nghỉ ngơi (5p)
              </button>
@@ -428,17 +428,17 @@ export default function CoStudyRoom() {
 
           <div className="relative group w-64 h-64 md:w-80 md:h-80 flex items-center justify-center mb-12 z-10">
              <svg className="absolute inset-0 w-full h-full -rotate-90">
-               <circle cx="50%" cy="50%" r="48%" className="stroke-stone-200 dark:stroke-zinc-800 fill-none stroke-[8px]" />
+               <circle cx="50%" cy="50%" r="48%" className="stroke-zinc-200 dark:stroke-zinc-800 fill-none stroke-[8px]" />
                <motion.circle 
                  cx="50%" cy="50%" r="48%" 
-                 className={cn("fill-none stroke-[8px] transition-all", mode === "focus" ? "stroke-amber-500" : "stroke-green-500")}
+                 className={cn("fill-none stroke-[8px] transition-all", mode === "focus" ? "stroke-orange-500" : "stroke-green-500")}
                  strokeDasharray="300%"
                  strokeDashoffset={`${300 - (calculateProgress() / 100) * 300}%`}
                  initial={{ strokeDashoffset: "300%" }}
                  animate={{ strokeDashoffset: `${300 - (calculateProgress() / 100) * 300}%` }}
                />
              </svg>
-             <div className="text-6xl md:text-8xl font-mono font-bold tracking-tighter tabular-nums drop-shadow-md text-stone-800 dark:text-stone-100 flex items-center justify-center">
+             <div className="text-6xl md:text-8xl font-mono font-bold tracking-tighter tabular-nums drop-shadow-md text-zinc-800 dark:text-zinc-100 flex items-center justify-center">
                  {formatTime(timeLeft)}
              </div>
           </div>
@@ -446,13 +446,13 @@ export default function CoStudyRoom() {
           <div className="flex items-center gap-6 z-10">
              <button 
                 onClick={resetTimer}
-                className="p-4 rounded-full bg-stone-200 dark:bg-zinc-800 hover:bg-stone-300 dark:hover:bg-zinc-700 transition"
+                className="p-4 rounded-full bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition"
              >
                 <RefreshCw className="w-6 h-6" />
              </button>
              <button 
                 onClick={toggleTimer}
-                className={cn("p-6 rounded-full text-white shadow-xl hover:scale-105 transition", isFocusing ? "bg-red-500 hover:bg-red-600" : (mode === "focus" ? "bg-amber-600 hover:bg-amber-700" : "bg-green-600 hover:bg-green-700"))}
+                className={cn("p-6 rounded-full text-white shadow-xl hover:scale-105 transition", isFocusing ? "bg-red-500 hover:bg-red-600" : (mode === "focus" ? "bg-orange-600 hover:bg-orange-700" : "bg-green-600 hover:bg-green-700"))}
              >
                 {isFocusing ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
              </button>
@@ -460,9 +460,9 @@ export default function CoStudyRoom() {
         </div>
 
         <div className="glass rounded-3xl p-6 md:p-8 flex flex-col h-full relative">
-           <h3 className="text-xl font-bold border-b border-amber-600/20 dark:border-amber-500/30 pb-4 mb-6 flex items-center justify-between">
-              <span className="flex items-center gap-2"><Users className="w-5 h-5 text-amber-500" /> Hiện diện</span>
-              <span className="text-xs bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-full font-bold">
+           <h3 className="text-xl font-bold border-b border-orange-600/20 dark:border-orange-500/30 pb-4 mb-6 flex items-center justify-between">
+              <span className="flex items-center gap-2"><Users className="w-5 h-5 text-orange-500" /> Hiện diện</span>
+              <span className="text-xs bg-orange-500/10 text-orange-600 dark:text-orange-400 px-2.5 py-1 rounded-full font-bold">
                  {activeUsers.length} Online
               </span>
            </h3>
@@ -477,11 +477,11 @@ export default function CoStudyRoom() {
                      initial={{ opacity: 0, x: 20 }}
                      animate={{ opacity: 1, x: 0 }}
                      exit={{ opacity: 0, x: -20 }}
-                     className="flex items-center justify-between p-3 bg-white/50 dark:bg-zinc-800/50 rounded-xl border border-stone-200 dark:border-zinc-700 hover:bg-white dark:hover:bg-zinc-800 transition group"
+                     className="flex items-center justify-between p-3 bg-white/50 dark:bg-zinc-800/50 rounded-xl border border-zinc-200 dark:border-zinc-700 hover:bg-white dark:hover:bg-zinc-800 transition group"
                    >
                       <div className="flex items-center gap-3">
                          <div className={cn(
-                           "w-10 h-10 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-600 flex items-center justify-center text-white font-bold uppercase shadow-sm shrink-0 relative",
+                           "w-10 h-10 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold uppercase shadow-sm shrink-0 relative",
                            getAvatarBorderClass(user.avatarBorder)
                          )}>
                             {user.name?.charAt(0) || "U"}
@@ -490,7 +490,7 @@ export default function CoStudyRoom() {
                             <p className="font-bold text-sm truncate">
                               {user.name || "Người dùng ẩn danh"} {user.id === currentUser?.id && <span className="text-xs font-normal opacity-50 ml-1">(Bạn)</span>}
                             </p>
-                            <span className="block text-xs font-medium text-amber-600 dark:text-amber-400 truncate mt-0.5">
+                            <span className="block text-xs font-medium text-orange-600 dark:text-orange-400 truncate mt-0.5">
                                {user.task?.trim() ? `🎯 ${user.task}` : "Đang tập trung..."}
                             </span>
                          </div>
@@ -498,7 +498,7 @@ export default function CoStudyRoom() {
                       
                       <div className="flex items-center gap-3 shrink-0">
                          {user.xp && user.xp > 0 ? (
-                           <div className="text-xs font-bold text-stone-500 dark:text-stone-400">
+                           <div className="text-xs font-bold text-zinc-500 dark:text-zinc-400">
                              {user.xp} XP
                            </div>
                          ) : null}
@@ -506,7 +506,7 @@ export default function CoStudyRoom() {
                          {user.id !== currentUser?.id && (
                             <button 
                                onClick={() => sendNudge(user.id)}
-                               className="p-2 bg-stone-200/60 dark:bg-zinc-700 rounded-lg text-amber-600 hover:bg-amber-500 hover:text-white transition opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none"
+                               className="p-2 bg-zinc-200/60 dark:bg-zinc-700 rounded-lg text-orange-600 hover:bg-orange-500 hover:text-white transition opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none"
                                title="Gửi đập tay động viên"
                             >
                                <ThumbsUp className="w-4 h-4" />

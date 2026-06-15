@@ -9,30 +9,29 @@
 
 @theme {
   --spacing: calc(0.25rem * var(--ui-density, 1));
-  --font-sans: Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-display: Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-roman: Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Playfair Display", serif;
+  --font-roman: "Cormorant Garamond", "Playfair Display", serif;
+  --font-serif: "Playfair Display", serif;
   --font-mono: "JetBrains Mono", monospace;
-  --font-cyber: "Space Grotesk", sans-serif;
 
-  --color-gold-400: #eab308;
-  --color-gold-500: #d4af37;
-  --color-gold-600: #ca8a04;
-  --color-cyber-gold: #f59e0b;
+  --color-gold-400: #fb923c;
+  --color-gold-500: #f97316;
+  --color-gold-600: #ea580c;
+  --color-cyber-gold: #f97316;
 }
 
 /* Custom Cyberpunk & Monochromatic Utilities */
 .cyber-glow {
-  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4), 0 0 30px rgba(245, 158, 11, 0.15);
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 0 30px rgba(249, 115, 22, 0.15);
 }
 
 .cyber-glow-heavy {
-  box-shadow: 0 0 25px rgba(245, 158, 11, 0.6), 0 0 50px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 25px rgba(249, 115, 22, 0.6), 0 0 50px rgba(249, 115, 22, 0.3);
 }
 
 .cyber-inset-glow {
-  box-shadow: inset 0 0 15px rgba(245, 158, 11, 0.25);
+  box-shadow: inset 0 0 15px rgba(249, 115, 22, 0.25);
 }
 
 .clip-cyber-corner {
@@ -71,41 +70,20 @@
 @layer base {
   html, body {
     @apply antialiased min-h-screen font-sans;
-    @apply text-stone-800;
+    @apply text-zinc-900;
     overflow-x: hidden;
     max-width: 100vw;
     width: 100%;
   }
   body {
-    background-color: #f8fafc;
-    background-image: 
-      radial-gradient(at 40% 20%, hsla(28, 100%, 93%, 0.3) 0px, transparent 60%),
-      radial-gradient(at 80% 0%, hsla(189, 100%, 92%, 0.3) 0px, transparent 60%),
-      radial-gradient(at 0% 50%, hsla(355, 100%, 94%, 0.3) 0px, transparent 60%),
-      radial-gradient(at 80% 50%, hsla(340, 100%, 93%, 0.3) 0px, transparent 60%),
-      radial-gradient(at 0% 100%, hsla(22, 100%, 92%, 0.3) 0px, transparent 60%),
-      radial-gradient(at 80% 100%, hsla(242, 100%, 92%, 0.3) 0px, transparent 60%),
-      radial-gradient(at 0% 0%, hsla(343, 100%, 92%, 0.3) 0px, transparent 60%);
-    background-size: 250% 250%;
-    animation: gradientFlow 20s ease infinite;
-
-    background-attachment: fixed;
-    will-change: background-position;
+    background-color: #fafafa;
+    /* Gentle ivory museum background */
   }
   .dark body {
-    @apply text-stone-200;
+    @apply text-zinc-300;
     
-    background-color: #0c0a09;
-    background-image: 
-      radial-gradient(at 40% 20%, hsla(280, 100%, 7%, 0.4) 0px, transparent 60%),
-      radial-gradient(at 80% 0%, hsla(189, 100%, 7%, 0.4) 0px, transparent 60%),
-      radial-gradient(at 0% 50%, hsla(355, 100%, 7%, 0.4) 0px, transparent 60%),
-      radial-gradient(at 80% 50%, hsla(340, 100%, 7%, 0.4) 0px, transparent 60%),
-      radial-gradient(at 0% 100%, hsla(22, 100%, 7%, 0.4) 0px, transparent 60%),
-      radial-gradient(at 80% 100%, hsla(242, 100%, 10%, 0.4) 0px, transparent 60%),
-      radial-gradient(at 0% 0%, hsla(313, 100%, 7%, 0.4) 0px, transparent 60%);
-    background-size: 250% 250%;
-    animation: gradientFlow 20s ease infinite;
+    background-color: #09090b; /* zinc-950 */
+    /* Removed heavy animated gradients */
   }
   
   /* Disable heavy background loops on mobile and tablet to preserve battery & INP */
@@ -116,14 +94,166 @@
     }
   }
 
+  /* KILL BACKDROP BLUR GLOBALLY FOR 60FPS ON POTATO DEVICES */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
   /* Keyboard Navigation Focus Management */
   *:focus-visible {
-    outline: 2px solid #eab308;
+    outline: 1px solid rgba(249, 115, 22, 0.5); /* Thin orange focus */
     outline-offset: 2px;
     border-radius: 2px;
     transition: outline-color 0.15s ease-out;
   }
 }
+
+/* ========================================================================= */
+/* DUAL-FONT ETHEREAL TYPOGRAPHY SYSTEM */
+/* ========================================================================= */
+
+h1, h2, h3, h4, h5, h6, 
+.dialog-title, .card-title, .hero-title,
+[class*="text-2xl"], [class*="text-3xl"], [class*="text-4xl"], [class*="text-5xl"], [class*="text-6xl"] {
+  font-family: var(--font-serif) !important;
+  font-style: italic !important;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+p, span, div, .font-sans {
+  font-family: var(--font-sans);
+}
+
+p, .subtext, .chat-stream, .numeric {
+  font-weight: 300 !important; /* font-light */
+  letter-spacing: 0.025em; /* tracking-wide */
+}
+
+strong, b {
+  font-weight: 500;
+}
+
+/* ========================================================================= */
+/* OLYMPUS HIGH-ARTISTRY GREEK ETHEREAL SYSTEM */
+/* STRICT 60FPS: NO BOX-SHADOW, NO BACKDROP-FILTER, ONLY TRANSFORM & OPACITY */
+/* ========================================================================= */
+
+/* 1. Constellation Geometry */
+.constellation-line {
+  stroke: rgba(228, 228, 231, 0.4); /* stroke-zinc-200/40 for Light mode */
+  stroke-width: 1px;
+  fill: none;
+  transition: stroke 0.3s ease;
+  will-change: stroke;
+}
+
+.dark .constellation-line {
+  stroke: rgba(39, 39, 42, 1); /* stroke-zinc-800 for Dark mode */
+}
+
+.constellation-line.active,
+*:hover > .constellation-line {
+  stroke: #ea580c; /* Hermetic Orange */
+}
+
+.dark .constellation-line.active,
+.dark *:hover > .constellation-line {
+  stroke: #f97316; /* Vulcan Orange */
+}
+
+/* Auto-inject constellation lines into headers for the artistic vibe */
+h1::after, h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  max-width: 100%;
+  height: 1px;
+  margin-top: 0.5rem;
+  background-color: rgba(228, 228, 231, 0.4);
+  transition: background-color 0.3s ease, width 0.3s ease;
+  will-change: background-color, width;
+}
+.dark h1::after, .dark h2::after {
+  background-color: rgba(39, 39, 42, 1);
+}
+
+h1:hover::after, h2:hover::after {
+  background-color: #ea580c;
+  width: 160px;
+}
+.dark h1:hover::after, .dark h2:hover::after {
+  background-color: #f97316;
+}
+
+/* 2. The Prometheus Pulse */
+@keyframes prometheusPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.prometheus-pulse {
+  position: relative;
+}
+
+.prometheus-pulse::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 1px solid #ea580c;
+  opacity: 0.5;
+  pointer-events: none;
+  animation: prometheusPulse 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.dark .prometheus-pulse::before {
+  border-color: #f97316;
+}
+
+/* 3. Asymmetric Micro-interactions (Stone-carved responsiveness) */
+.stone-carved {
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.stone-carved:active,
+.stone-carved:hover {
+  transform: translateY(-2px);
+}
+
+.stone-carved:active svg[class*="lucide"],
+.stone-carved:hover svg[class*="lucide"] {
+  transform: translateY(-2px);
+  stroke: #ea580c !important; /* Forces the orange thin-stroke interaction */
+  transition: transform 0.2s ease, stroke 0.2s ease;
+  will-change: transform;
+}
+
+.dark .stone-carved:active svg[class*="lucide"],
+.dark .stone-carved:hover svg[class*="lucide"] {
+  stroke: #f97316 !important;
+}
+
+/* Base icon transition */
+svg[class*="lucide"] {
+  stroke-width: 1.2px !important;
+  transition: transform 0.2s ease, stroke 0.2s ease;
+  will-change: transform;
+}
+
 
 @keyframes gradientFlow {
   0% { background-position: 0% 0%; }
@@ -163,95 +293,64 @@
   background-color: rgba(107, 114, 128, 0.5);
 }
 
-/* Theme Transition logic using View Transitions API */
+/* Theme Transition logic using View Transitions API Ethereal Optimization */
 .theme-transition::view-transition-old(root),
 .theme-transition::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+  display: block;
 }
 .theme-transition::view-transition-old(root) {
   z-index: 1;
 }
 .theme-transition::view-transition-new(root) {
   z-index: 2;
+  will-change: clip-path; /* Hardware accelerate the clip-path expansion */
 }
 
-/* Layer 1: Neumorphic / Glass Cards & Regions */
-/* Improved Glassmorphism with glowing border */
+/* Layer 1: Ethereal Glass / Minimalism */
 .card-3d, .glass {
-  @apply relative text-left bg-white/92 dark:bg-stone-900/92 backdrop-blur-xl transition-all duration-500 z-10 rounded-2xl;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-  will-change: transform, box-shadow;
+  @apply relative text-left bg-white dark:bg-zinc-950 transition-all z-10 rounded-xl;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: none;
+  will-change: transform;
 }
 
 .dark .card-3d, .dark .glass {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(249, 115, 22, 0.1); /* Pale gold / ivory */
 }
 
 .card-3d::before, .glass::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(125deg, transparent 0%, rgba(255,255,255,0.2) 40%, transparent 100%);
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  border-radius: inherit;
+  display: none; /* Remove legacy gradients */
 }
-
-.dark .card-3d::before, .dark .glass::before {
-  background: linear-gradient(125deg, transparent 0%, rgba(255,255,255,0.05) 40%, transparent 100%);
-}
-
 
 @media (hover: hover) {
-  .card-3d:hover::before, .glass:hover::before {
-    opacity: 1;
-  }
-
   .card-3d:hover, .glass:hover {
-    @apply shadow-2xl;
-    transform: translateY(-6px) scale(1.02);
+    transform: translateY(-2px);
+    border-color: rgba(249, 115, 22, 0.3);
+    transition: border-color 0.2s ease, transform 0.2s ease;
   }
 }
 
-/* Layer 2: Animated Buttons */
+/* Layer 2: Ethereal Buttons */
 .btn-3d {
-  @apply relative overflow-hidden transform transition-all duration-300 ease-out active:duration-100 font-medium rounded-xl;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  will-change: transform, box-shadow;
+  @apply relative overflow-hidden transition-all duration-200 ease-out font-light rounded-lg tracking-wide border;
+  box-shadow: none;
+  background: transparent;
 }
-
 .dark .btn-3d {
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  border-color: rgba(249, 115, 22, 0.15);
+  color: rgba(250, 250, 250, 0.9);
 }
 
 .btn-3d::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  border-radius: inherit;
+  display: none;
 }
 
 @media (hover: hover) {
   .btn-3d:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-  }
-
-  .dark .btn-3d:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-  }
-
-  .btn-3d:hover::after {
-    opacity: 1;
+    transform: none;
+    background: rgba(249, 115, 22, 0.05);
   }
 }
 
@@ -346,13 +445,26 @@
   background-color: #050505 !important;
 }
 .eco-mode * {
-  animation-duration: 0.05s !important;
-  transition-duration: 0.05s !important;
+  animation: none !important;
+  transition: none !important;
   box-shadow: none !important;
   text-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  filter: none !important;
 }
+
+/* We still want flip animation but simplified in eco-mode? No, flip without transition means instant flip - which is extremely fast and performant. */
+
+.eco-mode [class*="animate-"] {
+  animation: none !important;
+  transition: none !important;
+}
+
+.eco-mode body, .eco-mode main {
+  background-image: none !important;
+}
+
 .eco-mode .card-3d:hover, .eco-mode .glass:hover {
   transform: none !important;
 }

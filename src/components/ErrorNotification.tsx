@@ -85,7 +85,7 @@ URL: ${window.location.href}`;
       <div className="flex flex-wrap gap-2 pt-1">
         <button 
           onClick={onRetry}
-          className="flex items-center gap-2 bg-stone-200 dark:bg-zinc-800 text-stone-800 dark:text-stone-200 px-4 py-2 rounded-lg text-xs font-bold hover:bg-stone-300 dark:hover:bg-zinc-700 transition active:scale-95 border border-stone-300/50 dark:border-zinc-700/50"
+          className="flex items-center gap-2 bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 px-4 py-2 rounded-lg text-xs font-bold hover:bg-zinc-300 dark:hover:bg-zinc-700 transition active:scale-95 border border-zinc-300/50 dark:border-zinc-700/50"
         >
           <RefreshCw className="w-3.5 h-3.5" /> Thử lại
         </button>
@@ -93,7 +93,7 @@ URL: ${window.location.href}`;
         <button 
           onClick={handleReportError}
           disabled={isRedirecting}
-          className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-lg text-xs font-bold hover:from-amber-600 hover:to-orange-700 transition shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95"
+          className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg text-xs font-bold hover:from-orange-600 hover:to-orange-700 transition shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95"
         >
           <Send className="w-3.5 h-3.5" />
           {isRedirecting ? "Đã copy! Mở Telegram..." : "Báo Lỗi qua Telegram"}

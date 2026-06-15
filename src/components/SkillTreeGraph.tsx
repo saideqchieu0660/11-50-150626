@@ -305,7 +305,7 @@ export const SkillTreeGraph = React.memo(function SkillTreeGraph({ decks }: Skil
 
   return (
     <div className="relative w-full h-[600px] rounded-xl overflow-hidden glass border border-black/10 dark:border-white/10 shadow-inner">
-       <div className="absolute top-4 right-4 z-10 flex items-center gap-3 bg-white/70 dark:bg-black/70 backdrop-blur-md p-2 px-4 rounded-xl shadow-sm border border-stone-200 dark:border-zinc-800">
+       <div className="absolute top-4 right-4 z-10 flex items-center gap-3 bg-white/70 dark:bg-black/70 backdrop-blur-md p-2 px-4 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-800">
           <span className="text-sm font-bold opacity-70">Lọc môn học:</span>
           <select 
              value={selectedSubject} 
@@ -326,7 +326,7 @@ export const SkillTreeGraph = React.memo(function SkillTreeGraph({ decks }: Skil
             <h4 className="font-display font-black text-xl mb-1 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-500 dark:from-sky-400 dark:to-indigo-400">
               {hoveredNode.title}
             </h4>
-            <div className="flex items-center gap-1.5 text-xs font-bold text-stone-500 dark:text-stone-400 mb-4 tracking-wider uppercase bg-black/5 dark:bg-white/5 inline-flex px-2 py-1 rounded">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-zinc-500 dark:text-zinc-400 mb-4 tracking-wider uppercase bg-black/5 dark:bg-white/5 inline-flex px-2 py-1 rounded">
                <BookOpen className="w-3.5 h-3.5" /> Chủ đề: {hoveredNode.subject || "Chung"}
             </div>
             
@@ -335,11 +335,11 @@ export const SkillTreeGraph = React.memo(function SkillTreeGraph({ decks }: Skil
                   <span className="text-sm font-bold opacity-70">Từ vựng/Kiến thức:</span>
                   <span className="font-mono font-bold text-lg">{hoveredNode.wordCount} thẻ</span>
                </div>
-               <div className="flex items-center justify-between bg-amber-500/10 dark:bg-amber-500/10 px-3 py-2 rounded-lg border border-amber-500/30 shadow-inner">
-                  <span className="text-sm font-bold text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
+               <div className="flex items-center justify-between bg-orange-500/10 dark:bg-orange-500/10 px-3 py-2 rounded-lg border border-orange-500/30 shadow-inner">
+                  <span className="text-sm font-bold text-orange-700 dark:text-orange-400 flex items-center gap-1.5">
                      <Gem className="w-4 h-4" /> Điểm danh dự
                   </span>
-                  <span className="font-mono font-bold text-amber-600 dark:text-amber-400 text-lg">+{hoveredNode.points} XP</span>
+                  <span className="font-mono font-bold text-orange-600 dark:text-orange-400 text-lg">+{hoveredNode.points} XP</span>
                </div>
             </div>
          </div>
@@ -351,20 +351,20 @@ export const SkillTreeGraph = React.memo(function SkillTreeGraph({ decks }: Skil
               {selectedNode.title}
             </h3>
             <div className="flex gap-4 w-full mb-6">
-              <div className="flex-1 bg-stone-100 dark:bg-zinc-800 border border-black/5 dark:border-white/5 rounded-xl p-4 text-center shadow-inner">
+              <div className="flex-1 bg-zinc-100 dark:bg-zinc-800 border border-black/5 dark:border-white/5 rounded-xl p-4 text-center shadow-inner">
                  <div className="text-xs uppercase tracking-wider font-bold opacity-60 mb-2">Thông thạo</div>
-                 <div className="text-3xl font-black font-mono text-stone-800 dark:text-stone-100">{Math.round(selectedNode.mastery)}%</div>
+                 <div className="text-3xl font-black font-mono text-zinc-800 dark:text-zinc-100">{Math.round(selectedNode.mastery)}%</div>
               </div>
-              <div className="flex-1 bg-stone-100 dark:bg-zinc-800 border border-black/5 dark:border-white/5 rounded-xl p-4 text-center flex flex-col items-center justify-center shadow-inner">
+              <div className="flex-1 bg-zinc-100 dark:bg-zinc-800 border border-black/5 dark:border-white/5 rounded-xl p-4 text-center flex flex-col items-center justify-center shadow-inner">
                  <div className="text-xs uppercase tracking-wider font-bold opacity-60 mb-2">Trạng thái</div>
-                 <div className={cn("text-base font-bold flex items-center justify-center gap-1.5", selectedNode.status === 'mastered' ? "text-amber-600 dark:text-amber-400" : "text-sky-600 dark:text-sky-400")}>
+                 <div className={cn("text-base font-bold flex items-center justify-center gap-1.5", selectedNode.status === 'mastered' ? "text-orange-600 dark:text-orange-400" : "text-sky-600 dark:text-sky-400")}>
                     {selectedNode.status === 'mastered' ? <><Award className="w-5 h-5" /> Đã làm chủ</> : <><Unlock className="w-5 h-5"/> Đang Mở</>}
                  </div>
               </div>
             </div>
             
             <div className="flex gap-3 w-full">
-              <button onClick={() => setSelectedNode(null)} className="flex-1 px-4 py-3 rounded-xl font-bold bg-stone-200 dark:bg-zinc-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 dark:hover:bg-zinc-700 transition">Đóng lại</button>
+              <button onClick={() => setSelectedNode(null)} className="flex-1 px-4 py-3 rounded-xl font-bold bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition">Đóng lại</button>
               <button 
                  onClick={() => navigate(`/study/${selectedNode.id}`)} 
                  className="flex-1 px-4 py-3 rounded-xl font-bold font-display bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white transition shadow-lg shadow-sky-500/25 shrink-0 flex justify-center items-center gap-2 transform hover:scale-105 active:scale-95"
@@ -378,15 +378,15 @@ export const SkillTreeGraph = React.memo(function SkillTreeGraph({ decks }: Skil
        <div className="absolute top-4 left-4 flex flex-col gap-3 text-xs font-mono font-bold bg-white/70 dark:bg-black/70 backdrop-blur-md p-3.5 rounded-xl border border-black/10 dark:border-white/10 pointer-events-none shadow-lg">
           <div className="opacity-50 tracking-wider mb-1 uppercase">Bản chú giải</div>
           <div className="flex items-center gap-3">
-             <span className="w-4 h-4 rounded-full bg-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.8)] border-2 border-amber-200"></span> 
-             <span className="text-amber-700 dark:text-amber-400">Mastered (100%)</span>
+             <span className="w-4 h-4 rounded-full bg-orange-400 shadow-[0_0_15px_rgba(251,191,36,0.8)] border-2 border-orange-200"></span> 
+             <span className="text-orange-700 dark:text-orange-400">Mastered (100%)</span>
           </div>
           <div className="flex items-center gap-3">
              <span className="w-4 h-4 rounded-full bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.8)] border-2 border-sky-200"></span> 
              <span className="text-sky-700 dark:text-sky-400">Unlocked</span>
           </div>
           <div className="flex items-center gap-3">
-             <span className="w-4 h-4 rounded-full bg-stone-300 dark:bg-zinc-700 border-2 border-stone-400 dark:border-zinc-500 border-dashed"></span> 
+             <span className="w-4 h-4 rounded-full bg-zinc-300 dark:bg-zinc-700 border-2 border-zinc-400 dark:border-zinc-500 border-dashed"></span> 
              <span className="opacity-60">Locked</span>
           </div>
        </div>

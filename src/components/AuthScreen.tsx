@@ -291,19 +291,19 @@ export default function AuthScreen() {
     <div className="min-h-[100dvh] flex items-center justify-center p-4 relative overflow-y-auto">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-amber-500/20 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-yellow-500/20 blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-orange-500/20 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-orange-500/20 blur-[120px]" />
       </div>
 
-      <div className="w-full max-w-md glass p-8 sm:p-10 rounded-[12px] relative z-10 shadow-2xl border border-amber-600/30 dark:border-white/10 transition-all duration-300">
+      <div className="w-full max-w-md glass p-8 sm:p-10 rounded-[12px] relative z-10 shadow-2xl border border-orange-600/30 dark:border-white/10 transition-all duration-300">
         
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">
+          <h2 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">
             {isLogin ? "Đăng Nhập" : "Đăng Ký"}
           </h2>
-          <p className="text-stone-600 dark:text-stone-400 mt-2 text-sm">
+          <p className="text-zinc-600 dark:text-zinc-400 mt-2 text-sm">
             {isLogin ? (
-              <>Chào mừng bạn quay trở lại <span className="italic font-serif tracking-wide font-light text-yellow-500">HENOSIS</span>!</>
+              <>Chào mừng bạn quay trở lại <span className="italic font-serif tracking-wide font-light text-orange-500">HENOSIS</span>!</>
             ) : "Tạo tài khoản mới để bắt đầu trải nghiệm."}
           </p>
         </div>
@@ -320,10 +320,10 @@ export default function AuthScreen() {
         <form onSubmit={handleEmailAuth} className="space-y-4">
           {!isLogin && (
             <div className="space-y-1 animate-in slide-in-from-top-2 fade-in duration-300">
-              <label className="text-xs font-bold text-stone-700 dark:text-stone-300 uppercase tracking-widest pl-1">Tên đăng nhập</label>
+              <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-widest pl-1">Tên đăng nhập</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-stone-500" />
+                  <User className="h-5 w-5 text-zinc-500" />
                 </div>
                 <input
                   type="text"
@@ -331,7 +331,7 @@ export default function AuthScreen() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   disabled={isLoading}
-                  className="w-full pl-10 pr-4 py-3 bg-white/50 dark:bg-black/30 border border-amber-500/30 dark:border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-stone-900 dark:text-stone-100 transition-all placeholder:text-stone-400"
+                  className="w-full pl-10 pr-4 py-3 bg-white/50 dark:bg-black/30 border border-orange-500/30 dark:border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-zinc-900 dark:text-zinc-100 transition-all placeholder:text-zinc-400"
                   placeholder="Tên hoặc biệt danh của bạn"
                 />
               </div>
@@ -339,10 +339,10 @@ export default function AuthScreen() {
           )}
 
           <div className="space-y-1">
-            <label className="text-xs font-bold text-stone-700 dark:text-stone-300 uppercase tracking-widest pl-1">Email</label>
+            <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-widest pl-1">Email</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-stone-500" />
+                <Mail className="h-5 w-5 text-zinc-500" />
               </div>
               <input
                 type="email"
@@ -352,17 +352,17 @@ export default function AuthScreen() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isLoading}
-                className="w-full pl-10 pr-4 py-3 bg-white/50 dark:bg-black/30 border border-amber-500/30 dark:border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-stone-900 dark:text-stone-100 transition-all placeholder:text-stone-400"
+                className="w-full pl-10 pr-4 py-3 bg-white/50 dark:bg-black/30 border border-orange-500/30 dark:border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-zinc-900 dark:text-zinc-100 transition-all placeholder:text-zinc-400"
                 placeholder="you@example.com"
               />
             </div>
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-bold text-stone-700 dark:text-stone-300 uppercase tracking-widest pl-1">Mật khẩu</label>
+            <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-widest pl-1">Mật khẩu</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-stone-500" />
+                <Lock className="h-5 w-5 text-zinc-500" />
               </div>
               <input
                 type={showPassword ? "text" : "password"}
@@ -372,7 +372,7 @@ export default function AuthScreen() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={isLoading}
-                className="w-full pl-10 pr-10 py-3 bg-white/50 dark:bg-black/30 border border-amber-500/30 dark:border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-stone-900 dark:text-stone-100 transition-all placeholder:text-stone-400"
+                className="w-full pl-10 pr-10 py-3 bg-white/50 dark:bg-black/30 border border-orange-500/30 dark:border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-zinc-900 dark:text-zinc-100 transition-all placeholder:text-zinc-400"
                 placeholder="••••••••"
               />
               <button
@@ -380,16 +380,16 @@ export default function AuthScreen() {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 opacity-50 hover:opacity-100 transition focus:outline-none"
               >
-                {showPassword ? <EyeOff className="w-5 h-5 text-stone-500" /> : <Eye className="w-5 h-5 text-stone-500" />}
+                {showPassword ? <EyeOff className="w-5 h-5 text-zinc-500" /> : <Eye className="w-5 h-5 text-zinc-500" />}
               </button>
             </div>
           </div>
 
           <div className="space-y-1 animate-in slide-in-from-top-2 fade-in duration-300">
-            <label className="text-xs font-bold text-stone-700 dark:text-stone-300 uppercase tracking-widest pl-1">Admin Key (Optional)</label>
+            <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-widest pl-1">Admin Key (Optional)</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Key className="h-5 w-5 text-stone-500" />
+                <Key className="h-5 w-5 text-zinc-500" />
               </div>
               <input
                 type="text"
@@ -399,7 +399,7 @@ export default function AuthScreen() {
                 value={adminKey}
                 onChange={(e) => setAdminKey(e.target.value)}
                 disabled={isLoading}
-                className="w-full pl-10 pr-10 py-3 bg-white/50 dark:bg-black/30 border border-amber-500/30 dark:border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-stone-900 dark:text-stone-100 transition-all placeholder:text-stone-400"
+                className="w-full pl-10 pr-10 py-3 bg-white/50 dark:bg-black/30 border border-orange-500/30 dark:border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-zinc-900 dark:text-zinc-100 transition-all placeholder:text-zinc-400"
                 placeholder="Mã phân quyền Teacher"
               />
               <button
@@ -407,7 +407,7 @@ export default function AuthScreen() {
                 onClick={() => setShowAdminKey(!showAdminKey)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 opacity-50 hover:opacity-100 transition focus:outline-none"
               >
-                {showAdminKey ? <EyeOff className="w-5 h-5 text-stone-500" /> : <Eye className="w-5 h-5 text-stone-500" />}
+                {showAdminKey ? <EyeOff className="w-5 h-5 text-zinc-500" /> : <Eye className="w-5 h-5 text-zinc-500" />}
               </button>
             </div>
           </div>
@@ -415,7 +415,7 @@ export default function AuthScreen() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full mt-2 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-white dark:text-black font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:pointer-events-none shadow-lg shadow-amber-500/25"
+            className="w-full mt-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white dark:text-black font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:pointer-events-none shadow-lg shadow-orange-500/25"
           >
             {isLoading ? (
               <Loader2 className="w-5 h-5 animate-spin" />
@@ -429,9 +429,9 @@ export default function AuthScreen() {
         </form>
 
         <div className="mt-6 flex items-center gap-4">
-          <div className="flex-1 h-px bg-amber-600/20 dark:bg-white/10"></div>
-          <span className="text-xs font-medium text-stone-500 uppercase tracking-wider">Hoặc</span>
-          <div className="flex-1 h-px bg-amber-600/20 dark:bg-white/10"></div>
+          <div className="flex-1 h-px bg-orange-600/20 dark:bg-white/10"></div>
+          <span className="text-xs font-medium text-zinc-500 uppercase tracking-wider">Hoặc</span>
+          <div className="flex-1 h-px bg-orange-600/20 dark:bg-white/10"></div>
         </div>
 
         <div className="mt-6 flex flex-col gap-3">
@@ -439,7 +439,7 @@ export default function AuthScreen() {
             type="button"
             onClick={handleGoogleSignIn}
             disabled={isLoading}
-            className="w-full bg-white dark:bg-zinc-900 border border-amber-500/20 dark:border-white/10 hover:bg-stone-50 dark:hover:bg-zinc-800 text-stone-800 dark:text-stone-200 font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-3 transition-all hover:shadow-md disabled:opacity-70 disabled:pointer-events-none"
+            className="w-full bg-white dark:bg-zinc-900 border border-orange-500/20 dark:border-white/10 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-3 transition-all hover:shadow-md disabled:opacity-70 disabled:pointer-events-none"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
@@ -466,7 +466,7 @@ export default function AuthScreen() {
             type="button"
             onClick={handleGuestLogin}
             disabled={isLoading}
-            className="w-full bg-stone-200 dark:bg-zinc-800 border-none hover:bg-stone-300 dark:hover:bg-zinc-700 text-stone-800 dark:text-stone-200 font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all hover:shadow-md disabled:opacity-70 disabled:pointer-events-none mt-1"
+            className="w-full bg-zinc-200 dark:bg-zinc-800 border-none hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all hover:shadow-md disabled:opacity-70 disabled:pointer-events-none mt-1"
           >
             <User className="w-5 h-5 opacity-70" />
             Vào xem thử (Chế độ khách)
@@ -484,7 +484,7 @@ export default function AuthScreen() {
               setAdminKey('');
             }}
             disabled={isLoading}
-            className="text-sm font-medium text-amber-600 dark:text-amber-500 hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
+            className="text-sm font-medium text-orange-600 dark:text-orange-500 hover:text-orange-700 dark:hover:text-orange-400 transition-colors"
           >
             {isLogin ? "Chưa có tài khoản? Đăng ký ngay" : "Đã có tài khoản? Đăng nhập"}
           </button>

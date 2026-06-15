@@ -27,10 +27,10 @@ const BADGES = [
     desc: 'Bền vững tinh thần chuỗi 5 ngày đột phá',
     req: 5,
     icon: Flame,
-    color: 'text-amber-500',
-    bg: 'bg-amber-500/10',
-    border: 'border-amber-500/30',
-    gradient: 'from-amber-500/20 to-yellow-500/5',
+    color: 'text-orange-500',
+    bg: 'bg-orange-500/10',
+    border: 'border-orange-500/30',
+    gradient: 'from-orange-500/20 to-orange-500/5',
     type: 'streak' as const,
     span: 'col-span-1 min-h-[12.5rem]',
     reward: '✨ Hồi 20% Năng lượng tinh thần'
@@ -55,10 +55,10 @@ const BADGES = [
     desc: 'Kỷ luật của bậc hiền triết suốt 10 ngày',
     req: 10,
     icon: Shield,
-    color: 'text-yellow-500',
-    bg: 'bg-yellow-500/10',
-    border: 'border-yellow-500/30',
-    gradient: 'from-yellow-500/20 to-amber-500/5',
+    color: 'text-orange-500',
+    bg: 'bg-orange-500/10',
+    border: 'border-orange-500/30',
+    gradient: 'from-orange-500/20 to-orange-500/5',
     type: 'streak' as const,
     span: 'col-span-1 min-h-[12.5rem]',
     reward: '🔥 Mở khóa: Khung Ý Chí Khắc Kỷ'
@@ -158,10 +158,10 @@ const BADGES = [
     desc: 'Đột phá tích lũy 500 Tinh Hoa dồi dào',
     req: 500,
     icon: Star,
-    color: 'text-yellow-500',
-    bg: 'bg-yellow-500/10',
-    border: 'border-yellow-500/30',
-    gradient: 'from-yellow-400/20 to-orange-600/5',
+    color: 'text-orange-500',
+    bg: 'bg-orange-500/10',
+    border: 'border-orange-500/30',
+    gradient: 'from-orange-400/20 to-orange-600/5',
     type: 'points' as const,
     span: 'col-span-1 min-h-[12.5rem]',
     reward: '✨ Tặng Bản đồ Di Cáo Cổ Đại'
@@ -231,10 +231,10 @@ const BADGES = [
     desc: 'Hào quang bừng sáng gom hơn 10k Tinh Hoa đại diện',
     req: 10000,
     icon: Trophy,
-    color: 'text-amber-400',
-    bg: 'bg-amber-500/20',
-    border: 'border-amber-500/60',
-    gradient: 'from-amber-400/30 via-yellow-500/20 to-orange-550/10',
+    color: 'text-orange-400',
+    bg: 'bg-orange-500/20',
+    border: 'border-orange-500/60',
+    gradient: 'from-orange-400/30 via-orange-500/20 to-orange-550/10',
     type: 'points' as const,
     span: 'col-span-2 sm:col-span-4 min-h-[12.5rem]',
     isVip: true,
@@ -276,10 +276,10 @@ const BADGES = [
     desc: 'Tích lũy 60 phút tập trung cao độ',
     req: 60,
     icon: Hourglass,
-    color: 'text-amber-500',
-    bg: 'bg-amber-500/10',
-    border: 'border-amber-500/30',
-    gradient: 'from-amber-500/20 to-rose-450/5',
+    color: 'text-orange-500',
+    bg: 'bg-orange-500/10',
+    border: 'border-orange-500/30',
+    gradient: 'from-orange-500/20 to-rose-450/5',
     type: 'time' as const,
     span: 'col-span-1 min-h-[12.5rem]',
     reward: '✨ Ý chí tập trung +20%'
@@ -350,10 +350,10 @@ const BADGES = [
     desc: 'Cất bước ngự trị vị thế Top 1 BXH Tuần',
     req: 1,
     icon: Trophy,
-    color: 'text-amber-500',
-    bg: 'bg-amber-500/10',
-    border: 'border-amber-500/30',
-    gradient: 'from-amber-400/20 to-yellow-600/5',
+    color: 'text-orange-500',
+    bg: 'bg-orange-500/10',
+    border: 'border-orange-500/30',
+    gradient: 'from-orange-400/20 to-orange-600/5',
     type: 'top1' as const,
     span: 'col-span-1 min-h-[12.5rem]',
     reward: '✨ Sắc phong Hào Quang Của Nike'
@@ -378,10 +378,10 @@ const BADGES = [
     desc: 'Sừng sững 3 tuần bảo vệ ngôi hoàng kim Top 1',
     req: 3,
     icon: Crown,
-    color: 'text-yellow-400',
-    bg: 'bg-yellow-500/10',
-    border: 'border-yellow-500/40',
-    gradient: 'from-yellow-400/20 to-orange-600/10',
+    color: 'text-orange-400',
+    bg: 'bg-orange-500/10',
+    border: 'border-orange-500/40',
+    gradient: 'from-orange-400/20 to-orange-600/10',
     type: 'top1' as const,
     span: 'col-span-1 min-h-[12.5rem]',
     reward: '🔥 Đội vương miện hoàng tộc vĩnh bảo'
@@ -407,10 +407,10 @@ const BADGES = [
     desc: 'Khắc cốt vương đại thống lĩnh BXH Top 1 suốt 10 tuần',
     req: 10,
     icon: Crown,
-    color: 'text-yellow-400',
-    bg: 'bg-yellow-500/20',
-    border: 'border-yellow-500/60',
-    gradient: 'from-yellow-400/35 to-amber-700/20',
+    color: 'text-orange-400',
+    bg: 'bg-orange-500/20',
+    border: 'border-orange-500/60',
+    gradient: 'from-orange-400/35 to-orange-700/20',
     type: 'top1' as const,
     span: 'col-span-2 sm:col-span-2 md:col-span-4 min-h-[12.5rem]',
     isVip: true,
@@ -525,7 +525,7 @@ const BadgeCard = ({ badge, val, unlocked, progress }: any) => {
              "absolute top-0 left-0 w-full h-full p-4 lg:p-6 flex flex-col justify-between rounded-2xl transition-all duration-500 backface-hidden overflow-hidden bg-white dark:bg-zinc-900 border-2",
              unlocked 
                ? `${badge.border} shadow-lg group-hover:shadow-2xl group-hover:-translate-y-1 group-hover:scale-[1.02]`
-               : "bg-stone-200/50 dark:bg-zinc-800/80 border-stone-300/30 dark:border-zinc-700/50 grayscale opacity-85 group-hover:grayscale-[0.4] group-hover:opacity-100 group-hover:-translate-y-1" 
+               : "bg-zinc-200/50 dark:bg-zinc-800/80 border-zinc-300/30 dark:border-zinc-700/50 grayscale opacity-85 group-hover:grayscale-[0.4] group-hover:opacity-100 group-hover:-translate-y-1" 
            )}
          >
               {unlocked && (
@@ -533,7 +533,7 @@ const BadgeCard = ({ badge, val, unlocked, progress }: any) => {
               )}
               
               {unlocked && badge.isVip && (
-                 <div className="absolute -inset-10 bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-red-500/20 blur-2xl animate-pulse pointer-events-none" />
+                 <div className="absolute -inset-10 bg-gradient-to-r from-orange-500/20 via-orange-500/20 to-red-500/20 blur-2xl animate-pulse pointer-events-none" />
               )}
 
               {!unlocked && (
@@ -546,37 +546,37 @@ const BadgeCard = ({ badge, val, unlocked, progress }: any) => {
                   <div className="flex items-start justify-between">
                       <div className={cn(
                           "p-3 rounded-2xl shadow-sm border", 
-                          unlocked ? `${badge.bg} ${badge.border}` : "bg-stone-300/50 dark:bg-zinc-700/50 border-transparent"
+                          unlocked ? `${badge.bg} ${badge.border}` : "bg-zinc-300/50 dark:bg-zinc-700/50 border-transparent"
                       )}>
-                         <Icon className={cn("w-7 h-7 md:w-9 md:h-9", unlocked ? badge.color : "text-stone-500")} />
+                         <Icon className={cn("w-7 h-7 md:w-9 md:h-9", unlocked ? badge.color : "text-zinc-500")} />
                       </div>
                       {unlocked ? (
-                          badge.isVip ? <Sparkles className="w-6 h-6 text-yellow-500 animate-[bounce_2s_infinite]" /> : <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-emerald-500 drop-shadow-md" />
+                          badge.isVip ? <Sparkles className="w-6 h-6 text-orange-500 animate-[bounce_2s_infinite]" /> : <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-emerald-500 drop-shadow-md" />
                       ) : (
-                          <div className="p-2 bg-stone-300/50 dark:bg-zinc-700/50 rounded-full transition-colors drop-shadow-sm">
-                             <Lock className="w-3 h-3 md:w-4 md:h-4 text-stone-500" />
+                          <div className="p-2 bg-zinc-300/50 dark:bg-zinc-700/50 rounded-full transition-colors drop-shadow-sm">
+                             <Lock className="w-3 h-3 md:w-4 md:h-4 text-zinc-500" />
                           </div>
                       )}
                   </div>
 
                   <div className="space-y-1.5 mt-auto">
-                      <h4 className={cn("font-black tracking-tight text-base md:text-lg leading-tight", unlocked ? "text-stone-900 dark:text-white" : "text-stone-600 dark:text-stone-400 group-hover:text-amber-600 transition-colors")}>
+                      <h4 className={cn("font-black tracking-tight text-base md:text-lg leading-tight", unlocked ? "text-zinc-900 dark:text-white" : "text-zinc-600 dark:text-zinc-400 group-hover:text-orange-600 transition-colors")}>
                          {badge.name}
                       </h4>
                       
                       <div className="flex justify-between items-center bg-black/5 dark:bg-white/5 px-2.5 py-1.5 rounded-lg border border-black/5 dark:border-white/5 backdrop-blur-sm">
-                         <span className={cn("text-xs font-semibold truncate max-w-[80%]", unlocked ? (badge.isVip ? "text-yellow-600 dark:text-yellow-400 font-bold" : badge.colorStr || "text-stone-750 dark:text-stone-200") : "text-stone-500")}>
+                         <span className={cn("text-xs font-semibold truncate max-w-[80%]", unlocked ? (badge.isVip ? "text-orange-600 dark:text-orange-400 font-bold" : badge.colorStr || "text-zinc-750 dark:text-zinc-200") : "text-zinc-500")}>
                             {badge.desc}
                          </span>
                          {!unlocked && (
-                            <span className="text-[10px] font-bold font-mono text-stone-500">{Math.floor(progress)}%</span>
+                            <span className="text-[10px] font-bold font-mono text-zinc-500">{Math.floor(progress)}%</span>
                          )}
                       </div>
                       
                       {!unlocked && (
-                         <div className="h-1.5 w-full bg-stone-350 dark:bg-zinc-750 rounded-full overflow-hidden mt-2 relative">
+                         <div className="h-1.5 w-full bg-zinc-350 dark:bg-zinc-750 rounded-full overflow-hidden mt-2 relative">
                              <motion.div 
-                                className="absolute h-full bg-gradient-to-r from-stone-400 to-amber-500 rounded-full" 
+                                className="absolute h-full bg-gradient-to-r from-zinc-400 to-orange-500 rounded-full" 
                                 initial={{ width: 0 }}
                                 animate={{ width: `${progress}%` }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
@@ -591,8 +591,8 @@ const BadgeCard = ({ badge, val, unlocked, progress }: any) => {
          <div className={cn(
              "absolute top-0 left-0 w-full h-full p-4 lg:p-6 flex flex-col justify-between rounded-2xl transition-all duration-500 backface-hidden [transform:rotateY(180deg)] overflow-hidden",
              unlocked 
-               ? `bg-stone-900 dark:bg-black border-2 border-stone-800`
-               : "bg-stone-800 dark:bg-zinc-900 border-2 border-stone-700"
+               ? `bg-zinc-900 dark:bg-black border-2 border-zinc-800`
+               : "bg-zinc-800 dark:bg-zinc-900 border-2 border-zinc-700"
            )}
          >
               <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent z-0"></div>
@@ -611,7 +611,7 @@ const BadgeCard = ({ badge, val, unlocked, progress }: any) => {
                     {badge.reward && (
                        <div className="text-[10px] lg:text-xs text-white/80 bg-white/10 p-2 rounded-lg border border-white/5 backdrop-blur-sm italic">
                           Đặc quyền Vinh Dự:<br/>
-                          <span className="font-bold text-yellow-400">{badge.reward}</span>
+                          <span className="font-bold text-orange-400">{badge.reward}</span>
                        </div>
                     )}
                     
@@ -621,8 +621,8 @@ const BadgeCard = ({ badge, val, unlocked, progress }: any) => {
                           className={cn(
                              "flex-1 py-2 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2",
                              unlocked 
-                               ? "bg-yellow-500 text-black hover:bg-yellow-400 active:scale-95 shadow-[0_0_12px_rgba(234,179,8,0.3)]"
-                               : "bg-stone-700 text-stone-400 cursor-not-allowed"
+                               ? "bg-orange-500 text-black hover:bg-orange-400 active:scale-95 shadow-[0_0_12px_rgba(234,179,8,0.3)]"
+                               : "bg-zinc-700 text-zinc-400 cursor-not-allowed"
                           )}
                         >
                            {unlocked ? <><Zap className="w-3.5 h-3.5"/> Nhận Thưởng</> : <><Lock className="w-3.5 h-3.5"/> Chưa Đạt</>}
@@ -632,7 +632,7 @@ const BadgeCard = ({ badge, val, unlocked, progress }: any) => {
                           <button
                              onClick={handleDownload}
                              disabled={isDownloading}
-                             className="px-3 py-2 rounded-xl font-bold text-xs transition-all flex items-center justify-center bg-stone-800 hover:bg-stone-700 active:scale-95 text-yellow-500 border border-stone-600 shadow-sm"
+                             className="px-3 py-2 rounded-xl font-bold text-xs transition-all flex items-center justify-center bg-zinc-800 hover:bg-zinc-700 active:scale-95 text-orange-500 border border-zinc-600 shadow-sm"
                                title="Tải xuống huy chương PNG"
                           >
                              {isDownloading ? <span className="animate-pulse">...</span> : <Download className="w-4 h-4"/>}
@@ -726,12 +726,12 @@ export const StudentBadges = ({
       `}</style>
       
       {/* Top statistics section */}
-      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6 border-b border-stone-200/50 dark:border-zinc-800/80 pb-6">
+      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6 border-b border-zinc-200/50 dark:border-zinc-800/80 pb-6">
          <div className="space-y-1">
-            <h3 className="text-2xl md:text-3xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 flex items-center gap-3">
-              <Award className="w-8 h-8 text-yellow-500" /> Điện Thờ Vinh Hiển
+            <h3 className="text-2xl md:text-3xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 flex items-center gap-3">
+              <Award className="w-8 h-8 text-orange-500" /> Điện Thờ Vinh Hiển
             </h3>
-            <p className="text-sm font-medium text-stone-500 dark:text-stone-400 italic">Mỗi danh hiệu đạt được chứng minh nỗ lực tri thức phi thường.</p>
+            <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400 italic">Mỗi danh hiệu đạt được chứng minh nỗ lực tri thức phi thường.</p>
          </div>
 
          {/* Live stat grid */}
@@ -754,10 +754,10 @@ export const StudentBadges = ({
                   <Clock className="w-4 h-4 text-emerald-500" /> {studyMinutesThisWeek} Phút
                </div>
             </div>
-            <div className="px-3.5 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-black flex flex-col justify-center items-center gap-0.5 text-center shadow-inner">
+            <div className="px-3.5 py-2.5 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-700 dark:text-orange-400 text-xs font-black flex flex-col justify-center items-center gap-0.5 text-center shadow-inner">
                <span className="opacity-65 font-medium">Đế Vương Top 1</span>
                <div className="flex items-center gap-1 font-mono text-sm">
-                  <Crown className="w-4 h-4 text-amber-500" /> {top1Weeks} Tuần
+                  <Crown className="w-4 h-4 text-orange-500" /> {top1Weeks} Tuần
                </div>
             </div>
             <div className="px-3.5 py-2.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-700 dark:text-purple-400 text-xs font-black flex flex-col justify-center items-center gap-0.5 text-center shadow-inner col-span-2 sm:col-span-1">
@@ -770,19 +770,19 @@ export const StudentBadges = ({
       </div>
 
       {/* Progress tracking summary */}
-      <div className="bg-stone-100/50 dark:bg-zinc-800/40 border border-stone-200/50 dark:border-zinc-700/50 p-6 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-zinc-100/50 dark:bg-zinc-800/40 border border-zinc-200/50 dark:border-zinc-700/50 p-6 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
          <div className="space-y-1">
-            <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100 flex items-center gap-2">
-               Tỷ lệ mở khóa Điện Thờ: <span className="font-mono text-yellow-600 dark:text-yellow-400 font-extrabold">{totalUnlockedCount}</span> / {BADGES.length} danh hiệu ({totalPercent}%)
+            <h4 className="text-lg font-bold text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
+               Tỷ lệ mở khóa Điện Thờ: <span className="font-mono text-orange-600 dark:text-orange-400 font-extrabold">{totalUnlockedCount}</span> / {BADGES.length} danh hiệu ({totalPercent}%)
             </h4>
-            <p className="text-xs text-stone-500 dark:text-stone-400 max-w-xl">
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 max-w-xl">
                Hoàn thành xuất sắc toàn bộ chặng đường khảo cứu triết học để đạt danh vị "Khắc Kỷ Chi Thượng Thừa" đỉnh phong.
             </p>
          </div>
          <div className="w-full md:w-64">
-            <div className="h-3 w-full bg-stone-200 dark:bg-zinc-800 border border-stone-300/30 dark:border-zinc-700/40 rounded-full overflow-hidden relative">
+            <div className="h-3 w-full bg-zinc-200 dark:bg-zinc-800 border border-zinc-300/30 dark:border-zinc-700/40 rounded-full overflow-hidden relative">
                <motion.div 
-                  className="absolute h-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-400 rounded-full"
+                  className="absolute h-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-400 rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: `${totalPercent}%` }}
                   transition={{ duration: 1.2, ease: "easeOut" }}
@@ -800,8 +800,8 @@ export const StudentBadges = ({
                className={cn(
                   "px-4 py-2 text-xs font-extrabold rounded-xl transition duration-200 border cursor-pointer",
                   selectedCategory === cat.id
-                     ? "bg-stone-900 border-stone-950 text-white dark:bg-white dark:border-white dark:text-black shadow-md scale-105"
-                     : "bg-white/40 dark:bg-zinc-900/40 border-stone-200 dark:border-zinc-800 text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-zinc-800"
+                     ? "bg-zinc-900 border-zinc-950 text-white dark:bg-white dark:border-white dark:text-black shadow-md scale-105"
+                     : "bg-white/40 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800"
                )}
             >
                {cat.label}
@@ -839,12 +839,12 @@ export const StudentBadges = ({
       {/* modal celebrating newly unlocked badge */}
       {newlyUnlocked && (
          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
-            <div className="bg-white dark:bg-zinc-900 p-8 rounded-3xl max-w-sm w-full relative shadow-2xl border border-yellow-500/30 animate-in zoom-in-95 duration-500 overflow-hidden text-center">
-               <button onClick={closeModal} className="absolute top-4 right-4 p-2 bg-stone-200/50 dark:bg-zinc-800/50 hover:bg-stone-300 dark:hover:bg-zinc-700 rounded-full transition">
+            <div className="bg-white dark:bg-zinc-900 p-8 rounded-3xl max-w-sm w-full relative shadow-2xl border border-orange-500/30 animate-in zoom-in-95 duration-500 overflow-hidden text-center">
+               <button onClick={closeModal} className="absolute top-4 right-4 p-2 bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300 dark:hover:bg-zinc-700 rounded-full transition">
                   <X className="w-5 h-5" />
                </button>
                
-               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-yellow-500/10 via-amber-500/5 to-transparent pointer-events-none" />
+               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-orange-500/10 via-orange-500/5 to-transparent pointer-events-none" />
                
                <div className="relative z-10 flex flex-col items-center gap-4">
                   <div className={cn("p-5 rounded-2xl shadow-xl", newlyUnlocked.bg, newlyUnlocked.border)}>
@@ -852,21 +852,21 @@ export const StudentBadges = ({
                   </div>
                   
                   <div className="space-y-2">
-                     <span className="text-xs font-bold text-amber-500 tracking-widest uppercase">DANH HIỆU THỜI KHẮC HUYỀN THOẠI</span>
-                     <h2 className="text-2xl font-black text-stone-900 dark:text-white font-display">
+                     <span className="text-xs font-bold text-orange-500 tracking-widest uppercase">DANH HIỆU THỜI KHẮC HUYỀN THOẠI</span>
+                     <h2 className="text-2xl font-black text-zinc-900 dark:text-white font-display">
                         {newlyUnlocked.name}
                      </h2>
-                     <p className="text-stone-600 dark:text-stone-300 opacity-80 leading-relaxed text-sm">
+                     <p className="text-zinc-600 dark:text-zinc-300 opacity-80 leading-relaxed text-sm">
                         Bạn đã xuất sắc giành được danh hiệu danh giá: <strong className={newlyUnlocked.color}>{newlyUnlocked.desc}</strong>!
                      </p>
                      {newlyUnlocked.reward && (
-                        <div className="border border-yellow-500/20 bg-yellow-500/5 p-2 rounded-lg mt-1 text-xs">
-                           Nhận báu vật: <strong className="text-yellow-600 dark:text-yellow-400">{newlyUnlocked.reward}</strong>
+                        <div className="border border-orange-500/20 bg-orange-500/5 p-2 rounded-lg mt-1 text-xs">
+                           Nhận báu vật: <strong className="text-orange-600 dark:text-orange-400">{newlyUnlocked.reward}</strong>
                         </div>
                      )}
                   </div>
                   
-                  <button onClick={closeModal} className="mt-4 px-6 py-3 bg-yellow-500 text-black font-bold rounded-xl hover:bg-yellow-600 transition hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(234,179,8,0.3)] w-full flex items-center justify-center gap-2">
+                  <button onClick={closeModal} className="mt-4 px-6 py-3 bg-orange-500 text-black font-bold rounded-xl hover:bg-orange-600 transition hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(234,179,8,0.3)] w-full flex items-center justify-center gap-2">
                      <Award className="w-5 h-5" /> Vinh Danh Của Thánh Thần!
                   </button>
                </div>

@@ -114,8 +114,8 @@ export function AutoRefreshBadge() {
        onClick={handlePerformRefresh}
        disabled={isRefreshing}
        className={cn(
-           "flex items-center gap-2 bg-stone-100/80 dark:bg-zinc-900/80 backdrop-blur border px-3 py-1.5 rounded-full shadow-sm transition-all outline-none cursor-pointer active:scale-95 hover:bg-stone-200/80 dark:hover:bg-zinc-800/80",
-           isRefreshing ? "border-amber-500/50" : "border-stone-200 dark:border-zinc-800"
+           "flex items-center gap-2 bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur border px-3 py-1.5 rounded-full shadow-sm transition-all outline-none cursor-pointer active:scale-95 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80",
+           isRefreshing ? "border-orange-500/50" : "border-zinc-200 dark:border-zinc-800"
        )} 
        title="Tự động đồng bộ & cập nhật phiên bản (Bấm để làm mới ngay)"
     >
@@ -132,8 +132,8 @@ export function AutoRefreshBadge() {
             </>
           )}
        </span>
-       <span className="text-[10px] font-mono font-bold text-stone-600 dark:text-stone-400 tracking-wider flex items-center gap-1.5 min-w-[12px] sm:min-w-[40px] justify-center">
-          <RefreshCw className={cn("w-3 h-3 text-stone-500 dark:text-stone-400", (isRefreshing || (timeLeft && timeLeft < 10000)) ? "animate-spin" : "")} />
+       <span className="text-[10px] font-mono font-bold text-zinc-600 dark:text-zinc-400 tracking-wider flex items-center gap-1.5 min-w-[12px] sm:min-w-[40px] justify-center">
+          <RefreshCw className={cn("w-3 h-3 text-zinc-500 dark:text-zinc-400", (isRefreshing || (timeLeft && timeLeft < 10000)) ? "animate-spin" : "")} />
           <span className="hidden sm:inline">{isRefreshing ? "--:--" : (timeLeft === null ? "--:--" : `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`)}</span>
        </span>
     </button>

@@ -349,7 +349,7 @@ export default function WeeklyStudyAnalyticsModal({
     <div className="fixed inset-0 z-55 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-stone-900/50 dark:bg-black/70 backdrop-blur-md transition-opacity"
+        className="absolute inset-0 bg-zinc-900/50 dark:bg-black/70 backdrop-blur-md transition-opacity"
         onClick={onClose}
         id="weekly-study-backdrop"
       />
@@ -357,27 +357,27 @@ export default function WeeklyStudyAnalyticsModal({
       {/* Modal Card */}
       <div
         ref={containerRef}
-        className="relative w-full max-w-lg glass select-none dark:bg-zinc-900/95 rounded-3xl border border-stone-200 dark:border-zinc-800 shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-200 focus:outline-none"
+        className="relative w-full max-w-lg glass select-none dark:bg-zinc-900/95 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-200 focus:outline-none"
         id="weekly-study-modal-container"
       >
         {/* Header */}
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-stone-100 dark:border-zinc-800/80">
+        <div className="flex items-center justify-between mb-6 pb-4 border-b border-zinc-100 dark:border-zinc-800/80">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-amber-500/10 rounded-xl text-amber-600 dark:text-amber-400">
+            <div className="p-2.5 bg-orange-500/10 rounded-xl text-orange-600 dark:text-orange-400">
               <BarChart2 className="w-6 h-6" />
             </div>
             <div>
-              <h2 className="text-xl font-display font-extrabold text-stone-900 dark:text-stone-100">
+              <h2 className="text-xl font-display font-extrabold text-zinc-900 dark:text-zinc-100">
                 Phân Tích Học Tập Tuần
               </h2>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                 Chi tiết thời lượng ôn tập trong tuần này
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-stone-100 dark:hover:bg-zinc-805 rounded-full text-stone-400 dark:text-stone-500 hover:text-stone-700 dark:hover:text-stone-200 transition"
+            className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-805 rounded-full text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-200 transition"
             id="weekly-study-close-btn"
           >
             <X className="w-5 h-5" />
@@ -386,25 +386,25 @@ export default function WeeklyStudyAnalyticsModal({
 
         {/* Mini stats dashboard */}
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="p-4 bg-amber-500/5 dark:bg-amber-500/10 rounded-2xl border border-amber-500/10 dark:border-amber-400/20 flex items-center gap-3">
-            <Clock className="w-8 h-8 text-amber-500 flex-shrink-0" />
+          <div className="p-4 bg-orange-500/5 dark:bg-orange-500/10 rounded-2xl border border-orange-500/10 dark:border-orange-400/20 flex items-center gap-3">
+            <Clock className="w-8 h-8 text-orange-500 flex-shrink-0" />
             <div>
               <p className="text-[10px] uppercase font-bold tracking-wider opacity-60">
                 Tổng cộng tuần
               </p>
-              <p className="text-lg font-mono font-bold text-stone-800 dark:text-stone-200 mt-0.5">
+              <p className="text-lg font-mono font-bold text-zinc-800 dark:text-zinc-200 mt-0.5">
                 {totalWeeklyMinutes} phút
               </p>
             </div>
           </div>
 
-          <div className="p-4 bg-yellow-500/5 dark:bg-yellow-500/10 rounded-2xl border border-yellow-500/10 dark:border-yellow-400/20 flex items-center gap-3">
-            <Trophy className="w-8 h-8 text-yellow-500 flex-shrink-0" />
+          <div className="p-4 bg-orange-500/5 dark:bg-orange-500/10 rounded-2xl border border-orange-500/10 dark:border-orange-400/20 flex items-center gap-3">
+            <Trophy className="w-8 h-8 text-orange-500 flex-shrink-0" />
             <div>
               <p className="text-[10px] uppercase font-bold tracking-wider opacity-60">
                 Ngày tập trung nhất
               </p>
-              <p className="text-base font-bold text-stone-800 dark:text-stone-200 mt-0.5 leading-tight">
+              <p className="text-base font-bold text-zinc-800 dark:text-zinc-200 mt-0.5 leading-tight">
                 {bestDay ? `${bestDay.dayName} (${bestDay.minutes}m)` : "Chưa ghi nhận"}
               </p>
             </div>
@@ -412,12 +412,12 @@ export default function WeeklyStudyAnalyticsModal({
         </div>
 
         {/* Main D3 Chart viewport */}
-        <div className="relative p-3 bg-stone-50 dark:bg-zinc-950/40 border border-stone-100 dark:border-zinc-800/60 rounded-2xl h-72">
+        <div className="relative p-3 bg-zinc-50 dark:bg-zinc-950/40 border border-zinc-100 dark:border-zinc-800/60 rounded-2xl h-72">
           {totalWeeklyMinutes === 0 ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-60 p-6 text-center">
-              <Calendar className="w-10 h-10 text-stone-400 dark:text-stone-600 mb-3" />
+              <Calendar className="w-10 h-10 text-zinc-400 dark:text-zinc-600 mb-3" />
               <p className="text-sm font-semibold">Chưa có dữ liệu bài học</p>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1 max-w-[280px]">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 max-w-[280px]">
                 Hãy tiến hành ôn luyện hoặc học tập từ bộ thẻ để kích hoạt biểu đồ phân tích hàng ngày!
               </p>
             </div>
@@ -428,20 +428,20 @@ export default function WeeklyStudyAnalyticsModal({
               {/* Tooltip Overlay */}
               {tooltipData && (
                 <div
-                  className="absolute pointer-events-none bg-stone-900/95 dark:bg-zinc-900 border border-stone-800/90 dark:border-zinc-700/80 text-white rounded-lg px-2.5 py-1.5 text-[11px] shadow-xl flex flex-col gap-0.5 font-sans z-50 transform -translate-x-1/2 -translate-y-full tracking-wide"
+                  className="absolute pointer-events-none bg-zinc-900/95 dark:bg-zinc-900 border border-zinc-800/90 dark:border-zinc-700/80 text-white rounded-lg px-2.5 py-1.5 text-[11px] shadow-xl flex flex-col gap-0.5 font-sans z-50 transform -translate-x-1/2 -translate-y-full tracking-wide"
                   style={{
                     left: `${tooltipData.x}px`,
                     top: `${tooltipData.y}px`,
                   }}
                 >
-                  <p className="font-bold border-b border-white/10 pb-0.5 mb-0.5 text-amber-400 text-center">
+                  <p className="font-bold border-b border-white/10 pb-0.5 mb-0.5 text-orange-400 text-center">
                     {tooltipData.dayName} ({tooltipData.dateStr})
                   </p>
-                  <p className="flex justify-between gap-3 text-stone-300">
+                  <p className="flex justify-between gap-3 text-zinc-300">
                     <span>Thời gian học:</span>
                     <strong className="text-white text-right">{tooltipData.minutes} phút</strong>
                   </p>
-                  <p className="flex justify-between gap-3 text-stone-300">
+                  <p className="flex justify-between gap-3 text-zinc-300">
                     <span>Số thẻ đã ôn:</span>
                     <strong className="text-white text-right">{tooltipData.cardsCount} thẻ</strong>
                   </p>
@@ -452,9 +452,9 @@ export default function WeeklyStudyAnalyticsModal({
         </div>
 
         {/* Footer */}
-        <div className="mt-5 text-center text-stone-450 dark:text-zinc-500 text-[11px] font-sans">
+        <div className="mt-5 text-center text-zinc-450 dark:text-zinc-500 text-[11px] font-sans">
           <p className="flex items-center justify-center gap-1">
-            <TrendingUp className="w-3.5 h-3.5 text-amber-500" />
+            <TrendingUp className="w-3.5 h-3.5 text-orange-500" />
             Biểu đồ đồng bộ và tự động làm mới thời lượng học theo thời gian thực!
           </p>
         </div>

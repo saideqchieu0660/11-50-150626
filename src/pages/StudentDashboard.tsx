@@ -95,7 +95,7 @@ const MockExamButton = ({ user, onClick }: any) => {
     <button 
       onClick={onClick} 
       disabled={cooldownRemaining > 0} 
-      className={cn("px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg transition transform", cooldownRemaining > 0 ? "bg-stone-300/60 dark:bg-zinc-800/80 text-black/50 dark:text-white/50 cursor-not-allowed" : "relative overflow-hidden group bg-yellow-500 hover:bg-yellow-600 text-black shadow-lg hover:scale-[1.02] transition-all duration-500 font-bold before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700")}
+      className={cn("px-4 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg transition transform", cooldownRemaining > 0 ? "bg-zinc-300/60 dark:bg-zinc-800/80 text-black/50 dark:text-white/50 cursor-not-allowed" : "relative overflow-hidden group bg-orange-500 hover:bg-orange-600 text-black shadow-lg hover:scale-[1.02] transition-all duration-500 font-bold before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700")}
     >
       <BrainCircuit className="w-5 h-5" />
       {cooldownRemaining > 0 ? `Đang hồi chiêu (${cooldownRemaining}s)` : "Sinh Bài Thi (Mock Exam)"}
@@ -181,10 +181,10 @@ const MOTIVATION_QUOTES = [
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="card-3d p-4 rounded-2xl">
-        <p className="font-medium text-xs tracking-widest uppercase text-zinc-500 dark:text-zinc-400 mb-1.5">{label}</p>
+      <div className="stone-carved card-3d p-4 rounded-2xl">
+        <p className="font-sans font-light tracking-wide font-medium text-xs tracking-widest uppercase text-zinc-500 dark:text-zinc-400 mb-1.5">{label}</p>
         <div className="flex items-baseline gap-1.5">
-          <p className="font-display font-bold text-2xl text-yellow-600 dark:text-yellow-500 leading-none">
+          <p className="font-sans font-light tracking-wide font-serif italic font-medium font-display text-2xl text-orange-600 dark:text-orange-500 leading-none">
             {payload[0].value}
           </p>
           <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">pts</span>
@@ -248,7 +248,13 @@ export default function StudentDashboard() {
   const [showTutorial, setShowTutorial] = useState(false);
   const [activeLoreItem, setActiveLoreItem] = useState<string | null>(null);
   
-  const [activeTab, setActiveTab] = useState<"study" | "ranking" | "quiz" | "mock_exam_setup" | "settings" | "history" | "skill_tree" | "all_sets" | "groups" | "achievements" | "profile" | "create_deck" | "cyberpunk" | "shop">("study");
+  const [activeTab, setActiveTab] = useState<"study" | "ranking" | "quiz" | "mock_exam_setup" | "settings" | "history" | "skill_tree" | "all_sets" | "groups" | "achievements" | "profile" | "create_deck" | "cyberpunk" | "shop">(() => {
+    return (sessionStorage.getItem('student_dashboard_tab') as any) || "study";
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem('student_dashboard_tab', activeTab);
+  }, [activeTab]);
   const [selectedShopItem, setSelectedShopItem] = useState<{name: string; icon: any; iconColor: string; title: string; cost: number; desc: string; lore: string; actionText: string; bgEffect: string; onBuy: () => void} | null>(null);
   const [profileNameInput, setProfileNameInput] = useState("");
   const [isEditingProfileName, setIsEditingProfileName] = useState(false);
@@ -1523,10 +1529,10 @@ export default function StudentDashboard() {
   const CustomStreakTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="card-3d p-4 rounded-2xl">
-          <p className="font-medium text-xs tracking-widest uppercase text-zinc-500 dark:text-zinc-400 mb-1.5">{label}</p>
+        <div className="stone-carved card-3d p-4 rounded-2xl">
+          <p className="font-sans font-light tracking-wide font-medium text-xs tracking-widest uppercase text-zinc-500 dark:text-zinc-400 mb-1.5">{label}</p>
           <div className="flex items-baseline gap-1.5">
-            <p className="font-display font-bold text-2xl text-orange-600 dark:text-orange-500 leading-none">
+            <p className="font-sans font-light tracking-wide font-serif italic font-medium font-display text-2xl text-orange-600 dark:text-orange-500 leading-none">
               {payload[0].value}
             </p>
             <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">days</span>
@@ -1593,33 +1599,33 @@ export default function StudentDashboard() {
              className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none p-4"
            >
              <div className="absolute inset-0 bg-black/40 backdrop-blur-sm pointer-events-auto" onClick={() => setLevelUpData(null)} />
-             <div className="relative glass-panel rounded-3xl p-8 max-w-xl w-full flex flex-col items-center text-center shadow-2xl pointer-events-auto bg-gradient-to-b from-amber-500/10 to-transparent border border-amber-500/20">
-                <button onClick={() => setLevelUpData(null)} className="absolute top-4 right-4 p-2 bg-stone-100 dark:bg-zinc-800 rounded-full hover:scale-105 transition">
-                  <X className="w-5 h-5 text-stone-500" />
+             <div className="relative glass-panel rounded-3xl p-8 max-w-xl w-full flex flex-col items-center text-center shadow-2xl pointer-events-auto bg-gradient-to-b from-orange-500/10 to-transparent border border-orange-500/20">
+                <button onClick={() => setLevelUpData(null)} className="absolute top-4 right-4 p-2 bg-zinc-100 dark:bg-zinc-800 rounded-full hover:scale-105 transition">
+                  <X className="w-5 h-5 text-zinc-500" />
                 </button>
-                <div className="w-24 h-24 mb-6 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-600 flex items-center justify-center p-1 shadow-[0_0_30px_rgba(251,191,36,0.5)]">
-                   <div className="w-full h-full bg-stone-900 rounded-full flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/30 to-transparent animate-pulse" />
-                      <span className="font-extrabold text-4xl text-amber-500 z-10">{levelUpData.level}</span>
+                <div className="w-24 h-24 mb-6 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 flex items-center justify-center p-1 shadow-[0_0_30px_rgba(251,191,36,0.5)]">
+                   <div className="w-full h-full bg-zinc-900 rounded-full flex items-center justify-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-500/30 to-transparent animate-pulse" />
+                      <span className="font-serif italic font-medium font-extrabold text-4xl text-orange-500 z-10">{levelUpData.level}</span>
                    </div>
                 </div>
                 
-                <h2 className="text-3xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-500 dark:from-amber-400 dark:to-yellow-300">
+                <h2 className="font-serif italic font-medium text-3xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500 dark:from-orange-400 dark:to-orange-300">
                   Thăng Cấp!
                 </h2>
-                <p className="text-stone-600 dark:text-stone-300 font-medium mb-8">
+                <p className="font-sans font-light tracking-wide text-zinc-600 dark:text-zinc-300 font-medium mb-8">
                   Ngài vừa đạt ranh giới tri thức mới.
                 </p>
 
-                <div className="relative p-6 bg-stone-100/50 dark:bg-zinc-900/50 rounded-2xl border border-stone-200 dark:border-zinc-800 italic">
-                  <BookOpen className="absolute -top-3 -left-3 w-8 h-8 text-amber-500 opacity-50" />
-                  <p className="text-stone-700 dark:text-stone-200 font-medium whitespace-pre-wrap">"{levelUpData.quote.split(" - ")[0]}"</p>
-                  <p className="text-sm font-bold text-stone-500 dark:text-stone-400 mt-2">— {levelUpData.quote.split(" - ")[1] || "Khuyết danh"}</p>
+                <div className="relative p-6 bg-zinc-100/50 dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800 italic">
+                  <BookOpen className="absolute -top-3 -left-3 w-8 h-8 text-orange-500 opacity-50" />
+                  <p className="font-sans font-light tracking-wide text-zinc-700 dark:text-zinc-200 font-medium whitespace-pre-wrap">"{levelUpData.quote.split(" - ")[0]}"</p>
+                  <p className="font-sans font-light tracking-wide text-sm font-bold text-zinc-500 dark:text-zinc-400 mt-2">— {levelUpData.quote.split(" - ")[1] || "Khuyết danh"}</p>
                 </div>
                 
                 <button 
                   onClick={() => setLevelUpData(null)}
-                  className="mt-8 px-8 py-3 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-95"
+                  className="mt-8 px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-95"
                 >
                   Lĩnh Ngộ
                 </button>
@@ -1652,9 +1658,9 @@ export default function StudentDashboard() {
 
       {/* Banner chế độ xem Admin */}
       {user && (user.role === "admin" || user.role === "Admin" || user.role === "teacher") && (
-        <div className="mb-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mb-6 p-4 rounded-xl bg-orange-500/10 border border-orange-500/30 text-orange-900 dark:text-orange-200 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <Shield className="w-5 h-5 text-amber-500 animate-pulse shrink-0" />
+            <Shield className="w-5 h-5 text-orange-500 animate-pulse shrink-0" />
             <div className="text-sm">
               <span className="font-bold">Bạn đang ở Student View (Học Viên)</span>. Các thay đổi và học tập thử nghiệm sẽ mô phỏng giống học sinh để bạn dễ kiểm thử.
             </div>
@@ -1664,7 +1670,7 @@ export default function StudentDashboard() {
               sessionStorage.setItem('isAdminMode', 'true');
               window.location.href = '/teacher';
             }}
-            className="px-4 py-2 bg-amber-500 hover:bg-yellow-500 text-black font-extrabold text-xs rounded-lg transition-all duration-300 shadow-md whitespace-nowrap cursor-pointer animate-pulse"
+            className="px-4 py-2 bg-orange-500 hover:bg-orange-500 text-black font-extrabold text-xs rounded-lg transition-all duration-300 shadow-md whitespace-nowrap cursor-pointer animate-pulse"
           >
             Quay lại Admin View ⚡
           </button>
@@ -1686,10 +1692,10 @@ export default function StudentDashboard() {
           <Target className="w-48 h-48" />
         </div>
         <div className="relative z-10">
-          <h2 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 mb-2">Salve, {user?.name}</h2>
-          <p className="font-roman text-lg italic opacity-80 mb-6 min-h-[3.5rem]">{quote}</p>
+          <h2 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 mb-2">Salve, {user?.name}</h2>
+          <p className="font-sans font-light tracking-wide font-roman text-lg italic opacity-80 mb-6 min-h-[3.5rem]">{quote}</p>
           <div className="flex flex-wrap items-center gap-4">
-            <div className="bg-yellow-500/20 text-yellow-700 dark:text-yellow-400 px-4 py-2 rounded-lg font-bold flex items-center gap-2 relative">
+            <div className="bg-orange-500/20 text-orange-700 dark:text-orange-400 px-4 py-2 rounded-lg font-bold flex items-center gap-2 relative">
               <TrendingUp className="w-5 h-5" />
               Weekly Points: <AnimatedCounter value={user?.points || 0} />
             </div>
@@ -1725,7 +1731,7 @@ export default function StudentDashboard() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.3, delay: 0.1 }}
-        className="flex gap-2 md:gap-4 mb-8 p-1.5 md:p-2 bg-stone-200/50 dark:bg-black/30 backdrop-blur-xl rounded-[2rem] md:rounded-full overflow-x-auto hide-scrollbar ring-1 ring-white/20 dark:ring-white/5"
+        className="flex gap-2 md:gap-4 mb-8 p-1.5 md:p-2 bg-zinc-200/50 dark:bg-black/30 backdrop-blur-xl rounded-[2rem] md:rounded-full overflow-x-auto hide-scrollbar ring-1 ring-white/20 dark:ring-white/5"
       >
         {[
           { id: "study", label: "Góc Học Tập", icon: BookOpen, bubble: remindLaterCount > 0 },
@@ -1748,7 +1754,7 @@ export default function StudentDashboard() {
               onClick={() => setActiveTab(tab.id as any)}
               className={cn(
                 "relative px-4 py-2 font-bold text-sm md:text-base rounded-full transition-colors flex items-center justify-center gap-2 whitespace-nowrap outline-none flex-shrink-0",
-                isActive ? "text-stone-900 dark:text-stone-100" : "text-stone-600 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200"
+                isActive ? "text-zinc-900 dark:text-zinc-100" : "text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
               )}
             >
               {isActive && (
@@ -1757,7 +1763,7 @@ export default function StudentDashboard() {
                 />
               )}
               <span className="relative z-10 flex items-center gap-2">
-                <Icon className={cn("w-4 h-4 md:w-5 md:h-5", isActive ? "text-amber-500" : "opacity-70")} />
+                <Icon className={cn("w-4 h-4 md:w-5 md:h-5", isActive ? "text-orange-500" : "opacity-70")} />
                 {tab.label}
                 {tab.bubble && (
                   <span className="absolute -top-2 -right-3 w-2.5 h-2.5 md:w-3 md:h-3 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.6)]" />
@@ -1802,21 +1808,21 @@ export default function StudentDashboard() {
           >
              {isQuizLoading ? (
                  <div className="glass p-16 rounded-2xl flex flex-col items-center justify-center text-center space-y-6">
-                     <Loader2 className="w-16 h-16 animate-spin text-yellow-500" />
-                     <h2 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-yellow-600 dark:text-yellow-400">Đang khởi tạo bài kiểm tra năng lực...</h2>
-                     <p className="opacity-70 max-w-lg italic font-serif">Chuyên gia khảo thí AI đang phân tích dữ liệu hổng kiến thức của bạn để tạo 15 câu trắc nghiệm thực chiến.</p>
-                     <div className="font-mono text-xl bg-stone-200/60 dark:bg-zinc-800/50 px-6 py-2 rounded-full border border-amber-600/20 dark:border-amber-500/30 font-bold text-yellow-600">
+                     <Loader2 className="w-16 h-16 animate-spin text-orange-500" />
+                     <h2 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-orange-600 dark:text-orange-400">Đang khởi tạo bài kiểm tra năng lực...</h2>
+                     <p className="font-sans font-light tracking-wide opacity-70 max-w-lg italic font-serif">Chuyên gia khảo thí AI đang phân tích dữ liệu hổng kiến thức của bạn để tạo 15 câu trắc nghiệm thực chiến.</p>
+                     <div className="font-serif italic font-medium font-mono text-xl bg-zinc-200/60 dark:bg-zinc-800/50 px-6 py-2 rounded-full border border-orange-600/20 dark:border-orange-500/30 text-orange-600">
                          <QuizCooldownTimer user={user} />
                      </div>
                  </div>
              ) : quizFinished ? (
                  <div className="glass p-12 rounded-2xl flex flex-col items-center justify-center text-center space-y-6">
-                     <Trophy className="w-24 h-24 text-yellow-500 mb-4" />
-                     <h2 className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">Tổng kết Bài Test</h2>
-                     <div className="text-6xl font-mono font-bold text-yellow-600 dark:text-yellow-400 my-4">
-                         {quizScore} <span className="opacity-40 text-4xl">/ {quizQuestions.length}</span>
+                     <Trophy className="w-24 h-24 text-orange-500 mb-4" />
+                     <h2 className="font-serif italic font-medium text-4xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">Tổng kết Bài Test</h2>
+                     <div className="font-serif italic font-medium text-6xl font-mono text-orange-600 dark:text-orange-400 my-4">
+                         {quizScore} <span className="font-serif italic font-medium opacity-40 text-4xl">/ {quizQuestions.length}</span>
                      </div>
-                     <p className="font-roman text-xl italic opacity-80 border-l-4 border-yellow-500 pl-4 py-2">"{quizQuote}"</p>
+                     <p className="font-sans font-light tracking-wide font-serif italic font-medium font-roman text-xl italic opacity-80 border-l-4 border-orange-500 pl-4 py-2">"{quizQuote}"</p>
                      
                      <div className="pt-8">
                          <button onClick={() => { setActiveTab("study"); setQuizQuestions([]); }} className="bg-black dark:bg-white text-white dark:text-black px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
@@ -1827,24 +1833,24 @@ export default function StudentDashboard() {
                  </div>
              ) : (
                  <div className="glass p-8 md:p-12 rounded-2xl space-y-8 max-w-4xl mx-auto">
-                     <div className="flex justify-between items-center border-b border-amber-600/20 dark:border-amber-500/30 pb-4">
+                     <div className="flex justify-between items-center border-b border-orange-600/20 dark:border-orange-500/30 pb-4">
                         <button onClick={() => { setActiveTab("study"); setQuizQuestions([]); }} className="opacity-60 hover:opacity-100 transition flex items-center gap-2">
                             <ArrowLeft className="w-4 h-4" /> Thoát Bài Test
                         </button>
-                        <div className="font-mono bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 px-4 py-1.5 rounded-full font-bold">
+                        <div className="font-mono bg-orange-500/10 text-orange-700 dark:text-orange-400 px-4 py-1.5 rounded-full font-bold">
                             Câu hỏi {quizCurrentIndex + 1} / {quizQuestions.length}
                         </div>
                      </div>
                      
                      <div className="min-h-[120px] flex items-center justify-center py-6">
-                         <h3 className="text-2xl md:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 leading-relaxed text-center">
+                         <h3 className="font-serif italic font-medium text-2xl md:text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 leading-relaxed text-center">
                              <div className="markdown-body inline-block"><ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{currentQ?.question || ""}</ReactMarkdown></div>
                          </h3>
                      </div>
 
                      <div className="grid md:grid-cols-2 gap-4">
                          {currentQ?.options.map((opt, i) => {
-                             let optClass = "border border-amber-600/20 dark:border-amber-500/30 hover:border-yellow-500 hover:bg-yellow-500/5 bg-stone-200/60 dark:bg-zinc-800/50 opacity-90 hover:opacity-100";
+                             let optClass = "border border-orange-600/20 dark:border-orange-500/30 hover:border-orange-500 hover:bg-orange-500/5 bg-zinc-200/60 dark:bg-zinc-800/50 opacity-90 hover:opacity-100";
                              let OptIcon = null;
                              
                              if (isAnswerRevealed) {
@@ -1856,10 +1862,10 @@ export default function StudentDashboard() {
                                      optClass = "bg-red-500/10 border-red-500/50 text-red-700 dark:text-red-400 opacity-60";
                                      OptIcon = <XCircle className="w-6 h-6 text-red-500/50 absolute right-4" />;
                                  } else {
-                                     optClass = "border-amber-600/20 dark:border-amber-500/30 opacity-40 grayscale";
+                                     optClass = "border-orange-600/20 dark:border-orange-500/30 opacity-40 grayscale";
                                  }
                              } else if (i === selectedOption) {
-                                 optClass = "ring-2 ring-yellow-500 bg-yellow-500/10 scale-[1.02] transition-transform font-bold";
+                                 optClass = "ring-2 ring-orange-500 bg-orange-500/10 scale-[1.02] transition-transform font-bold";
                              }
 
                              return (
@@ -1878,10 +1884,10 @@ export default function StudentDashboard() {
                      </div>
                      
                      {isAnswerRevealed && (
-                         <div className="pt-8 border-t border-amber-600/20 dark:border-amber-500/30 animate-in fade-in slide-in-from-bottom-4 flex flex-col md:flex-row items-center justify-between gap-6">
-                             <div className="flex-1 bg-stone-200/60 dark:bg-zinc-800/50 p-4 rounded-xl border border-amber-600/20 dark:border-amber-500/30">
+                         <div className="pt-8 border-t border-orange-600/20 dark:border-orange-500/30 animate-in fade-in slide-in-from-bottom-4 flex flex-col md:flex-row items-center justify-between gap-6">
+                             <div className="flex-1 bg-zinc-200/60 dark:bg-zinc-800/50 p-4 rounded-xl border border-orange-600/20 dark:border-orange-500/30">
                                  <div className="flex items-center justify-between mb-2 gap-4">
-                                     <span className="font-bold text-yellow-600 dark:text-yellow-400 flex items-center gap-2">
+                                     <span className="font-bold text-orange-600 dark:text-orange-400 flex items-center gap-2">
                                          <Sparkles className="w-4 h-4" /> AI Giải Thích:
                                      </span>
                                      <button 
@@ -1902,10 +1908,10 @@ export default function StudentDashboard() {
                                          <span className="absolute inset-0 rounded-full bg-blue-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
                                      </button>
                                  </div>
-                                 <p className="font-serif italic opacity-90">{currentQ?.explanation || "Đáp án đúng là " + String.fromCharCode(65 + getCorrectIndex(currentQ))}</p>
+                                 <p className="font-sans font-light tracking-wide font-serif italic opacity-90">{currentQ?.explanation || "Đáp án đúng là " + String.fromCharCode(65 + getCorrectIndex(currentQ))}</p>
                              </div>
                              
-                             <button onClick={handleNextQuestion} className="relative overflow-hidden group bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.5)] transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shrink-0 w-full md:w-auto before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700">
+                             <button onClick={handleNextQuestion} className="relative overflow-hidden group bg-orange-500 hover:bg-orange-600 text-black px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.5)] transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shrink-0 w-full md:w-auto before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700">
                                  {quizCurrentIndex + 1 < quizQuestions.length ? "Câu tiếp theo" : "Xem kết quả"}
                                  <ArrowRight className="w-5 h-5" />
                              </button>
@@ -1929,9 +1935,9 @@ export default function StudentDashboard() {
             className="glass p-8 md:p-12 rounded-2xl max-w-4xl mx-auto space-y-8"
           >
               <div className="text-center space-y-4">
-                  <BrainCircuit className="w-16 h-16 text-yellow-500 mx-auto" />
-                  <h2 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">Tạo Mock Exam với AI</h2>
-                  <p className="opacity-70 max-w-lg mx-auto italic font-serif">Chọn 1-3 bộ thẻ (Decks) để AI tự động cấu trúc bài kiểm tra đánh giá năng lực của bạn.</p>
+                  <BrainCircuit className="w-16 h-16 text-orange-500 mx-auto" />
+                  <h2 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">Tạo Mock Exam với AI</h2>
+                  <p className="font-sans font-light tracking-wide opacity-70 max-w-lg mx-auto italic font-serif">Chọn 1-3 bộ thẻ (Decks) để AI tự động cấu trúc bài kiểm tra đánh giá năng lực của bạn.</p>
               </div>
 
               <div className="space-y-4">
@@ -1951,10 +1957,10 @@ export default function StudentDashboard() {
                                         }
                                     }
                                 }}
-                                className={cn("p-4 rounded-xl text-left border transition-all text-sm font-bold flex items-center justify-between", isSelected ? "border-yellow-500 bg-yellow-500/10 text-yellow-700 dark:text-yellow-400" : "border-amber-600/20 dark:border-amber-500/30 opacity-60 hover:opacity-100 hover:border-yellow-500/50 bg-stone-200/60 dark:bg-zinc-800/50")}
+                                className={cn("p-4 rounded-xl text-left border transition-all text-sm font-bold flex items-center justify-between", isSelected ? "border-orange-500 bg-orange-500/10 text-orange-700 dark:text-orange-400" : "border-orange-600/20 dark:border-orange-500/30 opacity-60 hover:opacity-100 hover:border-orange-500/50 bg-zinc-200/60 dark:bg-zinc-800/50")}
                               >
                                   <span className="truncate pr-2">{deck.title}</span>
-                                  {isSelected && <CheckCircle2 className="w-4 h-4 text-yellow-500" />}
+                                  {isSelected && <CheckCircle2 className="w-4 h-4 text-orange-500" />}
                               </button>
                           );
                       })}
@@ -1968,7 +1974,7 @@ export default function StudentDashboard() {
                           <button
                             key={count}
                             onClick={() => setExamQuestionCount(count)}
-                            className={cn("px-6 py-2 rounded-xl font-bold border transition-all", examQuestionCount === count ? "border-yellow-500 bg-yellow-500/10 text-yellow-700 dark:text-yellow-400" : "border-amber-600/20 dark:border-amber-500/30 opacity-60 hover:opacity-100 bg-stone-200/60 dark:bg-zinc-800/50")}
+                            className={cn("px-6 py-2 rounded-xl font-bold border transition-all", examQuestionCount === count ? "border-orange-500 bg-orange-500/10 text-orange-700 dark:text-orange-400" : "border-orange-600/20 dark:border-orange-500/30 opacity-60 hover:opacity-100 bg-zinc-200/60 dark:bg-zinc-800/50")}
                           >
                               {count} câu
                           </button>
@@ -1976,14 +1982,14 @@ export default function StudentDashboard() {
                   </div>
               </div>
 
-              <div className="pt-8 flex justify-between items-center border-t border-amber-600/20 dark:border-amber-500/30">
+              <div className="pt-8 flex justify-between items-center border-t border-orange-600/20 dark:border-orange-500/30">
                   <button onClick={() => setActiveTab("study")} className="font-bold opacity-60 hover:opacity-100 transition flex items-center gap-2">
                        <ArrowLeft className="w-4 h-4" /> Quay lại
                   </button>
                   <button 
                       onClick={generateMockExam}
                       disabled={selectedExamDecks.length === 0}
-                      className="px-8 py-3 rounded-xl bg-yellow-500 text-black font-bold flex items-center gap-2 shadow-lg hover:bg-yellow-600 disabled:opacity-50 transition transform hover:scale-105"
+                      className="px-8 py-3 rounded-xl bg-orange-500 text-black font-bold flex items-center gap-2 shadow-lg hover:bg-orange-600 disabled:opacity-50 transition transform hover:scale-105"
                   >
                       <Sparkles className="w-5 h-5" />
                       Sinh Bài Thi (Mock Exam)
@@ -2004,9 +2010,9 @@ export default function StudentDashboard() {
             className="space-y-8"
           >
               <div className="text-center space-y-4 mb-8">
-                  <Network className="w-16 h-16 text-yellow-500 mx-auto" />
-                  <h2 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">Cây Kỹ Năng & Lộ Trình</h2>
-                  <p className="opacity-70 max-w-lg mx-auto italic font-serif">Khám phá vũ trụ kiến thức. Mở khóa và vươn tới sự thông tuệ đỉnh cao (Eudaimonia).</p>
+                  <Network className="w-16 h-16 text-orange-500 mx-auto" />
+                  <h2 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">Cây Kỹ Năng & Lộ Trình</h2>
+                  <p className="font-sans font-light tracking-wide opacity-70 max-w-lg mx-auto italic font-serif">Khám phá vũ trụ kiến thức. Mở khóa và vươn tới sự thông tuệ đỉnh cao (Eudaimonia).</p>
               </div>
 
               <ErrorBoundary fallback={<div className="p-8 bg-red-100/50 rounded-lg text-center dark:bg-red-900/10">Bản đồ kỹ năng tạm thời không khả dụng.</div>}>
@@ -2034,7 +2040,7 @@ export default function StudentDashboard() {
                     key={b.id}
                     initial={{ opacity: 0, y: -15, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="relative overflow-hidden rounded-2xl p-5 md:p-6 bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 dark:from-red-950/70 dark:via-rose-950/70 dark:to-yellow-950/40 border border-red-500/40 shadow-xl shadow-red-500/5"
+                    className="relative overflow-hidden rounded-2xl p-5 md:p-6 bg-gradient-to-r from-red-600 via-rose-600 to-orange-600 dark:from-red-950/70 dark:via-rose-950/70 dark:to-orange-950/40 border border-red-500/40 shadow-xl shadow-red-500/5"
                   >
                     {/* Animated glowing bg pulse */}
                     <div className="absolute inset-0 bg-red-500/10 animate-pulse pointer-events-none" />
@@ -2045,11 +2051,11 @@ export default function StudentDashboard() {
                     <div className="relative z-10 flex flex-col gap-3">
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white/20 dark:bg-red-500/30 text-white border border-white/20">
-                          <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-ping inline-block" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-ping inline-block" />
                           📢 THÔNG BÁO TOÀN SERVER
                         </span>
                         <span className="text-[10px] font-bold text-white/95">
-                          Gửi bởi <strong className="font-extrabold text-yellow-350">{b.userName}</strong> (Admin)
+                          Gửi bởi <strong className="font-extrabold text-orange-350">{b.userName}</strong> (Admin)
                         </span>
                         <span className="text-[9px] font-mono text-white/80 shrink-0">
                           {new Date(b.timestamp).toLocaleString('vi-VN', { 
@@ -2083,17 +2089,17 @@ export default function StudentDashboard() {
                </div>
                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                   <div className="space-y-2 text-white flex-1 min-w-0">
-                     <h3 className="text-2xl font-display font-bold flex items-center flex-wrap gap-2">
+                     <h3 className="font-serif italic font-medium text-2xl font-display flex items-center flex-wrap gap-2">
                         <Flame className="w-6 h-6 shrink-0" /> Nhiệm vụ hôm nay (Daily Quest)
                      </h3>
-                     <p className="opacity-90 max-w-md">
+                     <p className="font-sans font-light tracking-wide opacity-90 max-w-md">
                         Lộ trình thông minh tự động trộn 20% thẻ mới và 80% thẻ ôn tập được gợi ý bằng thuật toán Spaced Repetition.
                      </p>
                   </div>
                   <button 
                      disabled={isStartingQuest}
                      onClick={handleStartDailyQuest}
-                     className="shrink-0 bg-white text-indigo-700 hover:bg-stone-100 font-bold px-6 py-3 rounded-xl shadow-lg transition hover:scale-105 active:scale-95 text-center flex items-center justify-center gap-2 disabled:opacity-50"
+                     className="shrink-0 bg-white text-indigo-700 hover:bg-zinc-100 font-bold px-6 py-3 rounded-xl shadow-lg transition hover:scale-105 active:scale-95 text-center flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                      {isStartingQuest ? <Loader2 className="w-5 h-5 animate-spin" /> : <Play className="w-5 h-5 fill-current" />} 
                      Bắt đầu Quests
@@ -2106,23 +2112,23 @@ export default function StudentDashboard() {
                id="costudy-portal-link"
                initial={{ opacity: 0, y: -10 }}
                animate={{ opacity: 1, y: 0 }}
-               className="relative overflow-hidden rounded-2xl p-6 md:p-8 bg-gradient-to-r from-amber-600 to-yellow-500 shadow-xl"
+               className="relative overflow-hidden rounded-2xl p-6 md:p-8 bg-gradient-to-r from-orange-600 to-orange-500 shadow-xl"
             >
                <div className="absolute top-0 right-0 p-4 opacity-20 pointer-events-none">
                   <Users className="w-40 h-40" />
                </div>
                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                   <div className="space-y-2 text-white flex-1 min-w-0">
-                     <h3 className="text-2xl font-display font-bold flex items-center flex-wrap gap-2">
+                     <h3 className="font-serif italic font-medium text-2xl font-display flex items-center flex-wrap gap-2">
                         <Users className="w-6 h-6 shrink-0" /> Phòng Tự Học Chung
                      </h3>
-                     <p className="opacity-90 max-w-md">
+                     <p className="font-sans font-light tracking-wide opacity-90 max-w-md">
                         Cùng tập trung Pomodoro với các bạn học khác trong không gian trực tuyến.
                      </p>
                   </div>
                   <Link 
                      to="/co-study"
-                     className="shrink-0 bg-white text-amber-700 hover:bg-stone-100 font-bold px-6 py-3 rounded-xl shadow-lg transition hover:scale-105 active:scale-95 text-center flex items-center justify-center gap-2"
+                     className="shrink-0 bg-white text-orange-700 hover:bg-zinc-100 font-bold px-6 py-3 rounded-xl shadow-lg transition hover:scale-105 active:scale-95 text-center flex items-center justify-center gap-2"
                   >
                      <Play className="w-5 h-5 fill-current" /> Tham Gia Ngay
                   </Link>
@@ -2130,8 +2136,8 @@ export default function StudentDashboard() {
             </motion.div>
 
             <div className="flex justify-between items-center flex-wrap gap-4">
-              <h3 className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 flex items-center flex-wrap gap-2">
-                <BookOpen className="w-6 h-6 text-yellow-500 shrink-0" /> Your Studies
+              <h3 className="font-serif italic font-medium text-2xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 flex items-center flex-wrap gap-2">
+                <BookOpen className="w-6 h-6 text-orange-500 shrink-0" /> Your Studies
                 {remindLaterCount > 0 && (
                   <button 
                     onClick={() => setShowRemindLaterModal(true)}
@@ -2145,7 +2151,7 @@ export default function StudentDashboard() {
               
               <button 
                 onClick={toggleNotifications}
-                className={cn("flex flex-1 md:flex-none justify-between items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition", notificationsEnabled ? "bg-stone-200/80 dark:bg-zinc-800/80 text-yellow-600 dark:text-yellow-400 border border-yellow-500/30" : "bg-stone-200/40 dark:bg-zinc-800/40 opacity-70 hover:opacity-100 border border-transparent")}
+                className={cn("flex flex-1 md:flex-none justify-between items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition", notificationsEnabled ? "bg-zinc-200/80 dark:bg-zinc-800/80 text-orange-600 dark:text-orange-400 border border-orange-500/30" : "bg-zinc-200/40 dark:bg-zinc-800/40 opacity-70 hover:opacity-100 border border-transparent")}
               >
                 <div className="flex items-center gap-2">
                   {notificationsEnabled ? <BellRing className="w-4 h-4 animate-pulse" /> : <BellOff className="w-4 h-4" />}
@@ -2186,43 +2192,43 @@ export default function StudentDashboard() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-50/90 via-stone-100/40 to-stone-200/20 dark:from-zinc-900/60 dark:via-zinc-900/30 dark:to-zinc-950/20 border-2 border-amber-500/20 dark:border-amber-500/25 p-6 shadow-xl backdrop-blur-md mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6"
+                  className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-50/90 via-zinc-100/40 to-zinc-200/20 dark:from-zinc-900/60 dark:via-zinc-900/30 dark:to-zinc-950/20 border-2 border-orange-500/20 dark:border-orange-500/25 p-6 shadow-xl backdrop-blur-md mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6"
                 >
                   {/* Subtle background glow */}
-                  <div className="absolute -right-16 -top-16 w-32 h-32 bg-amber-500/10 blur-3xl rounded-full pointer-events-none" />
-                  <div className="absolute -left-16 -bottom-16 w-32 h-32 bg-yellow-500/5 blur-3xl rounded-full pointer-events-none" />
+                  <div className="absolute -right-16 -top-16 w-32 h-32 bg-orange-500/10 blur-3xl rounded-full pointer-events-none" />
+                  <div className="absolute -left-16 -bottom-16 w-32 h-32 bg-orange-500/5 blur-3xl rounded-full pointer-events-none" />
 
                   <div className="space-y-4 flex-1 min-w-0">
                     {/* Header line with badge */}
                     <div className="flex flex-wrap items-center gap-3">
-                      <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-500/20 to-yellow-500/15 dark:from-amber-400/15 dark:to-yellow-400/5 text-amber-800 dark:text-amber-400 text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm border border-amber-500/20 animate-pulse">
-                        <BrainCircuit className="w-4 h-4 text-amber-500 dark:text-amber-400" />
+                      <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-orange-500/20 to-orange-500/15 dark:from-orange-400/15 dark:to-orange-400/5 text-orange-800 dark:text-orange-400 text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm border border-orange-500/20 animate-pulse">
+                        <BrainCircuit className="w-4 h-4 text-orange-500 dark:text-orange-400" />
                         Smart Study Suggestion
                       </span>
-                      <span className="text-[11px] opacity-70 font-medium font-mono text-stone-600 dark:text-stone-400 bg-stone-300/40 dark:bg-zinc-800/40 px-2.5 py-0.5 rounded-md">
+                      <span className="text-[11px] opacity-70 font-medium font-mono text-zinc-600 dark:text-zinc-400 bg-zinc-300/40 dark:bg-zinc-800/40 px-2.5 py-0.5 rounded-md">
                         CẦN ÔN TẬP NHẤT LÚC NÀY
                       </span>
                     </div>
 
                     {/* Content body */}
                     <div className="space-y-2">
-                      <h4 className="text-xl sm:text-2xl font-display font-black text-stone-900 dark:text-stone-50 tracking-tight break-all sm:break-words">
+                      <h4 className="font-serif italic font-medium text-xl sm:text-2xl font-display font-black text-zinc-900 dark:text-zinc-50 tracking-tight break-all sm:break-words">
                         {deckWithLowestMastery.title}
                       </h4>
                       
                       {/* Stoic adaptive quote block */}
-                      <p className="text-sm italic text-stone-600 dark:text-stone-400 font-serif border-l-2 border-amber-500/50 pl-3 py-0.5 opacity-90 max-w-2xl leading-relaxed">
+                      <p className="font-sans font-light tracking-wide text-sm italic text-zinc-600 dark:text-zinc-400 font-serif border-l-2 border-orange-500/50 pl-3 py-0.5 opacity-90 max-w-2xl leading-relaxed">
                         "{stoicAdvice}"
                       </p>
                     </div>
 
                     {/* Info Metrics dashboard row */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2 border-t border-amber-500/10 dark:border-amber-500/15 max-w-xl">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2 border-t border-orange-500/10 dark:border-orange-500/15 max-w-xl">
                       {/* Metric 1 */}
                       <div className="space-y-0.5 min-w-0">
                         <span className="text-[10px] uppercase font-mono tracking-wider opacity-50 block truncate">Mức thông thạo</span>
                         <div className="flex items-baseline gap-1">
-                          <span className="text-xl font-bold font-mono text-yellow-600 dark:text-yellow-400">
+                          <span className="font-serif italic font-medium text-xl font-mono text-orange-600 dark:text-orange-400">
                             {avgMastery}%
                           </span>
                           <span className="text-[10px] opacity-60">/ 100</span>
@@ -2233,7 +2239,7 @@ export default function StudentDashboard() {
                       <div className="space-y-0.5 min-w-0">
                         <span className="text-[10px] uppercase font-mono tracking-wider opacity-50 block truncate">Tổng số thẻ</span>
                         <div className="flex items-baseline gap-1">
-                          <span className="text-xl font-bold font-mono text-stone-800 dark:text-stone-200">
+                          <span className="font-serif italic font-medium text-xl font-mono text-zinc-800 dark:text-zinc-200">
                             {totalCards}
                           </span>
                           <span className="text-[10px] opacity-60">thẻ</span>
@@ -2244,7 +2250,7 @@ export default function StudentDashboard() {
                       <div className="space-y-0.5 col-span-2 sm:col-span-1 min-w-0">
                         <span className="text-[10px] uppercase font-mono tracking-wider opacity-50 block truncate">Thẻ yếu cần cải thiện</span>
                         <div className="flex items-baseline gap-1">
-                          <span className="text-xl font-bold font-mono text-red-500 dark:text-red-400">
+                          <span className="font-serif italic font-medium text-xl font-mono text-red-500 dark:text-red-400">
                             {weakCardsCount}
                           </span>
                           <span className="text-[10px] opacity-60">thẻ học</span>
@@ -2257,12 +2263,12 @@ export default function StudentDashboard() {
                   <div className="flex flex-col items-stretch sm:items-end justify-center shrink-0 w-full md:w-auto">
                     <Link
                       to={`/study/${deckWithLowestMastery.id}`}
-                      className="group relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-extrabold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-amber-500/10 dark:hover:shadow-white/5 hover:scale-[1.03] active:scale-95 text-base shrink-0 border border-black/10 dark:border-white/10"
+                      className="group relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-extrabold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-orange-500/10 dark:hover:shadow-white/5 hover:scale-[1.03] active:scale-95 text-base shrink-0 border border-black/10 dark:border-white/10"
                     >
                       {/* Animated gradient strip */}
-                      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+                      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
                       
-                      <Play className="w-5 h-5 fill-current ml-0.5 animate-pulse text-amber-500 dark:text-amber-500 group-hover:scale-110 transition-transform" />
+                      <Play className="w-5 h-5 fill-current ml-0.5 animate-pulse text-orange-500 dark:text-orange-500 group-hover:scale-110 transition-transform" />
                       <span>Học ngay 🚀</span>
                     </Link>
                   </div>
@@ -2271,17 +2277,17 @@ export default function StudentDashboard() {
             })()}
 
             <div className="flex items-center justify-between mt-6 mb-3">
-               <h4 className="font-display font-black text-lg text-stone-800 dark:text-stone-100 flex items-center gap-1.5">
-                  <BookOpen className="w-5 h-5 text-yellow-500" /> Bộ Học Tập Của Bạn
+               <h4 className="font-display font-black text-lg text-zinc-800 dark:text-zinc-100 flex items-center gap-1.5">
+                  <BookOpen className="w-5 h-5 text-orange-500" /> Bộ Học Tập Của Bạn
                </h4>
-               <div className="flex gap-1 p-0.5 bg-stone-200/60 dark:bg-zinc-900 rounded-xl border border-stone-300/40 dark:border-zinc-800/45 shrink-0">
+               <div className="flex gap-1 p-0.5 bg-zinc-200/60 dark:bg-zinc-900 rounded-xl border border-zinc-300/40 dark:border-zinc-800/45 shrink-0">
                  <button
                    onClick={() => setViewMode("recent")}
                    className={cn(
                      "px-3 py-1.5 text-[10px] font-black uppercase tracking-wider rounded-lg border-none focus:outline-none transition-all cursor-pointer",
                      viewMode === "recent"
-                       ? "bg-white dark:bg-zinc-800 text-yellow-600 dark:text-yellow-400 shadow-sm font-black"
-                       : "text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-250 bg-transparent"
+                       ? "bg-white dark:bg-zinc-800 text-orange-600 dark:text-orange-400 shadow-sm font-black"
+                       : "text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-250 bg-transparent"
                    )}
                  >
                    Gần đây
@@ -2291,8 +2297,8 @@ export default function StudentDashboard() {
                    className={cn(
                      "px-3 py-1.5 text-[10px] font-black uppercase tracking-wider rounded-lg border-none focus:outline-none transition-all cursor-pointer",
                      viewMode === "all"
-                       ? "bg-white dark:bg-zinc-800 text-yellow-600 dark:text-yellow-400 shadow-sm font-black"
-                       : "text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-250 bg-transparent"
+                       ? "bg-white dark:bg-zinc-800 text-orange-600 dark:text-orange-400 shadow-sm font-black"
+                       : "text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-250 bg-transparent"
                    )}
                  >
                    Tất cả ({decks.length})
@@ -2303,21 +2309,21 @@ export default function StudentDashboard() {
             {viewMode === "recent" ? (
                <DeckList decks={decks.slice(0, 4)} showSearch={false} />
             ) : (
-               <div className="glass p-4 rounded-2xl border border-stone-200/50 dark:border-zinc-800/50 animate-in fade-in duration-300">
+               <div className="glass p-4 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 animate-in fade-in duration-300">
                   <DeckList decks={decks} showSearch={true} groupBySubject={true} onCategoryQuiz={(subject, subjectDecks) => setActiveQuizSetup({ subject, decks: subjectDecks })} onCategoryReviewHardCards={startCategoryRemindLaterStudy} onCategoryStudyAll={startCategoryStudyAll} isAdmin={user?.role === 'admin' || user?.role === 'Admin'} />
                </div>
             )}
 
-            <div className="mt-8 pt-8 border-t border-amber-600/20 dark:border-amber-500/30">
+            <div className="mt-8 pt-8 border-t border-orange-600/20 dark:border-orange-500/30">
               <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
-                <h3 className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 flex items-center gap-2">
-                  <Activity className="w-6 h-6 text-yellow-500" /> Weekly Mastery Trend
+                <h3 className="font-serif italic font-medium text-2xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 flex items-center gap-2">
+                  <Activity className="w-6 h-6 text-orange-500" /> Weekly Mastery Trend
                 </h3>
                 <div className="flex items-center gap-2">
                   <select 
                     value={chartPeriod} 
                     onChange={(e) => setChartPeriod(e.target.value as any)}
-                    className="bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 rounded-lg px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-yellow-500 appearance-none cursor-pointer"
+                    className="bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 rounded-lg px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 appearance-none cursor-pointer"
                   >
                     <option value="7_days">Last 7 Days</option>
                     <option value="30_days">Last 30 Days</option>
@@ -2325,7 +2331,7 @@ export default function StudentDashboard() {
                   </select>
                   <button 
                     onClick={() => setIsChartExpanded(true)}
-                    className="p-2 bg-stone-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium opacity-80 hover:opacity-100"
+                    className="p-2 bg-zinc-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium opacity-80 hover:opacity-100"
                     title="Phóng to biểu đồ"
                   >
                     <Maximize2 className="w-4 h-4" /> Phóng to
@@ -2434,7 +2440,7 @@ export default function StudentDashboard() {
             </div>
 
             <section className="glass p-6 rounded-xl">
-              <h3 className="text-xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 mb-4 flex items-center gap-2">
+              <h3 className="font-serif italic font-medium text-xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 mb-4 flex items-center gap-2">
                 <Target className="w-5 h-5 text-blue-500" /> Mục tiêu Ngày
               </h3>
               <div className="flex flex-col items-center">
@@ -2453,7 +2459,7 @@ export default function StudentDashboard() {
                        />
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                       <span className="text-2xl font-bold font-mono text-blue-600 dark:text-blue-400">{dailyReviewed}</span>
+                       <span className="font-serif italic font-medium text-2xl font-mono text-blue-600 dark:text-blue-400">{dailyReviewed}</span>
                        <span className="text-xs opacity-60">/ {dailyGoal} thẻ</span>
                     </div>
                  </div>
@@ -2465,7 +2471,7 @@ export default function StudentDashboard() {
                        min="1" max="1000"
                        value={dailyGoal}
                        onChange={handleDailyGoalChange}
-                       className="w-full bg-black/5 dark:bg-white/5 border border-amber-600/20 dark:border-amber-500/30 rounded-lg px-3 py-2 text-stone-900 dark:text-stone-100 text-center font-bold focus:outline-none focus:border-blue-500 transition"
+                       className="w-full bg-black/5 dark:bg-white/5 border border-orange-600/20 dark:border-orange-500/30 rounded-lg px-3 py-2 text-zinc-900 dark:text-zinc-100 text-center font-bold focus:outline-none focus:border-blue-500 transition"
                     />
                  </div>
               </div>
@@ -2476,15 +2482,15 @@ export default function StudentDashboard() {
               className="glass p-6 rounded-xl cursor-pointer hover:scale-[1.02] active:scale-[0.99] transition-all duration-300 relative group overflow-hidden"
               id="weekly-study-card"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              <h3 className="text-xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 mb-4 flex items-center gap-2 relative z-10">
-                <Clock className="w-5 h-5 text-amber-500 group-hover:rotate-12 transition-transform duration-300" /> Tổng kết Giờ Học (7 ngày)
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <h3 className="font-serif italic font-medium text-xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 mb-4 flex items-center gap-2 relative z-10">
+                <Clock className="w-5 h-5 text-orange-500 group-hover:rotate-12 transition-transform duration-300" /> Tổng kết Giờ Học (7 ngày)
               </h3>
-              <div className="flex flex-col items-center justify-center p-4 bg-stone-200/60 dark:bg-zinc-800/50 rounded-xl border border-amber-600/20 dark:border-amber-500/30 shadow-inner relative z-10">
-                 <div className="text-4xl font-mono font-bold text-amber-600 dark:text-amber-400 mb-2 mt-2">
+              <div className="flex flex-col items-center justify-center p-4 bg-zinc-200/60 dark:bg-zinc-800/50 rounded-xl border border-orange-600/20 dark:border-orange-500/30 shadow-inner relative z-10">
+                 <div className="font-serif italic font-medium text-4xl font-mono text-orange-600 dark:text-orange-400 mb-2 mt-2">
                     {studyHours}h {studyMinutes}m
                  </div>
-                 <p className="text-[10px] uppercase font-bold tracking-wider text-amber-600 dark:text-amber-400 mt-1 opacity-80 group-hover:underline">Xem biểu đồ giờ học &gt;</p>
+                 <p className="font-sans font-light tracking-wide text-[10px] uppercase font-bold tracking-wider text-orange-600 dark:text-orange-400 mt-1 opacity-80 group-hover:underline">Xem biểu đồ giờ học &gt;</p>
               </div>
             </section>
 
@@ -2494,14 +2500,14 @@ export default function StudentDashboard() {
               id="detailed-stats-card"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              <h3 className="text-xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-700 via-violet-500 to-indigo-600 dark:from-violet-300 dark:via-violet-400 dark:to-indigo-400 mb-4 flex items-center gap-2 relative z-10">
+              <h3 className="font-serif italic font-medium text-xl font-display text-transparent bg-clip-text bg-gradient-to-r from-violet-700 via-violet-500 to-indigo-600 dark:from-violet-300 dark:via-violet-400 dark:to-indigo-400 mb-4 flex items-center gap-2 relative z-10">
                 <BarChart3 className="w-5 h-5 text-violet-500 group-hover:rotate-12 transition-transform duration-300" /> Thống Kê Thẻ Học (7 ngày)
               </h3>
-              <div className="flex flex-col items-center justify-center p-4 bg-stone-200/60 dark:bg-zinc-800/50 rounded-xl border border-violet-600/20 dark:border-violet-500/30 shadow-inner relative z-10">
-                 <div className="text-4xl font-mono font-bold text-violet-600 dark:text-violet-400 mb-2 mt-2">
+              <div className="flex flex-col items-center justify-center p-4 bg-zinc-200/60 dark:bg-zinc-800/50 rounded-xl border border-violet-600/20 dark:border-violet-500/30 shadow-inner relative z-10">
+                 <div className="font-serif italic font-medium text-4xl font-mono text-violet-600 dark:text-violet-400 mb-2 mt-2">
                     {dailyReviewed}
                  </div>
-                 <p className="text-[10px] uppercase font-bold tracking-wider text-violet-600 dark:text-violet-400 mt-1 opacity-80 group-hover:underline">Xem biểu đồ tiến trình thẻ &gt;</p>
+                 <p className="font-sans font-light tracking-wide text-[10px] uppercase font-bold tracking-wider text-violet-600 dark:text-violet-400 mt-1 opacity-80 group-hover:underline">Xem biểu đồ tiến trình thẻ &gt;</p>
               </div>
             </section>
 
@@ -2527,15 +2533,15 @@ export default function StudentDashboard() {
           className="space-y-6 animate-in fade-in duration-300"
         >
           <div className="flex flex-col gap-2">
-            <h3 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 flex items-center gap-3">
-              <Library className="w-8 h-8 text-yellow-500 shrink-0" /> Bộ Học Tập Toàn Diện
+            <h3 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 flex items-center gap-3">
+              <Library className="w-8 h-8 text-orange-500 shrink-0" /> Bộ Học Tập Toàn Diện
             </h3>
-            <p className="text-stone-500 dark:text-stone-400 text-sm">
+            <p className="font-sans font-light tracking-wide text-zinc-500 dark:text-zinc-400 text-sm">
               Xem toàn bộ danh sách các bộ thẻ học của bạn, được phân loại tự động và khoa học theo từng chủ đề.
             </p>
           </div>
 
-          <div className="glass p-6 md:p-8 rounded-3xl border border-stone-200/50 dark:border-zinc-800/50 bg-white/40 dark:bg-black/40 backdrop-blur-xl shadow-xl">
+          <div className="glass p-6 md:p-8 rounded-3xl border border-zinc-200/50 dark:border-zinc-800/50 bg-white/40 dark:bg-black/40 backdrop-blur-xl shadow-xl">
             <DeckList decks={decks} showSearch={true} groupBySubject={true} onCategoryQuiz={(subject, subjectDecks) => setActiveQuizSetup({ subject, decks: subjectDecks })} onCategoryReviewHardCards={startCategoryRemindLaterStudy} onCategoryStudyAll={startCategoryStudyAll} isAdmin={user?.role === 'admin' || user?.role === 'Admin'} />
           </div>
         </motion.div>
@@ -2551,7 +2557,7 @@ export default function StudentDashboard() {
            className="w-full max-w-5xl mx-auto space-y-6"
         >
           <div className="space-y-4">
-             <div className="bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 p-4 rounded-xl text-xs font-bold ring-1 ring-yellow-500/20 text-center">
+             <div className="bg-orange-500/10 text-orange-700 dark:text-orange-400 p-4 rounded-xl text-xs font-bold ring-1 ring-orange-500/20 text-center">
                💡 Kỷ lục trích xuất 1000 thẻ học siêu tốc nhờ Concurrency Pool 8 Keys xoay vòng cực mượt!
              </div>
              <DocumentConverter />
@@ -2575,12 +2581,12 @@ export default function StudentDashboard() {
             {activeGroup ? (
               <div className="space-y-8 animate-in zoom-in-95 duration-500">
                  <div className="text-center mb-10">
-                   <h3 className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 mb-2 flex justify-center items-center gap-3">
+                   <h3 className="font-serif italic font-medium text-4xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 mb-2 flex justify-center items-center gap-3">
                       <Users className="w-8 h-8 text-blue-500" />
                       {activeGroup.name}
                    </h3>
                    <div className="flex items-center justify-center gap-4 mt-4">
-                       <span className="font-mono bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 text-lg font-bold py-2 px-6 rounded-lg select-all cursor-pointer" title="Copy to clipboard">
+                       <span className="font-mono bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 text-lg font-bold py-2 px-6 rounded-lg select-all cursor-pointer" title="Copy to clipboard">
                            ID: {activeGroup.id}
                        </span>
                        <button onClick={handleLeaveGroup} className="text-red-500 hover:text-red-600 bg-red-500/10 px-4 py-2 rounded-lg font-bold transition hover:bg-red-500/20">
@@ -2589,30 +2595,30 @@ export default function StudentDashboard() {
                    </div>
                  </div>
 
-                 <div className="bg-background/40 backdrop-blur border border-amber-600/20 dark:border-amber-500/30 p-8 rounded-2xl max-w-2xl mx-auto space-y-6 shadow-xl">
-                    <div className="flex items-center gap-3 border-b border-amber-600/20 dark:border-amber-500/30 pb-4">
-                       <MarcusAureliusIcon className="w-6 h-6 text-yellow-500" />
-                       <h4 className="text-xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">Xếp Hạng Thành Viên</h4>
+                 <div className="bg-background/40 backdrop-blur border border-orange-600/20 dark:border-orange-500/30 p-8 rounded-2xl max-w-2xl mx-auto space-y-6 shadow-xl">
+                    <div className="flex items-center gap-3 border-b border-orange-600/20 dark:border-orange-500/30 pb-4">
+                       <MarcusAureliusIcon className="w-6 h-6 text-orange-500" />
+                       <h4 className="font-serif italic font-medium text-xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">Xếp Hạng Thành Viên</h4>
                     </div>
                     
                     <ul className="space-y-4">
                        {activeGroup.members.map((member, i) => (
                           <li key={member.id} className={cn("flex items-center justify-between p-4 rounded-xl border transition-all", 
-                             member.isCurrent ? "bg-yellow-500/10 border-yellow-500 text-yellow-900 dark:text-yellow-100 shadow-md transform scale-[1.02]" : "bg-stone-200/60 dark:bg-zinc-800/50 border-transparent")}
+                             member.isCurrent ? "bg-orange-500/10 border-orange-500 text-orange-900 dark:text-orange-100 shadow-md transform scale-[1.02]" : "bg-zinc-200/60 dark:bg-zinc-800/50 border-transparent")}
                           >
                              <div className="flex items-center gap-4">
                                <div className={cn("w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-lg shrink-0",
-                                 i === 0 ? "bg-yellow-500 text-black shadow-lg shadow-yellow-500/20" : 
+                                 i === 0 ? "bg-orange-500 text-black shadow-lg shadow-orange-500/20" : 
                                  i === 1 ? "bg-gray-300 text-black shadow-lg" : 
                                  i === 2 ? "bg-orange-400 text-black shadow-lg" : 
-                                 "bg-stone-300/60 dark:bg-zinc-800/80"
+                                 "bg-zinc-300/60 dark:bg-zinc-800/80"
                                )}>
                                  #{i + 1}
                                </div>
                                <div>
-                                 <p className="font-bold flex items-center gap-2">
+                                 <p className="font-sans font-light tracking-wide font-bold flex items-center gap-2">
                                     {member.name}
-                                    {member.isCurrent && <span className="bg-yellow-500 text-black text-xs px-2 py-0.5 rounded-full">(Bạn)</span>}
+                                    {member.isCurrent && <span className="bg-orange-500 text-black text-xs px-2 py-0.5 rounded-full">(Bạn)</span>}
                                  </p>
                                </div>
                              </div>
@@ -2627,22 +2633,22 @@ export default function StudentDashboard() {
             ) : (
             <>
               <div className="text-center mb-10">
-                <h3 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 mb-2">Nhóm Học Tập</h3>
-                <p className="opacity-70 font-serif italic text-lg max-w-xl mx-auto">Tham gia hoặc tạo nhóm để cùng nhau tiến bộ. Hành trình tri thức sẽ bớt gian nan hơn khi có bạn đồng hành.</p>
+                <h3 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 mb-2">Nhóm Học Tập</h3>
+                <p className="font-sans font-light tracking-wide opacity-70 font-serif italic text-lg max-w-xl mx-auto">Tham gia hoặc tạo nhóm để cùng nhau tiến bộ. Hành trình tri thức sẽ bớt gian nan hơn khi có bạn đồng hành.</p>
               </div>
               
               <div className="grid md:grid-cols-2 gap-12">
                   <section className="space-y-6">
-                    <div className="flex items-center gap-3 border-b border-amber-600/20 dark:border-amber-500/30 pb-4">
+                    <div className="flex items-center gap-3 border-b border-orange-600/20 dark:border-orange-500/30 pb-4">
                        <span className="bg-blue-500 text-white p-2 rounded-lg"><Users className="w-6 h-6" /></span>
-                       <h3 className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">Tham gia nhóm</h3>
+                       <h3 className="font-serif italic font-medium text-2xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">Tham gia nhóm</h3>
                     </div>
                     
                     <div className="space-y-4">
                       <label className="text-base font-bold opacity-80 block">Nhập ID nhóm của bạn:</label>
                       <div className="flex gap-2">
                         <input 
-                           className="flex-1 bg-stone-200/60 dark:bg-zinc-800/50 border-2 border-amber-600/20 dark:border-amber-500/30 rounded-xl px-4 py-3 text-stone-900 dark:text-stone-100 text-lg focus:outline-none focus:border-blue-500 font-mono transition-colors"
+                           className="flex-1 bg-zinc-200/60 dark:bg-zinc-800/50 border-2 border-orange-600/20 dark:border-orange-500/30 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-lg focus:outline-none focus:border-blue-500 font-mono transition-colors"
                            placeholder="Ví dụ: A7B9F2" 
                            value={groupId}
                            onChange={e => setGroupId(e.target.value)}
@@ -2660,16 +2666,16 @@ export default function StudentDashboard() {
                   </section>
       
                   <section className="space-y-6">
-                    <div className="flex items-center gap-3 border-b border-amber-600/20 dark:border-amber-500/30 pb-4">
-                       <span className="bg-yellow-500 text-black p-2 rounded-lg"><MarcusAureliusIcon className="w-6 h-6" /></span>
-                       <h3 className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">Tạo nhóm học tập</h3>
+                    <div className="flex items-center gap-3 border-b border-orange-600/20 dark:border-orange-500/30 pb-4">
+                       <span className="bg-orange-500 text-black p-2 rounded-lg"><MarcusAureliusIcon className="w-6 h-6" /></span>
+                       <h3 className="font-serif italic font-medium text-2xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">Tạo nhóm học tập</h3>
                     </div>
                     
                     <div className="space-y-4">
                       <label className="text-base font-bold opacity-80 block">Tên nhóm mới:</label>
                       <div className="flex gap-2">
                         <input 
-                           className="flex-1 bg-stone-200/60 dark:bg-zinc-800/50 border-2 border-amber-600/20 dark:border-amber-500/30 rounded-xl px-4 py-3 text-stone-900 dark:text-stone-100 text-lg focus:outline-none focus:border-yellow-500 transition-colors"
+                           className="flex-1 bg-zinc-200/60 dark:bg-zinc-800/50 border-2 border-orange-600/20 dark:border-orange-500/30 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-lg focus:outline-none focus:border-orange-500 transition-colors"
                            placeholder="Nhóm vượt vũ môn..." 
                            value={newGroupName}
                            onChange={e => setNewGroupName(e.target.value)}
@@ -2677,7 +2683,7 @@ export default function StudentDashboard() {
                            disabled={isCreating}
                         />
                       </div>
-                      <button onClick={handleCreateGroup} disabled={isCreating} className="relative overflow-hidden group bg-yellow-500 text-black w-full py-3 rounded-xl text-lg font-bold hover:bg-yellow-600 shadow-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.5)] transition-all duration-500 transform hover:-translate-y-1 hover:scale-[1.02] disabled:opacity-50 disabled:transform-none before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700">
+                      <button onClick={handleCreateGroup} disabled={isCreating} className="relative overflow-hidden group bg-orange-500 text-black w-full py-3 rounded-xl text-lg font-bold hover:bg-orange-600 shadow-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.5)] transition-all duration-500 transform hover:-translate-y-1 hover:scale-[1.02] disabled:opacity-50 disabled:transform-none before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700">
                         {isCreating ? (
                           <span className="flex items-center justify-center gap-2"><Loader2 className="w-5 h-5 animate-spin" /> Đang thiết lập...</span>
                         ) : "Khởi Tạo Nhóm"}
@@ -2706,8 +2712,8 @@ export default function StudentDashboard() {
           </div>
           <div className="relative z-10 max-w-4xl mx-auto space-y-10">
             <div className="text-center">
-              <h3 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 mb-2">Bảng Xếp Hạng Tuần</h3>
-              <p className="opacity-70">Top học sinh có điểm tích lũy phong độ học tập cao nhất. Cập nhật real-time. Tự động reset sau tuần.</p>
+              <h3 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 mb-2">Bảng Xếp Hạng Tuần</h3>
+              <p className="font-sans font-light tracking-wide opacity-70">Top học sinh có điểm tích lũy phong độ học tập cao nhất. Cập nhật real-time. Tự động reset sau tuần.</p>
             </div>
             
             {sortedUsers.length > 0 ? (
@@ -2738,26 +2744,26 @@ export default function StudentDashboard() {
                           isFirst ? "order-1 sm:order-2 w-full sm:w-56 shadow-[0_0_40px_-10px_rgba(234,179,8,0.5)] z-20" : 
                           isSecond ? "order-2 sm:order-1 w-full sm:w-44 z-10" : 
                           "order-3 sm:order-3 w-full sm:w-44 z-10",
-                          u.id === user?.id ? "ring-2 ring-amber-500 ring-offset-2 ring-offset-white dark:ring-offset-black" : ""
+                          u.id === user?.id ? "ring-2 ring-orange-500 ring-offset-2 ring-offset-white dark:ring-offset-black" : ""
                         )}
                       >
-                        {isFirst && <Crown className="absolute -top-7 w-12 h-12 text-yellow-500 drop-shadow-xl animate-pulse" />}
+                        {isFirst && <Crown className="absolute -top-7 w-12 h-12 text-orange-500 drop-shadow-xl animate-pulse" />}
                         {trend === 'up' && <ChevronUp className="absolute top-3 right-3 w-6 h-6 text-green-500 animate-bounce" />}
                         {trend === 'down' && <ChevronDown className="absolute top-3 right-3 w-6 h-6 text-red-500" />}
 
                         <div className="relative mb-4 shrink-0">
                           <div className={cn(
                             "flex items-center justify-center font-display font-bold shrink-0 rounded-full shadow-xl overflow-hidden relative",
-                            isFirst ? "w-24 h-24 border-4 border-yellow-500/50 shadow-yellow-500/30" : 
+                            isFirst ? "w-24 h-24 border-4 border-orange-500/50 shadow-orange-500/30" : 
                             isSecond ? "w-20 h-20 border-4 border-zinc-400/50 shadow-zinc-400/30" : 
-                            "w-20 h-20 border-4 border-amber-600/50 shadow-amber-600/30",
+                            "w-20 h-20 border-4 border-orange-600/50 shadow-orange-600/30",
                             getAvatarBorderClass(u.avatarBorder)
                           )}>
                             {u.photoURL ? (
                               <img src={u.photoURL} alt={u.name} className="w-full h-full object-cover rounded-full" referrerPolicy="no-referrer" />
                             ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-stone-200 dark:bg-zinc-800 text-stone-700 dark:text-stone-300">
-                                <span className="uppercase text-xl font-bold font-mono">{u.name.charAt(0)}</span>
+                              <div className="w-full h-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                                <span className="font-serif italic font-medium uppercase text-xl font-mono">{u.name.charAt(0)}</span>
                               </div>
                             )}
                           </div>
@@ -2765,7 +2771,7 @@ export default function StudentDashboard() {
                           {/* Small rank badge on top-right of the avatar */}
                           <div className={cn(
                             "absolute -top-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black ring-2 ring-white dark:ring-zinc-950 shadow-md",
-                            isFirst ? "bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 text-black" :
+                            isFirst ? "bg-gradient-to-r from-orange-300 via-orange-400 to-orange-600 text-black" :
                             isSecond ? "bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 text-black" :
                             "bg-gradient-to-r from-orange-200 via-orange-400 to-orange-600 text-black"
                           )}>
@@ -2773,9 +2779,9 @@ export default function StudentDashboard() {
                           </div>
                         </div>
                         
-                        <h4 className="font-bold text-center text-lg sm:text-xl mb-1 line-clamp-1 break-all px-2">{u.name}</h4>
-                        {u.id === user?.id && <span className="text-[10px] bg-yellow-500 text-black px-2 py-0.5 rounded-full uppercase tracking-wider mb-2 font-bold">You</span>}
-                        <div className="text-xs font-mono font-bold text-stone-500 dark:text-stone-400 mb-2">Lv.{u.level || getLevelInfo(u.points || 0).currentLevel}</div>
+                        <h4 className="font-serif italic font-medium text-center text-lg sm:text-xl mb-1 line-clamp-1 break-all px-2">{u.name}</h4>
+                        {u.id === user?.id && <span className="text-[10px] bg-orange-500 text-black px-2 py-0.5 rounded-full uppercase tracking-wider mb-2 font-bold">You</span>}
+                        <div className="text-xs font-mono font-bold text-zinc-500 dark:text-zinc-400 mb-2">Lv.{u.level || getLevelInfo(u.points || 0).currentLevel}</div>
                         
                         {u.streak ? (
                           <div className="flex items-center gap-1 text-xs font-bold text-orange-500 bg-orange-500/10 px-3 py-1 rounded-full mb-3 border border-orange-500/20">
@@ -2792,7 +2798,7 @@ export default function StudentDashboard() {
                            <UserRoleBadge role={u.role} isSchoolLover={u.isSchoolLover} isPro={u.isPro} />
                         </div>
                         
-                        <div className="font-mono text-2xl sm:text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-stone-700 to-black dark:from-stone-300 dark:to-white drop-shadow-sm">
+                        <div className="font-serif italic font-medium font-mono text-2xl sm:text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-zinc-700 to-black dark:from-zinc-300 dark:to-white drop-shadow-sm">
                           {u.points || 0} <span className="text-sm opacity-50 font-sans">pts</span>
                         </div>
                       </motion.div>
@@ -2819,27 +2825,27 @@ export default function StudentDashboard() {
                           key={u.id} className={cn(
                             "group flex items-center justify-between p-3 sm:p-4 rounded-xl border transition-all cursor-pointer backdrop-blur-md", 
                             u.id === user?.id 
-                              ? "bg-amber-500/15 border-amber-500 shadow-lg ring-1 ring-amber-500/50" 
-                              : "bg-white/40 dark:bg-black/20 border-stone-200 dark:border-stone-800 hover:border-amber-500/30 hover:bg-white/60 dark:hover:bg-black/40"
+                              ? "bg-orange-500/15 border-orange-500 shadow-lg ring-1 ring-orange-500/50" 
+                              : "bg-white/40 dark:bg-black/20 border-zinc-200 dark:border-zinc-800 hover:border-orange-500/30 hover:bg-white/60 dark:hover:bg-black/40"
                           )}>
                           <div className="flex items-center gap-4 sm:gap-6 overflow-hidden">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-display font-bold text-lg sm:text-xl shrink-0 bg-stone-200 dark:bg-zinc-800 text-stone-600 dark:text-stone-300 border-2 border-transparent group-hover:border-amber-500/50 transition-colors">
+                            <div className="font-serif italic font-medium w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-display text-lg sm:text-xl shrink-0 bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border-2 border-transparent group-hover:border-orange-500/50 transition-colors">
                               {actualRank}
                             </div>
                             
                             <div className="flex flex-col">
                               <div className="flex items-center gap-2">
                                 <span className="font-bold text-lg truncate max-w-[120px] sm:max-w-[200px]">{u.name}</span>
-                                {u.id === user?.id && <span className="text-[10px] bg-yellow-500 text-black px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold">You</span>}
+                                {u.id === user?.id && <span className="text-[10px] bg-orange-500 text-black px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold">You</span>}
                                 {trend === 'up' && <ChevronUp className="w-5 h-5 text-green-500" />}
                                 {trend === 'down' && <ChevronDown className="w-5 h-5 text-red-500" />}
-                                {trend === 'same' && <Minus className="w-4 h-4 text-stone-400 opacity-50" />}
+                                {trend === 'same' && <Minus className="w-4 h-4 text-zinc-400 opacity-50" />}
                               </div>
                               <div className="flex items-center gap-2 mt-1 flex-wrap">
                                 <span className={cn("text-[10px] font-bold px-2 py-0.5 rounded border flex items-center gap-1 w-fit", tier.color)}>
                                   {tier.name}
                                 </span>
-                                <span className="text-[10px] font-mono font-bold bg-stone-200 dark:bg-stone-800 text-stone-600 dark:text-stone-300 px-1.5 py-0.5 rounded border border-stone-300 dark:border-stone-700">
+                                <span className="text-[10px] font-mono font-bold bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 px-1.5 py-0.5 rounded border border-zinc-300 dark:border-zinc-700">
                                   Lv.{u.level || getLevelInfo(u.points || 0).currentLevel}
                                 </span>
                                 <span className={cn("text-[10px] font-bold px-1.5 py-0.5 rounded border", getCustomTitleBadgeClass(u.title, getLevelInfo(u.points || 0).badgeColors))}>
@@ -2857,7 +2863,7 @@ export default function StudentDashboard() {
 
                           <div className="flex items-center gap-4 shrink-0">
                             <div className="flex flex-col items-end font-mono">
-                              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-stone-700 to-black dark:from-stone-300 dark:to-white group-hover:scale-110 transition-transform origin-right">
+                              <span className="font-serif italic font-medium text-2xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-700 to-black dark:from-zinc-300 dark:to-white group-hover:scale-110 transition-transform origin-right">
                                 {u.points || 0}
                               </span>
                             </div>
@@ -2881,7 +2887,7 @@ export default function StudentDashboard() {
                 )}
               </div>
             ) : (
-              <div className="text-center p-8 opacity-50 font-bold border-2 border-dashed border-amber-600/20 dark:border-amber-500/30 rounded-xl mt-8 max-w-2xl mx-auto">
+              <div className="text-center p-8 opacity-50 font-bold border-2 border-dashed border-orange-600/20 dark:border-orange-500/30 rounded-xl mt-8 max-w-2xl mx-auto">
                 Chưa có học sinh nào trên bảng xếp hạng tuần này.
               </div>
             )}
@@ -2900,21 +2906,21 @@ export default function StudentDashboard() {
         >
           {/* Shop Header */}
           <div className="glass p-6 md:p-8 rounded-3xl relative overflow-hidden text-center mb-6">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl" />
             
-            <ShoppingBag className="w-12 h-12 text-amber-500 mx-auto mb-4 animate-bounce" />
-            <h3 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 mb-2">
+            <ShoppingBag className="w-12 h-12 text-orange-500 mx-auto mb-4 animate-bounce" />
+            <h3 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 mb-2">
               Chợ Vật Phẩm Học Tập
             </h3>
-            <p className="font-roman text-sm md:text-base italic opacity-85 max-w-2xl mx-auto mb-6 leading-relaxed">
+            <p className="font-sans font-light tracking-wide font-roman text-sm md:text-base italic opacity-85 max-w-2xl mx-auto mb-6 leading-relaxed">
               "Người khôn ngoan biết dùng tích lũy trí tuệ để đổi lấy trang bị và sức mạnh tinh thần đột phá." — Marcus Aurelius
             </p>
 
             <div className="flex justify-center items-center gap-3">
               <span className="text-sm opacity-75 font-semibold">Túi Tinh Hoa:</span>
-              <div className="bg-yellow-500/20 text-yellow-700 dark:text-yellow-400 px-4 py-2 rounded-xl font-extrabold text-lg flex items-center gap-2 border border-yellow-500/30 shadow-inner">
-                <Flame className="w-5 h-5 text-yellow-500 animate-pulse fill-current" />
+              <div className="bg-orange-500/20 text-orange-700 dark:text-orange-400 px-4 py-2 rounded-xl font-extrabold text-lg flex items-center gap-2 border border-orange-500/30 shadow-inner">
+                <Flame className="w-5 h-5 text-orange-500 animate-pulse fill-current" />
                 <span>{user?.points || 0} pts</span>
               </div>
             </div>
@@ -2932,7 +2938,7 @@ export default function StudentDashboard() {
                     <Snowflake className="w-6 h-6 animate-spin-slow" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("aegis_shield")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("aegis_shield")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded-full text-xs font-bold">
@@ -2940,12 +2946,12 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Tấm Khiên Của Aegis (Bảo Vệ Streak)</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Tấm Khiên Của Aegis (Bảo Vệ Streak)</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Bảo vệ chuỗi ngày rèn luyện liên tục (Streak) của ngài khỏi sự gián đoạn dẫu có lỡ quên học trong một ngày bận rộn!
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-blue-600 dark:text-blue-400">{currentFreezeCost} Tinh Hoa</span>
                 <button
                   onClick={() => {
@@ -2980,7 +2986,7 @@ export default function StudentDashboard() {
                     <Sparkles className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("ambrosia_nectar")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("ambrosia_nectar")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-purple-500/20 text-purple-700 dark:text-purple-300 rounded-full text-xs font-bold">
@@ -2988,12 +2994,12 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Mật Hoa Ambrosia (+50 Điểm XP)</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Mật Hoa Ambrosia (+50 Điểm XP)</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Uống giọt mật của các vị thần để gia tăng trực tiếp 50 điểm Kinh nghiệm (XP), thăng tiến trí tuệ siêu tốc trên bảng vinh danh!
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-purple-600 dark:text-purple-400">150 Tinh Hoa</span>
                 <button
                   onClick={() => {
@@ -3049,14 +3055,14 @@ export default function StudentDashboard() {
                     Hệ AI Cheat Code
                   </span>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Đôi Mắt Của Argus (Detailed Mode 24h)</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Đôi Mắt Của Argus (Detailed Mode 24h)</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Agent 3 sẽ tự động giảng giải siêu chi tiết và sâu sắc mọi kiến thức.
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-emerald-600 dark:text-emerald-400">300 Tinh Hoa</span>
-                <span className="text-[10px] uppercase font-bold text-stone-400">Bấm để xem</span>
+                <span className="text-[10px] uppercase font-bold text-zinc-400">Bấm để xem</span>
               </div>
             </div>
 
@@ -3094,41 +3100,41 @@ export default function StudentDashboard() {
                     Buff Xếp Hạng
                   </span>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Gót Chân Achilles (x3 XP - Tử Thuật)</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Gót Chân Achilles (x3 XP - Tử Thuật)</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Cày cuốc x3 XP trong 2h, nhưng nếu làm sai flashcard sẽ sập streak hoặc trừ level.
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-rose-600 dark:text-rose-400">400 Tinh Hoa</span>
-                <span className="text-[10px] uppercase font-bold text-stone-400">Bấm để xem</span>
+                <span className="text-[10px] uppercase font-bold text-zinc-400">Bấm để xem</span>
               </div>
             </div>
 
             {/* Item 3: Level Up */}
-            <div className="glass p-6 rounded-2xl border border-amber-500/20 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
-              <div className="absolute -top-12 -right-12 w-24 h-24 bg-amber-500/5 rounded-full group-hover:scale-150 transition-transform duration-500" />
+            <div className="glass p-6 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+              <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full group-hover:scale-150 transition-transform duration-500" />
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="p-3 bg-amber-500/10 rounded-xl text-amber-500">
+                  <span className="p-3 bg-orange-500/10 rounded-xl text-orange-500">
                     <Trophy className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("athenas_salvation")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("athenas_salvation")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
-                    <span className="px-3 py-1 bg-amber-500/20 text-amber-700 dark:text-amber-300 rounded-full text-xs font-bold">
+                    <span className="px-3 py-1 bg-orange-500/20 text-orange-700 dark:text-orange-300 rounded-full text-xs font-bold">
                     Khai Sáng Đỉnh Cao
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Sự Cứu Rỗi Của Athena (Cấp Độ +1)</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Sự Cứu Rỗi Của Athena (Cấp Độ +1)</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Bước thẳng lên 1 cấp độ (Level) mới nhờ sự thông thái của Athena! Đạt được vinh quang học thuật mà không cần tốn thời gian.
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
-                <span className="font-extrabold text-base text-amber-600 dark:text-amber-400">600 Tinh Hoa</span>
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
+                <span className="font-extrabold text-base text-orange-600 dark:text-orange-400">600 Tinh Hoa</span>
                 <button
                   onClick={() => {
                     if (user && user.points < 600) {
@@ -3142,7 +3148,7 @@ export default function StudentDashboard() {
                     }
                   }}
                   disabled={user ? user.points < 600 : true}
-                  className="px-4 py-2 bg-amber-500 text-white rounded-xl text-xs font-bold shadow-md shadow-amber-500/20 hover:shadow-amber-500/40 active:scale-95 transition"
+                  className="px-4 py-2 bg-orange-500 text-white rounded-xl text-xs font-bold shadow-md shadow-orange-500/20 hover:shadow-orange-500/40 active:scale-95 transition"
                 >
                   Hóa Thần
                 </button>
@@ -3158,7 +3164,7 @@ export default function StudentDashboard() {
                     <Shield className="w-6 h-6" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("olympus_aura")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("olympus_aura")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 rounded-full text-xs font-bold">
@@ -3166,12 +3172,12 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Hào Quang Olympus (Khung Kim Cương)</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Hào Quang Olympus (Khung Kim Cương)</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Sở hữu vầng hào quang rực rỡ của các vị thần đỉnh Olympus, thắp sáng ảnh đại diện của ngài trên mọi bảng vàng!
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-cyan-600 dark:text-cyan-400">500 Tinh Hoa</span>
                 <button
                   onClick={async () => {
@@ -3223,7 +3229,7 @@ export default function StudentDashboard() {
                     <Crown className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("polymath_title")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("polymath_title")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 rounded-full text-xs font-bold">
@@ -3231,12 +3237,12 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Phong Hiệu 'Học Giả Bách Khoa'</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Phong Hiệu 'Học Giả Bách Khoa'</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Khắc họa danh xưng danh giá 'Học Giả Bách Khoa' rực sáng vàng kim để tán dương kiến thức uyên bác của ngài!
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-emerald-600 dark:text-emerald-400">300 Tinh Hoa</span>
                 <button
                   onClick={async () => {
@@ -3287,7 +3293,7 @@ export default function StudentDashboard() {
                     <Heart className="w-6 h-6 animate-pulse fill-current" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("lionheart_icon")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("lionheart_icon")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-red-500/20 text-red-700 dark:text-red-300 rounded-full text-xs font-bold">
@@ -3295,12 +3301,12 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Trái Tim Sư Tử (Biểu Tượng Nhiệt Huyết)</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Trái Tim Sư Tử (Biểu Tượng Nhiệt Huyết)</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Hiển thị một trái tim nhiệt huyết rực rỡ bên cạnh tên của ngài, biểu tượng cho lòng dũng cảm bất diệt của một chiến binh Sparta!
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-red-600 dark:text-red-400">200 Tinh Hoa</span>
                 <button
                   onClick={async () => {
@@ -3349,7 +3355,7 @@ export default function StudentDashboard() {
                     <Crown className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("pandoras_box")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("pandoras_box")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-fuchsia-500/20 text-fuchsia-700 dark:text-fuchsia-300 rounded-full text-xs font-bold">
@@ -3357,12 +3363,12 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Chiếc Hộp Pandora</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Chiếc Hộp Pandora</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Mang trong mình sự hỗn mang. Mở hộp sẽ có cơ hội nhận phần thưởng khổng lồ (Nhiều XP, Tinh Hoa...) hoặc có thể rỗng tuếch!
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-fuchsia-600 dark:text-fuchsia-400">200 Tinh Hoa</span>
                 <button
                   onClick={() => {
@@ -3406,7 +3412,7 @@ export default function StudentDashboard() {
                     <Activity className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("level_sacrifice")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("level_sacrifice")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-rose-500/20 text-rose-700 dark:text-rose-300 rounded-full text-xs font-bold">
@@ -3414,12 +3420,12 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Hiến Tế Cấp Độ</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Hiến Tế Cấp Độ</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Hy sinh 1 Cấp Độ hiện tại của bạn để đổi lấy 1000 Tinh Hoa. Sức mạnh này đánh đổi bằng chính kiến thức bạn đã học!
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-rose-600 dark:text-rose-400">Hiến Tế 1 Level</span>
                 <button
                   onClick={() => {
@@ -3443,15 +3449,15 @@ export default function StudentDashboard() {
             </div>
 
             {/* Item 8 [UPDATED]: Ngọn Lửa Prometheus (Thử Thách Streak 10 Ngày) */}
-            <div className={`glass p-6 rounded-2xl border ${user?.activeChallenge?.type === 'streak_10' ? 'border-amber-500/50' : 'border-orange-500/20'} hover:border-orange-500/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group`}>
+            <div className={`glass p-6 rounded-2xl border ${user?.activeChallenge?.type === 'streak_10' ? 'border-orange-500/50' : 'border-orange-500/20'} hover:border-orange-500/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group`}>
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full group-hover:scale-150 transition-transform duration-500" />
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="p-3 bg-orange-500/10 rounded-xl text-orange-500">
-                    <Flame className={user?.activeChallenge?.status === 'active' ? 'w-6 h-6 animate-pulse text-amber-500' : 'w-6 h-6 animate-bounce'} />
+                    <Flame className={user?.activeChallenge?.status === 'active' ? 'w-6 h-6 animate-pulse text-orange-500' : 'w-6 h-6 animate-bounce'} />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("prometheus_fire")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("prometheus_fire")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-orange-500/20 text-orange-700 dark:text-orange-300 rounded-full text-xs font-bold">
@@ -3459,37 +3465,37 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Ngọn Lửa Prometheus (+10 Lv)</h4>
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Ngọn Lửa Prometheus (+10 Lv)</h4>
                 
                 {user?.activeChallenge?.type === 'streak_10' ? (
                    <div className="text-sm mb-4">
                      {user.activeChallenge.status === 'active' ? (
                        <div className="space-y-2">
-                         <p className="font-bold text-amber-600 dark:text-amber-400">🔥 Đang giữ lửa (Hệ số x{user.activeChallenge.currentMultiplier})</p>
-                         <p>Mục tiêu Streak: <span className="font-bold">{user.activeChallenge.startStreak + user.activeChallenge.targetDays}</span></p>
-                         <p>Streak hiện tại: <span className="font-bold">{user.streak || 0}</span></p>
-                         <p className="text-xs text-rose-500 font-bold">⚠️ Nếu đứt streak, hệ thống sẽ thu lại {600 * user.activeChallenge.currentMultiplier} pt!</p>
+                         <p className="font-sans font-light tracking-wide font-bold text-orange-600 dark:text-orange-400">🔥 Đang giữ lửa (Hệ số x{user.activeChallenge.currentMultiplier})</p>
+                         <p className="font-sans font-light tracking-wide">Mục tiêu Streak: <span className="font-bold">{user.activeChallenge.startStreak + user.activeChallenge.targetDays}</span></p>
+                         <p className="font-sans font-light tracking-wide">Streak hiện tại: <span className="font-bold">{user.streak || 0}</span></p>
+                         <p className="font-sans font-light tracking-wide text-xs text-rose-500 font-bold">⚠️ Nếu đứt streak, hệ thống sẽ thu lại {600 * user.activeChallenge.currentMultiplier} pt!</p>
                        </div>
                      ) : user.activeChallenge.status === 'completed' ? (
                        <div className="space-y-2">
-                         <p className="font-bold text-green-600 dark:text-green-400">🎉 Đã hoàn thành thử thách!</p>
-                         <p>Phần thưởng chờ nhận: <span className="font-bold">+{10 * user.activeChallenge.currentMultiplier} Level</span></p>
+                         <p className="font-sans font-light tracking-wide font-bold text-green-600 dark:text-green-400">🎉 Đã hoàn thành thử thách!</p>
+                         <p className="font-sans font-light tracking-wide">Phần thưởng chờ nhận: <span className="font-bold">+{10 * user.activeChallenge.currentMultiplier} Level</span></p>
                        </div>
                      ) : (
                        <div className="space-y-2">
-                         <p className="font-bold text-rose-500 text-lg">❌ Thất Bại!</p>
-                         <p>Ngài đã đứt streak và bị trừ {600 * user.activeChallenge.currentMultiplier} pt.</p>
+                         <p className="font-sans font-light tracking-wide font-bold text-rose-500 text-lg">❌ Thất Bại!</p>
+                         <p className="font-sans font-light tracking-wide">Ngài đã đứt streak và bị trừ {600 * user.activeChallenge.currentMultiplier} pt.</p>
                        </div>
                      )}
                    </div>
                 ) : (
-                  <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                  <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                     Mua với giá 350 pt. Giữ ngọn lửa tri thức liên tiếp 10 ngày để nhận thưởng +10 Lv. Nếu rớt nhịp dọc đường, bị phạt 600 pt! Vượt qua để nhận quyền lợi x2 thưởng/phạt ở vòng sau.
                   </p>
                 )}
               </div>
 
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex flex-wrap gap-2 items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex flex-wrap gap-2 items-center justify-between">
                 {!user?.activeChallenge || user.activeChallenge.type !== 'streak_10' ? (
                   <>
                     <span className="font-extrabold text-base text-orange-600 dark:text-orange-400">350 Tinh Hoa</span>
@@ -3598,7 +3604,7 @@ export default function StudentDashboard() {
                           setForceRender(prev => prev + 1);
                         } catch(e) { console.error(e); }
                       }}
-                      className="w-full px-4 py-2 bg-stone-300 dark:bg-stone-700 text-stone-800 dark:text-white rounded-xl text-xs font-bold shadow-md transition active:scale-95"
+                      className="w-full px-4 py-2 bg-zinc-300 dark:bg-zinc-700 text-zinc-800 dark:text-white rounded-xl text-xs font-bold shadow-md transition active:scale-95"
                     >
                       Chấp Nhận Cay Đắng
                     </button>
@@ -3617,7 +3623,7 @@ export default function StudentDashboard() {
                     <Award className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("philosopher_king_crown")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("philosopher_king_crown")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-rose-500/20 text-rose-700 dark:text-rose-300 rounded-full text-xs font-bold">
@@ -3625,12 +3631,12 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Vương Miện 'Quân Vương Triết Học'</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Vương Miện 'Quân Vương Triết Học'</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Danh hiệu vinh dự cao nhất của Plato dành cho những đầu óc thông thái bậc nhất. Sở hữu danh hiệu này để khẳng định tri thức tuyệt đỉnh của ngài!
                 </p>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-rose-600 dark:text-rose-400">750 Tinh Hoa</span>
                 <button
                   onClick={async () => {
@@ -3681,7 +3687,7 @@ export default function StudentDashboard() {
                     <Cpu className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("united_engine_core")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("united_engine_core")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded-full text-xs font-bold">
@@ -3689,15 +3695,15 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Lõi Năng Lượng United Engine (+1 Lượt)</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Lõi Năng Lượng United Engine (+1 Lượt)</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Nạp thêm 1 lượt kích hoạt hệ thống United Ingestion & Rotation Engine siêu khủng khiếm để chuyển đổi tài liệu hay tạo thẻ học mà không lo giới hạn.
                 </p>
                 <div className="mt-2 mb-4">
-                   <p className="text-xs font-bold text-blue-600 dark:text-blue-400">Số lượt đang có: {user?.unitedEngineUses || 0}</p>
+                   <p className="font-sans font-light tracking-wide text-xs font-bold text-blue-600 dark:text-blue-400">Số lượt đang có: {user?.unitedEngineUses || 0}</p>
                 </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-blue-600 dark:text-blue-400">100 Tinh Hoa</span>
                 <button
                   onClick={async () => {
@@ -3742,7 +3748,7 @@ export default function StudentDashboard() {
                     <Zap className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("intellect_elixir")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("intellect_elixir")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-bold">
@@ -3750,19 +3756,19 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Nước Tăng Lực Tri Thức (x2 XP)</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Nước Tăng Lực Tri Thức (x2 XP)</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Kích hoạt trạng thái x2 XP mọi hoạt động trong vòng 15 phút.
                 </p>
                 <div className="mt-2 mb-4">
-                   <p className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                   <p className="font-sans font-light tracking-wide text-xs font-bold text-indigo-600 dark:text-indigo-400">
                       {user?.doubleXPUntil && user.doubleXPUntil > Date.now() 
                         ? `Còn ${Math.ceil((user.doubleXPUntil - Date.now()) / 60000)} phút` 
                         : "Chưa Kích Hoạt"}
                    </p>
                 </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-indigo-600 dark:text-indigo-400">250 Tinh Hoa</span>
                 <button
                   onClick={async () => {
@@ -3797,7 +3803,7 @@ export default function StudentDashboard() {
                     <Ghost className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("anonymous_mask")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("anonymous_mask")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-slate-500/20 text-slate-700 dark:text-slate-300 rounded-full text-xs font-bold">
@@ -3805,19 +3811,19 @@ export default function StudentDashboard() {
                   </span>
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-1 text-stone-800 dark:text-stone-200">Mặt Nạ Ẩn Danh</h4>
-                <p className="text-xs opacity-70 mb-4 min-h-[40px]">
+                <h4 className="text-lg font-bold mb-1 text-zinc-800 dark:text-zinc-200">Mặt Nạ Ẩn Danh</h4>
+                <p className="font-sans font-light tracking-wide text-xs opacity-70 mb-4 min-h-[40px]">
                   Ẩn giấu điểm số và hạng của bạn trên Bảng Xếp Hạng trong 24 giờ. Hiển thị dưới tên 'Kẻ Ẩn Danh'.
                 </p>
                 <div className="mt-2 mb-4">
-                   <p className="text-xs font-bold text-slate-600 dark:text-slate-400">
+                   <p className="font-sans font-light tracking-wide text-xs font-bold text-slate-600 dark:text-slate-400">
                       {user?.hideRankUntil && user.hideRankUntil > Date.now() 
                         ? `Ẩn trong ${Math.ceil((user.hideRankUntil - Date.now()) / 3600000)} giờ nữa` 
                         : "Chưa Kích Hoạt"}
                    </p>
                 </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between">
                 <span className="font-extrabold text-base text-slate-600 dark:text-slate-400">200 Tinh Hoa</span>
                 <button
                   onClick={async () => {
@@ -3852,7 +3858,7 @@ export default function StudentDashboard() {
                     <ShieldAlert className="w-6 h-6 animate-pulse" />
                   </span>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => setActiveLoreItem("almighty_scepter")} className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
+                    <button onClick={() => setActiveLoreItem("almighty_scepter")} className="prometheus-pulse px-2 py-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-bold transition flex items-center gap-1">
                       <Eye className="w-3 h-3" /> Tìm hiểu thêm
                     </button>
                     <span className="px-3 py-1 bg-red-600/20 text-red-800 dark:text-red-300 rounded-full text-xs font-black">
@@ -3861,7 +3867,7 @@ export default function StudentDashboard() {
                   </div>
                 </div>
                 <h4 className="text-lg font-black mb-1 text-red-700 dark:text-red-400">Quyền Trượng Đấng Toàn Năng</h4>
-                <p className="text-xs opacity-80 mb-4 min-h-[40px] text-red-900/80 dark:text-red-200/80 font-medium">
+                <p className="font-sans font-light tracking-wide text-xs opacity-80 mb-4 min-h-[40px] text-red-900/80 dark:text-red-200/80 font-medium">
                   Đổi lấy quyền năng tạo hóa (Admin Role). Giá: 99 Tỷ Tinh Hoa.
                 </p>
               </div>
@@ -3905,12 +3911,12 @@ export default function StudentDashboard() {
           transition={{ duration: 0.3 }}
           className="glass p-4 sm:p-8 rounded-2xl relative overflow-hidden max-w-4xl mx-auto"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl" />
           
           <div className="relative z-10">
-            <div className="flex items-center justify-between gap-3 border-b border-amber-600/20 dark:border-amber-500/30 pb-4 mb-8">
-              <h3 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 flex items-center gap-3">
+            <div className="flex items-center justify-between gap-3 border-b border-orange-600/20 dark:border-orange-500/30 pb-4 mb-8">
+              <h3 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 flex items-center gap-3">
                  Cá Nhân Hóa Hồ Sơ
               </h3>
               <button 
@@ -3918,7 +3924,7 @@ export default function StudentDashboard() {
                 className="opacity-10 hover:opacity-100 transition-opacity p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5"
                 title="Toggle Environment Diagnostics"
               >
-                <Bug className="w-5 h-5 text-stone-500" />
+                <Bug className="w-5 h-5 text-zinc-500" />
               </button>
             </div>
             
@@ -3954,23 +3960,23 @@ export default function StudentDashboard() {
 
               return (
                 <div className="space-y-12">
-                  <div className="flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left card-3d p-8 rounded-2xl relative overflow-hidden">
+                  <div className="stone-carved flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left card-3d p-8 rounded-2xl relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
                        <Award className="w-32 h-32" />
                     </div>
                     <div className="relative group">
-                      <div className={cn("w-32 h-32 rounded-full bg-stone-200 dark:bg-zinc-800 flex items-center justify-center shrink-0 object-cover relative z-10 overflow-hidden", avatarClass)}>
+                      <div className={cn("w-32 h-32 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center shrink-0 object-cover relative z-10 overflow-hidden", avatarClass)}>
                         {user.photoURL ? (
                           <img src={user.photoURL} alt="Avatar profile" className="w-full h-full rounded-full object-cover" referrerPolicy="no-referrer" />
                         ) : (
-                          <span className="text-4xl font-bold font-mono opacity-50 uppercase">{user.name.charAt(0)}</span>
+                          <span className="font-serif italic font-medium text-4xl font-mono opacity-50 uppercase">{user.name.charAt(0)}</span>
                         )}
                         <button
                           onClick={() => profileFileInputRef.current?.click()}
                           className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center text-white text-xs font-bold transition-opacity cursor-pointer z-25 rounded-full"
                           title="Thay đổi ảnh đại diện"
                         >
-                          <Camera className="w-6 h-6 mb-1 text-amber-400 animate-bounce" />
+                          <Camera className="w-6 h-6 mb-1 text-orange-400 animate-bounce" />
                           <span>Tải ảnh</span>
                         </button>
                       </div>
@@ -4017,7 +4023,7 @@ export default function StudentDashboard() {
                                 type="text"
                                 value={profileNameInput}
                                 onChange={(e) => setProfileNameInput(e.target.value)}
-                                className="px-3 py-1.5 text-base bg-stone-100 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:ring-2 focus:ring-amber-500 font-bold"
+                                className="px-3 py-1.5 text-base bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl outline-none focus:ring-2 focus:ring-orange-500 font-bold"
                                 placeholder="..."
                                 maxLength={25}
                               />
@@ -4043,7 +4049,7 @@ export default function StudentDashboard() {
                                     setProfileNameInput(user.name);
                                     setIsEditingProfileName(false);
                                   }}
-                                  className="px-3 py-1.5 bg-stone-200 dark:bg-zinc-700 hover:bg-stone-300 dark:hover:bg-zinc-600 text-stone-700 dark:text-stone-200 font-semibold text-xs rounded-lg transition-colors cursor-pointer"
+                                  className="px-3 py-1.5 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-zinc-700 dark:text-zinc-200 font-semibold text-xs rounded-lg transition-colors cursor-pointer"
                                 >
                                   Hủy
                                 </button>
@@ -4051,13 +4057,13 @@ export default function StudentDashboard() {
                             </div>
                           ) : (
                             <div className="flex items-center gap-2 justify-center md:justify-start">
-                              <h4 className="text-3xl font-bold font-display">{user.name}</h4>
+                              <h4 className="font-serif italic font-medium text-3xl font-display">{user.name}</h4>
                               <button 
                                 onClick={() => {
                                   setProfileNameInput(user.name);
                                   setIsEditingProfileName(true);
                                 }}
-                                className="p-1 px-2 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-stone-500 dark:text-stone-400 hover:text-amber-500 flex items-center gap-1 text-xs font-bold transition-all cursor-pointer"
+                                className="p-1 px-2 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-zinc-500 dark:text-zinc-400 hover:text-orange-500 flex items-center gap-1 text-xs font-bold transition-all cursor-pointer"
                                 title="Đổi tên hiển thị"
                               >
                                 <Edit3 className="w-3.5 h-3.5" /> Sửa tên
@@ -4075,28 +4081,28 @@ export default function StudentDashboard() {
                             <span>{Math.floor(xpInfo.xpIntoCurrentLevel)} XP</span>
                             <span>{Math.floor(xpInfo.xpNeededForNextLevel)} XP đến Lv.{userLevel + 1}</span>
                          </div>
-                         <div className="h-3 w-full bg-stone-200 dark:bg-stone-800 rounded-full overflow-hidden shadow-inner">
+                         <div className="h-3 w-full bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden shadow-inner">
                             <motion.div 
                               initial={{ width: 0 }}
                               animate={{ width: `${xpInfo.progressPercentage}%` }}
                               transition={{ duration: 1, ease: "easeOut" }}
-                              className="h-full bg-gradient-to-r from-amber-400 to-yellow-500 dark:from-amber-600 dark:to-yellow-500 rounded-full relative"
+                              className="h-full bg-gradient-to-r from-orange-400 to-orange-500 dark:from-orange-600 dark:to-orange-500 rounded-full relative"
                             >
                                <div className="absolute inset-0 bg-white/20 w-full h-full animate-[shimmer_2s_infinite]" style={{ backgroundImage: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)', backgroundSize: '200% 100%' }} />
                             </motion.div>
                          </div>
-                         <p className="text-[10px] mt-2 opacity-50 text-right">Tổng XP: {user.points || 0}</p>
+                         <p className="font-sans font-light tracking-wide text-[10px] mt-2 opacity-50 text-right">Tổng XP: {user.points || 0}</p>
                        </div>
                        
                        <div className="flex flex-wrap gap-4 items-center justify-center md:justify-start">
                           <div className="flex flex-col">
                             <span className="text-xs uppercase tracking-wider opacity-60">Cấp độ hiện tại</span>
-                            <span className="font-mono font-bold text-xl">{xpInfo.currentLevel}</span>
+                            <span className="font-serif italic font-medium font-mono text-xl">{xpInfo.currentLevel}</span>
                           </div>
                           <div className="w-px h-8 bg-black/10 dark:bg-white/10" />
                           <div className="flex flex-col">
                             <span className="text-xs uppercase tracking-wider opacity-60">Chuỗi ngày</span>
-                            <span className="font-mono font-bold text-xl flex items-center center gap-1"><Flame className="w-4 h-4 text-orange-500" /> {user.streak || 0}</span>
+                            <span className="font-serif italic font-medium font-mono text-xl flex items-center center gap-1"><Flame className="w-4 h-4 text-orange-500" /> {user.streak || 0}</span>
                           </div>
                        </div>
                     </div>
@@ -4104,7 +4110,7 @@ export default function StudentDashboard() {
 
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-4">
-                      <h4 className="font-bold text-xl border-b border-black/10 dark:border-white/10 pb-2">Đeo Khung Avatar</h4>
+                      <h4 className="font-serif italic font-medium text-xl border-b border-black/10 dark:border-white/10 pb-2">Đeo Khung Avatar</h4>
                       <div className="grid grid-cols-1 gap-3">
                         {AVAILABLE_BORDERS.map(border => (
                           <button
@@ -4113,22 +4119,22 @@ export default function StudentDashboard() {
                             className={cn(
                               "p-4 rounded-xl border text-left flex items-center justify-between transition-all duration-300",
                               equippedBorder === border.id 
-                                ? "bg-amber-500/10 border-amber-500 dark:bg-amber-500/20 dark:border-amber-400 ring-1 ring-amber-500 shadow-md" 
-                                : "bg-white/50 border-stone-200 dark:bg-zinc-800/50 dark:border-zinc-700 hover:border-amber-500/50"
+                                ? "bg-orange-500/10 border-orange-500 dark:bg-orange-500/20 dark:border-orange-400 ring-1 ring-orange-500 shadow-md" 
+                                : "bg-white/50 border-zinc-200 dark:bg-zinc-800/50 dark:border-zinc-700 hover:border-orange-500/50"
                             )}
                           >
                             <div className="flex items-center gap-4">
-                               <div className={cn("w-10 h-10 rounded-full bg-stone-300 dark:bg-zinc-600 transition-all", border.color)} />
+                               <div className={cn("w-10 h-10 rounded-full bg-zinc-300 dark:bg-zinc-600 transition-all", border.color)} />
                                <span className="font-bold">{border.label}</span>
                             </div>
-                            {equippedBorder === border.id && <CheckCircle2 className="w-5 h-5 text-amber-500" />}
+                            {equippedBorder === border.id && <CheckCircle2 className="w-5 h-5 text-orange-500" />}
                           </button>
                         ))}
                       </div>
                     </div>
 
                     <div className="space-y-4">
-                      <h4 className="font-bold text-xl border-b border-black/10 dark:border-white/10 pb-2">Danh sách Danh Hiệu Sở Hữu</h4>
+                      <h4 className="font-serif italic font-medium text-xl border-b border-black/10 dark:border-white/10 pb-2">Danh sách Danh Hiệu Sở Hữu</h4>
                       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
                         {ALL_TITLES.map(titleObj => {
                           const isUnlocked = unlockedTitles.includes(titleObj.id);
@@ -4148,22 +4154,22 @@ export default function StudentDashboard() {
                               className={cn(
                                 "p-4 rounded-xl border flex flex-col items-center justify-center transition-all duration-300 text-center gap-2",
                                 isEquipped
-                                  ? "bg-amber-500/10 border-amber-500 shadow-md ring-1 ring-amber-500" 
+                                  ? "bg-orange-500/10 border-orange-500 shadow-md ring-1 ring-orange-500" 
                                   : isUnlocked
-                                    ? "bg-white/50 border-stone-200 hover:border-amber-500/50 dark:bg-zinc-800/50 dark:border-zinc-700" 
-                                    : "bg-stone-100/50 border-transparent opacity-60 backdrop-grayscale dark:bg-black/20"
+                                    ? "bg-white/50 border-zinc-200 hover:border-orange-500/50 dark:bg-zinc-800/50 dark:border-zinc-700" 
+                                    : "bg-zinc-100/50 border-transparent opacity-60 backdrop-grayscale dark:bg-black/20"
                               )}
                             >
                               <span className={cn(
                                 "text-center transition-all", 
                                 isUnlocked 
                                   ? getCustomTitleTextClass(titleObj.id, isEquipped ? "font-black" : "font-semibold")
-                                  : "text-stone-400 font-medium line-through"
+                                  : "text-zinc-400 font-medium line-through"
                               )}>
                                 {titleObj.id}
                               </span>
-                              {!isUnlocked && <Lock className="w-4 h-4 text-stone-400 opacity-50" />}
-                              {isEquipped && <CheckCircle2 className="w-4 h-4 text-amber-500 mt-1" />}
+                              {!isUnlocked && <Lock className="w-4 h-4 text-zinc-400 opacity-50" />}
+                              {isEquipped && <CheckCircle2 className="w-4 h-4 text-orange-500 mt-1" />}
                             </button>
                           );
                         })}
@@ -4188,8 +4194,8 @@ export default function StudentDashboard() {
                           className={cn(
                             "px-5 py-3 rounded-xl border font-bold transition-all duration-300 flex items-center gap-2",
                             (!user.isSchoolLover)
-                              ? "bg-stone-500 text-white border-stone-600 shadow-md transform scale-105" 
-                              : "bg-white/50 border-stone-200 text-stone-600 dark:bg-zinc-800/50 dark:border-zinc-700 dark:text-stone-300 hover:border-stone-500/50"
+                              ? "bg-zinc-500 text-white border-zinc-600 shadow-md transform scale-105" 
+                              : "bg-white/50 border-zinc-200 text-zinc-600 dark:bg-zinc-800/50 dark:border-zinc-700 dark:text-zinc-300 hover:border-zinc-500/50"
                           )}
                         >
                           <Activity className="w-4 h-4" /> Mặc định (Học viên)
@@ -4212,7 +4218,7 @@ export default function StudentDashboard() {
                               "px-5 py-3 rounded-xl border font-bold transition-all duration-300 flex items-center gap-2",
                               (user.isSchoolLover)
                                 ? "bg-pink-500 text-white border-pink-600 shadow-md transform scale-105" 
-                                : "bg-white/50 border-stone-200 text-stone-600 dark:bg-zinc-800/50 dark:border-zinc-700 dark:text-stone-300 hover:border-pink-500/50"
+                                : "bg-white/50 border-zinc-200 text-zinc-600 dark:bg-zinc-800/50 dark:border-zinc-700 dark:text-zinc-300 hover:border-pink-500/50"
                             )}
                           >
                             <Heart className="w-4 h-4 fill-pink-100/30 text-white animate-pulse" />💘 Em yêu trường em (VIP)
@@ -4222,27 +4228,27 @@ export default function StudentDashboard() {
                             key="school-lover-tag-disabled"
                             disabled
                             title="Bạn cần nâng cấp tài khoản Thành Viên VIP để sử dụng thẻ này"
-                            className="px-5 py-3 rounded-xl border font-bold transition-all duration-300 flex items-center gap-2 bg-stone-100/50 border-stone-200 text-stone-400 dark:bg-zinc-800/30 dark:border-zinc-800 dark:text-stone-600 cursor-not-allowed opacity-70"
+                            className="px-5 py-3 rounded-xl border font-bold transition-all duration-300 flex items-center gap-2 bg-zinc-100/50 border-zinc-200 text-zinc-400 dark:bg-zinc-800/30 dark:border-zinc-800 dark:text-zinc-600 cursor-not-allowed opacity-70"
                           >
                             <Heart className="w-4 h-4" />💘 Em yêu trường em (Cần VIP)
                           </button>
                         )}
                       </div>
-                      <p className="text-sm opacity-60 mt-4 italic bg-black/5 dark:bg-white/5 p-4 rounded-lg">
+                      <p className="font-sans font-light tracking-wide text-sm opacity-60 mt-4 italic bg-black/5 dark:bg-white/5 p-4 rounded-lg">
                          Mẹo: Điểm XP (Kinh nghiệm) càng cao sẽ giúp cấp độ Level càng tăng. Hãy tiếp tục ôn tập Flashcard để đạt những danh hiệu Huyền thoại nhé.
                       </p>
                     </div>
                   </div>
 
                   <div className="space-y-4 mt-8 pt-8 border-t border-black/10 dark:border-white/10">
-                    <h4 className="font-bold text-xl pb-2">Cài đặt ứng dụng</h4>
-                    <div className="card-3d p-6 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+                    <h4 className="font-serif italic font-medium text-xl pb-2">Cài đặt ứng dụng</h4>
+                    <div className="stone-carved card-3d p-6 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
                       <div>
-                        <h5 className="font-bold mb-1 flex items-center gap-2"><RefreshCw className="w-5 h-5 text-amber-500" /> Tự động cập nhật phiên bản</h5>
-                        <p className="text-sm opacity-70">Cài đặt chu kỳ hệ thống tự động bắt bản cập nhật mới nhất. Khuyến nghị bật để trải nghiệm mới mẻ và ổn định.</p>
+                        <h5 className="font-bold mb-1 flex items-center gap-2"><RefreshCw className="w-5 h-5 text-orange-500" /> Tự động cập nhật phiên bản</h5>
+                        <p className="font-sans font-light tracking-wide text-sm opacity-70">Cài đặt chu kỳ hệ thống tự động bắt bản cập nhật mới nhất. Khuyến nghị bật để trải nghiệm mới mẻ và ổn định.</p>
                       </div>
                       <select
-                        className="bg-stone-100 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-amber-500 font-medium min-w-[220px]"
+                        className="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-500 font-medium min-w-[220px]"
                         defaultValue={localStorage.getItem("autoUpdateInterval") || "10"}
                         onChange={(e) => {
                           const val = e.target.value;
@@ -4272,8 +4278,8 @@ export default function StudentDashboard() {
                           </thead>
                           <tbody className="opacity-80">
                             {Object.entries(getEnvDiagnostics()).map(([key, data]) => (
-                              <tr key={key} className="border-b border-black/5 dark:border-white/5 last:border-0 hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
-                                <td className="py-3 px-2 font-semibold text-amber-700 dark:text-amber-400">{key}</td>
+                              <tr key={`env-${key}`} className="border-b border-black/5 dark:border-white/5 last:border-0 hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                                <td className="py-3 px-2 font-semibold text-orange-700 dark:text-orange-400">{key}</td>
                                 <td className="py-3 px-2 text-center">
                                   {data.exists 
                                     ? <span className="bg-green-500/10 text-green-600 dark:text-green-400 px-2 py-1 rounded-md text-[10px] font-bold uppercase">Yes</span>
@@ -4282,7 +4288,7 @@ export default function StudentDashboard() {
                                 </td>
                                 <td className="py-3 px-2 font-mono text-[10px]">
                                   {data.exists && data.preview ? (
-                                    <span className="bg-stone-300/40 dark:bg-zinc-800/40 px-2.5 py-1 rounded border border-stone-400/20 max-w-xs truncate inline-block">
+                                    <span className="bg-zinc-300/40 dark:bg-zinc-800/40 px-2.5 py-1 rounded border border-zinc-400/20 max-w-xs truncate inline-block">
                                       {data.preview}
                                     </span>
                                   ) : (
@@ -4313,35 +4319,35 @@ export default function StudentDashboard() {
           className="space-y-12 max-w-6xl mx-auto py-4"
         >
           {/* Hero Header Sector */}
-          <div className="relative p-8 md:p-12 rounded-3xl bg-black/90 dark:bg-black text-white border-[0.5px] border-amber-500/30 overflow-hidden scanline">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-10 -left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative p-8 md:p-12 rounded-3xl bg-black/90 dark:bg-black text-white border-[0.5px] border-orange-500/30 overflow-hidden scanline">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
             
             <div className="absolute top-4 right-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
-              <span className="font-mono text-[9px] text-amber-500 tracking-widest font-bold">SEC_0X08 // OVERDRIVE</span>
+              <span className="w-2 h-2 rounded-full bg-orange-500 animate-ping" />
+              <span className="font-mono text-[9px] text-orange-500 tracking-widest font-bold">SEC_0X08 // OVERDRIVE</span>
             </div>
 
             <div className="relative z-10 max-w-2xl space-y-4">
-              <span className="font-mono text-[11px] tracking-[0.25em] text-amber-500 uppercase font-bold">
+              <span className="font-mono text-[11px] tracking-[0.25em] text-orange-500 uppercase font-bold">
                 Monochromatic Cyberpunk Art // Luxury Gold Accent
               </span>
               <h2 className="text-4xl md:text-6xl font-serif tracking-tight leading-none text-zinc-100">
-                The Stoic <span className="font-sans italic text-amber-500 font-normal">Cinematic</span> Space
+                The Stoic <span className="font-sans italic text-orange-500 font-normal">Cinematic</span> Space
               </h2>
-              <p className="font-sans text-stone-300 text-sm md:text-base leading-relaxed">
+              <p className="font-sans font-light tracking-wide font-sans text-zinc-300 text-sm md:text-base leading-relaxed">
                 Trải nghiệm không gian học Stoic tương lai với các tính năng tương tác ba chiều tối tân. Mỗi thẻ đại diện cho một nút thắt suy tưởng - nhấp chuột để giải mã, rê chuột hoặc chạm giữ để cảm nhận lực tương tác vật lý (3D Depth Feedback).
               </p>
               
               <div className="pt-4 flex flex-wrap gap-4 font-mono text-[10px] text-zinc-400">
                 <div className="flex items-center gap-1.5 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-md">
-                  <span className="text-amber-500 font-bold">GEORGIA:</span> Luxury Title Serif
+                  <span className="text-orange-500 font-bold">GEORGIA:</span> Luxury Title Serif
                 </div>
                 <div className="flex items-center gap-1.5 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-md">
-                  <span className="text-amber-500 font-bold">3D_TOUCH:</span> Haptic Simulated Tilt
+                  <span className="text-orange-500 font-bold">3D_TOUCH:</span> Haptic Simulated Tilt
                 </div>
                 <div className="flex items-center gap-1.5 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-md">
-                  <span className="text-amber-500 font-bold">FLOW:</span> Cinematic Staggered Entrance
+                  <span className="text-orange-500 font-bold">FLOW:</span> Cinematic Staggered Entrance
                 </div>
               </div>
             </div>
@@ -4349,11 +4355,11 @@ export default function StudentDashboard() {
 
           {/* Staggered Cinematic Cards Grid */}
           <div className="space-y-6">
-            <div className="flex justify-between items-end border-b border-stone-200 dark:border-zinc-800 pb-3">
-              <h3 className="font-serif text-2xl font-bold italic tracking-tight text-stone-900 dark:text-zinc-100">
+            <div className="flex justify-between items-end border-b border-zinc-200 dark:border-zinc-800 pb-3">
+              <h3 className="font-serif text-2xl font-bold italic tracking-tight text-zinc-900 dark:text-zinc-100">
                 Stoic Nodes Sector
               </h3>
-              <span className="font-mono text-xs text-amber-500">
+              <span className="font-mono text-xs text-orange-500">
                 3 UNITS LOADED // DEC_KEY: ACTIVE
               </span>
             </div>
@@ -4395,13 +4401,13 @@ export default function StudentDashboard() {
           </div>
 
           {/* Interactive Cinematic Sandbox Controls */}
-          <div className="p-8 rounded-3xl border-[0.5px] border-stone-200 dark:border-zinc-800 bg-stone-50/50 dark:bg-black/30 backdrop-blur-md">
+          <div className="p-8 rounded-3xl border-[0.5px] border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-black/30 backdrop-blur-md">
             <div className="flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
               <div className="space-y-1">
-                <h4 className="font-serif text-xl font-bold text-stone-900 dark:text-zinc-100 italic">
+                <h4 className="font-serif text-xl font-bold text-zinc-900 dark:text-zinc-100 italic">
                   Chế độ tối giản & Phủ bóng (Minimalist Ambient Glow)
                 </h4>
-                <p className="text-xs text-stone-500 dark:text-zinc-400">
+                <p className="font-sans font-light tracking-wide text-xs text-zinc-500 dark:text-zinc-400">
                   Nhấp vào các phím tính năng dưới đây để kiểm tra hiệu năng hệ thống giao diện Cinematic hoặc chuyển đổi các thiết lập thử nghiệm.
                 </p>
               </div>
@@ -4412,7 +4418,7 @@ export default function StudentDashboard() {
                     click();
                     alert("Kích hoạt Chế độ Ambient Light Glow thành công!");
                   }}
-                  className="font-mono text-[10px] font-bold tracking-widest px-4 py-2 border border-amber-500/20 hover:border-amber-500 hover:text-amber-500 text-stone-600 dark:text-zinc-400 transition-all rounded-lg"
+                  className="font-mono text-[10px] font-bold tracking-widest px-4 py-2 border border-orange-500/20 hover:border-orange-500 hover:text-orange-500 text-zinc-600 dark:text-zinc-400 transition-all rounded-lg"
                 >
                   AMBIENT_GLOW: ON
                 </button>
@@ -4421,7 +4427,7 @@ export default function StudentDashboard() {
                      click();
                      toggleEcoMode();
                   }}
-                  className="font-mono text-[10px] font-bold tracking-widest px-4 py-2 bg-amber-500 text-black hover:bg-amber-400 transition-all rounded-lg"
+                  className="font-mono text-[10px] font-bold tracking-widest px-4 py-2 bg-orange-500 text-black hover:bg-orange-400 transition-all rounded-lg"
                 >
                   TOGGLE_ECO_MODE
                 </button>
@@ -4446,19 +4452,19 @@ export default function StudentDashboard() {
           </div>
           
           <div className="relative z-10">
-            <h3 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 mb-8 flex items-center gap-3 border-b border-amber-600/20 dark:border-amber-500/30 pb-4">
+            <h3 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 mb-8 flex items-center gap-3 border-b border-orange-600/20 dark:border-orange-500/30 pb-4">
                Cài Đặt Hệ Thống
             </h3>
             
             <div className="space-y-6">
               {/* Tùy Chọn Tắt m Toàn Cục */}
-              <div className="card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+              <div className="stone-carved card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
                  <div className="space-y-2 max-w-lg">
-                    <h4 className="text-xl font-bold flex items-center gap-2">
-                       {muteAll ? <VolumeX className="w-5 h-5 text-red-500" /> : <Volume2 className="w-5 h-5 text-yellow-500 animate-pulse" />}
+                    <h4 className="font-serif italic font-medium text-xl flex items-center gap-2">
+                       {muteAll ? <VolumeX className="w-5 h-5 text-red-500" /> : <Volume2 className="w-5 h-5 text-orange-500 animate-pulse" />}
                        Tắt Mọi Âm Thanh (Mute All)
                     </h4>
-                    <p className="opacity-70 text-sm">
+                    <p className="font-sans font-light tracking-wide opacity-70 text-sm">
                        Tự động vô hiệu hóa toàn bộ hiệu ứng âm thanh (lật thẻ, âm chính xác, sai) trong các phòng học. Cài đặt này được sao lưu trên bộ nhớ cục bộ thiết bị của bạn.
                     </p>
                  </div>
@@ -4470,7 +4476,7 @@ export default function StudentDashboard() {
                     }}
                     className={cn(
                        "shrink-0 px-6 py-3 font-bold rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2 shadow-lg cursor-pointer",
-                       muteAll ? "bg-red-500 hover:bg-red-600 text-white" : "bg-yellow-500 hover:bg-yellow-600 text-black"
+                       muteAll ? "bg-red-500 hover:bg-red-600 text-white" : "bg-orange-500 hover:bg-orange-600 text-black"
                     )}
                  >
                     {muteAll ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
@@ -4479,18 +4485,18 @@ export default function StudentDashboard() {
               </div>
 
               {/* Tùy chỉnh Cỡ Chữ Hệ Thống */}
-              <div className="card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+              <div className="stone-carved card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
                  <div className="space-y-4 w-full md:max-w-lg">
-                    <h4 className="text-xl font-bold flex items-center gap-2">
-                       <Type className="w-5 h-5 text-amber-500" />
+                    <h4 className="font-serif italic font-medium text-xl flex items-center gap-2">
+                       <Type className="w-5 h-5 text-orange-500" />
                        Cỡ Chữ Hệ Thống (App Font Size)
                     </h4>
-                    <p className="opacity-70 text-sm">
+                    <p className="font-sans font-light tracking-wide opacity-70 text-sm">
                        Điều chỉnh phóng to/thu nhỏ kích thước chữ của toàn bộ ứng dụng. Các widget và bảng hiển thị sẽ tự động co giãn và căn lề tương ứng mà không bị méo mó hay tràn giao diện.
                     </p>
                     <div className="flex items-center justify-between pt-1">
                       <span className="font-semibold text-sm">Tỷ lệ hiện tại:</span>
-                      <span className="font-mono font-black text-base text-yellow-600 dark:text-yellow-400 px-3 py-1 bg-stone-200/60 dark:bg-zinc-800/70 rounded-lg">
+                      <span className="font-mono font-black text-base text-orange-600 dark:text-orange-400 px-3 py-1 bg-zinc-200/60 dark:bg-zinc-800/70 rounded-lg">
                         {Math.round((localFontSize / 16) * 100)}% ({localFontSize}px)
                       </span>
                     </div>
@@ -4508,10 +4514,10 @@ export default function StudentDashboard() {
                           localStorage.setItem("henosis-font-size", val.toString());
                           window.dispatchEvent(new CustomEvent("henosis-font-size-changed", { detail: { size: val } }));
                        }}
-                       className="w-full h-2 bg-stone-300 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-amber-600"
+                       className="w-full h-2 bg-zinc-300 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-orange-600"
                        style={{ accentColor: "#d97706" }}
                     />
-                    <div className="flex justify-between text-[11px] text-stone-500 font-bold font-mono">
+                    <div className="flex justify-between text-[11px] text-zinc-500 font-bold font-mono">
                       <span>Nhỏ (12px)</span>
                       <span>Mặc định (16px)</span>
                       <span>Lớn (32px)</span>
@@ -4523,7 +4529,7 @@ export default function StudentDashboard() {
                           localStorage.setItem("henosis-font-size", defaultVal.toString());
                           window.dispatchEvent(new CustomEvent("henosis-font-size-changed", { detail: { size: defaultVal } }));
                        }}
-                       className="mt-2 w-full py-2 px-4 bg-stone-300 hover:bg-stone-400 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-stone-800 dark:text-stone-200 font-bold text-xs rounded-lg transition-transform hover:scale-102 flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
+                       className="mt-2 w-full py-2 px-4 bg-zinc-300 hover:bg-zinc-400 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-bold text-xs rounded-lg transition-transform hover:scale-102 flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
                     >
                       Đặt lại mặc định (16px)
                     </button>
@@ -4531,17 +4537,17 @@ export default function StudentDashboard() {
               </div>
 
               {/* Tùy chỉnh Mật Độ Giao Diện (UI Density) */}
-              <div className="card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+              <div className="stone-carved card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
                  <div className="space-y-2 max-w-lg">
-                    <h4 className="text-xl font-bold flex items-center gap-2">
-                       {localUiDensity === "compact" ? <Minimize2 className="w-5 h-5 text-amber-500" /> : <Maximize2 className="w-5 h-5 text-yellow-500" />}
+                    <h4 className="font-serif italic font-medium text-xl flex items-center gap-2">
+                       {localUiDensity === "compact" ? <Minimize2 className="w-5 h-5 text-orange-500" /> : <Maximize2 className="w-5 h-5 text-orange-500" />}
                        Mật độ Giao Diện (UI Density)
                     </h4>
-                    <p className="opacity-70 text-sm">
+                    <p className="font-sans font-light tracking-wide opacity-70 text-sm">
                        Thay đổi tỷ lệ khoảng cách (margin, padding, gap) của toàn bộ hệ thống. Chọn "Nhỏ gọn" nếu ngài muốn xem nhiều thông tin hơn trên cùng một màn hình mà không cần tốn nhiều thao tác cuộn.
                     </p>
                  </div>
-                 <div className="flex gap-2 p-1 bg-stone-200/50 dark:bg-zinc-900 rounded-xl shadow-inner border border-stone-200/40 dark:border-zinc-800/50">
+                 <div className="flex gap-2 p-1 bg-zinc-200/50 dark:bg-zinc-900 rounded-xl shadow-inner border border-zinc-200/40 dark:border-zinc-800/50">
                     <button
                       onClick={() => {
                         localStorage.setItem("henosis-ui-density", "comfortable");
@@ -4551,8 +4557,8 @@ export default function StudentDashboard() {
                       className={cn(
                         "py-2.5 px-4 font-bold text-xs uppercase tracking-wider rounded-lg whitespace-nowrap transition-all border-none focus:outline-none cursor-pointer",
                         localUiDensity === "comfortable"
-                          ? "bg-white dark:bg-zinc-800 text-yellow-600 dark:text-yellow-400 shadow-md"
-                          : "text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-stone-250 bg-transparent"
+                          ? "bg-white dark:bg-zinc-800 text-orange-600 dark:text-orange-400 shadow-md"
+                          : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-250 bg-transparent"
                       )}
                     >
                       Dễ Nhìn (Comfortable)
@@ -4566,8 +4572,8 @@ export default function StudentDashboard() {
                       className={cn(
                         "py-2.5 px-4 font-bold text-xs uppercase tracking-wider rounded-lg whitespace-nowrap transition-all border-none focus:outline-none cursor-pointer",
                         localUiDensity === "compact"
-                          ? "bg-white dark:bg-zinc-800 text-yellow-600 dark:text-yellow-400 shadow-md"
-                          : "text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-stone-250 bg-transparent"
+                          ? "bg-white dark:bg-zinc-800 text-orange-600 dark:text-orange-400 shadow-md"
+                          : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-250 bg-transparent"
                       )}
                     >
                       Nhỏ Gọn (Compact)
@@ -4576,13 +4582,13 @@ export default function StudentDashboard() {
               </div>
 
               {/* Tùy chọn Tiết kiệm hiệu năng / Fix Lag */}
-              <div className="card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+              <div className="stone-carved card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
                  <div className="space-y-2 max-w-lg">
-                    <h4 className="text-xl font-bold flex items-center gap-2">
-                       <Snowflake className={cn("w-5 h-5", isEcoMode ? "text-green-500 animate-[spin_4s_linear_infinite]" : "text-stone-400")} />
+                    <h4 className="font-serif italic font-medium text-xl flex items-center gap-2">
+                       <Snowflake className={cn("w-5 h-5", isEcoMode ? "text-green-500 animate-[spin_4s_linear_infinite]" : "text-zinc-400")} />
                        Chế Độ Mượt - Giảm Lag (Eco / Fix Lag)
                     </h4>
-                    <p className="opacity-70 text-sm">
+                    <p className="font-sans font-light tracking-wide opacity-70 text-sm">
                        Khuyên dùng cho điện thoại và máy tính cấu hình yếu. Giúp loại bỏ các hiệu ứng hạt nền và các hoạt ảnh nặng, hiệu ứng đổ bóng phức tạp giúp tăng tốc phản hồi tối đa.
                     </p>
                  </div>
@@ -4590,7 +4596,7 @@ export default function StudentDashboard() {
                     onClick={toggleEcoMode}
                     className={cn(
                        "shrink-0 px-6 py-3 font-bold rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2 shadow-lg cursor-pointer",
-                       isEcoMode ? "bg-green-500 hover:bg-green-600 text-white" : "bg-stone-300 dark:bg-zinc-800 hover:bg-stone-400 dark:hover:bg-zinc-700 text-stone-800 dark:text-stone-200"
+                       isEcoMode ? "bg-green-500 hover:bg-green-600 text-white" : "bg-zinc-300 dark:bg-zinc-800 hover:bg-zinc-400 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200"
                     )}
                  >
                     <Snowflake className="w-5 h-5" />
@@ -4598,10 +4604,10 @@ export default function StudentDashboard() {
                  </button>
               </div>
 
-              <div className="card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+              <div className="stone-carved card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
                  <div className="space-y-2 max-w-lg">
-                    <h4 className="text-xl font-bold flex items-center gap-2"><Trash2 className="w-5 h-5 text-red-500" /> Xóa Dữ Liệu Cũ</h4>
-                    <p className="opacity-70 text-sm">
+                    <h4 className="font-serif italic font-medium text-xl flex items-center gap-2"><Trash2 className="w-5 h-5 text-red-500" /> Xóa Dữ Liệu Cũ</h4>
+                    <p className="font-sans font-light tracking-wide opacity-70 text-sm">
                       Xóa bỏ các dữ liệu nháp của thẻ học (Agent 3) và danh sách thẻ yếu (weak_cards) khỏi máy. Điều này giúp tối ưu hóa tiến trình.
                     </p>
                  </div>
@@ -4613,30 +4619,30 @@ export default function StudentDashboard() {
                  </button>
               </div>
 
-                             <div className="card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                             <div className="stone-carved card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
                   <div className="space-y-2 max-w-lg">
-                     <h4 className="text-xl font-bold flex items-center gap-2">
-                        <RefreshCw className="w-5 h-5 text-yellow-500" /> Dọn Dẹp Bộ Nhớ Cache
+                     <h4 className="font-serif italic font-medium text-xl flex items-center gap-2">
+                        <RefreshCw className="w-5 h-5 text-orange-500" /> Dọn Dẹp Bộ Nhớ Cache
                      </h4>
-                     <p className="opacity-70 text-sm">
+                     <p className="font-sans font-light tracking-wide opacity-70 text-sm">
                         Xóa tất cả các dữ liệu tạm thời như bộ nhớ đệm, lịch sử hoạt động, và dữ liệu chuyển đổi tài liệu để giải phóng dung lượng bộ nhớ. Hệ thống sẽ giữ lại cấu hình giao diện, độ mượt và tài khoản hiện tại của ngài.
                      </p>
                   </div>
                   <button 
                      onClick={() => setShowCacheClearConfirm(true)}
-                     className="shrink-0 px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-bold rounded-lg transition-transform hover:scale-105 flex items-center gap-2 shadow-lg cursor-pointer"
+                     className="shrink-0 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition-transform hover:scale-105 flex items-center gap-2 shadow-lg cursor-pointer"
                   >
                      Dọn Dẹp Ngay
                   </button>
                </div>
 
                {auth.currentUser?.isAnonymous ? (
-                  <div className="card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between border border-amber-500/20">
+                  <div className="stone-carved card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between border border-orange-500/20">
                      <div className="space-y-2 max-w-lg">
-                        <h4 className="text-xl font-bold flex items-center gap-2 text-amber-600 dark:text-amber-400">
+                        <h4 className="font-serif italic font-medium text-xl flex items-center gap-2 text-orange-600 dark:text-orange-400">
                            <User className="w-5 h-5" /> Đăng Ký / Đăng Nhập
                         </h4>
-                        <p className="opacity-70 text-sm">
+                        <p className="font-sans font-light tracking-wide opacity-70 text-sm">
                            Ngài đang sử dụng tài khoản tạm thời (Anonymous). Hãy nâng cấp hoặc đăng nhập tài khoản chính thức để sao lưu dữ liệu Stoicism vĩnh viễn và đồng bộ đa thiết bị!
                         </p>
                      </div>
@@ -4644,16 +4650,16 @@ export default function StudentDashboard() {
                         onClick={() => {
                            navigate("/auth");
                         }}
-                        className="shrink-0 px-6 py-3 bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-700 hover:to-yellow-600 text-white font-bold rounded-lg transition-transform hover:scale-105 flex items-center gap-2 shadow-lg cursor-pointer border-none"
+                        className="shrink-0 px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold rounded-lg transition-transform hover:scale-105 flex items-center gap-2 shadow-lg cursor-pointer border-none"
                      >
                         <User className="w-4 h-4" /> Đăng Ký / Đăng Nhập
                      </button>
                   </div>
                ) : (
-                  <div className="card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                  <div className="stone-carved card-3d p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
                      <div className="space-y-2 max-w-lg">
-                        <h4 className="text-xl font-bold flex items-center gap-2"><LogOut className="w-5 h-5 text-stone-600 dark:text-stone-400" /> Đăng Xuất</h4>
-                        <p className="opacity-70 text-sm">
+                        <h4 className="font-serif italic font-medium text-xl flex items-center gap-2"><LogOut className="w-5 h-5 text-zinc-600 dark:text-zinc-400" /> Đăng Xuất</h4>
+                        <p className="font-sans font-light tracking-wide opacity-70 text-sm">
                           Đăng xuất khỏi thiết bị này. Dữ liệu của bạn được đồng bộ an toàn trên hệ thống.
                         </p>
                      </div>
@@ -4690,7 +4696,7 @@ export default function StudentDashboard() {
                             console.error("Lỗi đăng xuất:", error);
                           }
                         }}
-                        className="shrink-0 px-6 py-3 bg-stone-200 dark:bg-zinc-800 hover:bg-stone-300 dark:hover:bg-zinc-700 font-bold rounded-lg transition-transform hover:scale-105 flex items-center gap-2 shadow-lg shadow-black/5 cursor-pointer"
+                        className="shrink-0 px-6 py-3 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 font-bold rounded-lg transition-transform hover:scale-105 flex items-center gap-2 shadow-lg shadow-black/5 cursor-pointer"
                      >
                         <LogOut className="w-4 h-4 hidden sm:block" /> Đăng Xuất
                      </button>
@@ -4712,20 +4718,20 @@ export default function StudentDashboard() {
                        initial={{ scale: 0.95, opacity: 0 }}
                        animate={{ scale: 1, opacity: 1 }}
                        exit={{ scale: 0.95, opacity: 0 }}
-                       className="bg-stone-100 dark:bg-zinc-900 border border-red-500/30 shadow-2xl rounded-2xl p-6 md:p-8 max-w-md w-full"
+                       className="bg-zinc-100 dark:bg-zinc-900 border border-red-500/30 shadow-2xl rounded-2xl p-6 md:p-8 max-w-md w-full"
                     >
                        <div className="flex flex-col items-center text-center space-y-4">
                           <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 mb-2">
                               <AlertTriangle className="w-8 h-8" />
                           </div>
-                          <h3 className="text-2xl font-bold">Bạn có chắc chắn?</h3>
-                          <p className="opacity-80 pb-4">
+                          <h3 className="font-serif italic font-medium text-2xl">Bạn có chắc chắn?</h3>
+                          <p className="font-sans font-light tracking-wide opacity-80 pb-4">
                              Hành động này sẽ xóa vĩnh viễn các dữ liệu nháp và danh sách thẻ yếu hiện tại (weak_cards) khỏi hệ thống. Bạn không thể hoàn tác thao tác này. Bạn có muốn tiếp tục không?
                           </p>
                           <div className="flex w-full gap-4">
                              <button 
                                 onClick={() => setShowClearConfirm(false)}
-                                className="flex-1 py-3 rounded-lg border border-amber-600/20 dark:border-amber-500/30 font-bold transition hover:bg-black/5 dark:hover:bg-white/5"
+                                className="flex-1 py-3 rounded-lg border border-orange-600/20 dark:border-orange-500/30 font-bold transition hover:bg-black/5 dark:hover:bg-white/5"
                              >
                                Hủy
                              </button>
@@ -4752,26 +4758,26 @@ export default function StudentDashboard() {
                        initial={{ scale: 0.95, opacity: 0 }}
                        animate={{ scale: 1, opacity: 1 }}
                        exit={{ scale: 0.95, opacity: 0 }}
-                       className="bg-stone-100 dark:bg-zinc-900 border border-yellow-500/30 shadow-2xl rounded-2xl p-6 md:p-8 max-w-md w-full"
+                       className="bg-zinc-100 dark:bg-zinc-900 border border-orange-500/30 shadow-2xl rounded-2xl p-6 md:p-8 max-w-md w-full"
                     >
                        <div className="flex flex-col items-center text-center space-y-4">
-                          <div className="w-16 h-16 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 mb-2">
+                          <div className="w-16 h-16 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500 mb-2">
                               <RefreshCw className="w-8 h-8 animate-spin" />
                           </div>
-                          <h3 className="text-2xl font-bold">Xác nhận dọn dẹp cache?</h3>
-                          <p className="opacity-80 pb-4">
+                          <h3 className="font-serif italic font-medium text-2xl">Xác nhận dọn dẹp cache?</h3>
+                          <p className="font-sans font-light tracking-wide opacity-80 pb-4">
                              Thao tác này sẽ dọn sạch tất cả lịch sử hoạt động cục bộ, danh sách tìm kiếm gần đây và các file đệm tạm thời để giải phóng không gian bộ nhớ. Các tùy chọn hệ thống (giao diện, phông chữ, fix lag) và tài khoản đang đăng nhập sẽ được giữ lại an toàn.
                           </p>
                           <div className="flex w-full gap-4">
                              <button 
                                 onClick={() => setShowCacheClearConfirm(false)}
-                                className="flex-1 py-3 rounded-lg border border-amber-600/20 dark:border-amber-500/30 font-bold transition hover:bg-black/5 dark:hover:bg-white/5"
+                                className="flex-1 py-3 rounded-lg border border-orange-600/20 dark:border-orange-500/30 font-bold transition hover:bg-black/5 dark:hover:bg-white/5"
                              >
                                 Hủy
                              </button>
                              <button 
                                 onClick={handleClearCache}
-                                className="flex-1 py-3 rounded-lg bg-yellow-600 hover:bg-yellow-700 text-white font-bold transition-transform hover:scale-105 shadow-md cursor-pointer"
+                                className="flex-1 py-3 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold transition-transform hover:scale-105 shadow-md cursor-pointer"
                              >
                                 Xác Nhận Dọn Dẹp
                              </button>
@@ -4797,8 +4803,8 @@ export default function StudentDashboard() {
             <Activity className="w-48 h-48" />
           </div>
           <div className="relative z-10 space-y-8">
-             <div className="flex justify-between items-center border-b border-amber-600/20 dark:border-amber-500/30 pb-4">
-               <h3 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">
+             <div className="flex justify-between items-center border-b border-orange-600/20 dark:border-orange-500/30 pb-4">
+               <h3 className="font-serif italic font-medium text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">
                   Lịch Sử & Phong Độ Ôn Tập
                </h3>
                {user && (
@@ -4812,21 +4818,21 @@ export default function StudentDashboard() {
              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                {/* BAN TRÁI: BẢN ĐỒ HOẠT ĐỘNG / CALENDAR VIEW */}
                <div className="lg:col-span-5 space-y-6">
-                 <div className="card-3d p-5 rounded-2xl">
+                 <div className="stone-carved card-3d p-5 rounded-2xl">
                    <div className="flex justify-between items-center mb-4">
-                     <button onClick={navigatePrevMonth} className="p-2 border border-amber-500/20 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition text-xs font-bold shrink-0 cursor-pointer">
+                     <button onClick={navigatePrevMonth} className="p-2 border border-orange-500/20 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition text-xs font-bold shrink-0 cursor-pointer">
                        Trước
                      </button>
-                     <span className="font-display font-bold text-lg text-stone-800 dark:text-stone-200">
+                     <span className="font-display font-bold text-lg text-zinc-800 dark:text-zinc-200">
                        {calendarMonthLabel}
                      </span>
-                     <button onClick={navigateNextMonth} className="p-2 border border-amber-500/20 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition text-xs font-bold shrink-0 cursor-pointer">
+                     <button onClick={navigateNextMonth} className="p-2 border border-orange-500/20 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition text-xs font-bold shrink-0 cursor-pointer">
                        Sau
                      </button>
                    </div>
 
                    {/* Grid Weekdays */}
-                   <div className="grid grid-cols-7 gap-1 text-center font-bold text-xs opacity-65 mb-2 py-1 text-stone-600 dark:text-stone-400">
+                   <div className="grid grid-cols-7 gap-1 text-center font-bold text-xs opacity-65 mb-2 py-1 text-zinc-600 dark:text-zinc-400">
                      {["CN", "T2", "T3", "T4", "T5", "T6", "T7"].map((w, idx) => (
                        <div key={idx} className={idx === 0 ? "text-red-500" : ""}>{w}</div>
                      ))}
@@ -4851,10 +4857,10 @@ export default function StudentDashboard() {
                            className={cn(
                              "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm transition relative select-none",
                              isActive
-                               ? "bg-yellow-500 text-black font-extrabold shadow-[0_0_12px_rgba(234,179,8,0.5)] cursor-pointer"
+                               ? "bg-orange-500 text-black font-extrabold shadow-[0_0_12px_rgba(234,179,8,0.5)] cursor-pointer"
                                : isToday
-                               ? "border-2 border-yellow-500 text-yellow-600 dark:text-yellow-400 font-extrabold"
-                               : "text-stone-700 dark:text-stone-300 hover:bg-black/5 dark:hover:bg-white/5"
+                               ? "border-2 border-orange-500 text-orange-600 dark:text-orange-400 font-extrabold"
+                               : "text-zinc-700 dark:text-zinc-300 hover:bg-black/5 dark:hover:bg-white/5"
                            )}
                            title={isActive ? `Bạn có hoạt động ôn tập ngày ${dayNum}/${calendarMonth + 1}` : `Ngày ${dayNum}/${calendarMonth + 1}`}
                          >
@@ -4868,23 +4874,23 @@ export default function StudentDashboard() {
                    </div>
 
                    {/* Legend */}
-                   <div className="mt-6 pt-4 border-t border-amber-600/10 dark:border-amber-500/15 flex justify-center items-center gap-6 text-xs text-stone-600 dark:text-stone-400">
+                   <div className="mt-6 pt-4 border-t border-orange-600/10 dark:border-orange-500/15 flex justify-center items-center gap-6 text-xs text-zinc-600 dark:text-zinc-400">
                      <div className="flex items-center gap-1.5">
-                       <span className="w-3.5 h-3.5 rounded-full bg-yellow-500 flex items-center justify-center text-[8px] text-black font-bold">✔</span>
+                       <span className="w-3.5 h-3.5 rounded-full bg-orange-500 flex items-center justify-center text-[8px] text-black font-bold">✔</span>
                        <span>Đã học / Streak</span>
                      </div>
                      <div className="flex items-center gap-1.5">
-                       <span className="w-3.5 h-3.5 rounded-full border-2 border-yellow-500"></span>
+                       <span className="w-3.5 h-3.5 rounded-full border-2 border-orange-500"></span>
                        <span>Hôm nay</span>
                      </div>
                    </div>
                  </div>
 
                  {/* MOTIVATION CARD */}
-                 <div className="bg-gradient-to-br from-amber-500/10 to-yellow-500/20 dark:from-yellow-500/5 dark:to-amber-500/10 border border-amber-500/20 rounded-2xl p-5 text-center shadow-sm">
-                   <Sparkles className="w-6 h-6 text-yellow-500 mx-auto mb-3 animate-pulse" />
-                   <h4 className="font-display font-bold text-stone-800 dark:text-stone-200 mb-1">Duy trì Ngọn lửa Tự học</h4>
-                   <p className="text-xs text-stone-600 dark:text-stone-400 italic max-w-sm mx-auto leading-relaxed">
+                 <div className="bg-gradient-to-br from-orange-500/10 to-orange-500/20 dark:from-orange-500/5 dark:to-orange-500/10 border border-orange-500/20 rounded-2xl p-5 text-center shadow-sm">
+                   <Sparkles className="w-6 h-6 text-orange-500 mx-auto mb-3 animate-pulse" />
+                   <h4 className="font-display font-bold text-zinc-800 dark:text-zinc-200 mb-1">Duy trì Ngọn lửa Tự học</h4>
+                   <p className="font-sans font-light tracking-wide text-xs text-zinc-600 dark:text-zinc-400 italic max-w-sm mx-auto leading-relaxed">
                      Lịch biểu này ghi chép chuỗi ngày năng nổ rèn luyện của bạn. Hãy hoàn thiện bài tập mỗi ngày để duy trì streak tăng hạng!
                    </p>
                  </div>
@@ -4892,8 +4898,8 @@ export default function StudentDashboard() {
 
                {/* BAN PHẢI: LỊCH SỬ CHI TIẾT */}
                <div className="lg:col-span-7 space-y-4">
-                  <h4 className="text-lg font-bold text-stone-700 dark:text-stone-300 flex items-center gap-2 mb-2">
-                    <Activity className="w-4.5 h-4.5 text-yellow-500" /> Bản ghi ôn tập chi tiết
+                  <h4 className="text-lg font-bold text-zinc-700 dark:text-zinc-300 flex items-center gap-2 mb-2">
+                    <Activity className="w-4.5 h-4.5 text-orange-500" /> Bản ghi ôn tập chi tiết
                   </h4>
                   
                   <div className="space-y-4 max-h-[460px] overflow-y-auto pr-2">
@@ -4903,14 +4909,14 @@ export default function StudentDashboard() {
                            key={record.id}
                            initial={{ opacity: 0, x: -20 }}
                            animate={{ opacity: 1, x: 0 }}
-                           className="card-3d p-4 rounded-xl flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center"
+                           className="stone-carved card-3d p-4 rounded-xl flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center"
                          >
                            <div className="space-y-1">
                              <div className="flex items-center gap-2">
-                                <span className="text-xs font-bold font-mono px-2 py-0.5 rounded-md bg-stone-200 dark:bg-zinc-700">{record.deckTitle}</span>
+                                <span className="text-xs font-bold font-mono px-2 py-0.5 rounded-md bg-zinc-200 dark:bg-zinc-700">{record.deckTitle}</span>
                                 <span className="text-xs opacity-60 font-mono">{new Date(record.timestamp).toLocaleString()}</span>
                              </div>
-                             <p className="font-bold text-sm md:text-base line-clamp-1">{record.front}</p>
+                             <p className="font-sans font-light tracking-wide font-bold text-sm md:text-base line-clamp-1">{record.front}</p>
                            </div>
                            <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 pt-2 sm:pt-0 border-black/5">
                               {record.remembered ? (
@@ -4927,7 +4933,7 @@ export default function StudentDashboard() {
                          </motion.div>
                        ))
                      ) : (
-                       <div className="text-center p-12 opacity-60 font-bold border-2 border-dashed border-amber-600/20 dark:border-amber-500/30 rounded-xl">
+                       <div className="text-center p-12 opacity-60 font-bold border-2 border-dashed border-orange-600/20 dark:border-orange-500/30 rounded-xl">
                           Chưa có lịch sử ôn tập. Hãy bắt đầu học!
                        </div>
                      )}
@@ -4952,17 +4958,17 @@ export default function StudentDashboard() {
             animate={{ scale: 1, y: 0, opacity: 1 }}
             exit={{ scale: 0.95, y: 20, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="bg-stone-100/80 dark:bg-zinc-950/40 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-amber-600/20 dark:border-amber-500/30 rounded-2xl w-full h-[95vh] sm:h-full max-w-6xl md:max-h-[800px] flex flex-col p-4 md:p-8 relative backdrop-blur-xl overflow-y-auto overflow-x-hidden"
+            className="bg-zinc-100/80 dark:bg-zinc-950/40 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-orange-600/20 dark:border-orange-500/30 rounded-2xl w-full h-[95vh] sm:h-full max-w-6xl md:max-h-[800px] flex flex-col p-4 md:p-8 relative backdrop-blur-xl overflow-y-auto overflow-x-hidden"
           >
-            <div className="flex justify-between items-center mb-6 border-b border-amber-600/20 dark:border-amber-500/30 pb-4 flex-wrap gap-4">
-              <h3 className="text-2xl md:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 flex items-center gap-3">
-                <Activity className="w-8 h-8 text-yellow-500" /> Biểu Đồ Phong Độ Tuần
+            <div className="flex justify-between items-center mb-6 border-b border-orange-600/20 dark:border-orange-500/30 pb-4 flex-wrap gap-4">
+              <h3 className="font-serif italic font-medium text-2xl md:text-3xl font-display text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 flex items-center gap-3">
+                <Activity className="w-8 h-8 text-orange-500" /> Biểu Đồ Phong Độ Tuần
               </h3>
               <div className="flex items-center gap-4">
                 <select 
                   value={chartPeriod} 
                   onChange={(e) => setChartPeriod(e.target.value as any)}
-                  className="bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 rounded-lg px-4 py-2 text-sm md:text-base font-medium focus:outline-none focus:ring-2 focus:ring-yellow-500 appearance-none cursor-pointer"
+                  className="bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 rounded-lg px-4 py-2 text-sm md:text-base font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 appearance-none cursor-pointer"
                 >
                   <option value="7_days">Last 7 Days</option>
                   <option value="30_days">Last 30 Days</option>
@@ -4970,7 +4976,7 @@ export default function StudentDashboard() {
                 </select>
                 <button 
                   onClick={() => setIsChartExpanded(false)}
-                  className="p-3 bg-stone-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 rounded-full transition-colors text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
+                  className="p-3 bg-zinc-200/60 dark:bg-zinc-800/50 hover:bg-black/10 dark:hover:bg-white/10 rounded-full transition-colors text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
                 >
                   <Minimize2 className="w-6 h-6" />
                 </button>
@@ -5022,7 +5028,7 @@ export default function StudentDashboard() {
             <h4 className="text-lg font-bold text-red-600 dark:text-red-400 flex items-center gap-2 mb-3">
               <AlertTriangle className="w-5 h-5" /> Xác nhận xóa học sinh "{studentToDelete.name}"?
             </h4>
-            <p className="text-sm opacity-85 mb-4">
+            <p className="font-sans font-light tracking-wide text-sm opacity-85 mb-4">
               Bạn có quyền xóa hoặc khóa tài khoản học sinh này từ hệ thống Henosis.
             </p>
             
@@ -5036,7 +5042,7 @@ export default function StudentDashboard() {
                     "p-3 rounded-xl border text-xs font-bold transition flex flex-col gap-1 items-center text-center",
                     deleteMode === "hard"
                       ? "bg-red-500/10 border-red-500 text-red-600 dark:text-red-400"
-                      : "border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-850"
+                      : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850"
                   )}
                 >
                   <span>Xóa cứng (Hard)</span>
@@ -5048,8 +5054,8 @@ export default function StudentDashboard() {
                   className={cn(
                     "p-3 rounded-xl border text-xs font-bold transition flex flex-col gap-1 items-center text-center",
                     deleteMode === "soft"
-                      ? "bg-amber-500/10 border-amber-500 text-amber-600 dark:text-amber-400"
-                      : "border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-850"
+                      ? "bg-orange-500/10 border-orange-500 text-orange-600 dark:text-orange-400"
+                      : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850"
                   )}
                 >
                   <span>Xóa mềm (Soft)</span>
@@ -5062,7 +5068,7 @@ export default function StudentDashboard() {
               <button 
                 onClick={() => setStudentToDelete(null)}
                 disabled={isDeletingStudent}
-                className="px-4 py-2 rounded-lg bg-stone-200 dark:bg-zinc-850 hover:bg-stone-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
+                className="px-4 py-2 rounded-lg bg-zinc-200 dark:bg-zinc-850 hover:bg-zinc-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
               >
                 Hủy bỏ
               </button>
@@ -5071,7 +5077,7 @@ export default function StudentDashboard() {
                 disabled={isDeletingStudent}
                 className={cn(
                   "px-4 py-2 rounded-lg text-white transition text-sm font-bold flex items-center gap-1.5",
-                  deleteMode === "hard" ? "bg-red-600 hover:bg-red-700" : "bg-amber-600 hover:bg-amber-700"
+                  deleteMode === "hard" ? "bg-red-600 hover:bg-red-700" : "bg-orange-600 hover:bg-orange-700"
                 )}
               >
                 {isDeletingStudent ? "Đang xử lý..." : "Xác nhận thực hiện"}
@@ -5089,7 +5095,7 @@ export default function StudentDashboard() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 dark:bg-black/70 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/60 dark:bg-black/70 backdrop-blur-md"
             onClick={() => setActiveQuizSetup(null)}
           >
             <motion.div 
@@ -5098,23 +5104,23 @@ export default function StudentDashboard() {
               exit={{ opacity: 0, scale: 0.95, y: 30 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={e => e.stopPropagation()}
-              className="w-full max-w-md bg-white/95 dark:bg-zinc-950/95 backdrop-blur-2xl border border-stone-200 dark:border-zinc-850 rounded-3xl shadow-2xl p-6 relative overflow-hidden"
+              className="w-full max-w-md bg-white/95 dark:bg-zinc-950/95 backdrop-blur-2xl border border-zinc-200 dark:border-zinc-850 rounded-3xl shadow-2xl p-6 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl pointer-events-none" />
               
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/20">
                     <Sparkles className="w-5 h-5 text-black" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-display font-black text-stone-900 dark:text-stone-100 uppercase tracking-tight">Sinh Đề Thi AI</h3>
-                    <p className="text-xs font-semibold text-stone-500 dark:text-stone-400">{activeQuizSetup.subject}</p>
+                    <h3 className="text-lg font-display font-black text-zinc-900 dark:text-zinc-100 uppercase tracking-tight">Sinh Đề Thi AI</h3>
+                    <p className="font-sans font-light tracking-wide text-xs font-semibold text-zinc-500 dark:text-zinc-400">{activeQuizSetup.subject}</p>
                   </div>
                 </div>
                 <button 
                   onClick={() => setActiveQuizSetup(null)}
-                  className="p-1.5 rounded-full bg-stone-100 hover:bg-stone-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition"
+                  className="p-1.5 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -5122,7 +5128,7 @@ export default function StudentDashboard() {
 
               <div className="space-y-4">
                 <div>
-                  <label className="text-xs font-black text-amber-600 dark:text-amber-400 uppercase tracking-wider block mb-2">Số lượng câu hỏi trắc nghiệm</label>
+                  <label className="text-xs font-black text-orange-600 dark:text-orange-400 uppercase tracking-wider block mb-2">Số lượng câu hỏi trắc nghiệm</label>
                   <div className="grid grid-cols-4 gap-2">
                     {[5, 10, 15, 20, 25, 30, 35, 40].map(count => (
                       <button
@@ -5131,15 +5137,15 @@ export default function StudentDashboard() {
                         className={cn(
                           "py-2 rounded-xl text-xs font-bold transition-all border outline-none cursor-pointer",
                           quizQuestionCount === count
-                            ? "bg-amber-500 border-amber-600 text-black font-black shadow-md scale-105 hover:bg-amber-600"
-                            : "bg-stone-100/60 dark:bg-zinc-900/65 border-stone-200 dark:border-zinc-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-zinc-800/80 hover:text-stone-900 dark:hover:text-stone-100"
+                            ? "bg-orange-500 border-orange-600 text-black font-black shadow-md scale-105 hover:bg-orange-600"
+                            : "bg-zinc-100/60 dark:bg-zinc-900/65 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-zinc-100"
                         )}
                       >
                         {count} câu
                       </button>
                     ))}
                   </div>
-                  <p className="text-[10px] text-stone-500 dark:text-stone-400 mt-2 italic">
+                  <p className="font-sans font-light tracking-wide text-[10px] text-zinc-500 dark:text-zinc-400 mt-2 italic">
                     * Mặc định là 15 câu. Số lượng câu hỏi càng nhiều, Gemini sẽ hỗ trợ phân tích sâu hơn nhưng sẽ lâu hơn xíu m nha.
                   </p>
                 </div>
@@ -5148,7 +5154,7 @@ export default function StudentDashboard() {
               <div className="mt-6 flex gap-2.5">
                 <button
                   onClick={() => setActiveQuizSetup(null)}
-                  className="flex-1 py-3 rounded-2xl text-stone-500 hover:bg-stone-100 dark:hover:bg-zinc-900 text-xs font-black uppercase tracking-wider border border-stone-200 dark:border-zinc-800 cursor-pointer transition"
+                  className="flex-1 py-3 rounded-2xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-900 text-xs font-black uppercase tracking-wider border border-zinc-200 dark:border-zinc-800 cursor-pointer transition"
                 >
                   Đóng
                 </button>
@@ -5158,7 +5164,7 @@ export default function StudentDashboard() {
                     setActiveQuizSetup(null);
                     triggerQuiz(setup.subject, setup.decks, quizQuestionCount);
                   }}
-                  className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-500 text-black hover:scale-105 active:scale-95 text-xs font-black uppercase tracking-wider shadow-lg shadow-amber-500/10 cursor-pointer transition-all flex items-center justify-center gap-1.5"
+                  className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-500 text-black hover:scale-105 active:scale-95 text-xs font-black uppercase tracking-wider shadow-lg shadow-orange-500/10 cursor-pointer transition-all flex items-center justify-center gap-1.5"
                 >
                   <Sparkles className="w-4 h-4 text-black shrink-0" />
                   Bắt đầu thi AI
@@ -5195,7 +5201,7 @@ export default function StudentDashboard() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 dark:bg-black/70 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/60 dark:bg-black/70 backdrop-blur-md"
             onClick={() => setShowRemindLaterModal(false)}
           >
             <motion.div 
@@ -5206,14 +5212,14 @@ export default function StudentDashboard() {
               onClick={e => e.stopPropagation()}
               className="w-full max-w-2xl max-h-[85vh] bg-white/90 dark:bg-zinc-950/90 backdrop-blur-2xl border border-white/20 dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col"
             >
-              <div className="flex items-center justify-between p-6 border-b border-stone-200/50 dark:border-zinc-800/50">
+              <div className="flex items-center justify-between p-6 border-b border-zinc-200/50 dark:border-zinc-800/50">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
                     <Bell className="w-5 h-5 text-blue-500 animate-pulse" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">Danh Sách Nhắc Nhở</h3>
-                    <p className="text-xs font-medium text-stone-500 dark:text-stone-400 mt-0.5">
+                    <h3 className="font-serif italic font-medium text-xl font-display text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">Danh Sách Nhắc Nhở</h3>
+                    <p className="font-sans font-light tracking-wide text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">
                       {remindLaterCards.length} từ vựng cần ưu tiên ôn tập nhanh
                     </p>
                   </div>
@@ -5230,7 +5236,7 @@ export default function StudentDashboard() {
                   )}
                   <button 
                     onClick={() => setShowRemindLaterModal(false)}
-                    className="p-2 rounded-full bg-stone-200/50 dark:bg-zinc-800/50 text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 transition"
+                    className="p-2 rounded-full bg-zinc-200/50 dark:bg-zinc-800/50 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 transition"
                   >
                     <XCircle className="w-6 h-6" />
                   </button>
@@ -5239,10 +5245,10 @@ export default function StudentDashboard() {
               
               <div className="p-4 md:p-6 overflow-y-auto space-y-3 custom-scrollbar">
                 {remindLaterCards.length === 0 ? (
-                  <div className="py-12 text-center text-stone-500 dark:text-stone-400 flex flex-col items-center gap-3">
+                  <div className="py-12 text-center text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-3">
                     <CheckCircle2 className="w-12 h-12 text-green-500 mb-2 opacity-80" />
-                    <p className="font-medium text-lg">Tuyệt vời! Bạn không có thẻ nhớ gấp nào.</p>
-                    <p className="text-sm opacity-80">Hãy tiếp tục duy trì tiến độ học tập nhé.</p>
+                    <p className="font-sans font-light tracking-wide font-medium text-lg">Tuyệt vời! Bạn không có thẻ nhớ gấp nào.</p>
+                    <p className="font-sans font-light tracking-wide text-sm opacity-80">Hãy tiếp tục duy trì tiến độ học tập nhé.</p>
                   </div>
                 ) : (
                   remindLaterCards.map((card, idx) => {
@@ -5253,15 +5259,15 @@ export default function StudentDashboard() {
                     return (
                       <div 
                         key={card.id + idx}
-                        className="group flex flex-col sm:flex-row gap-4 justify-between items-center bg-stone-100/50 dark:bg-zinc-900/50 p-4 rounded-2xl border border-stone-200 dark:border-zinc-800 hover:border-blue-500/30 dark:hover:border-blue-500/30 hover:bg-white dark:hover:bg-zinc-900 transition-all shadow-sm hover:shadow"
+                        className="group flex flex-col sm:flex-row gap-4 justify-between items-center bg-zinc-100/50 dark:bg-zinc-900/50 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-blue-500/30 dark:hover:border-blue-500/30 hover:bg-white dark:hover:bg-zinc-900 transition-all shadow-sm hover:shadow"
                       >
                         <div className="flex-1 w-full relative">
                           <div className="flex flex-wrap items-center gap-2 mb-1.5 line-clamp-1 truncate">
-                            <span className="text-lg font-bold text-stone-900 dark:text-white truncate">
+                            <span className="text-lg font-bold text-zinc-900 dark:text-white truncate">
                               {card.front || (card as any).word}
                             </span>
                             {(card.wordForm || (card as any).wordType) && (
-                              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-stone-200 dark:bg-zinc-800 text-stone-600 dark:text-stone-400 border border-stone-300 dark:border-zinc-700 shrink-0">
+                              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 shrink-0">
                                 {card.wordForm || (card as any).wordType}
                               </span>
                             )}
@@ -5271,7 +5277,7 @@ export default function StudentDashboard() {
                               </span>
                             )}
                           </div>
-                          <p className="text-sm text-stone-600 dark:text-stone-300 line-clamp-2">
+                          <p className="font-sans font-light tracking-wide text-sm text-zinc-600 dark:text-zinc-300 line-clamp-2">
                              {firstPart || "Chưa có nghĩa chi tiết"}
                           </p>
                         </div>
@@ -5326,7 +5332,7 @@ export default function StudentDashboard() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 dark:bg-black/70 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/60 dark:bg-black/70 backdrop-blur-md"
             onClick={() => setSelectedUserProfile(null)}
           >
             <motion.div 
@@ -5337,24 +5343,24 @@ export default function StudentDashboard() {
               onClick={e => e.stopPropagation()}
               className="w-full max-w-md bg-white dark:bg-zinc-950/90 backdrop-blur-2xl border border-white/20 dark:border-white/10 rounded-[2rem] shadow-2xl overflow-hidden relative"
             >
-              <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-br from-amber-400 to-amber-600 opacity-20"></div>
+              <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-br from-orange-400 to-orange-600 opacity-20"></div>
               
               <button 
                 onClick={() => setSelectedUserProfile(null)}
                 className="absolute top-4 right-4 p-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition z-10"
               >
-                <XCircle className="w-6 h-6 text-stone-700 dark:text-stone-300" />
+                <XCircle className="w-6 h-6 text-zinc-700 dark:text-zinc-300" />
               </button>
 
               <div className="relative pt-12 pb-8 px-8 flex flex-col items-center">
                 <div className={cn(
-                  "w-24 h-24 rounded-full bg-gradient-to-br from-stone-200 to-stone-300 dark:from-zinc-800 dark:to-zinc-900 border-4 border-white dark:border-zinc-950 shadow-xl flex items-center justify-center overflow-hidden mb-4 relative",
+                  "w-24 h-24 rounded-full bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-900 border-4 border-white dark:border-zinc-950 shadow-xl flex items-center justify-center overflow-hidden mb-4 relative",
                   getAvatarBorderClass(selectedUserProfile.avatarBorder)
                 )}>
                   {selectedUserProfile.photoURL ? (
                     <img src={selectedUserProfile.photoURL} alt={selectedUserProfile.name} className="w-full h-full object-cover rounded-full" referrerPolicy="no-referrer" />
                   ) : (
-                    <span className="text-4xl font-bold font-mono opacity-50 uppercase">{selectedUserProfile.name ? selectedUserProfile.name.charAt(0) : "👤"}</span>
+                    <span className="font-serif italic font-medium text-4xl font-mono opacity-50 uppercase">{selectedUserProfile.name ? selectedUserProfile.name.charAt(0) : "👤"}</span>
                   )}
                   {selectedUserProfile.streak && (
                     <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-orange-400 to-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full border-2 border-white dark:border-zinc-950 shadow-sm flex items-center gap-1">
@@ -5363,7 +5369,7 @@ export default function StudentDashboard() {
                   )}
                 </div>
 
-                <h3 className="text-2xl font-display font-bold text-stone-900 dark:text-white mb-1">
+                <h3 className="font-serif italic font-medium text-2xl font-display text-zinc-900 dark:text-white mb-1">
                   {selectedUserProfile.name}
                 </h3>
                 
@@ -5384,17 +5390,17 @@ export default function StudentDashboard() {
                 </div>
 
                 <div className="w-full grid grid-cols-2 gap-4">
-                  <div className="bg-stone-50 dark:bg-zinc-900/50 p-4 rounded-2xl border border-stone-100 dark:border-zinc-800 flex flex-col items-center justify-center text-center">
+                  <div className="bg-zinc-50 dark:bg-zinc-900/50 p-4 rounded-2xl border border-zinc-100 dark:border-zinc-800 flex flex-col items-center justify-center text-center">
                      <BrainCircuit className="w-6 h-6 text-blue-500 mb-2" />
-                     <span className="text-3xl font-black font-mono text-stone-900 dark:text-white">
+                     <span className="font-serif italic font-medium text-3xl font-black font-mono text-zinc-900 dark:text-white">
                        {selectedUserProfile.level || getLevelInfo(selectedUserProfile.points || 0).currentLevel}
                      </span>
                      <span className="text-[10px] font-bold uppercase tracking-widest opacity-50 mt-1">Level</span>
                   </div>
                   
-                  <div className="bg-stone-50 dark:bg-zinc-900/50 p-4 rounded-2xl border border-stone-100 dark:border-zinc-800 flex flex-col items-center justify-center text-center">
-                     <Target className="w-6 h-6 text-yellow-500 mb-2" />
-                     <span className="text-3xl font-black font-mono text-stone-900 dark:text-white">
+                  <div className="bg-zinc-50 dark:bg-zinc-900/50 p-4 rounded-2xl border border-zinc-100 dark:border-zinc-800 flex flex-col items-center justify-center text-center">
+                     <Target className="w-6 h-6 text-orange-500 mb-2" />
+                     <span className="font-serif italic font-medium text-3xl font-black font-mono text-zinc-900 dark:text-white">
                        {selectedUserProfile.points || 0}
                      </span>
                      <span className="text-[10px] font-bold uppercase tracking-widest opacity-50 mt-1">Weekly Points</span>
@@ -5408,13 +5414,13 @@ export default function StudentDashboard() {
 
       {user && (user.role === "teacher" || user.role === "admin" || user.role === "Admin") && (
         <div id="monitor" className="max-w-[7xl] mx-auto w-full pt-8 mt-8 space-y-4 px-4 sm:px-6 lg:px-8">
-           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-4 rounded-2xl">
+           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 rounded-2xl">
               <div>
-                 <h3 className="text-sm font-extrabold text-stone-800 dark:text-stone-100 flex items-center gap-2">
+                 <h3 className="text-sm font-extrabold text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
                     <Activity className="w-4 h-4 text-emerald-500 animate-pulse" />
                     Cổng Giám Sát API Sức Khỏe Thực (Real-time Key Telemetry)
                  </h3>
-                 <p className="text-xs text-stone-500 mt-1">
+                 <p className="font-sans font-light tracking-wide text-xs text-zinc-500 mt-1">
                     Hiển thị chi tiết trạng thái hoạt động, tỷ lệ xoay vòng và hệ số tải của từng cụm provider.
                  </p>
               </div>
@@ -5422,7 +5428,7 @@ export default function StudentDashboard() {
                  Status: Live Monitor
               </div>
            </div>
-           <div className="rounded-2xl border border-stone-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/20 p-4 md:p-6 shadow-sm">
+           <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/20 p-4 md:p-6 shadow-sm">
               <ServiceMonitor adminKey={localStorage.getItem("henosis_admin_key") || ""} />
            </div>
         </div>
@@ -5455,12 +5461,12 @@ export default function StudentDashboard() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="relative w-full max-w-lg glass border border-amber-500/20 rounded-3xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-lg glass border border-orange-500/20 rounded-3xl overflow-hidden shadow-2xl"
             >
               <div className={`absolute top-0 left-0 w-full h-32 opacity-20 blur-3xl ${selectedShopItem.bgEffect}`} />
               <button 
                 onClick={() => setSelectedShopItem(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-stone-200/20 hover:bg-stone-200/40 text-stone-600 dark:text-stone-300 transition z-10"
+                className="absolute top-4 right-4 p-2 rounded-full bg-zinc-200/20 hover:bg-zinc-200/40 text-zinc-600 dark:text-zinc-300 transition z-10"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -5470,28 +5476,28 @@ export default function StudentDashboard() {
                   <selectedShopItem.icon className="w-12 h-12" />
                 </div>
                 
-                <h2 className="text-sm tracking-widest uppercase font-bold text-amber-600 dark:text-amber-500 mb-2">
+                <h2 className="text-sm tracking-widest uppercase font-bold text-orange-600 dark:text-orange-500 mb-2">
                   {selectedShopItem.title}
                 </h2>
-                <h3 className="text-3xl font-display font-black text-stone-800 dark:text-stone-100 mb-6 drop-shadow-sm">
+                <h3 className="font-serif italic font-medium text-3xl font-display font-black text-zinc-800 dark:text-zinc-100 mb-6 drop-shadow-sm">
                   {selectedShopItem.name}
                 </h3>
                 
-                <div className="p-4 bg-stone-100/50 dark:bg-stone-900/50 rounded-2xl border border-stone-200/50 dark:border-stone-700/50 mb-6 w-full text-sm leading-relaxed text-stone-600 dark:text-stone-300 italic">
+                <div className="p-4 bg-zinc-100/50 dark:bg-zinc-900/50 rounded-2xl border border-zinc-200/50 dark:border-zinc-700/50 mb-6 w-full text-sm leading-relaxed text-zinc-600 dark:text-zinc-300 italic">
                   "{selectedShopItem.lore}"
                 </div>
 
                 <div className="mb-8 w-full text-left bg-blue-500/5 p-4 rounded-xl border border-blue-500/10">
-                  <p className="text-sm font-semibold flex items-start gap-2">
-                    <Sparkles className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                  <p className="font-sans font-light tracking-wide text-sm font-semibold flex items-start gap-2">
+                    <Sparkles className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" />
                     <span>{selectedShopItem.desc}</span>
                   </p>
                 </div>
 
                 <div className="w-full flex items-center gap-4">
-                  <div className="flex-1 px-4 py-3 bg-stone-200/30 dark:bg-stone-800/50 rounded-2xl flex flex-col items-center border border-stone-300/30 dark:border-stone-700/30">
+                  <div className="flex-1 px-4 py-3 bg-zinc-200/30 dark:bg-zinc-800/50 rounded-2xl flex flex-col items-center border border-zinc-300/30 dark:border-zinc-700/30">
                     <span className="text-[10px] uppercase font-black tracking-wider opacity-60 mb-1">Chi phí đánh đổi</span>
-                    <span className="text-lg font-black text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
+                    <span className="text-lg font-black text-orange-600 dark:text-orange-400 flex items-center gap-1.5">
                       <Flame className="w-5 h-5" />
                       {selectedShopItem.cost} Tinh Hoa
                     </span>
@@ -5501,7 +5507,7 @@ export default function StudentDashboard() {
                       selectedShopItem.onBuy();
                       setSelectedShopItem(null);
                     }}
-                    className="flex-1 py-4 px-6 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-black rounded-2xl font-black text-sm uppercase tracking-wide shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] transition-all hover:scale-105 active:scale-95"
+                    className="flex-1 py-4 px-6 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-black rounded-2xl font-black text-sm uppercase tracking-wide shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] transition-all hover:scale-105 active:scale-95"
                   >
                     {selectedShopItem.actionText}
                   </button>
@@ -5520,7 +5526,7 @@ export default function StudentDashboard() {
           setShowTutorial(true);
         }}
         id="shortcuts-help-btn-anchor"
-        className="fixed bottom-40 right-6 z-40 p-3 bg-yellow-500 hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-550 text-stone-950 dark:text-stone-950 rounded-full shadow-[0_4px_20px_rgba(234,179,8,0.4)] hover:scale-110 active:scale-95 transition-all duration-200 flex items-center gap-2 font-black text-xs border border-yellow-400"
+        className="fixed bottom-40 right-6 z-40 p-3 bg-orange-500 hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-550 text-zinc-950 dark:text-zinc-950 rounded-full shadow-[0_4px_20px_rgba(234,179,8,0.4)] hover:scale-110 active:scale-95 transition-all duration-200 flex items-center gap-2 font-black text-xs border border-orange-400"
         title="Xem hướng dẫn nhanh sử dụng hệ thống"
       >
         <HelpCircle className="w-5 h-5 animate-bounce" />

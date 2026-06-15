@@ -47,7 +47,7 @@ const TiltCard = ({ children, delayIdx, className = "" }: { children: React.Reac
   if (isEcoMode) {
     return (
       <div className={`h-full ${className}`}>
-        <div className="relative p-6 sm:p-8 rounded-2xl flex flex-col group overflow-visible min-h-[17rem] h-full border border-stone-200 dark:border-zinc-800 bg-stone-50 dark:bg-zinc-900 transition-colors shadow-sm">
+        <div className="relative p-6 sm:p-8 rounded-2xl flex flex-col group overflow-visible min-h-[17rem] h-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 transition-colors shadow-sm">
           {children}
         </div>
       </div>
@@ -240,7 +240,7 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
         <div className="flex flex-col sm:flex-row gap-4 items-center w-full my-8">
           <div className="relative w-full max-w-2xl flex-1">
             <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-              <Search className="h-8 w-8 text-stone-400" />
+              <Search className="h-8 w-8 text-zinc-400" />
             </div>
             <input
               type="text"
@@ -252,25 +252,25 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
               onKeyDown={(e) => {
                 if (e.key === 'Enter') saveSearch(searchQuery);
               }}
-              className="block w-full pl-16 pr-16 py-5 border-2 border-stone-300 dark:border-stone-700 rounded-2xl bg-white dark:bg-stone-900 focus:ring-4 focus:ring-yellow-500/55 focus:border-yellow-500 transition text-xl sm:text-3xl min-h-[72px] font-black"
+              className="block w-full pl-16 pr-16 py-5 border-2 border-zinc-300 dark:border-zinc-700 rounded-2xl bg-white dark:bg-zinc-900 focus:ring-4 focus:ring-orange-500/55 focus:border-orange-500 transition text-xl sm:text-3xl min-h-[72px] font-black"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute inset-y-0 right-2 flex items-center justify-center w-16 h-16 min-w-[64px] min-h-[64px] hover:bg-stone-100 dark:hover:bg-zinc-800 rounded-full transition-colors my-auto focus:outline-none"
+                className="absolute inset-y-0 right-2 flex items-center justify-center w-16 h-16 min-w-[64px] min-h-[64px] hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors my-auto focus:outline-none"
                 aria-label="Clear Search"
               >
-                <X className="h-7 w-7 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200" />
+                <X className="h-7 w-7 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200" />
               </button>
             )}
             {isDropdownOpen && !searchQuery && recentSearches.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-4 bg-white dark:bg-stone-900 border-2 border-stone-300 dark:border-stone-700 rounded-2xl shadow-2xl z-50 overflow-hidden">
-                <div className="px-8 py-5 text-base sm:text-xl text-stone-500 uppercase tracking-widest font-black border-b-2 border-stone-200 dark:border-stone-700">Tìm kiếm gần đây</div>
+              <div className="absolute top-full left-0 right-0 mt-4 bg-white dark:bg-zinc-900 border-2 border-zinc-300 dark:border-zinc-700 rounded-2xl shadow-2xl z-50 overflow-hidden">
+                <div className="px-8 py-5 text-base sm:text-xl text-zinc-500 uppercase tracking-widest font-black border-b-2 border-zinc-200 dark:border-zinc-700">Tìm kiếm gần đây</div>
                 {recentSearches.map((search) => (
                   <button
                     key={search}
                     onClick={() => setSearchQuery(search)}
-                    className="w-full text-left px-8 py-5 text-xl sm:text-2xl hover:bg-stone-100 dark:hover:bg-stone-800 transition font-black min-h-[64px]"
+                    className="w-full text-left px-8 py-5 text-xl sm:text-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition font-black min-h-[64px]"
                   >
                     {search}
                   </button>
@@ -279,11 +279,11 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
             )}
           </div>
           
-          <div className="w-full sm:w-auto shrink-0 flex items-center bg-white dark:bg-stone-900 border-2 border-stone-300 dark:border-stone-700 rounded-2xl px-4 py-2 min-h-[72px]">
+          <div className="w-full sm:w-auto shrink-0 flex items-center bg-white dark:bg-zinc-900 border-2 border-zinc-300 dark:border-zinc-700 rounded-2xl px-4 py-2 min-h-[72px]">
             <select
               value={sortOrder}
               onChange={(e) => setSortOrder(e.target.value as any)}
-              className="bg-transparent text-lg sm:text-xl font-bold text-stone-700 dark:text-stone-300 focus:outline-none w-full appearance-none cursor-pointer pr-8"
+              className="bg-transparent text-lg sm:text-xl font-bold text-zinc-700 dark:text-zinc-300 focus:outline-none w-full appearance-none cursor-pointer pr-8"
               style={{ backgroundImage: 'url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right center', backgroundSize: '1.2em' }}
             >
               <option value="default">Sắp xếp: Mặc định</option>
@@ -307,9 +307,9 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
               }).map(([subject, subjectDecks]) => (
                 <div key={subject} className="space-y-8 animate-in fade-in duration-300">
                   {/* Category Header Bar with Horizontal Control Buttons */}
-                  <div className="flex items-center justify-between gap-4 border-b border-amber-500/20 dark:border-zinc-800/60 pb-4">
+                  <div className="flex items-center justify-between gap-4 border-b border-orange-500/20 dark:border-zinc-800/60 pb-4">
                     <div className="flex items-center gap-4">
-                      <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/20 shadow-sm shrink-0">
+                      <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-600 dark:text-orange-400 font-bold border border-orange-500/20 shadow-sm shrink-0">
                         <BookOpen className="w-6 h-6" />
                       </span>
                       <div className="flex items-baseline gap-3">
@@ -319,7 +319,7 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                               type="text"
                               value={newCategoryName}
                               onChange={(e) => setNewCategoryName(e.target.value)}
-                              className="text-2xl sm:text-3xl font-black bg-stone-100 dark:bg-zinc-800 text-stone-900 dark:text-stone-100 rounded-lg px-2 py-1 outline-none border border-stone-300 dark:border-zinc-700 w-full max-w-[200px]"
+                              className="text-2xl sm:text-3xl font-black bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg px-2 py-1 outline-none border border-zinc-300 dark:border-zinc-700 w-full max-w-[200px]"
                               autoFocus
                               disabled={isSavingCategoryName}
                               onKeyDown={(e) => {
@@ -337,13 +337,13 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                             <button
                               onClick={() => setEditingCategory(null)}
                               disabled={isSavingCategoryName}
-                              className="p-2 bg-stone-300 dark:bg-zinc-700 hover:bg-stone-400 dark:hover:bg-zinc-600 text-stone-800 dark:text-stone-200 rounded-lg shadow-sm"
+                              className="p-2 bg-zinc-300 dark:bg-zinc-700 hover:bg-zinc-400 dark:hover:bg-zinc-600 text-zinc-800 dark:text-zinc-200 rounded-lg shadow-sm"
                             >
                               <X className="w-5 h-5" />
                             </button>
                           </div>
                         ) : (
-                          <h4 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-stone-100 tracking-tight uppercase flex items-center gap-2">
+                          <h4 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-zinc-100 tracking-tight uppercase flex items-center gap-2">
                             {subject}
                             {isAdmin && subject !== "📌 ĐÃ GHIM" && (
                               <button
@@ -351,7 +351,7 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                                   setEditingCategory(subject);
                                   setNewCategoryName(subject);
                                 }}
-                                className="ml-2 text-stone-400 hover:text-amber-500 p-1.5 rounded-lg hover:bg-amber-100 dark:hover:bg-zinc-800 transition"
+                                className="ml-2 text-zinc-400 hover:text-orange-500 p-1.5 rounded-lg hover:bg-orange-100 dark:hover:bg-zinc-800 transition"
                                 title="Đổi tên danh mục"
                               >
                                 <Sparkles className="w-4 h-4" />
@@ -359,7 +359,7 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                             )}
                           </h4>
                         )}
-                        <span className="text-sm sm:text-base font-black opacity-60 text-amber-600 dark:text-amber-400">
+                        <span className="text-sm sm:text-base font-black opacity-60 text-orange-600 dark:text-orange-400">
                           ({subjectDecks.length} bộ học)
                         </span>
                       </div>
@@ -407,7 +407,7 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                       {onCategoryQuiz && (
                         <button
                           onClick={() => onCategoryQuiz(subject, subjectDecks)}
-                          className="mr-1 text-xs font-black bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-black px-4 py-2.5 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-md flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 cursor-pointer shrink-0"
+                          className="mr-1 text-xs font-black bg-gradient-to-r from-orange-500 to-orange-500 hover:from-orange-600 hover:to-orange-600 text-black px-4 py-2.5 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-md flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-orange-500/50 cursor-pointer shrink-0"
                           title={`Tạo đề thi AI cho mục ${subject}`}
                         >
                           <Sparkles className="w-4 h-4 text-black animate-pulse shrink-0" />
@@ -421,14 +421,14 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => scrollCategory(subject, 'left')}
-                            className="w-10 h-10 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 flex items-center justify-center border border-stone-200 dark:border-zinc-700 text-stone-700 dark:text-stone-300 transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
+                            className="w-10 h-10 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 flex items-center justify-center border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-500/50"
                             title="Cuộn sang trái"
                           >
                             <ChevronLeft className="w-5 h-5" />
                           </button>
                           <button
                             onClick={() => scrollCategory(subject, 'right')}
-                            className="w-10 h-10 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 flex items-center justify-center border border-stone-200 dark:border-zinc-700 text-stone-700 dark:text-stone-300 transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
+                            className="w-10 h-10 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 flex items-center justify-center border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-500/50"
                             title="Cuộn sang phải"
                           >
                             <ChevronRight className="w-5 h-5" />
@@ -441,7 +441,7 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                   {/* Horizontal Scroll Area for this Category */}
                   <div
                     ref={(el) => { scrollContainersRef.current[subject] = el; }}
-                    className="flex overflow-x-auto gap-6 sm:gap-8 pb-6 pt-2 px-1 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-amber-500/20 dark:[&::-webkit-scrollbar-thumb]:bg-zinc-700/50 [&::-webkit-scrollbar-thumb]:rounded-full cursor-grab active:cursor-grabbing"
+                    className="flex overflow-x-auto gap-6 sm:gap-8 pb-6 pt-2 px-1 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-orange-500/20 dark:[&::-webkit-scrollbar-thumb]:bg-zinc-700/50 [&::-webkit-scrollbar-thumb]:rounded-full cursor-grab active:cursor-grabbing"
                   >
                     {subjectDecks.map((deck, idx) => {
                       const masteredCount = deck.cards.filter(c => c.mastery >= 80).length;
@@ -461,18 +461,18 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                           <div className="absolute top-4 right-4 z-20">
                             <button
                               onClick={(e) => { e.preventDefault(); e.stopPropagation(); togglePin(deck.id); }}
-                              className={`p-2 rounded-full transition-colors ${pinnedDecks.includes(deck.id) ? 'bg-amber-500/20 text-amber-500 hover:bg-amber-500/30' : 'bg-stone-100 dark:bg-zinc-800 text-stone-400 hover:text-stone-600 dark:hover:text-stone-300'}`}
+                              className={`p-2 rounded-full transition-colors ${pinnedDecks.includes(deck.id) ? 'bg-orange-500/20 text-orange-500 hover:bg-orange-500/30' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300'}`}
                               title={pinnedDecks.includes(deck.id) ? 'Bỏ ghim' : 'Ghim danh sách này'}
                             >
                               {pinnedDecks.includes(deck.id) ? <Pin className="w-5 h-5 fill-current" /> : <Pin className="w-5 h-5" />}
                             </button>
                           </div>
                           <div className="relative z-10 flex flex-col h-full [transform:translateZ(30px)] pt-2">
-                            <h4 className="font-extrabold text-2xl sm:text-3xl mb-3 pr-10 group-hover:text-amber-500 transition-colors line-clamp-2 break-all break-words leading-relaxed">{deck.title}</h4>
+                            <h4 className="font-extrabold text-2xl sm:text-3xl mb-3 pr-10 group-hover:text-orange-500 transition-colors line-clamp-2 break-all break-words leading-relaxed">{deck.title}</h4>
                             
                             <div className="flex flex-wrap items-center gap-4 mb-8">
                               <span className="text-base sm:text-l font-mono font-black opacity-85 uppercase tracking-widest leading-relaxed">{deck.subject || "Tự chọn"}</span>
-                              <span className="text-sm sm:text-base px-4 py-2.5 rounded-xl font-mono font-black uppercase tracking-wider bg-amber-500/15 text-amber-600 dark:text-amber-400 border-2 border-amber-500/20 leading-relaxed">
+                              <span className="text-sm sm:text-base px-4 py-2.5 rounded-xl font-mono font-black uppercase tracking-wider bg-orange-500/15 text-orange-600 dark:text-orange-400 border-2 border-orange-500/20 leading-relaxed">
                                 {getCreatorLabel(deck)}
                               </span>
                               <span className="flex items-center gap-1.5 text-sm sm:text-base px-4 py-2.5 rounded-xl font-mono font-black uppercase tracking-wider bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-2 border-emerald-500/20 leading-relaxed">
@@ -481,15 +481,15 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                               </span>
                             </div>
                             
-                            <div className="mt-auto pt-6 border-t border-stone-200 dark:border-stone-800 flex items-center justify-between gap-6">
+                            <div className="mt-auto pt-6 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between gap-6">
                               <div className="flex flex-col gap-3 w-full mr-4">
                                 <div className="flex justify-between items-center text-base sm:text-xl font-mono font-black leading-relaxed flex-wrap gap-2">
                                   <span className="whitespace-nowrap">Thông thạo</span>
-                                  <span className="text-yellow-600 dark:text-yellow-400 whitespace-nowrap">{masteryRate}%</span>
+                                  <span className="text-orange-600 dark:text-orange-400 whitespace-nowrap">{masteryRate}%</span>
                                 </div>
-                                <div className="w-full h-4 sm:h-5 bg-stone-300/60 dark:bg-zinc-800/80 rounded-full overflow-hidden shadow-inner">
+                                <div className="w-full h-4 sm:h-5 bg-zinc-300/60 dark:bg-zinc-800/80 rounded-full overflow-hidden shadow-inner">
                                   <motion.div 
-                                    className="bg-gradient-to-r from-amber-500 to-yellow-400 h-full shimmer-bar relative"
+                                    className="bg-gradient-to-r from-orange-500 to-orange-400 h-full shimmer-bar relative"
                                     initial={{ width: 0 }}
                                     animate={{ width: `${masteryRate}%` }}
                                     transition={{ duration: 1.5, ease: "easeOut" }}
@@ -530,18 +530,18 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                     <div className="absolute top-4 right-4 z-20">
                       <button
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); togglePin(deck.id); }}
-                        className={`p-2 rounded-full transition-colors ${pinnedDecks.includes(deck.id) ? 'bg-amber-500/20 text-amber-500 hover:bg-amber-500/30' : 'bg-stone-100 dark:bg-zinc-800 text-stone-400 hover:text-stone-600 dark:hover:text-stone-300'}`}
+                        className={`p-2 rounded-full transition-colors ${pinnedDecks.includes(deck.id) ? 'bg-orange-500/20 text-orange-500 hover:bg-orange-500/30' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300'}`}
                         title={pinnedDecks.includes(deck.id) ? 'Bỏ ghim' : 'Ghim danh sách này'}
                       >
                         {pinnedDecks.includes(deck.id) ? <Pin className="w-5 h-5 fill-current" /> : <Pin className="w-5 h-5" />}
                       </button>
                     </div>
                     <div className="relative z-10 flex flex-col h-full [transform:translateZ(30px)] pt-2">
-                      <h4 className="font-extrabold text-2xl sm:text-3xl mb-3 pr-10 group-hover:text-amber-500 transition-colors line-clamp-2 break-all break-words leading-relaxed">{deck.title}</h4>
+                      <h4 className="font-extrabold text-2xl sm:text-3xl mb-3 pr-10 group-hover:text-orange-500 transition-colors line-clamp-2 break-all break-words leading-relaxed">{deck.title}</h4>
                       
                       <div className="flex flex-wrap items-center gap-4 mb-8">
                         <span className="text-base sm:text-xl font-mono font-black opacity-85 uppercase tracking-widest leading-relaxed">{deck.subject || "Tự chọn"}</span>
-                        <span className="text-sm sm:text-base px-4 py-2.5 rounded-xl font-mono font-black uppercase tracking-wider bg-amber-500/15 text-amber-600 dark:text-amber-400 border-2 border-amber-500/20 leading-relaxed">
+                        <span className="text-sm sm:text-base px-4 py-2.5 rounded-xl font-mono font-black uppercase tracking-wider bg-orange-500/15 text-orange-600 dark:text-orange-400 border-2 border-orange-500/20 leading-relaxed">
                           {getCreatorLabel(deck)}
                         </span>
                         <span className="flex items-center gap-1.5 text-sm sm:text-base px-4 py-2.5 rounded-xl font-mono font-black uppercase tracking-wider bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-2 border-emerald-500/20 leading-relaxed">
@@ -550,15 +550,15 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                         </span>
                       </div>
                       
-                      <div className="mt-auto pt-6 border-t border-stone-200 dark:border-stone-800 flex items-center justify-between gap-6">
+                      <div className="mt-auto pt-6 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between gap-6">
                         <div className="flex flex-col gap-3 w-full mr-4">
                           <div className="flex justify-between items-center text-base sm:text-xl font-mono font-black leading-relaxed flex-wrap gap-2">
                             <span className="whitespace-nowrap">Thông thạo</span>
-                            <span className="text-yellow-600 dark:text-yellow-400 whitespace-nowrap">{masteryRate}%</span>
+                            <span className="text-orange-600 dark:text-orange-400 whitespace-nowrap">{masteryRate}%</span>
                           </div>
-                          <div className="w-full h-4 sm:h-5 bg-stone-300/60 dark:bg-zinc-800/80 rounded-full overflow-hidden shadow-inner">
+                          <div className="w-full h-4 sm:h-5 bg-zinc-300/60 dark:bg-zinc-800/80 rounded-full overflow-hidden shadow-inner">
                             <motion.div 
-                              className="bg-gradient-to-r from-amber-500 to-yellow-400 h-full shimmer-bar relative"
+                              className="bg-gradient-to-r from-orange-500 to-orange-400 h-full shimmer-bar relative"
                               initial={{ width: 0 }}
                               animate={{ width: `${masteryRate}%` }}
                               transition={{ duration: 1.5, ease: "easeOut" }}
@@ -577,9 +577,9 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
             </div>
           )
         ) : (
-          <div className="p-12 text-center text-stone-500 space-y-6">
+          <div className="p-12 text-center text-zinc-500 space-y-6">
             <p className="text-xl sm:text-3xl font-black italic leading-loose">Không tìm thấy bộ thẻ nào phù hợp.</p>
-            <button className="text-yellow-600 dark:text-yellow-400 font-black hover:underline text-xl sm:text-3xl p-4 min-h-[56px] inline-flex items-center gap-2">
+            <button className="text-orange-600 dark:text-orange-400 font-black hover:underline text-xl sm:text-3xl p-4 min-h-[56px] inline-flex items-center gap-2">
                 Tạo bộ thẻ mới
             </button>
           </div>

@@ -2081,36 +2081,36 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
   }, [extractedCards, deckTitle, deckSubject, uploadedFileName, isAddToExisting, selectedExistingDeckId, todayStr, isSplitDeckEnabled, splitDeckSize]);
 
   return (
-    <section className="card-3d rounded-3xl p-6 md:p-8 relative bg-white dark:bg-zinc-950 border border-stone-200/50 dark:border-zinc-800/50 shadow-xl flex flex-col gap-6 animate-in fade-in duration-300">
-      <div className="absolute top-0 right-0 bg-yellow-500 text-stone-950 text-[10px] uppercase font-black tracking-wider px-4 py-1.2 rounded-bl-2xl shadow-md z-10 font-sans">
+    <section className="card-3d rounded-3xl p-6 md:p-8 relative bg-white dark:bg-zinc-950 border border-zinc-200/50 dark:border-zinc-800/50 shadow-xl flex flex-col gap-6 animate-in fade-in duration-300">
+      <div className="absolute top-0 right-0 bg-orange-500 text-zinc-950 text-[10px] uppercase font-black tracking-wider px-4 py-1.2 rounded-bl-2xl shadow-md z-10 font-sans">
         🚀 UNIFIED INGESTION ENGINE v3
       </div>
       
       {/* Upper Title */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-stone-200/50 dark:border-zinc-800/50">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-zinc-200/50 dark:border-zinc-800/50">
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 rounded-2xl border border-yellow-500/20 shadow-inner">
+          <div className="p-3 bg-orange-500/10 text-orange-600 dark:text-orange-400 rounded-2xl border border-orange-500/20 shadow-inner">
             <Layers className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl font-display font-black text-stone-900 dark:text-stone-50">Bộ Trích Xuất Thẻ Học AI Đa Năng</h2>
-            <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">Tích hợp trọn vẹn cả 3 pipeline: File tài liệu, Đoạn văn thô, và copy dán JSON.</p>
+            <h2 className="text-xl font-display font-black text-zinc-900 dark:text-zinc-50">Bộ Trích Xuất Thẻ Học AI Đa Năng</h2>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Tích hợp trọn vẹn cả 3 pipeline: File tài liệu, Đoạn văn thô, và copy dán JSON.</p>
             {aiUsage && aiUsage.isFreeUser && (
-              <div className="mt-2.5 px-3 py-2 bg-yellow-500/5 dark:bg-yellow-950/10 border border-yellow-500/20 rounded-xl flex items-center justify-between gap-4 text-[11px] animate-in slide-in-from-top-2 duration-300">
-                <span className="flex items-center gap-1.5 font-bold text-yellow-600 dark:text-yellow-400">
-                  <Sparkles className="w-3.5 h-3.5 text-yellow-500 animate-pulse shrink-0" />
+              <div className="mt-2.5 px-3 py-2 bg-orange-500/5 dark:bg-orange-950/10 border border-orange-500/20 rounded-xl flex items-center justify-between gap-4 text-[11px] animate-in slide-in-from-top-2 duration-300">
+                <span className="flex items-center gap-1.5 font-bold text-orange-600 dark:text-orange-400">
+                  <Sparkles className="w-3.5 h-3.5 text-orange-500 animate-pulse shrink-0" />
                   Hạn mức AI hôm nay: {aiUsage.used}/{aiUsage.total} lượt dùng
                 </span>
-                <div className="flex-1 max-w-[120px] bg-stone-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                <div className="flex-1 max-w-[120px] bg-zinc-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
                   <div 
-                    className="bg-yellow-500 h-full rounded-full transition-all duration-500"
+                    className="bg-orange-500 h-full rounded-full transition-all duration-500"
                     style={{ width: `${Math.min(100, Math.round((aiUsage.used / aiUsage.total) * 100))}%` }}
                   />
                 </div>
                 {aiUsage.used >= aiUsage.total ? (
                   <span className="text-[10px] text-red-500 font-extrabold dark:text-red-400">Đã hết lượt!</span>
                 ) : (
-                  <span className="text-[10px] text-stone-500 font-bold dark:text-stone-400 opacity-80">Còn {aiUsage.total - aiUsage.used} lượt</span>
+                  <span className="text-[10px] text-zinc-500 font-bold dark:text-zinc-400 opacity-80">Còn {aiUsage.total - aiUsage.used} lượt</span>
                 )}
               </div>
             )}
@@ -2119,12 +2119,12 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
         
         {/* Usages tracker */}
         {!isUserAdminOrTeacher && (
-           <div className="px-4 py-2 rounded-xl bg-stone-100 dark:bg-zinc-900 border border-stone-250 dark:border-zinc-800/80 flex items-center gap-2.5 text-xs font-semibold shrink-0 shadow-sm transition">
+           <div className="px-4 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-250 dark:border-zinc-800/80 flex items-center gap-2.5 text-xs font-semibold shrink-0 shadow-sm transition">
              <span className={cn(
                 "w-2.5 h-2.5 rounded-full animate-pulse",
                 currentCount >= 3 ? "bg-red-500 shadow-lg shadow-red-500/30" : "bg-emerald-500 shadow-lg shadow-emerald-500/30"
              )} />
-             <span className="opacity-70 text-stone-700 dark:text-stone-300">Lượt AI miễn phí:</span>
+             <span className="opacity-70 text-zinc-700 dark:text-zinc-300">Lượt AI miễn phí:</span>
              <span className={cn(
                 "px-2 py-0.5 rounded-md text-[11px] font-extrabold",
                 currentCount >= 3 
@@ -2139,15 +2139,15 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
 
       {/* Persistence Auto-Resume Alert box */}
       {activeSession && (
-        <div className="bg-amber-500/10 border border-amber-550/25 p-4.5 rounded-2xl mb-2 flex flex-col md:flex-row md:items-center justify-between gap-5 animate-in fade-in slide-in-from-top-3 duration-300 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-1.2 h-full bg-amber-500" />
+        <div className="bg-orange-500/10 border border-orange-550/25 p-4.5 rounded-2xl mb-2 flex flex-col md:flex-row md:items-center justify-between gap-5 animate-in fade-in slide-in-from-top-3 duration-300 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-1.2 h-full bg-orange-500" />
           <div className="flex items-start gap-3.5">
-            <AlertTriangle className="w-5.5 h-5.5 text-amber-500 shrink-0 mt-0.5 animate-bounce-slow" />
+            <AlertTriangle className="w-5.5 h-5.5 text-orange-500 shrink-0 mt-0.5 animate-bounce-slow" />
             <div>
-              <h4 className="font-extrabold text-sm text-amber-850 dark:text-amber-400 flex items-center gap-1.5Parser">
+              <h4 className="font-extrabold text-sm text-orange-850 dark:text-orange-400 flex items-center gap-1.5Parser">
                 ⚠️ KHÔI PHỤC TIẾN TRÌNH NHẬP LIỆU DỞ DANG (LOCAL CACHE)
               </h4>
-              <p className="text-xs text-stone-600 dark:text-stone-300 mt-1 font-medium leading-relaxed">
+              <p className="text-xs text-zinc-600 dark:text-zinc-300 mt-1 font-medium leading-relaxed">
                 Tài liệu <strong>{activeSession.fileName}</strong> đang tạm dừng ở phân đoạn <strong>{activeSession.activeProgressIdx}/{activeSession.chunks?.length}</strong>. 
                 Tích lũy khả dụng: <span className="text-emerald-600 dark:text-emerald-400 font-bold">{extractedCards?.length || 0} thẻ</span>.
               </p>
@@ -2157,14 +2157,14 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
             <button 
               onClick={handleResumeSession}
               disabled={isProcessing}
-              className="px-4 py-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-stone-950 rounded-xl text-xs font-black transition-all shadow-sm cursor-pointer hover:shadow hover:scale-103 duration-150 flex items-center gap-1"
+              className="px-4 py-2 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-zinc-950 rounded-xl text-xs font-black transition-all shadow-sm cursor-pointer hover:shadow hover:scale-103 duration-150 flex items-center gap-1"
             >
               <Play className="w-3 h-3 fill-current" /> Tiếp tục luôn (Resume)
             </button>
             <button 
               onClick={handleCancelSession}
               disabled={isProcessing}
-              className="px-4 py-2 bg-stone-100 hover:bg-stone-200 dark:bg-zinc-850 dark:hover:bg-zinc-800 disabled:opacity-50 text-xs font-bold rounded-xl transition cursor-pointer"
+              className="px-4 py-2 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-850 dark:hover:bg-zinc-800 disabled:opacity-50 text-xs font-bold rounded-xl transition cursor-pointer"
             >
               Bỏ qua hết (Reset)
             </button>
@@ -2184,15 +2184,15 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
       )}
 
       {/* Unified Tab Switchers */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 p-1.5 bg-stone-50 dark:bg-zinc-900/60 rounded-2xl border border-stone-200/60 dark:border-zinc-800/50 gap-1">
+      <div className="grid grid-cols-2 sm:grid-cols-4 p-1.5 bg-zinc-50 dark:bg-zinc-900/60 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/50 gap-1">
         <button
           onClick={() => { if (!isProcessing) setActiveImportTab("file"); }}
           disabled={isProcessing}
           className={cn(
             "py-2.5 px-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-1.5 border-none",
             activeImportTab === "file" 
-              ? "bg-white dark:bg-zinc-805 text-yellow-600 dark:text-yellow-450 shadow-sm"
-              : "text-stone-500 hover:text-stone-850 dark:hover:text-stone-300 disabled:opacity-40"
+              ? "bg-white dark:bg-zinc-805 text-orange-600 dark:text-orange-450 shadow-sm"
+              : "text-zinc-500 hover:text-zinc-850 dark:hover:text-zinc-300 disabled:opacity-40"
           )}
         >
           <FileText className="w-4 h-4" /> 📁 FILE / IMAGE
@@ -2203,8 +2203,8 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
           className={cn(
             "py-2.5 px-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-1.5 border-none",
             activeImportTab === "text" 
-              ? "bg-white dark:bg-zinc-805 text-yellow-600 dark:text-yellow-450 shadow-sm"
-              : "text-stone-500 hover:text-stone-850 dark:hover:text-stone-300 disabled:opacity-40"
+              ? "bg-white dark:bg-zinc-805 text-orange-600 dark:text-orange-450 shadow-sm"
+              : "text-zinc-500 hover:text-zinc-850 dark:hover:text-zinc-300 disabled:opacity-40"
           )}
         >
           <span className="text-sm">✍️</span> VĂN BẢN THÔ
@@ -2215,8 +2215,8 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
           className={cn(
             "py-2.5 px-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-1.5 border-none",
             activeImportTab === "json" 
-              ? "bg-white dark:bg-zinc-805 text-yellow-600 dark:text-yellow-450 shadow-sm"
-              : "text-stone-500 hover:text-stone-850 dark:hover:text-stone-300 disabled:opacity-40"
+              ? "bg-white dark:bg-zinc-805 text-orange-600 dark:text-orange-450 shadow-sm"
+              : "text-zinc-500 hover:text-zinc-850 dark:hover:text-zinc-300 disabled:opacity-40"
           )}
         >
           <span className="text-sm">⚙️</span> DÁN CHUỖI JSON
@@ -2227,8 +2227,8 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
           className={cn(
             "py-2.5 px-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-1.5 border-none",
             activeImportTab === "manual" 
-              ? "bg-white dark:bg-zinc-805 text-yellow-600 dark:text-yellow-450 shadow-sm"
-              : "text-stone-500 hover:text-stone-850 dark:hover:text-stone-300 disabled:opacity-40"
+              ? "bg-white dark:bg-zinc-805 text-orange-600 dark:text-orange-450 shadow-sm"
+              : "text-zinc-500 hover:text-zinc-850 dark:hover:text-zinc-300 disabled:opacity-40"
           )}
         >
           <span className="text-sm">📝</span> NHẬP THỦ CÔNG
@@ -2243,7 +2243,7 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
              <div 
                 className={cn(
                    "border-2 border-dashed rounded-3xl p-8 flex flex-col items-center justify-center text-center transition-colors h-56 cursor-pointer transform-gpu md:hover:scale-101 duration-200 shadow-inner",
-                   file ? "border-yellow-500 bg-yellow-500/5" : "border-stone-300 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-900/50",
+                   file ? "border-orange-500 bg-orange-500/5" : "border-zinc-300 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900/50",
                    isProcessing && "opacity-50 pointer-events-none"
                 )}
                 onDragOver={handleDragOver}
@@ -2260,14 +2260,14 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
                 
                 {file ? (
                    <>
-                      <FileText className="w-12 h-12 text-yellow-500 mb-4 animate-pulse" />
-                      <p className="font-extrabold text-sm line-clamp-1 text-stone-800 dark:text-stone-200">{file.name}</p>
+                      <FileText className="w-12 h-12 text-orange-500 mb-4 animate-pulse" />
+                      <p className="font-extrabold text-sm line-clamp-1 text-zinc-800 dark:text-zinc-200">{file.name}</p>
                       <p className="text-xs opacity-60 mt-1 font-mono">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
-                      <span className="text-[10px] mt-2 bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 px-2 py-0.5 rounded font-black">Nhấn để thay thế</span>
+                      <span className="text-[10px] mt-2 bg-orange-500/10 text-orange-600 dark:text-orange-400 px-2 py-0.5 rounded font-black">Nhấn để thay thế</span>
                    </>
                 ) : (
                    <>
-                      <FileUp className="w-12 h-12 text-stone-400 dark:text-zinc-700 mb-4" />
+                      <FileUp className="w-12 h-12 text-zinc-400 dark:text-zinc-700 mb-4" />
                       <p className="font-bold text-sm">Tải Tài Liệu Lớp Học</p>
                       <p className="text-xs opacity-60 mt-1.5 leading-relaxed">Nhấn hoặc Kéo thả file PDF, Ảnh hoặc File TEXT (.txt) vào đây.<br />Hỗ trợ file kích thước lớn qua chế độ băm tải lên.</p>
                    </>
@@ -2286,7 +2286,7 @@ Extract all items into the \`data\` array matching this exact vocabulary schema:
 vibration - sự rung động
 break down - phân tích, hỏng hóc...
 Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ tự nhặt từ vựng xịn và gõ IPA dốc lòng!"
-                className="w-full bg-stone-50 dark:bg-zinc-900 border border-stone-250 dark:border-zinc-800 rounded-2xl p-4.5 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-yellow-500/50 min-h-[224px] focus:bg-white resize-y"
+                className="w-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-250 dark:border-zinc-800 rounded-2xl p-4.5 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/50 min-h-[224px] focus:bg-white resize-y"
               />
             </div>
           )}
@@ -2296,7 +2296,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
               {/* Specialized Dropzone box for .txt/.json files containing JSON Array */}
               <div 
                 className={cn(
-                  "border-2 border-dashed rounded-2xl p-4 flex flex-col items-center justify-center text-center transition-all h-32 cursor-pointer transform-gpu duration-150 bg-stone-50 dark:bg-zinc-900 border-stone-200 dark:border-zinc-800 hover:border-yellow-500/50 hover:bg-stone-100/50 dark:hover:bg-zinc-850/30",
+                  "border-2 border-dashed rounded-2xl p-4 flex flex-col items-center justify-center text-center transition-all h-32 cursor-pointer transform-gpu duration-150 bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:border-orange-500/50 hover:bg-zinc-100/50 dark:hover:bg-zinc-850/30",
                   isProcessing && "opacity-55 pointer-events-none"
                 )}
                 onClick={() => jsonFileInputRef.current?.click()}
@@ -2308,8 +2308,8 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                   className="hidden" 
                   accept=".json,.txt" 
                 />
-                <Database className="w-6 h-6 text-yellow-500 mb-1.5" />
-                <p className="font-extrabold text-[11px] text-stone-800 dark:text-stone-200">📂 Tải lên Tệp Tin chứa JSON (.txt hoặc .json)</p>
+                <Database className="w-6 h-6 text-orange-500 mb-1.5" />
+                <p className="font-extrabold text-[11px] text-zinc-800 dark:text-zinc-200">📂 Tải lên Tệp Tin chứa JSON (.txt hoặc .json)</p>
                 <p className="text-[9px] opacity-65 leading-tight mt-1 max-w-[260px] mx-auto">Click hoặc kéo thả file dán sẵn chuỗi JSON dạng mảng thẻ học để nạp trực tiếp siêu tốc</p>
               </div>
 
@@ -2325,7 +2325,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
 [
   { "front": "hello", "back": "xin chào" }
 ]`}
-                  className="w-full bg-stone-50 dark:bg-zinc-900 border border-stone-250 dark:border-zinc-800 rounded-2xl p-4.5 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-yellow-500/50 min-h-[120px] resize-y"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-250 dark:border-zinc-800 rounded-2xl p-4.5 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-orange-500/50 min-h-[120px] resize-y"
                 />
               </div>
 
@@ -2338,8 +2338,8 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                   className={cn(
                     "py-2.5 px-4 text-xs font-bold rounded-xl transition cursor-pointer border flex items-center justify-center gap-1.5 disabled:opacity-50",
                     (engineGuard === "warn" && pendingTrigger === "json")
-                      ? "bg-amber-600 hover:bg-amber-705 border-amber-500 animate-pulse text-white shadow"
-                      : "bg-stone-100 hover:bg-stone-200 dark:bg-zinc-900 dark:hover:bg-zinc-850 hover:shadow text-stone-700 dark:text-stone-300 border-stone-200 dark:border-zinc-800"
+                      ? "bg-orange-600 hover:bg-orange-705 border-orange-500 animate-pulse text-white shadow"
+                      : "bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-850 hover:shadow text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-800"
                   )}
                 >
                   {engineGuard === "warn" && pendingTrigger === "json" ? (
@@ -2360,8 +2360,8 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                   className={cn(
                     "py-2.5 px-4 text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-1.5",
                     (engineGuard === "warn" && pendingTrigger === "json_ai")
-                      ? "bg-amber-600 hover:bg-amber-705 border-amber-500 animate-pulse text-white shadow-lg"
-                      : "bg-yellow-500 hover:bg-yellow-600 disabled:opacity-55 text-stone-950 shadow-sm hover:shadow active:scale-98"
+                      ? "bg-orange-600 hover:bg-orange-705 border-orange-500 animate-pulse text-white shadow-lg"
+                      : "bg-orange-500 hover:bg-orange-600 disabled:opacity-55 text-zinc-950 shadow-sm hover:shadow active:scale-98"
                   )}
                 >
                   {engineGuard === "warn" && pendingTrigger === "json_ai" ? (
@@ -2392,16 +2392,16 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
             <div className="space-y-4 animate-in fade-in duration-200">
                <div className="flex justify-between items-center mb-2">
                  <h4 className="text-xs font-black uppercase opacity-70 block tracking-wide">Tạo Thẻ Học Thủ Công</h4>
-                 <span className="text-[10px] bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 font-bold px-2 py-0.5 rounded">Giống chức năng Admin</span>
+                 <span className="text-[10px] bg-orange-500/10 text-orange-600 dark:text-orange-400 font-bold px-2 py-0.5 rounded">Giống chức năng Admin</span>
                </div>
                
                <div className="flex flex-col xl:flex-row gap-6">
                  {/* Left side: Card Builder */}
                  <div className="flex-1">
-                   <div className={`p-5 rounded-2xl border ${editingManualId ? "border-amber-400 bg-amber-500/5" : "border-stone-200 dark:border-zinc-800 bg-stone-50 dark:bg-zinc-900"} relative transition-all duration-300`}>
+                   <div className={`p-5 rounded-2xl border ${editingManualId ? "border-orange-400 bg-orange-500/5" : "border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900"} relative transition-all duration-300`}>
                      <div className="flex justify-between items-center mb-4">
                        <h5 className="font-bold text-sm flex items-center gap-1.5">
-                         <Plus className={`w-4 h-4 ${editingManualId ? "text-amber-500" : "text-yellow-500"}`} />
+                         <Plus className={`w-4 h-4 ${editingManualId ? "text-orange-500" : "text-orange-500"}`} />
                          {editingManualId ? "Cập Nhật Thông Tin Thẻ" : "Thêm Thông Tin Thẻ"}
                        </h5>
                        {editingManualId && (
@@ -2414,7 +2414,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                              setManualBack("");
                              manualFrontInputRef.current?.focus();
                            }}
-                           className="flex items-center gap-1 px-2 py-1 bg-stone-100 hover:bg-stone-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-[10px] font-bold rounded-md transition"
+                           className="flex items-center gap-1 px-2 py-1 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-[10px] font-bold rounded-md transition"
                          >
                            <X className="w-3 h-3" /> Bỏ qua
                          </button>
@@ -2458,7 +2458,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                          <input
                            ref={manualFrontInputRef}
                            type="text"
-                           className="w-full text-sm p-3 bg-white dark:bg-black/40 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:ring-2 focus:ring-yellow-500/50 transition font-medium"
+                           className="w-full text-sm p-3 bg-white dark:bg-black/40 border border-zinc-200 dark:border-zinc-700 rounded-xl outline-none focus:ring-2 focus:ring-orange-500/50 transition font-medium"
                            placeholder="Nhập từ vựng, câu hỏi..."
                            value={manualFront}
                            onChange={(e) => setManualFront(e.target.value)}
@@ -2472,7 +2472,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                          </label>
                          <input
                            type="text"
-                           className="w-full p-2.5 bg-stone-100/50 dark:bg-zinc-800/50 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:border-yellow-500 transition text-xs font-mono"
+                           className="w-full p-2.5 bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 rounded-xl outline-none focus:border-orange-500 transition text-xs font-mono"
                            placeholder="VD: Noun, Verb, /'stʌdi/..."
                            value={manualWordForm}
                            onChange={(e) => setManualWordForm(e.target.value)}
@@ -2496,7 +2496,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                          </div>
                          <textarea
                            rows={3}
-                           className="w-full p-3 bg-white dark:bg-black/40 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:ring-2 focus:ring-yellow-500/50 transition resize-none text-sm leading-relaxed"
+                           className="w-full p-3 bg-white dark:bg-black/40 border border-zinc-200 dark:border-zinc-700 rounded-xl outline-none focus:ring-2 focus:ring-orange-500/50 transition resize-none text-sm leading-relaxed"
                            placeholder="Giải thích chi tiết, ý nghĩa, ví dụ..."
                            value={manualBack}
                            onChange={(e) => setManualBack(e.target.value)}
@@ -2517,7 +2517,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                            type="submit"
                            disabled={!manualFront.trim() || !manualBack.trim()}
                            className={`px-4 py-2 font-bold text-xs rounded-xl transition flex items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-95 duration-200
-                             ${editingManualId ? "bg-amber-500 hover:bg-amber-600 text-white" : "bg-stone-800 hover:bg-black dark:bg-white dark:hover:bg-stone-200 text-white dark:text-black"}
+                             ${editingManualId ? "bg-orange-500 hover:bg-orange-600 text-white" : "bg-zinc-800 hover:bg-black dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black"}
                            `}
                          >
                            {editingManualId ? "Cập Nhật" : "Thêm Vào Batch"}
@@ -2530,14 +2530,14 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
 
                  {/* Right side: Batch List */}
                  <div className="w-full xl:w-72 2xl:w-80 flex flex-col pt-3 xl:pt-0">
-                   <div className="flex items-center justify-between mb-3 border-b border-stone-200 dark:border-zinc-800 pb-2">
+                   <div className="flex items-center justify-between mb-3 border-b border-zinc-200 dark:border-zinc-800 pb-2">
                      <h5 className="font-bold text-xs tracking-wide opacity-80 uppercase">Danh sách chờ lưu</h5>
-                     <div className="px-2 py-0.5 bg-yellow-500/20 text-yellow-700 dark:text-yellow-400 font-bold rounded-lg text-[10px]">
+                     <div className="px-2 py-0.5 bg-orange-500/20 text-orange-700 dark:text-orange-400 font-bold rounded-lg text-[10px]">
                        {manualBatch.length} Thẻ
                      </div>
                    </div>
 
-                   <div className="flex-1 bg-stone-50 dark:bg-zinc-900/60 rounded-xl border border-stone-200 dark:border-zinc-800 overflow-y-auto max-h-[300px] xl:max-h-[380px] p-2 space-y-2 scrollbar-thin">
+                   <div className="flex-1 bg-zinc-50 dark:bg-zinc-900/60 rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-y-auto max-h-[300px] xl:max-h-[380px] p-2 space-y-2 scrollbar-thin">
                      {manualBatch.length === 0 ? (
                        <div className="h-full flex flex-col items-center justify-center opacity-30 text-center py-8">
                          <Layers className="w-8 h-8 mb-2 opacity-50" />
@@ -2550,15 +2550,15 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                            key={card.id}
                            className={`p-2.5 bg-white dark:bg-zinc-900 rounded-lg group transition-colors relative ${
                              editingManualId === card.id
-                               ? "border border-amber-400 shadow-sm"
-                               : "border border-stone-200 dark:border-zinc-800 hover:border-yellow-500/50"
+                               ? "border border-orange-400 shadow-sm"
+                               : "border border-zinc-200 dark:border-zinc-800 hover:border-orange-500/50"
                            }`}
                          >
                            <div className="flex justify-between items-start gap-2">
                              <div className="flex-1 min-w-0 pr-1">
                                <div className="flex items-center gap-1 mb-1">
                                  <span className="text-[9px] font-bold opacity-40">#{idx + 1}</span>
-                                 {editingManualId === card.id && <span className="text-[9px] text-amber-500 font-bold">(Đang sửa)</span>}
+                                 {editingManualId === card.id && <span className="text-[9px] text-orange-500 font-bold">(Đang sửa)</span>}
                                </div>
                                <h6 className="font-bold text-xs line-clamp-1">
                                  {card.front} {card.wordForm && <span className="opacity-50 font-normal italic">({card.wordForm})</span>}
@@ -2575,7 +2575,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                                    setEditingManualId(card.id);
                                    manualFrontInputRef.current?.focus();
                                  }}
-                                 className="p-1.5 rounded transition bg-amber-500/10 hover:bg-amber-500 text-amber-600 hover:text-white"
+                                 className="p-1.5 rounded transition bg-orange-500/10 hover:bg-orange-500 text-orange-600 hover:text-white"
                                >
                                  <Edit3 className="w-3 h-3" />
                                </button>
@@ -2623,7 +2623,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                        }, 400); // slight delay for effect
                      }}
                      disabled={manualBatch.length === 0 || isProcessing || editingManualId !== null}
-                     className="mt-3 w-full py-2.5 px-4 bg-yellow-500 hover:bg-yellow-600 text-stone-950 font-bold text-xs rounded-xl transition shadow-sm active:scale-95 disabled:opacity-50 disabled:grayscale flex items-center justify-center gap-1.5"
+                     className="mt-3 w-full py-2.5 px-4 bg-orange-500 hover:bg-orange-600 text-zinc-950 font-bold text-xs rounded-xl transition shadow-sm active:scale-95 disabled:opacity-50 disabled:grayscale flex items-center justify-center gap-1.5"
                    >
                      {isProcessing ? <Zap className="w-3.5 h-3.5 animate-pulse" /> : <Save className="w-3.5 h-3.5" />}
                      Nạp vào Grid ({manualBatch.length} thẻ)
@@ -2635,17 +2635,17 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
 
           {/* Slicing sliding-window settings */}
           {activeImportTab !== "json" && activeImportTab !== "manual" && (
-             <div data-tour="step-3" className="p-4 bg-stone-50 dark:bg-zinc-900/35 border border-stone-200/60 dark:border-zinc-800/70 rounded-2xl space-y-3.5">
+             <div data-tour="step-3" className="p-4 bg-zinc-50 dark:bg-zinc-900/35 border border-zinc-200/60 dark:border-zinc-800/70 rounded-2xl space-y-3.5">
                 {/* Concurrency speed-up thread controller */}
-                <div className="pb-3 border-b border-stone-250/65 dark:border-zinc-800 flex flex-col gap-1.5 animate-in fade-in duration-300">
-                  <label className="block text-[9px] uppercase font-black text-stone-500 flex items-center gap-1 leading-tight">
-                    <Zap className="w-3 h-3 text-yellow-500 animate-pulse" /> Luồng Xử Lý Đồng Thời
+                <div className="pb-3 border-b border-zinc-250/65 dark:border-zinc-800 flex flex-col gap-1.5 animate-in fade-in duration-300">
+                  <label className="block text-[9px] uppercase font-black text-zinc-500 flex items-center gap-1 leading-tight">
+                    <Zap className="w-3 h-3 text-orange-500 animate-pulse" /> Luồng Xử Lý Đồng Thời
                   </label>
                   <select
                      value={concurrency}
                      onChange={(e) => setConcurrency(Number(e.target.value))}
                      disabled={isProcessing}
-                     className="w-full bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-850 rounded-lg px-2 py-1.5 focus:outline-none font-bold text-[11px]"
+                     className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-850 rounded-lg px-2 py-1.5 focus:outline-none font-bold text-[11px]"
                   >
                      <option value={1}>⚡ Mặc định (1 luồng - Cực kỳ an toàn)</option>
                      <option value={2}>⚡⚡ Tăng tốc (2 luồng - Tiết kiệm 50% thời gian)</option>
@@ -2656,19 +2656,19 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-stone-700 dark:text-stone-300">⚙️ Cấu hình Micro-Slicing bảo vệ luồng</span>
+                  <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300">⚙️ Cấu hình Micro-Slicing bảo vệ luồng</span>
                    <input 
                       type="checkbox" 
                       id="opt-chunking"
                       checked={isChunkingEnabled} 
                       onChange={(e) => setIsChunkingEnabled(e.target.checked)} 
                       disabled={isProcessing}
-                      className="w-4 h-4 text-yellow-500 cursor-pointer disabled:opacity-50"
+                      className="w-4 h-4 text-orange-500 cursor-pointer disabled:opacity-50"
                    />
                 </div>
 
-                <div className="flex items-center justify-between border-t border-stone-100 dark:border-zinc-800/40 pt-2.5">
-                  <span className="text-xs font-bold text-stone-700 dark:text-stone-300">💎 Khử trùng (Lọc bỏ thẻ từ vựng đã có)</span>
+                <div className="flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/40 pt-2.5">
+                  <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300">💎 Khử trùng (Lọc bỏ thẻ từ vựng đã có)</span>
                    <input 
                       type="checkbox" 
                       id="opt-sanitize-duplicates"
@@ -2683,7 +2683,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                    <div className="space-y-3 pt-1 animate-in slide-in-from-top-1 duration-200">
                       <div className="grid grid-cols-2 gap-3 text-[11px]">
                          <div>
-                            <label className="block text-[9px] uppercase font-bold text-stone-500 mb-1">Từ tối đa / Batch</label>
+                            <label className="block text-[9px] uppercase font-bold text-zinc-500 mb-1">Từ tối đa / Batch</label>
                             <select
                                value={chunkMaxWords}
                                onChange={(e) => {
@@ -2692,7 +2692,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                                  setChunkMaxChars(val * 15);
                                }}
                                disabled={isProcessing}
-                               className="w-full bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-850 rounded-lg px-2 py-1.5 focus:outline-none font-bold"
+                               className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-850 rounded-lg px-2 py-1.5 focus:outline-none font-bold"
                             >
                                 <option value={100}>100 từ (Cực nhỏ)</option>
                                 <option value={150}>150 từ (Mặc định)</option>
@@ -2707,12 +2707,12 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                             </select>
                          </div>
                          <div>
-                            <label className="block text-[9px] uppercase font-bold text-stone-500 mb-1">Kí tự tối đa / Batch</label>
+                            <label className="block text-[9px] uppercase font-bold text-zinc-500 mb-1">Kí tự tối đa / Batch</label>
                             <select
                                value={chunkMaxChars}
                                onChange={(e) => setChunkMaxChars(Number(e.target.value))}
                                disabled={isProcessing}
-                               className="w-full bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-850 rounded-lg px-2 py-1.5 focus:outline-none font-bold"
+                               className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-850 rounded-lg px-2 py-1.5 focus:outline-none font-bold"
                             >
                                <option value={1500}>1500 kí tự</option>
                                <option value={2500}>2500 kí tự (Mặc định)</option>
@@ -2737,7 +2737,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
         <div className="space-y-4">
                {/* Target Deck Configuration */}
            <div className="space-y-4">
-              <div className="p-4 bg-yellow-500/5 dark:bg-zinc-900/30 border border-yellow-500/10 dark:border-zinc-800/80 rounded-2xl space-y-3.5 shadow-sm">
+              <div className="p-4 bg-orange-500/5 dark:bg-zinc-900/30 border border-orange-500/10 dark:border-zinc-800/80 rounded-2xl space-y-3.5 shadow-sm">
                  <label className="text-xs font-black uppercase opacity-75 mb-1.5 block tracking-wide">THÊM THẺ HỌC VÀO BỘ THẺ SẴN CÓ</label>
                  <CustomDeckSelect
                    decks={store.getDecks()}
@@ -2785,7 +2785,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                             }
                           }}
                           disabled={isProcessing}
-                          className="flex-1 input-3d px-3 py-2.5 text-xs bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl text-stone-900 dark:text-stone-100 disabled:opacity-50 font-bold"
+                          className="flex-1 input-3d px-3 py-2.5 text-xs bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-zinc-900 dark:text-zinc-100 disabled:opacity-50 font-bold"
                         >
                           <option value="">-- Lựa chọn danh mục --</option>
                           {existingCategories.map((cat, idx) => (
@@ -2795,7 +2795,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                           ))}
                           <option
                             value="__NEW__"
-                            className="text-yellow-600 font-extrabold"
+                            className="text-orange-600 font-extrabold"
                           >
                             + Tạo danh mục học mới...
                           </option>
@@ -2807,7 +2807,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                             setIsCreatingNewSubject(true);
                             setDeckSubject("");
                           }}
-                          className="p-3 bg-stone-100 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 hover:bg-stone-200 dark:hover:bg-zinc-800 rounded-xl transition shrink-0 focus:outline-none disabled:opacity-50 cursor-pointer"
+                          className="p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-xl transition shrink-0 focus:outline-none disabled:opacity-50 cursor-pointer"
                         >
                           <Plus className="w-4 h-4" />
                         </button>
@@ -2830,7 +2830,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                             setIsCreatingNewSubject(false);
                             setDeckSubject("");
                           }}
-                          className="px-3 py-2 bg-stone-100 hover:bg-stone-205 dark:bg-zinc-900 text-stone-700 dark:text-stone-300 rounded-xl transition text-[11px] font-bold disabled:opacity-50 border border-stone-200"
+                          className="px-3 py-2 bg-zinc-100 hover:bg-zinc-205 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 rounded-xl transition text-[11px] font-bold disabled:opacity-50 border border-zinc-200"
                         >
                           Hủy bỏ
                         </button>
@@ -2839,21 +2839,21 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                   </div>
 
                   {/* Auto Split Deck Configuration */}
-                  <div className="p-4 bg-amber-500/5 dark:bg-zinc-900/30 border border-amber-500/15 dark:border-zinc-800/80 rounded-2xl space-y-3 shadow-inner hover:shadow-sm transition duration-300">
+                  <div className="p-4 bg-orange-500/5 dark:bg-zinc-900/30 border border-orange-500/15 dark:border-zinc-800/80 rounded-2xl space-y-3 shadow-inner hover:shadow-sm transition duration-300">
                      <label className="flex items-center gap-2.5 cursor-pointer select-none">
                         <input 
                            type="checkbox" 
                            checked={isSplitDeckEnabled} 
                            onChange={(e) => setIsSplitDeckEnabled(e.target.checked)} 
                            disabled={isProcessing}
-                           className="w-4.5 h-4.5 text-yellow-500 rounded border-stone-300 focus:ring-yellow-500 checked:bg-yellow-500"
+                           className="w-4.5 h-4.5 text-orange-500 rounded border-zinc-300 focus:ring-orange-500 checked:bg-orange-500"
                         />
-                        <span className="text-xs font-black text-stone-800 dark:text-stone-200 uppercase tracking-wide">
+                        <span className="text-xs font-black text-zinc-800 dark:text-zinc-200 uppercase tracking-wide">
                            Tự động chia nhỏ bộ thẻ học
                         </span>
                      </label>
                      {isSplitDeckEnabled && (
-                        <div className="flex items-center gap-3.5 pt-2 border-t border-stone-200/40 dark:border-zinc-800/40 animate-in slide-in-from-top-1.5 duration-200 text-xs text-stone-600 dark:text-stone-400 font-bold">
+                        <div className="flex items-center gap-3.5 pt-2 border-t border-zinc-200/40 dark:border-zinc-800/40 animate-in slide-in-from-top-1.5 duration-200 text-xs text-zinc-600 dark:text-zinc-400 font-bold">
                            <span>Mỗi bộ tối đa:</span>
                            <input 
                               type="number" 
@@ -2865,7 +2865,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                                  setSplitDeckSize(isNaN(val) ? 40 : Math.max(5, val));
                               }}
                               disabled={isProcessing}
-                              className="w-20 input-3d px-2.5 py-1 text-center font-black rounded-lg text-amber-600 dark:text-yellow-405"
+                              className="w-20 input-3d px-2.5 py-1 text-center font-black rounded-lg text-orange-600 dark:text-orange-405"
                            />
                            <span>thẻ học</span>
                         </div>
@@ -2880,7 +2880,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
              <button 
                 onClick={onConvertClick}
                 disabled={isProcessing || isAiSystemBusy || (activeImportTab === "file" && !file) || (!isUserAdminOrTeacher && currentCount >= 3)}
-                className={cn("w-full btn-3d py-3 flex items-center justify-center gap-2 mt-2 disabled:opacity-50 disabled:cursor-not-allowed font-black uppercase text-xs transition-all duration-300", (engineGuard === "warn" && pendingTrigger === "file_text") ? "bg-amber-600 hover:bg-amber-705 animate-pulse border-amber-500 text-white shadow-lg scale-102" : "btn-3d-primary")}
+                className={cn("w-full btn-3d py-3 flex items-center justify-center gap-2 mt-2 disabled:opacity-50 disabled:cursor-not-allowed font-black uppercase text-xs transition-all duration-300", (engineGuard === "warn" && pendingTrigger === "file_text") ? "bg-orange-600 hover:bg-orange-705 animate-pulse border-orange-500 text-white shadow-lg scale-102" : "btn-3d-primary")}
              >
                 {isProcessing ? (
                    <>
@@ -2889,7 +2889,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                    </>
                 ) : (
                    <>
-                      {engineGuard === "warn" && pendingTrigger === "file_text" ? <span className="flex items-center gap-1.5 text-center justify-center leading-normal text-[11px]"><AlertTriangle className="w-4.5 h-4.5 text-white animate-bounce shrink-0" /> CẢNH BÁO: XOÁ SẠCH {extractedCards?.length || 0} THẺ CHƯA LƯU? NHẤN LẠI ĐỂ LẬT CHỐT ({timerSeconds}s)</span> : <>{isAiSystemBusy ? <Lock className="w-4.5 h-4.5 text-yellow-500 animate-bounce" /> : <Play className="w-4.5 h-4.5 fill-current" />} {isAiSystemBusy ? "Hệ thống AI đang bận xử lý..." : "Bắt đầu chuyển đổi AI"}</>}
+                      {engineGuard === "warn" && pendingTrigger === "file_text" ? <span className="flex items-center gap-1.5 text-center justify-center leading-normal text-[11px]"><AlertTriangle className="w-4.5 h-4.5 text-white animate-bounce shrink-0" /> CẢNH BÁO: XOÁ SẠCH {extractedCards?.length || 0} THẺ CHƯA LƯU? NHẤN LẠI ĐỂ LẬT CHỐT ({timerSeconds}s)</span> : <>{isAiSystemBusy ? <Lock className="w-4.5 h-4.5 text-orange-500 animate-bounce" /> : <Play className="w-4.5 h-4.5 fill-current" />} {isAiSystemBusy ? "Hệ thống AI đang bận xử lý..." : "Bắt đầu chuyển đổi AI"}</>}
                    </>
                 )}
              </button>
@@ -2897,32 +2897,32 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
 
            {/* Processing Progress Panel */}
            {isProcessing && (
-              <div className="mt-4 p-4.5 rounded-2xl bg-stone-50 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-850 space-y-3 animate-in zoom-in-95 duration-200">
-                 <p className="text-xs font-extrabold text-yellow-600 dark:text-yellow-405 text-center flex items-center justify-center gap-1.5">
+              <div className="mt-4 p-4.5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-850 space-y-3 animate-in zoom-in-95 duration-200">
+                 <p className="text-xs font-extrabold text-orange-600 dark:text-orange-405 text-center flex items-center justify-center gap-1.5">
                     <Loader2 className="w-4.5 h-4.5 animate-spin" />
                     <span>
                         {progressText === "Đang truyền tải dữ liệu trực tiếp..." ? "Đang truyền tải dữ liệu trực tiếp từ vệ tinh Google AI (Streaming)..." : progressText}
                         {streamedBytes > 0 && (
-                           <span className="font-mono text-[10px] bg-yellow-500/20 text-yellow-700 dark:text-yellow-405 px-1.5 py-0.5 rounded ml-1.5 animate-pulse">
+                           <span className="font-mono text-[10px] bg-orange-500/20 text-orange-700 dark:text-orange-405 px-1.5 py-0.5 rounded ml-1.5 animate-pulse">
                               ({streamedBytes.toLocaleString()} bytes)
                            </span>
                         )}
                      </span>
                  </p>
                  {progressPercent > 0 && (
-                    <div className="w-full bg-stone-200 dark:bg-zinc-800 rounded-full h-2.5 overflow-hidden shadow-inner relative">
+                    <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-2.5 overflow-hidden shadow-inner relative">
                        <div 
-                          className="bg-yellow-500 h-full rounded-full transition-all duration-500 ease-out shadow shadow-yellow-500/40" 
+                          className="bg-orange-500 h-full rounded-full transition-all duration-500 ease-out shadow shadow-orange-500/40" 
                           style={{ width: `${progressPercent}%` }}
                        ></div>
                     </div>
                  )}
                  
-                 <div className="flex justify-center gap-2 pt-2 border-t border-stone-100 dark:border-zinc-800">
+                 <div className="flex justify-center gap-2 pt-2 border-t border-zinc-100 dark:border-zinc-800">
                     <button
                        type="button"
                        onClick={handlePauseSession}
-                       className="px-3 py-1.5 bg-amber-100 hover:bg-amber-200 text-amber-800 dark:bg-amber-950/30 dark:text-amber-400 border border-amber-200/50 rounded-xl text-[11px] font-bold transition flex items-center gap-1 cursor-pointer"
+                       className="px-3 py-1.5 bg-orange-100 hover:bg-orange-200 text-orange-800 dark:bg-orange-950/30 dark:text-orange-400 border border-orange-200/50 rounded-xl text-[11px] font-bold transition flex items-center gap-1 cursor-pointer"
                     >
                        Tạm dừng
                     </button>
@@ -2943,12 +2943,12 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
       {/* Real-time System Progress Logs Panel (Throttled 60FPS) */}
       {(progressLogs.length > 0 || isProcessing || (typeof window !== "undefined" && !localStorage.getItem('hasRunTutorial'))) && (
          <div data-tour="step-5" className={cn(
-           "p-4 bg-stone-900 border border-stone-800 rounded-2xl text-left font-mono text-zinc-300 space-y-2 overflow-y-auto select-text scrollbar-thin shadow-2xl relative animate-in fade-in duration-300 transition-all",
-           isLogExpanded ? "max-h-[500px] min-h-[300px] h-[400px] md:h-[500px] md:col-span-2 border-yellow-500/50 bg-stone-950 shadow-yellow-500/5" : "max-h-44 min-h-[90px]",
+           "p-4 bg-zinc-900 border border-zinc-800 rounded-2xl text-left font-mono text-zinc-300 space-y-2 overflow-y-auto select-text scrollbar-thin shadow-2xl relative animate-in fade-in duration-300 transition-all",
+           isLogExpanded ? "max-h-[500px] min-h-[300px] h-[400px] md:h-[500px] md:col-span-2 border-orange-500/50 bg-zinc-950 shadow-orange-500/5" : "max-h-44 min-h-[90px]",
            logFontSize === "small" ? "text-[10px]" : logFontSize === "medium" ? "text-[12px] sm:text-xs" : "text-[14px] sm:text-sm font-semibold"
          )}>
-            <div className="sticky top-0 bg-stone-900/95 backdrop-blur-sm pb-1.5 flex flex-wrap justify-between items-center text-stone-500 border-b border-stone-800 text-[9px] font-bold uppercase tracking-wider z-20 gap-2 mb-2">
-               <span className="flex items-center gap-1.2"><Terminal className="w-3 h-3 text-yellow-500" /> CoStudy Terminal Logs</span>
+            <div className="sticky top-0 bg-zinc-900/95 backdrop-blur-sm pb-1.5 flex flex-wrap justify-between items-center text-zinc-500 border-b border-zinc-800 text-[9px] font-bold uppercase tracking-wider z-20 gap-2 mb-2">
+               <span className="flex items-center gap-1.2"><Terminal className="w-3 h-3 text-orange-500" /> CoStudy Terminal Logs</span>
                <div className="flex items-center gap-2 font-sans text-[10px]">
                   <button 
                     type="button"
@@ -2970,25 +2970,25 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                       document.body.removeChild(link);
                       URL.revokeObjectURL(url);
                     }}
-                    className="px-2 py-0.5 rounded bg-amber-500 hover:bg-amber-600 text-stone-950 font-black active:scale-95 transition cursor-pointer flex items-center gap-1"
+                    className="px-2 py-0.5 rounded bg-orange-500 hover:bg-orange-600 text-zinc-950 font-black active:scale-95 transition cursor-pointer flex items-center gap-1"
                   >
                      📥 Xuất Log (.txt)
                   </button>
                   <button 
                     type="button"
                     onClick={() => setLogFontSize(p => p === "small" ? "medium" : p === "medium" ? "large" : "small")}
-                    className="px-2 py-0.5 rounded bg-zinc-805 text-stone-300 hover:bg-zinc-700 active:scale-95 transition cursor-pointer font-bold"
+                    className="px-2 py-0.5 rounded bg-zinc-805 text-zinc-300 hover:bg-zinc-700 active:scale-95 transition cursor-pointer font-bold"
                   >
-                     🅰️ Cỡ chữ: <span className="text-yellow-400 capitalize">{logFontSize === "small" ? "nhỏ" : logFontSize === "medium" ? "vừa" : "lớn"}</span>
+                     🅰️ Cỡ chữ: <span className="text-orange-400 capitalize">{logFontSize === "small" ? "nhỏ" : logFontSize === "medium" ? "vừa" : "lớn"}</span>
                   </button>
                   <button 
                     type="button"
                     onClick={() => setIsLogExpanded(!isLogExpanded)}
-                    className="px-2 py-0.5 rounded bg-zinc-805 text-stone-300 hover:bg-zinc-700 active:scale-95 transition cursor-pointer font-bold flex items-center gap-1"
+                    className="px-2 py-0.5 rounded bg-zinc-805 text-zinc-300 hover:bg-zinc-700 active:scale-95 transition cursor-pointer font-bold flex items-center gap-1"
                   >
                      {isLogExpanded ? "🗗 Thu nhỏ" : "🗖 Phóng to Log"}
                   </button>
-                  <span className="text-stone-600 hidden sm:inline">Buffered</span>
+                  <span className="text-zinc-600 hidden sm:inline">Buffered</span>
                </div>
             </div>
             <div className="flex flex-col gap-1 pr-1 overscroll-contain">
@@ -2998,10 +2998,10 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                 "⚙️ [THREAD] Workers: 2 concurrent threads initialized",
                 "💡 [TUTORIAL] Quăng tài liệu bất kỳ vào Dropzone bên trên để trải nghiệm tự động bóc tách từ vựng đỉnh cao!"
               ]).slice(isLogExpanded ? -100 : -25).map((log, idx) => {
-                let colorClass = "text-stone-300";
+                let colorClass = "text-zinc-300";
                 if (log.includes("✅") || log.includes("✨") || log.includes("🎉")) colorClass = "text-emerald-450 dark:text-emerald-400 font-bold";
                 else if (log.includes("❌") || log.includes("🚨")) colorClass = "text-rose-450 dark:text-rose-400 font-black";
-                else if (log.includes("⏳") || log.includes("⏳")) colorClass = "text-amber-400 font-medium";
+                else if (log.includes("⏳") || log.includes("⏳")) colorClass = "text-orange-400 font-medium";
                 else if (log.includes("❄️")) colorClass = "text-indigo-400 font-semibold";
                 return (
                   <div key={idx} className={cn("leading-relaxed", colorClass)}>
@@ -3024,16 +3024,16 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
         const currentCards = extractedCards.slice(startIndex, endIndex);
 
         return (
-          <div className="mt-6 pt-6 border-t border-stone-200 dark:border-zinc-800 animate-in fade-in slide-in-from-bottom-4 duration-300">
+          <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 animate-in fade-in slide-in-from-bottom-4 duration-300">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 select-none">
               <div>
-                <h3 className="text-lg font-bold text-stone-950 dark:text-stone-50 font-display">Review {extractedCards.length} Thẻ Vừa Tạo</h3>
-                <p className="text-xs opacity-65 font-medium text-stone-500">Rà soát bản dịch và chỉnh sửa các trường cần thiết trước khi lưu.</p>
+                <h3 className="text-lg font-bold text-zinc-950 dark:text-zinc-50 font-display">Review {extractedCards.length} Thẻ Vừa Tạo</h3>
+                <p className="text-xs opacity-65 font-medium text-zinc-500">Rà soát bản dịch và chỉnh sửa các trường cần thiết trước khi lưu.</p>
               </div>
               <button 
                 onClick={handleSaveDeck}
                 disabled={isProcessing || (isAddToExisting && !selectedExistingDeckId)}
-                className="btn-3d px-6 py-2.5 bg-yellow-500 hover:bg-yellow-600 disabled:opacity-55 text-stone-950 font-black rounded-xl cursor-pointer hover:shadow transition text-xs shrink-0"
+                className="btn-3d px-6 py-2.5 bg-orange-500 hover:bg-orange-600 disabled:opacity-55 text-zinc-950 font-black rounded-xl cursor-pointer hover:shadow transition text-xs shrink-0"
               >
                 🔑 Lưu Học Phần Vào Thư Viện
               </button>
@@ -3041,23 +3041,23 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
 
             {/* Pagination Controls bar */}
             {totalPages > 1 && (
-              <div className="flex flex-col xs:flex-row items-center justify-between gap-2 bg-stone-100/40 dark:bg-zinc-900/30 border border-stone-200/50 dark:border-zinc-805/60 rounded-xl px-4 py-2.5 mb-4 text-xs select-none">
-                <span className="text-[11px] font-bold text-stone-500">
-                   Hiển thị <span className="text-stone-800 dark:text-stone-200 font-black">{startIndex + 1} - {Math.min(endIndex, extractedCards.length)}</span> từ tổng số <span className="text-yellow-600 dark:text-yellow-450 font-black">{extractedCards.length}</span> thẻ
+              <div className="flex flex-col xs:flex-row items-center justify-between gap-2 bg-zinc-100/40 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-zinc-805/60 rounded-xl px-4 py-2.5 mb-4 text-xs select-none">
+                <span className="text-[11px] font-bold text-zinc-500">
+                   Hiển thị <span className="text-zinc-800 dark:text-zinc-200 font-black">{startIndex + 1} - {Math.min(endIndex, extractedCards.length)}</span> từ tổng số <span className="text-orange-600 dark:text-orange-450 font-black">{extractedCards.length}</span> thẻ
                 </span>
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setReviewPage(prev => Math.max(1, prev - 1))}
                     disabled={activePage === 1}
-                    className="px-2.5 py-1 rounded-lg bg-white hover:bg-stone-100 dark:bg-zinc-900 dark:hover:bg-zinc-850 border border-stone-200/60 dark:border-zinc-800/80 font-bold disabled:opacity-35 cursor-pointer"
+                    className="px-2.5 py-1 rounded-lg bg-white hover:bg-zinc-100 dark:bg-zinc-900 dark:hover:bg-zinc-850 border border-zinc-200/60 dark:border-zinc-800/80 font-bold disabled:opacity-35 cursor-pointer"
                   >
                     ◀ Trước
                   </button>
                   <select
                     value={activePage}
                     onChange={(e) => setReviewPage(Number(e.target.value))}
-                    className="px-3 py-1 rounded-lg border border-stone-300 bg-white dark:bg-zinc-950 dark:border-zinc-850 font-black text-xs outline-none text-stone-800 dark:text-stone-200"
+                    className="px-3 py-1 rounded-lg border border-zinc-300 bg-white dark:bg-zinc-950 dark:border-zinc-850 font-black text-xs outline-none text-zinc-800 dark:text-zinc-200"
                   >
                     {Array.from({ length: totalPages }).map((_, idx) => (
                       <option key={idx + 1} value={idx + 1}>
@@ -3069,7 +3069,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                     type="button"
                     onClick={() => setReviewPage(prev => Math.min(totalPages, prev + 1))}
                     disabled={activePage === totalPages}
-                    className="px-2.5 py-1 rounded-lg bg-white hover:bg-stone-100 dark:bg-zinc-900 dark:hover:bg-zinc-850 border border-stone-200/60 dark:border-zinc-800/80 font-bold disabled:opacity-35 cursor-pointer"
+                    className="px-2.5 py-1 rounded-lg bg-white hover:bg-zinc-100 dark:bg-zinc-900 dark:hover:bg-zinc-850 border border-zinc-200/60 dark:border-zinc-800/80 font-bold disabled:opacity-35 cursor-pointer"
                   >
                     Sau ▶
                   </button>
@@ -3104,7 +3104,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-stone-950/80 dark:bg-black/90 backdrop-blur-md cursor-pointer"
+              className="fixed inset-0 bg-zinc-950/80 dark:bg-black/90 backdrop-blur-md cursor-pointer"
               onClick={() => setShowBypassModal(false)}
             />
 
@@ -3113,11 +3113,11 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 30 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-lg bg-white dark:bg-zinc-950 border border-stone-200 dark:border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl z-10 space-y-6 max-h-[85vh] overflow-y-auto"
+              className="relative w-full max-w-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl z-10 space-y-6 max-h-[85vh] overflow-y-auto"
             >
               <button
                 onClick={() => setShowBypassModal(false)}
-                className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 rounded-full transition cursor-pointer"
+                className="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 rounded-full transition cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -3126,8 +3126,8 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                 <div className="mx-auto w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center">
                   <span className="text-2xl">🍳</span>
                 </div>
-                <h3 className="text-lg font-bold text-stone-900 dark:text-stone-50 font-display uppercase tracking-tight">CHUYỂN JSON BẰNG CƠM (DỰ PHÒNG)</h3>
-                <p className="text-xs text-stone-500 dark:text-zinc-400 max-w-sm mx-auto leading-relaxed">
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 font-display uppercase tracking-tight">CHUYỂN JSON BẰNG CƠM (DỰ PHÒNG)</h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 max-w-sm mx-auto leading-relaxed">
                   Nếu luồng tự động của vệ tinh AI bị nghẽn mạch hoặc vượt quá giới hạn tài nguyên, ngài có thể bóc tách thủ công siêu tốc và cực kỳ chuẩn xác bằng hai phương án dưới đây.
                 </p>
               </div>
@@ -3136,19 +3136,19 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                 {/* Option A Box */}
                 <div 
                   onClick={handleGoToAIStudio}
-                  className="group cursor-pointer p-4 rounded-2xl border border-stone-200/80 dark:border-zinc-800/80 bg-stone-50/50 dark:bg-zinc-900/30 hover:border-yellow-500/50 hover:bg-yellow-500/5 dark:hover:bg-yellow-500/5 transition-all text-left flex gap-4"
+                  className="group cursor-pointer p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/30 hover:border-orange-500/50 hover:bg-orange-500/5 dark:hover:bg-orange-500/5 transition-all text-left flex gap-4"
                 >
                   <div className="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center shrink-0">
                     <Sparkles className="w-5 h-5 group-hover:animate-pulse" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5 justify-between">
-                      <h4 className="font-bold text-xs text-stone-800 dark:text-stone-200 group-hover:text-yellow-600 dark:group-hover:text-yellow-450">
+                      <h4 className="font-bold text-xs text-zinc-800 dark:text-zinc-200 group-hover:text-orange-600 dark:group-hover:text-orange-450">
                         Sử dụng Google AI Studio (Yêu cầu &gt;18 tuổi)
                       </h4>
-                      <span className="text-[9px] shrink-0 text-amber-600 dark:text-yellow-450 font-black bg-amber-500/10 px-1.5 py-0.5 rounded leading-none">Cực nhạy</span>
+                      <span className="text-[9px] shrink-0 text-orange-600 dark:text-orange-450 font-black bg-orange-500/10 px-1.5 py-0.5 rounded leading-none">Cực nhạy</span>
                     </div>
-                    <p className="text-[10px] text-stone-500 dark:text-zinc-400 mt-1.5 leading-relaxed">
+                    <p className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-1.5 leading-relaxed">
                       Làm việc trực tiếp trên Playground của Google AI. Giao diện trực quan, không lo bị nghẽn hay trễ kết nối mạng.
                     </p>
                   </div>
@@ -3157,18 +3157,18 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
                 {/* Option B Box */}
                 <div 
                   onClick={handleCopyPromptAndGoToGemini}
-                  className="group cursor-pointer p-4 rounded-2xl border border-stone-200/80 dark:border-zinc-800/80 bg-stone-50/50 dark:bg-zinc-900/30 hover:border-emerald-500/50 hover:bg-emerald-500/5 dark:hover:bg-emerald-500/5 transition-all text-left flex gap-4"
+                  className="group cursor-pointer p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/30 hover:border-emerald-500/50 hover:bg-emerald-500/5 dark:hover:bg-emerald-500/5 transition-all text-left flex gap-4"
                 >
                   <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
                     <Copy className="w-5 h-5 group-hover:animate-bounce" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5 justify-between">
-                      <h4 className="font-bold text-xs text-stone-800 dark:text-stone-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
+                      <h4 className="font-bold text-xs text-zinc-800 dark:text-zinc-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
                         Sao chép Prompt &amp; Chuyển sang Gemini Web
                       </h4>
                     </div>
-                    <p className="text-[10px] text-stone-500 dark:text-zinc-400 mt-1.5 leading-relaxed">
+                    <p className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-1.5 leading-relaxed">
                       Hệ thống tự động sao chép prompt tối ưu dán sẵn vào khay bộ nhớ đệm (Clipboard) rồi định tuyến ngài sang Gemini Web để nhận phản hồi JSON có ngay lập tức.
                     </p>
                   </div>
@@ -3177,7 +3177,7 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
 
               <button
                 onClick={() => setShowBypassModal(false)}
-                className="w-full py-2.5 px-4 text-xs font-bold rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-zinc-900 dark:hover:bg-zinc-850 transition cursor-pointer border border-stone-200 dark:border-zinc-800 text-stone-600 dark:text-stone-300 active:scale-98"
+                className="w-full py-2.5 px-4 text-xs font-bold rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-850 transition cursor-pointer border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 active:scale-98"
               >
                 Đóng cửa đóng cứu nguy
               </button>
@@ -3210,18 +3210,18 @@ const FlashcardItem = React.memo(({ index, card, onRemove, onChange }: {
   onRemove: (id: string) => void;
   onChange: (id: string, field: 'front' | 'back', value: string) => void;
 }) => {
-  let badgeColor = "bg-stone-200 text-stone-700 dark:bg-zinc-800 dark:text-zinc-300";
+  let badgeColor = "bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300";
   const wf = (card.wordForm || "").toLowerCase();
   
   if (wf.includes("noun") || wf === "n") badgeColor = "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-450";
   else if (wf.includes("verb") || wf === "v") badgeColor = "bg-red-105 text-red-700 dark:bg-red-900/30 dark:text-red-400";
-  else if (wf.includes("adj")) badgeColor = "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400";
+  else if (wf.includes("adj")) badgeColor = "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400";
   else if (wf.includes("adv")) badgeColor = "bg-emerald-100 text-emerald-750 dark:bg-emerald-900/30 dark:text-emerald-400";
   else if (wf.includes("idiom") || wf.includes("colloc")) badgeColor = "bg-purple-105 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400";
 
   return (
-    <div className="card-3d p-4.5 rounded-2xl border border-stone-200/60 dark:border-zinc-800/80 bg-stone-50/50 dark:bg-zinc-900/40 hover:bg-white dark:hover:bg-zinc-900 flex gap-4 relative transform-gpu w-full min-w-0 transition-colors">
-      <div className="flex-shrink-0 text-stone-400 font-bold w-6 text-sm">{index + 1}</div>
+    <div className="card-3d p-4.5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/40 hover:bg-white dark:hover:bg-zinc-900 flex gap-4 relative transform-gpu w-full min-w-0 transition-colors">
+      <div className="flex-shrink-0 text-zinc-400 font-bold w-6 text-sm">{index + 1}</div>
       <div className="flex-grow min-w-0 grid md:grid-cols-2 gap-4">
         <div className="relative">
             {card.wordForm && (

@@ -488,32 +488,32 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="card-3d p-6 rounded-xl border border-stone-200 dark:border-zinc-800 flex flex-col items-center justify-center text-center">
+        <div className="card-3d p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col items-center justify-center text-center">
           <div className="text-sm font-bold opacity-60 uppercase mb-2">API Connection Score</div>
           <div className="text-5xl font-display font-bold mb-2">
-            <span className={healthScore >= 80 ? 'text-green-500' : healthScore >= 50 ? 'text-amber-500' : 'text-red-500'}>
+            <span className={healthScore >= 80 ? 'text-green-500' : healthScore >= 50 ? 'text-orange-500' : 'text-red-500'}>
                {healthScore}%
             </span>
           </div>
-          <div className="w-full bg-stone-200 dark:bg-zinc-800 rounded-full h-2 mt-4 overflow-hidden flex">
+          <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-2 mt-4 overflow-hidden flex">
             {keys.length > 0 && (
               <>
                 <div className="h-full bg-green-500 transition-all duration-500" style={{ width: `${(activeCount / keys.length) * 100}%` }}></div>
-                <div className="h-full bg-amber-500 transition-all duration-500" style={{ width: `${(limitedCount / keys.length) * 100}%` }}></div>
+                <div className="h-full bg-orange-500 transition-all duration-500" style={{ width: `${(limitedCount / keys.length) * 100}%` }}></div>
                 <div className="h-full bg-red-500 transition-all duration-500" style={{ width: `${(failedCount / keys.length) * 100}%` }}></div>
               </>
             )}
           </div>
-          <div className="flex gap-4 justify-center mt-3 text-xs w-full text-stone-500 dark:text-stone-400">
+          <div className="flex gap-4 justify-center mt-3 text-xs w-full text-zinc-500 dark:text-zinc-400">
              <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-green-500"></div> {activeCount} Active</div>
-             <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-amber-500"></div> {limitedCount} Lim</div>
+             <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-orange-500"></div> {limitedCount} Lim</div>
              <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-red-500"></div> {failedCount} Fail</div>
           </div>
         </div>
 
         {serverHealth && (
           <div className="lg:col-span-2 grid grid-cols-2 gap-4">
-            <div className="bg-stone-50 dark:bg-zinc-900 p-6 rounded-xl border border-stone-200 dark:border-zinc-800 flex flex-col justify-center">
+            <div className="bg-zinc-50 dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-center">
                <h3 className="text-sm font-bold opacity-60 uppercase mb-2 flex items-center gap-2">
                   <Activity className="w-4 h-4" /> Server RAM
                </h3>
@@ -521,38 +521,38 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                  <span className="text-3xl font-display font-bold text-blue-500">
                    {(serverHealth.systemMemory.used / 1024 / 1024 / 1024).toFixed(1)} GB
                  </span>
-                 <span className="text-stone-500 text-sm mb-1">/ {(serverHealth.systemMemory.total / 1024 / 1024 / 1024).toFixed(1)} GB</span>
+                 <span className="text-zinc-500 text-sm mb-1">/ {(serverHealth.systemMemory.total / 1024 / 1024 / 1024).toFixed(1)} GB</span>
                </div>
-               <div className="w-full bg-stone-200 dark:bg-zinc-800 rounded-full h-2 mt-2 overflow-hidden">
+               <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-2 mt-2 overflow-hidden">
                  <div className="h-full bg-blue-500" style={{ width: `${(serverHealth.systemMemory.used / serverHealth.systemMemory.total) * 100}%` }}></div>
                </div>
-               <p className="text-xs text-stone-500 mt-2">Node Process: {(serverHealth.processMemory.rss / 1024 / 1024).toFixed(1)} MB</p>
+               <p className="text-xs text-zinc-500 mt-2">Node Process: {(serverHealth.processMemory.rss / 1024 / 1024).toFixed(1)} MB</p>
             </div>
-            <div className="bg-stone-50 dark:bg-zinc-900 p-6 rounded-xl border border-stone-200 dark:border-zinc-800 flex flex-col justify-center">
+            <div className="bg-zinc-50 dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-center">
                <h3 className="text-sm font-bold opacity-60 uppercase mb-2 flex items-center gap-2">
                   <Cpu className="w-4 h-4" /> CPU Load
                </h3>
                <div className="text-xl font-display font-bold text-purple-500 mb-1 line-clamp-2">
                  {serverHealth.cpus[0]?.model || "Unknown CPU"}
                </div>
-               <div className="text-sm text-stone-500">
-                 Cores: <span className="font-bold text-stone-700 dark:text-stone-300">{serverHealth.cpus.length}</span>
+               <div className="text-sm text-zinc-500">
+                 Cores: <span className="font-bold text-zinc-700 dark:text-zinc-300">{serverHealth.cpus.length}</span>
                </div>
-               <p className="text-xs text-stone-500 mt-2">System Uptime: {Math.floor(serverHealth.uptime / 3600)}h {Math.floor((serverHealth.uptime % 3600) / 60)}m</p>
+               <p className="text-xs text-zinc-500 mt-2">System Uptime: {Math.floor(serverHealth.uptime / 3600)}h {Math.floor((serverHealth.uptime % 3600) / 60)}m</p>
             </div>
           </div>
         )}
       </div>
 
-      <div className="flex flex-col justify-center bg-stone-50 dark:bg-zinc-900 p-6 rounded-xl border border-stone-200 dark:border-zinc-800">
+      <div className="flex flex-col justify-center bg-zinc-50 dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <h2 className="text-xl font-bold flex items-center gap-2">
                 <RefreshCw className={`w-5 h-5 text-blue-500 ${isPolling ? 'animate-spin' : ''}`} />
                 Real-time Health Monitor
               </h2>
-              <p className="text-stone-500 dark:text-stone-400 text-sm mt-1">
-                Monitoring {totalKeys} API keys. Round-Robin Queue is currently pointing to index: <span className="font-mono bg-stone-200 dark:bg-zinc-800 px-2 py-0.5 rounded">{currentIndex}</span>
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-1">
+                Monitoring {totalKeys} API keys. Round-Robin Queue is currently pointing to index: <span className="font-mono bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded">{currentIndex}</span>
               </p>
             </div>
             
@@ -566,7 +566,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
               </button>
               <button 
                 onClick={fetchKeysStatus}
-                className="btn-3d px-4 py-2 bg-stone-200 dark:bg-zinc-800 rounded-lg hover:bg-stone-300 dark:hover:bg-zinc-700 text-sm font-bold animate-shimmer"
+                className="btn-3d px-4 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-700 text-sm font-bold animate-shimmer"
               >
                 Refresh
               </button>
@@ -576,7 +576,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                 className={`btn-3d px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-1.5 ${
                   resetSuccess 
                     ? 'bg-emerald-500 text-white' 
-                    : 'bg-amber-500 hover:bg-amber-600 text-stone-950'
+                    : 'bg-orange-500 hover:bg-orange-600 text-zinc-950'
                 }`}
               >
                 <RefreshCw className={`w-4 h-4 ${isResettingKeys ? 'animate-spin' : ''}`} />
@@ -585,34 +585,34 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
             </div>
           </div>
 
-          <div className="flex bg-stone-200/50 dark:bg-zinc-800/50 p-1 rounded-lg mt-6 w-max self-end sm:self-auto">
+          <div className="flex bg-zinc-200/50 dark:bg-zinc-800/50 p-1 rounded-lg mt-6 w-max self-end sm:self-auto">
             <button
               onClick={() => setActiveTab('monitor')}
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'monitor' ? 'bg-white dark:bg-zinc-700 shadow-sm text-stone-900 dark:text-stone-100' : 'text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200'}`}
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'monitor' ? 'bg-white dark:bg-zinc-700 shadow-sm text-zinc-900 dark:text-zinc-100' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200'}`}
             >
               Monitor Grid
             </button>
             <button
               onClick={() => setActiveTab('logs')}
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'logs' ? 'bg-white dark:bg-zinc-700 shadow-sm text-stone-900 dark:text-stone-100' : 'text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200'}`}
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'logs' ? 'bg-white dark:bg-zinc-700 shadow-sm text-zinc-900 dark:text-zinc-100' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200'}`}
             >
               Rotation Logs
             </button>
             <button
               onClick={() => setActiveTab('health')}
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'health' ? 'bg-white dark:bg-zinc-700 shadow-sm text-stone-900 dark:text-stone-100' : 'text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200'}`}
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'health' ? 'bg-white dark:bg-zinc-700 shadow-sm text-zinc-900 dark:text-zinc-100' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200'}`}
             >
               System Health
             </button>
           </div>
           
-          <div className="mt-4 p-4 border-t border-stone-200 dark:border-zinc-800 flex items-center gap-4 text-sm font-mono">
+          <div className="mt-4 p-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center gap-4 text-sm font-mono">
              <div className="flex items-center gap-2">
                 <ListOrdered className="w-4 h-4 text-blue-500" />
                 Queue: <span className="font-bold text-blue-600 dark:text-blue-400">{queueStatus.queueLength}</span>
              </div>
              <div className="flex items-center gap-2">
-                Processing: <span className={`font-bold ${queueStatus.isProcessing ? 'text-green-500' : 'text-stone-500'}`}>{queueStatus.isProcessing ? 'YES' : 'NO'}</span>
+                Processing: <span className={`font-bold ${queueStatus.isProcessing ? 'text-green-500' : 'text-zinc-500'}`}>{queueStatus.isProcessing ? 'YES' : 'NO'}</span>
              </div>
           </div>
         </div>
@@ -624,7 +624,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
   function renderMonitorContent() {
     if (isLoading) {
       return (
-        <div className="flex flex-col items-center justify-center p-12 text-stone-500">
+        <div className="flex flex-col items-center justify-center p-12 text-zinc-500">
            <Loader2 className="w-8 h-8 animate-spin mb-4" />
            <p>Connecting to Service Monitor...</p>
         </div>
@@ -632,15 +632,15 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
     }
     
     if (keys.length === 0) {
-      return <div className="p-8 text-center text-stone-500">No API keys found.</div>;
+      return <div className="p-8 text-center text-zinc-500">No API keys found.</div>;
     }
 
     if (activeTab === 'monitor') {
       return (
         <div className="space-y-10">
                   {/* EMERGENCY CIRCUIT BREAKER SYSTEM */}
-                  <div className="bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-850 p-6 rounded-xl space-y-4">
-                <div className="flex items-center justify-between border-b border-stone-200 dark:border-zinc-800 pb-3">
+                  <div className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-850 p-6 rounded-xl space-y-4">
+                <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3">
               <div>
                 <h3 className="text-sm font-extrabold uppercase tracking-wider text-red-500 font-display flex items-center gap-2">
                   <span className="flex h-2.5 w-2.5 relative">
@@ -649,7 +649,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   </span>
                   Emergency API Circuit Breaker (Bộ ngắt mạch khẩn cấp)
                 </h3>
-                <p className="text-xs text-stone-500 mt-1 pb-1">
+                <p className="text-xs text-zinc-500 mt-1 pb-1">
                   Chủ động ngắt cổng gọi ra ngoài của các nhà cung cấp nếu bị block IP/quét hạn ngạch quá căng, tránh dính exceed request thêm.
                 </p>
               </div>
@@ -661,14 +661,14 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                 className={`p-4 rounded-lg flex items-center justify-between border transition-all duration-300 ${
                   geminiEnabled 
                     ? "bg-blue-50/45 dark:bg-blue-950/15 border-blue-200/50 dark:border-blue-800/20" 
-                    : "bg-stone-100/70 dark:bg-zinc-950/20 border-stone-200 dark:border-zinc-800 grayscale"
+                    : "bg-zinc-100/70 dark:bg-zinc-950/20 border-zinc-200 dark:border-zinc-800 grayscale"
                 }`}
               >
                 <div className="space-y-1 pr-4">
-                  <div className="font-bold text-sm text-stone-800 dark:text-stone-100 flex items-center gap-2">
+                  <div className="font-bold text-sm text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
                     <Cpu className="w-4 h-4 text-blue-500" /> Google Gemini Pool
                   </div>
-                  <div className="text-[11px] text-stone-500">
+                  <div className="text-[11px] text-zinc-500">
                     {geminiEnabled 
                       ? "🟢 Đang hoạt động (Dịch thuật, bài tập, cốt lõi)" 
                       : "🔴 Đã ngắt mạch (Các cuộc gọi bị chặn từ đầu)"}
@@ -681,7 +681,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   disabled={isUpdatingToggles}
                   onClick={() => handleToggleChange("gemini", !geminiEnabled)}
                   className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                    geminiEnabled ? "bg-blue-500" : "bg-stone-300 dark:bg-zinc-700"
+                    geminiEnabled ? "bg-blue-500" : "bg-zinc-300 dark:bg-zinc-700"
                   } ${isUpdatingToggles ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   <span
@@ -697,15 +697,15 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
               <div 
                 className={`p-4 rounded-lg flex items-center justify-between border transition-all duration-300 ${
                   groqEnabled 
-                    ? "bg-amber-50/45 dark:bg-amber-950/15 border-amber-200/50 dark:border-amber-800/20" 
-                    : "bg-stone-100/70 dark:bg-zinc-950/20 border-stone-200 dark:border-zinc-800 grayscale"
+                    ? "bg-orange-50/45 dark:bg-orange-950/15 border-orange-200/50 dark:border-orange-800/20" 
+                    : "bg-zinc-100/70 dark:bg-zinc-950/20 border-zinc-200 dark:border-zinc-800 grayscale"
                 }`}
               >
                 <div className="space-y-1 pr-4">
-                  <div className="font-bold text-sm text-stone-800 dark:text-stone-100 flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-amber-500" /> Groq Cloud API Pool
+                  <div className="font-bold text-sm text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-orange-500" /> Groq Cloud API Pool
                   </div>
-                  <div className="text-[11px] text-stone-500">
+                  <div className="text-[11px] text-zinc-500">
                     {groqEnabled 
                       ? "🟢 Đang hoạt động (Llama3-70B Cực tốc, phản hồi tức thời)" 
                       : "🔴 Đã ngắt mạch (Tạm ngắt, định hướng sang Gemini)"}
@@ -718,7 +718,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   disabled={isUpdatingToggles}
                   onClick={() => handleToggleChange("groq", !groqEnabled)}
                   className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                    groqEnabled ? "bg-amber-500" : "bg-stone-300 dark:bg-zinc-700"
+                    groqEnabled ? "bg-orange-500" : "bg-zinc-300 dark:bg-zinc-700"
                   } ${isUpdatingToggles ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   <span
@@ -735,14 +735,14 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                 className={`p-4 rounded-lg flex items-center justify-between border transition-all duration-300 ${
                   openRouterEnabled 
                     ? "bg-emerald-50/45 dark:bg-emerald-950/15 border-emerald-200/50 dark:border-emerald-800/20" 
-                    : "bg-stone-100/70 dark:bg-zinc-950/20 border-stone-200 dark:border-zinc-800 grayscale"
+                    : "bg-zinc-100/70 dark:bg-zinc-950/20 border-zinc-200 dark:border-zinc-800 grayscale"
                 }`}
               >
                 <div className="space-y-1 pr-4">
-                  <div className="font-bold text-sm text-stone-800 dark:text-stone-100 flex items-center gap-2">
+                  <div className="font-bold text-sm text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
                     <Server className="w-4 h-4 text-emerald-500" /> OpenRouter Llama Pool
                   </div>
-                  <div className="text-[11px] text-stone-500">
+                  <div className="text-[11px] text-zinc-500">
                     {openRouterEnabled 
                       ? "🟢 Đang hoạt động (Trích xuất văn bản sơ cấp, ổn định)" 
                       : "🔴 Đã ngắt mạch (Chặn tránh dính spam vòng ngoài)"}
@@ -755,7 +755,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   disabled={isUpdatingToggles}
                   onClick={() => handleToggleChange("openrouter", !openRouterEnabled)}
                   className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                    openRouterEnabled ? "bg-emerald-500" : "bg-stone-300 dark:bg-zinc-700"
+                    openRouterEnabled ? "bg-emerald-500" : "bg-zinc-300 dark:bg-zinc-700"
                   } ${isUpdatingToggles ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   <span
@@ -772,14 +772,14 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                 className={`p-4 rounded-lg flex items-center justify-between border transition-all duration-300 ${
                   deepInfraEnabled 
                     ? "bg-indigo-50/45 dark:bg-indigo-950/15 border-indigo-200/50 dark:border-indigo-800/20" 
-                    : "bg-stone-100/70 dark:bg-zinc-950/20 border-stone-200 dark:border-zinc-800 grayscale"
+                    : "bg-zinc-100/70 dark:bg-zinc-950/20 border-zinc-200 dark:border-zinc-800 grayscale"
                 }`}
               >
                 <div className="space-y-1 pr-4">
-                  <div className="font-bold text-sm text-stone-800 dark:text-stone-100 flex items-center gap-2">
+                  <div className="font-bold text-sm text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
                     <Globe className="w-4 h-4 text-indigo-500" /> DeepInfra Pool
                   </div>
-                  <div className="text-[11px] text-stone-500">
+                  <div className="text-[11px] text-zinc-500">
                     {deepInfraEnabled 
                       ? "🟢 Đang hoạt động (Xoay vòng siêu tải, Llama Chuyên sâu)" 
                       : "🔴 Đã ngắt mạch (Chặn tránh dính spam vòng ngoài)"}
@@ -792,7 +792,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   disabled={isUpdatingToggles}
                   onClick={() => handleToggleChange("deepinfra", !deepInfraEnabled)}
                   className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                    deepInfraEnabled ? "bg-indigo-500" : "bg-stone-300 dark:bg-zinc-700"
+                    deepInfraEnabled ? "bg-indigo-500" : "bg-zinc-300 dark:bg-zinc-700"
                   } ${isUpdatingToggles ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   <span
@@ -808,7 +808,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
 
           {/* Gemini API Keys Section */}
           <div className="space-y-4">
-            <div className="border-b border-stone-200 dark:border-zinc-800 pb-2">
+            <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
               <h3 className="text-xl font-bold font-display text-blue-600 dark:text-blue-400 flex items-center gap-2">
                 <Cpu className="w-5 h-5 animate-pulse" />
                 Gemini Enterprise Rotation Pool
@@ -816,7 +816,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   {totalKeys} keys · Current index: {currentIndex}
                 </span>
               </h3>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">Phân phối xử lý lõi chính, định tuyến dịch sang tiếng Việt, sinh đề thi & chấm điểm tự động.</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Phân phối xử lý lõi chính, định tuyến dịch sang tiếng Việt, sinh đề thi & chấm điểm tự động.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -824,11 +824,11 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                 <div 
                   key={k.index} 
                   className={`card-3d p-5 rounded-xl border flex flex-col gap-4 ${
-                    k.index === currentIndex ? 'ring-2 ring-blue-500 border-blue-500' : 'border-stone-200 dark:border-zinc-800'
+                    k.index === currentIndex ? 'ring-2 ring-blue-500 border-blue-500' : 'border-zinc-200 dark:border-zinc-800'
                   }`}
                 >
                   <div className="flex justify-between items-start">
-                    <span className="text-sm font-bold bg-stone-200 dark:bg-zinc-800 px-2.5 py-1 rounded-md">
+                    <span className="text-sm font-bold bg-zinc-200 dark:bg-zinc-800 px-2.5 py-1 rounded-md">
                       Key #{k.index}
                     </span>
                     <div className="flex items-center gap-3">
@@ -837,42 +837,42 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                           color={k.status === 'rate_limited' ? '#f59e0b' : k.status === 'failed' ? '#ef4444' : k.status === 'exhausted' ? '#71717a' : '#3b82f6'} 
                        />
                        {k.status === "active" && <span className="flex items-center gap-1 text-xs font-bold text-green-500 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full"><CheckCircle className="w-3.5 h-3.5" /> ACTIVE</span>}
-                       {k.status === "rate_limited" && <span className="flex items-center gap-1 text-xs font-bold text-amber-500 bg-amber-100 dark:bg-amber-900/30 px-2 py-1 rounded-full"><Clock className="w-3.5 h-3.5" /> RATE LIMITED</span>}
+                       {k.status === "rate_limited" && <span className="flex items-center gap-1 text-xs font-bold text-orange-500 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded-full"><Clock className="w-3.5 h-3.5" /> RATE LIMITED</span>}
                        {k.status === "exhausted" && <span className="flex items-center gap-1 text-xs font-bold text-zinc-500 bg-zinc-100 dark:bg-zinc-900/30 px-2 py-1 rounded-full"><AlertCircle className="w-3.5 h-3.5" /> EXHAUSTED</span>}
                        {k.status === "failed" && <span className="flex items-center gap-1 text-xs font-bold text-red-500 bg-red-100 dark:bg-red-900/30 px-2 py-1 rounded-full"><AlertCircle className="w-3.5 h-3.5" /> FAILED</span>}
                     </div>
                   </div>
                   
                   <div>
-                    <div className="text-xs text-stone-500 dark:text-stone-400 mb-1 uppercase tracking-wider">Masked Key</div>
+                    <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-1 uppercase tracking-wider">Masked Key</div>
                     <div className="font-mono text-sm">{k.maskedKey}</div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-sm mt-auto border-t border-stone-200 dark:border-zinc-800 pt-3">
+                  <div className="grid grid-cols-2 gap-2 text-sm mt-auto border-t border-zinc-200 dark:border-zinc-800 pt-3">
                     <div>
-                      <div className="text-stone-500 text-xs">Usage Count</div>
+                      <div className="text-zinc-500 text-xs">Usage Count</div>
                       <div className="font-medium text-lg">{k.usageCount}</div>
                     </div>
                     <div>
-                      <div className="text-stone-500 text-xs">Error Count</div>
+                      <div className="text-zinc-500 text-xs">Error Count</div>
                       <div className="font-medium text-red-500 text-lg">{k.errorCount}</div>
                     </div>
                   </div>
                   
                   <div className="mt-1">
                      <div className="flex justify-between text-xs mb-1.5">
-                       <span className="text-stone-500 dark:text-stone-400">Est. Daily Quota</span>
+                       <span className="text-zinc-500 dark:text-zinc-400">Est. Daily Quota</span>
                        <span className="font-medium">
                          {k.status === "rate_limited" || k.status === "exhausted" 
                             ? "100%" 
                             : `${Math.min(Math.round((k.usageCount / 1500) * 100), 100)}%`}
                        </span>
                      </div>
-                     <div className="w-full bg-stone-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                     <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
                        <div 
                          className={`h-full rounded-full transition-all duration-500 ${
                            k.status === 'active' ? 'bg-blue-600 dark:bg-blue-500' : 
-                           k.status === 'rate_limited' ? 'bg-amber-500 w-full' : 
+                           k.status === 'rate_limited' ? 'bg-orange-500 w-full' : 
                            'bg-red-500 w-full'
                          }`}
                          style={{ 
@@ -884,7 +884,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                      </div>
                   </div>
 
-                  <div className="text-xs text-stone-400 dark:text-stone-505 mt-1">
+                  <div className="text-xs text-zinc-400 dark:text-zinc-505 mt-1">
                     Last Used: {k.lastUsed ? new Date(k.lastUsed).toLocaleTimeString() : 'Never'}
                   </div>
                 </div>
@@ -893,16 +893,16 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
           </div>
 
           {/* Groq Cloud API Keys Section (Mô phỏng khè sếp/giám khảo) */}
-          <div className="space-y-4 pt-10 border-t border-stone-200 dark:border-zinc-800">
-            <div className="border-b border-stone-200 dark:border-zinc-800 pb-2">
-              <h3 className="text-xl font-bold font-display text-amber-600 dark:text-amber-500 flex items-center gap-2">
-                <Zap className="w-5 h-5 text-amber-500 animate-pulse" />
+          <div className="space-y-4 pt-10 border-t border-zinc-200 dark:border-zinc-800">
+            <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
+              <h3 className="text-xl font-bold font-display text-orange-600 dark:text-orange-500 flex items-center gap-2">
+                <Zap className="w-5 h-5 text-orange-500 animate-pulse" />
                 GroqCloud High-Throughput Rotation Pool
-                <span className="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 px-2 py-0.5 rounded-full font-mono font-bold">
+                <span className="text-xs bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-300 px-2 py-0.5 rounded-full font-mono font-bold">
                   {totalGroqKeys} simulated keys · Active index: {currentGroqIndex}
                 </span>
               </h3>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">Hạ tầng tăng tốc độ suy luận cực hạn tăng tốc LPU từ Groq, xoay vòng tự động bảo vệ RPM/TPM tránh quá tải.</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Hạ tầng tăng tốc độ suy luận cực hạn tăng tốc LPU từ Groq, xoay vòng tự động bảo vệ RPM/TPM tránh quá tải.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -910,11 +910,11 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                 <div 
                   key={k.index} 
                   className={`card-3d p-5 rounded-xl border flex flex-col gap-4 ${
-                    k.index === currentGroqIndex ? 'ring-2 ring-amber-500 border-amber-500' : 'border-stone-200 dark:border-zinc-800'
+                    k.index === currentGroqIndex ? 'ring-2 ring-orange-500 border-orange-500' : 'border-zinc-200 dark:border-zinc-800'
                   }`}
                 >
                   <div className="flex justify-between items-start">
-                    <span className="text-sm font-bold bg-stone-200 dark:bg-zinc-800 px-2.5 py-1 rounded-md">
+                    <span className="text-sm font-bold bg-zinc-200 dark:bg-zinc-800 px-2.5 py-1 rounded-md">
                       Groq Key #{k.index}
                     </span>
                     <div className="flex items-center gap-1">
@@ -922,40 +922,40 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                           data={usageHistory[k.index + 200] || Array(20).fill(0)} 
                           color={k.status === 'rate_limited' ? '#f59e0b' : k.status === 'failed' ? '#ef4444' : k.status === 'exhausted' ? '#71717a' : '#f59e0b'} 
                        />
-                       {k.status === "active" && <span className="flex items-center gap-1 text-[10px] font-bold text-amber-550 bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 rounded-full"><CheckCircle className="w-3.5 h-3.5 text-amber-500" /> ACTIVE</span>}
+                       {k.status === "active" && <span className="flex items-center gap-1 text-[10px] font-bold text-orange-550 bg-orange-100 dark:bg-orange-900/30 px-2 py-0.5 rounded-full"><CheckCircle className="w-3.5 h-3.5 text-orange-500" /> ACTIVE</span>}
                        {k.status === "rate_limited" && <span className="flex items-center gap-1 text-[10px] font-bold text-red-500 bg-red-100 dark:bg-red-900/30 px-2 py-0.5 rounded-full"><Clock className="w-3.5 h-3.5" /> COOLDOWN</span>}
                        {k.status === "exhausted" && <span className="flex items-center gap-1 text-[10px] font-bold text-zinc-500 bg-zinc-100 dark:bg-zinc-900/30 px-2 py-0.5 rounded-full"><AlertCircle className="w-3.5 h-3.5" /> EXHAUSTED</span>}
                     </div>
                   </div>
                   
                   <div>
-                    <div className="text-xs text-stone-500 dark:text-stone-400 mb-1 uppercase tracking-wider">Masked Key</div>
+                    <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-1 uppercase tracking-wider">Masked Key</div>
                     <div className="font-mono text-sm">{k.maskedKey}</div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-sm mt-auto border-t border-stone-200 dark:border-zinc-800 pt-3">
+                  <div className="grid grid-cols-2 gap-2 text-sm mt-auto border-t border-zinc-200 dark:border-zinc-800 pt-3">
                     <div>
-                      <div className="text-stone-500 text-xs">Usage Count</div>
+                      <div className="text-zinc-500 text-xs">Usage Count</div>
                       <div className="font-medium text-lg">{k.usageCount}</div>
                     </div>
                     <div>
-                      <div className="text-stone-500 text-xs">Error Count</div>
+                      <div className="text-zinc-500 text-xs">Error Count</div>
                       <div className="font-medium text-red-500 text-lg">{k.errorCount}</div>
                     </div>
                   </div>
                   
                   <div className="mt-1">
                      <div className="flex justify-between text-xs mb-1.5">
-                       <span className="text-stone-500 dark:text-stone-400 font-bold">RPM Load</span>
-                       <span className="font-bold text-amber-500">
+                       <span className="text-zinc-500 dark:text-zinc-400 font-bold">RPM Load</span>
+                       <span className="font-bold text-orange-500">
                          {k.status === "rate_limited" 
                             ? "100%" 
                             : `${Math.min(Math.round((k.usageCount / 1000) * 100), 100)}%`}
                        </span>
                      </div>
-                     <div className="w-full bg-stone-200 dark:bg-zinc-800 bg-stone-105 rounded-full h-1.5 overflow-hidden">
+                     <div className="w-full bg-zinc-200 dark:bg-zinc-800 bg-zinc-105 rounded-full h-1.5 overflow-hidden">
                        <div 
-                         className="h-full rounded-full transition-all duration-500 bg-amber-500"
+                         className="h-full rounded-full transition-all duration-500 bg-orange-500"
                          style={{ 
                            width: k.status === "rate_limited"
                                    ? '100%' 
@@ -965,7 +965,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                      </div>
                   </div>
 
-                  <div className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                  <div className="text-xs text-zinc-400 dark:text-zinc-500 mt-1">
                     Last Used: {k.lastUsed ? new Date(k.lastUsed).toLocaleTimeString() : 'Never'}
                   </div>
                 </div>
@@ -974,8 +974,8 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
           </div>
 
           {/* OpenRouter API Keys Section */}
-          <div className="space-y-4 pt-10 border-t border-stone-200 dark:border-zinc-800">
-            <div className="border-b border-stone-200 dark:border-zinc-800 pb-2">
+          <div className="space-y-4 pt-10 border-t border-zinc-200 dark:border-zinc-800">
+            <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
               <h3 className="text-xl font-bold font-display text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
                 <Server className="w-5 h-5 text-emerald-500" />
                 OpenRouter Multi-Key Rotation Pool
@@ -983,11 +983,11 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   {totalOpenRouterKeys} keys · Current index: {currentOpenRouterIndex}
                 </span>
               </h3>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">Hạ tầng truy vấn siêu tốc kết hợp xoay vòng thông minh nhiều API keys từ OpenRouter làm nguồn sơ cấp, tự động nhảy vòng lặp khi lỗi 429/Too Many Requests.</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Hạ tầng truy vấn siêu tốc kết hợp xoay vòng thông minh nhiều API keys từ OpenRouter làm nguồn sơ cấp, tự động nhảy vòng lặp khi lỗi 429/Too Many Requests.</p>
             </div>
             
             {openRouterKeys.length === 0 ? (
-              <div className="p-8 text-center text-stone-500 bg-stone-100 dark:bg-zinc-900/40 rounded-xl">
+              <div className="p-8 text-center text-zinc-500 bg-zinc-100 dark:bg-zinc-900/40 rounded-xl">
                 Không tìm thấy OpenRouter API Keys nào được cấu hình trên server. Vui lòng cấu hình OPENROUTER_KEY_1...9.
               </div>
             ) : (
@@ -996,11 +996,11 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   <div 
                     key={k.index} 
                     className={`card-3d p-5 rounded-xl border flex flex-col gap-4 ${
-                      k.index === currentOpenRouterIndex ? 'ring-2 ring-emerald-500 border-emerald-500' : 'border-stone-200 dark:border-zinc-800'
+                      k.index === currentOpenRouterIndex ? 'ring-2 ring-emerald-500 border-emerald-500' : 'border-zinc-200 dark:border-zinc-800'
                     }`}
                   >
                     <div className="flex justify-between items-start">
-                      <span className="text-sm font-bold bg-stone-200 dark:bg-zinc-800 px-2.5 py-1 rounded-md">
+                      <span className="text-sm font-bold bg-zinc-200 dark:bg-zinc-800 px-2.5 py-1 rounded-md">
                         OpenRouter Key #{k.index}
                       </span>
                       <div className="flex items-center gap-3">
@@ -1009,42 +1009,42 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                             color={k.status === 'rate_limited' ? '#f59e0b' : k.status === 'failed' ? '#ef4444' : k.status === 'exhausted' ? '#71717a' : '#10b981'} 
                          />
                          {k.status === "active" && <span className="flex items-center gap-1 text-xs font-bold text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 px-2 py-1 rounded-full"><CheckCircle className="w-3.5 h-3.5" /> ACTIVE</span>}
-                         {k.status === "rate_limited" && <span className="flex items-center gap-1 text-xs font-bold text-amber-500 bg-amber-100 dark:bg-amber-900/30 px-2 py-1 rounded-full"><Clock className="w-3.5 h-3.5" /> COOLDOWN</span>}
+                         {k.status === "rate_limited" && <span className="flex items-center gap-1 text-xs font-bold text-orange-500 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded-full"><Clock className="w-3.5 h-3.5" /> COOLDOWN</span>}
                          {k.status === "exhausted" && <span className="flex items-center gap-1 text-xs font-bold text-zinc-500 bg-zinc-100 dark:bg-zinc-900/30 px-2 py-1 rounded-full"><AlertCircle className="w-3.5 h-3.5" /> EXHAUSTED</span>}
                          {k.status === "failed" && <span className="flex items-center gap-1 text-xs font-bold text-red-500 bg-red-100 dark:bg-red-900/30 px-2 py-1 rounded-full"><AlertCircle className="w-3.5 h-3.5" /> FAILED</span>}
                       </div>
                     </div>
                     
                     <div>
-                      <div className="text-xs text-stone-500 dark:text-stone-400 mb-1 uppercase tracking-wider">Masked Key</div>
+                      <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-1 uppercase tracking-wider">Masked Key</div>
                       <div className="font-mono text-sm">{k.maskedKey}</div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-sm mt-auto border-t border-stone-200 dark:border-zinc-800 pt-3">
+                    <div className="grid grid-cols-2 gap-2 text-sm mt-auto border-t border-zinc-200 dark:border-zinc-800 pt-3">
                       <div>
-                        <div className="text-stone-500 text-xs">Usage Count</div>
+                        <div className="text-zinc-500 text-xs">Usage Count</div>
                         <div className="font-medium text-lg">{k.usageCount}</div>
                       </div>
                       <div>
-                        <div className="text-stone-500 text-xs">Error Count</div>
+                        <div className="text-zinc-500 text-xs">Error Count</div>
                         <div className="font-medium text-red-500 text-lg">{k.errorCount}</div>
                       </div>
                     </div>
                     
                     <div className="mt-1">
                        <div className="flex justify-between text-xs mb-1.5">
-                         <span className="text-stone-500 dark:text-stone-400">Est. Daily Quota</span>
+                         <span className="text-zinc-500 dark:text-zinc-400">Est. Daily Quota</span>
                          <span className="font-medium">
                            {k.status === "rate_limited" || k.status === "exhausted" 
                               ? "100%" 
                               : `${Math.min(Math.round((k.usageCount / 1500) * 100), 100)}%`}
                          </span>
                        </div>
-                       <div className="w-full bg-stone-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                       <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
                          <div 
                            className={`h-full rounded-full transition-all duration-500 ${
                              k.status === 'active' ? 'bg-emerald-600 dark:bg-emerald-500' : 
-                             k.status === 'rate_limited' ? 'bg-amber-500 w-full' : 
+                             k.status === 'rate_limited' ? 'bg-orange-500 w-full' : 
                              'bg-red-500 w-full'
                            }`}
                            style={{ 
@@ -1056,7 +1056,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                        </div>
                     </div>
 
-                    <div className="text-xs text-stone-400 dark:text-stone-505 mt-1">
+                    <div className="text-xs text-zinc-400 dark:text-zinc-505 mt-1">
                       Last Used: {k.lastUsed ? new Date(k.lastUsed).toLocaleTimeString() : 'Never'}
                     </div>
                   </div>
@@ -1066,8 +1066,8 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
           </div>
 
           {/* DeepInfra API Keys Section */}
-          <div className="space-y-4 pt-10 border-t border-stone-200 dark:border-zinc-800">
-            <div className="border-b border-stone-200 dark:border-zinc-800 pb-2">
+          <div className="space-y-4 pt-10 border-t border-zinc-200 dark:border-zinc-800">
+            <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
               <h3 className="text-xl font-bold font-display text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
                 <Globe className="w-5 h-5 text-indigo-500" />
                 DeepInfra Multi-Key Rotation Pool (Pro)
@@ -1075,14 +1075,14 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   8 keys · Active: ON
                 </span>
               </h3>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">Hạ tầng truy vấn siêu tốc kết hợp xoay vòng thông minh nhiều API keys từ DeepInfra Llama-3.1-405B-Instruct/8B làm nguồn sơ cấp, tự động nhảy vòng lặp khi lỗi 429.</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Hạ tầng truy vấn siêu tốc kết hợp xoay vòng thông minh nhiều API keys từ DeepInfra Llama-3.1-405B-Instruct/8B làm nguồn sơ cấp, tự động nhảy vòng lặp khi lỗi 429.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {[...Array(8)].map((_, i) => (
                   <div 
                     key={i} 
-                    className="card-3d p-5 rounded-xl border flex flex-col gap-4 border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60"
+                    className="card-3d p-5 rounded-xl border flex flex-col gap-4 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60"
                   >
                     <div className="flex justify-between items-start">
                       <span className="text-sm font-bold bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 px-2.5 py-1 rounded-md">
@@ -1094,27 +1094,27 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                     </div>
                     
                     <div>
-                      <div className="text-xs text-stone-500 dark:text-stone-400 mb-1 uppercase tracking-wider">Masked Key</div>
+                      <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-1 uppercase tracking-wider">Masked Key</div>
                       <div className="font-mono text-sm tracking-widest text-emerald-600">di_sk_z9*****{6543 + i}</div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-sm mt-auto border-t border-stone-200 dark:border-zinc-800 pt-3">
+                    <div className="grid grid-cols-2 gap-2 text-sm mt-auto border-t border-zinc-200 dark:border-zinc-800 pt-3">
                       <div>
-                        <div className="text-stone-500 text-xs">Usage Count</div>
+                        <div className="text-zinc-500 text-xs">Usage Count</div>
                         <div className="font-medium text-lg text-emerald-600">{1420 + i * 50}</div>
                       </div>
                       <div>
-                        <div className="text-stone-500 text-xs">Latency (ms)</div>
+                        <div className="text-zinc-500 text-xs">Latency (ms)</div>
                         <div className="font-medium text-emerald-600 text-lg">{150 + i * 12}</div>
                       </div>
                     </div>
                     
                     <div className="mt-1">
                        <div className="flex justify-between text-xs mb-1.5">
-                         <span className="text-stone-500 dark:text-stone-400">Est. Daily Quota</span>
+                         <span className="text-zinc-500 dark:text-zinc-400">Est. Daily Quota</span>
                          <span className="font-medium text-emerald-600">{(65 + i * 3) % 95}%</span>
                        </div>
-                       <div className="w-full bg-stone-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                       <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
                          <div 
                            className="h-full rounded-full transition-all duration-500 bg-emerald-500"
                            style={{ width: `${(65 + i * 3) % 95}%` }}
@@ -1122,7 +1122,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                        </div>
                     </div>
 
-                    <div className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                    <div className="text-xs text-zinc-400 dark:text-zinc-500 mt-1">
                       Last Used: 2s ago
                     </div>
                   </div>
@@ -1135,24 +1135,24 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
 
     if (activeTab === 'logs') {
       return (
-        <div className="card-3d rounded-xl border border-stone-200 dark:border-zinc-800 overflow-hidden bg-white dark:bg-zinc-900/40">
-          <div className="p-5 bg-stone-50 border-b border-stone-200 dark:bg-zinc-900/80 dark:border-zinc-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="card-3d rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden bg-white dark:bg-zinc-900/40">
+          <div className="p-5 bg-zinc-50 border-b border-zinc-200 dark:bg-zinc-900/80 dark:border-zinc-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <div className="font-bold text-lg text-stone-900 dark:text-stone-100">API Key Rotation History</div>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+              <div className="font-bold text-lg text-zinc-900 dark:text-zinc-100">API Key Rotation History</div>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
                 Displays 429 status changes, cooling-down periods, and key health transitions
               </p>
             </div>
             
             {/* Filter buttons for API Rotation Logs */}
-            <div className="flex bg-stone-200/60 dark:bg-zinc-850 p-1 rounded-lg text-xs font-semibold">
+            <div className="flex bg-zinc-200/60 dark:bg-zinc-850 p-1 rounded-lg text-xs font-semibold">
               <button
                 type="button"
                 onClick={() => setLogFilter('all')}
                 className={`px-3 py-1.5 rounded-md transition-all ${
                   logFilter === 'all' 
-                    ? 'bg-white dark:bg-zinc-700 shadow-sm text-stone-900 dark:text-stone-100' 
-                    : 'text-stone-500 hover:text-stone-700 dark:hover:text-stone-300'
+                    ? 'bg-white dark:bg-zinc-700 shadow-sm text-zinc-900 dark:text-zinc-100' 
+                    : 'text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300'
                 }`}
               >
                 Tất cả sự kiện ({logs.length + openRouterLogs.length})
@@ -1162,8 +1162,8 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                 onClick={() => setLogFilter('429')}
                 className={`px-3 py-1.5 rounded-md transition-all flex items-center gap-1.5 ${
                   logFilter === '429' 
-                    ? 'bg-amber-500 text-white shadow-sm font-bold' 
-                    : 'text-amber-600 dark:text-amber-400 hover:bg-amber-500/10'
+                    ? 'bg-orange-500 text-white shadow-sm font-bold' 
+                    : 'text-orange-600 dark:text-orange-400 hover:bg-orange-500/10'
                 }`}
                 title="Sự kiện lỗi 429 và chuyển tiếp sang trạng thái làm mát"
               >
@@ -1193,15 +1193,15 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
 
             if (filteredLogs.length === 0) {
               return (
-                <div className="p-12 text-center text-stone-500 dark:text-stone-400 flex flex-col items-center justify-center gap-2">
-                  <Clock className="w-8 h-8 text-stone-300 dark:text-stone-600 animate-pulse" />
+                <div className="p-12 text-center text-zinc-500 dark:text-zinc-400 flex flex-col items-center justify-center gap-2">
+                  <Clock className="w-8 h-8 text-zinc-300 dark:text-zinc-600 animate-pulse" />
                   <p className="text-sm">Không tìm thấy nhật ký tương ứng.</p>
                 </div>
               );
             }
 
             return (
-              <div className="divide-y divide-stone-200 dark:divide-zinc-800">
+              <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
                 {filteredLogs.map((log) => {
                   const is429 = is429Event(log);
                   const isRecovery = log.reason.toLowerCase().includes("recover");
@@ -1209,17 +1209,17 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                   return (
                      <div 
                       key={log.id} 
-                      className={`p-4 flex flex-col md:flex-row md:items-center gap-4 hover:bg-stone-50 dark:hover:bg-zinc-900/30 transition-colors border-l-4 ${
+                      className={`p-4 flex flex-col md:flex-row md:items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors border-l-4 ${
                         is429 
-                          ? 'border-l-amber-500 bg-amber-500/5' 
+                          ? 'border-l-orange-500 bg-orange-500/5' 
                           : isRecovery 
                           ? 'border-l-green-500 bg-green-500/5' 
                           : 'border-l-transparent'
                       }`}
                     >
                       {/* Event Timestamp and Provider Tag */}
-                      <div className="text-sm font-mono text-stone-500 dark:text-stone-400 shrink-0 flex flex-col gap-1 min-w-[90px]">
-                        <span className="font-bold text-stone-700 dark:text-stone-300">
+                      <div className="text-sm font-mono text-zinc-500 dark:text-zinc-400 shrink-0 flex flex-col gap-1 min-w-[90px]">
+                        <span className="font-bold text-zinc-700 dark:text-zinc-300">
                           {new Date(log.timestamp).toLocaleTimeString()}
                         </span>
                         <div className="flex items-center gap-1.5">
@@ -1237,10 +1237,10 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                       <div className="flex flex-wrap items-center gap-2 shrink-0">
                         {log.fromKeyIndex !== undefined && (
                           <>
-                            <span className="font-mono bg-stone-100 dark:bg-zinc-800 px-2.5 py-1 rounded-md text-xs border border-stone-200 dark:border-zinc-700 text-stone-600 dark:text-stone-200">
+                            <span className="font-mono bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 rounded-md text-xs border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-200">
                               Key #{log.fromKeyIndex}
                             </span>
-                            <span className="text-stone-400 font-bold">→</span>
+                            <span className="text-zinc-400 font-bold">→</span>
                           </>
                         )}
                         <span className={`font-mono border px-2.5 py-1 rounded-md text-xs font-bold ${
@@ -1253,7 +1253,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
 
                         {/* Cooldown State status tag */}
                         {is429 && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 flex items-center gap-1 animate-pulse border border-amber-300/30">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300 flex items-center gap-1 animate-pulse border border-orange-300/30">
                             <Clock className="w-3 h-3" /> COOLING-OFF
                           </span>
                         )}
@@ -1265,7 +1265,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                       </div>
 
                       {/* Log text reason */}
-                      <div className="text-sm text-stone-800 dark:text-stone-200 font-medium flex-1">
+                      <div className="text-sm text-zinc-800 dark:text-zinc-200 font-medium flex-1">
                         {log.reason}
                       </div>
                     </div>
@@ -1283,32 +1283,32 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Server Health Status Card */}
-            <div className="card-3d p-6 rounded-xl border border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40">
+            <div className="card-3d p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg">
                   <Server className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-stone-900 dark:text-stone-100">API Server</h3>
-                  <p className="text-xs text-stone-500">Trạng thái Cloud Container</p>
+                  <h3 className="font-bold text-zinc-900 dark:text-zinc-100">API Server</h3>
+                  <p className="text-xs text-zinc-500">Trạng thái Cloud Container</p>
                 </div>
               </div>
               <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-stone-100 dark:border-zinc-800/60">
-                  <span className="text-sm text-stone-500">Status</span>
-                  <span className={`px-2 py-0.5 rounded text-xs font-bold ${serverHealth?.status === 'UP' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-amber-100 text-amber-805 dark:bg-amber-900/30 dark:text-amber-400 animate-pulse'}`}>
+                <div className="flex justify-between items-center py-2 border-b border-zinc-100 dark:border-zinc-800/60">
+                  <span className="text-sm text-zinc-500">Status</span>
+                  <span className={`px-2 py-0.5 rounded text-xs font-bold ${serverHealth?.status === 'UP' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-orange-100 text-orange-805 dark:bg-orange-900/30 dark:text-orange-400 animate-pulse'}`}>
                     {serverHealth?.status || 'DOWN/CHECKING'}
                   </span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-stone-100 dark:border-zinc-800/60 w-full overflow-hidden">
-                  <span className="text-sm text-stone-500">Database</span>
-                  <span className="text-sm font-medium text-stone-800 dark:text-stone-200 truncate max-w-[180px]">
+                <div className="flex justify-between items-center py-2 border-b border-zinc-100 dark:border-zinc-800/60 w-full overflow-hidden">
+                  <span className="text-sm text-zinc-500">Database</span>
+                  <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200 truncate max-w-[180px]">
                     {serverHealth?.database || 'No Connection'}
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-sm text-stone-500">Uptime</span>
-                  <span className="text-sm font-mono font-bold text-stone-700 dark:text-stone-300">
+                  <span className="text-sm text-zinc-500">Uptime</span>
+                  <span className="text-sm font-mono font-bold text-zinc-700 dark:text-zinc-300">
                     {serverHealth?.uptimeSeconds ? `${Math.floor(serverHealth.uptimeSeconds / 60)}m ${serverHealth.uptimeSeconds % 60}s` : 'N/A'}
                   </span>
                 </div>
@@ -1316,32 +1316,32 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
             </div>
 
             {/* Network Client Status Card */}
-            <div className="card-3d p-6 rounded-xl border border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40">
+            <div className="card-3d p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg">
                   <Globe className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-stone-900 dark:text-stone-100">Client Web</h3>
-                  <p className="text-xs text-stone-500">Sức khỏe mạng trình duyệt</p>
+                  <h3 className="font-bold text-zinc-900 dark:text-zinc-100">Client Web</h3>
+                  <p className="text-xs text-zinc-500">Sức khỏe mạng trình duyệt</p>
                 </div>
               </div>
               <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-stone-100 dark:border-zinc-800/60">
-                  <span className="text-sm text-stone-500">Mạng Trình Duyệt</span>
+                <div className="flex justify-between items-center py-2 border-b border-zinc-100 dark:border-zinc-800/60">
+                  <span className="text-sm text-zinc-500">Mạng Trình Duyệt</span>
                   <span className={`px-2 py-0.5 rounded text-xs font-bold ${navigator.onLine ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'}`}>
                     {navigator.onLine ? 'ĐANG ONLINE' : 'ĐANG OFFLINE'}
                   </span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-stone-100 dark:border-zinc-800/60">
-                  <span className="text-sm text-stone-500">Độ trễ trung bình</span>
+                <div className="flex justify-between items-center py-2 border-b border-zinc-100 dark:border-zinc-800/60">
+                  <span className="text-sm text-zinc-500">Độ trễ trung bình</span>
                   <span className="text-sm font-mono font-bold text-blue-600 dark:text-blue-400">
                     {clientLatencyAvg ? `${clientLatencyAvg} ms` : 'Tính toán...'}
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-sm text-stone-500">Mẫu log ghi nhận</span>
-                  <span className="text-sm font-mono font-medium text-stone-700 dark:text-stone-300">
+                  <span className="text-sm text-zinc-500">Mẫu log ghi nhận</span>
+                  <span className="text-sm font-mono font-medium text-zinc-700 dark:text-zinc-300">
                     {networkLogs.length} mẫu
                   </span>
                 </div>
@@ -1349,32 +1349,32 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
             </div>
 
             {/* AI Engine Status Card */}
-            <div className="card-3d p-6 rounded-xl border border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40">
+            <div className="card-3d p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-lg">
+                <div className="p-2.5 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg">
                   <Cpu className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-stone-900 dark:text-stone-100">Gemini Keys Status</h3>
-                  <p className="text-xs text-stone-500">Làm mát & phân phối dịch vụ API</p>
+                  <h3 className="font-bold text-zinc-900 dark:text-zinc-100">Gemini Keys Status</h3>
+                  <p className="text-xs text-zinc-500">Làm mát & phân phối dịch vụ API</p>
                 </div>
               </div>
               <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-stone-100 dark:border-zinc-800/60">
-                  <span className="text-sm text-stone-500">Active Keys</span>
+                <div className="flex justify-between items-center py-2 border-b border-zinc-100 dark:border-zinc-800/60">
+                  <span className="text-sm text-zinc-500">Active Keys</span>
                   <span className="text-sm font-bold text-green-500">
                     {activeCount} / {keys.length} keys
                   </span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-stone-100 dark:border-zinc-800/60">
-                  <span className="text-sm text-stone-500">Rate Limited</span>
-                  <span className="text-sm font-bold text-amber-500">
+                <div className="flex justify-between items-center py-2 border-b border-zinc-100 dark:border-zinc-800/60">
+                  <span className="text-sm text-zinc-500">Rate Limited</span>
+                  <span className="text-sm font-bold text-orange-500">
                     {limitedCount} keys
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-sm text-stone-500">Lần cuối dùng API</span>
-                  <span className="text-sm text-stone-600 dark:text-stone-400 text-xs font-mono">
+                  <span className="text-sm text-zinc-500">Lần cuối dùng API</span>
+                  <span className="text-sm text-zinc-600 dark:text-zinc-400 text-xs font-mono">
                     {(() => {
                       const latestTime = keys.reduce((latest, k) => {
                         if (!k.lastUsed) return latest;
@@ -1391,9 +1391,9 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Interactive Ping Test Section */}
-            <div className="card-3d p-5 rounded-xl border border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 flex flex-col h-full">
-              <div className="flex justify-between items-center mb-4 pb-2 border-b border-stone-100 dark:border-zinc-800">
-                <div className="font-bold text-stone-900 dark:text-stone-100">Kiểm tra kết nối Real-time</div>
+            <div className="card-3d p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 flex flex-col h-full">
+              <div className="flex justify-between items-center mb-4 pb-2 border-b border-zinc-100 dark:border-zinc-800">
+                <div className="font-bold text-zinc-900 dark:text-zinc-100">Kiểm tra kết nối Real-time</div>
                 <button
                   type="button"
                   onClick={testApiHealth}
@@ -1407,23 +1407,23 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
 
               {testResponse ? (
                 <div className="flex-1">
-                  <div className="text-xs text-stone-500 mb-2 font-semibold uppercase">Response JSON từ `/api/health`:</div>
-                  <pre className="p-4 bg-stone-900 text-green-400 rounded-lg text-xs font-mono overflow-auto max-h-[220px]">
+                  <div className="text-xs text-zinc-500 mb-2 font-semibold uppercase">Response JSON từ `/api/health`:</div>
+                  <pre className="p-4 bg-zinc-900 text-green-400 rounded-lg text-xs font-mono overflow-auto max-h-[220px]">
                     {JSON.stringify(testResponse, null, 2)}
                   </pre>
                 </div>
               ) : (
-                <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-stone-400 dark:text-stone-500">
-                  <Server className="w-10 h-10 opacity-60 mb-2 text-stone-300 dark:text-stone-600" />
+                <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-zinc-400 dark:text-zinc-500">
+                  <Server className="w-10 h-10 opacity-60 mb-2 text-zinc-300 dark:text-zinc-600" />
                   <p className="text-sm">Bấm nút "Ping Test API" để thực hiện yêu cầu kiểm tra sức khỏe (/api/health) và nhận payload JSON trực tiếp.</p>
                 </div>
               )}
             </div>
 
             {/* Web Latency Log History */}
-            <div className="card-3d p-5 rounded-xl border border-stone-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 flex flex-col h-full">
-              <div className="flex justify-between items-center mb-4 pb-2 border-b border-stone-100 dark:border-zinc-800">
-                <div className="font-bold text-stone-900 dark:text-stone-100">Lịch sử trễ mạng Client</div>
+            <div className="card-3d p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 flex flex-col h-full">
+              <div className="flex justify-between items-center mb-4 pb-2 border-b border-zinc-100 dark:border-zinc-800">
+                <div className="font-bold text-zinc-900 dark:text-zinc-100">Lịch sử trễ mạng Client</div>
                 <button
                   type="button"
                   onClick={() => {
@@ -1437,15 +1437,15 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
               </div>
 
               {networkLogs.length === 0 ? (
-                <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-stone-400 dark:text-stone-500">
-                  <Globe className="w-10 h-10 opacity-60 mb-2 text-stone-300 dark:text-stone-600" />
+                <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-zinc-400 dark:text-zinc-500">
+                  <Globe className="w-10 h-10 opacity-60 mb-2 text-zinc-300 dark:text-zinc-600" />
                   <p className="text-sm">Chưa ghi nhận sự kiện kết nối nào. Trình duyệt tự đo độ trễ origin định kỳ (60s).</p>
                 </div>
               ) : (
-                <div className="flex-1 overflow-y-auto max-h-[220px] divide-y divide-stone-100 dark:divide-zinc-800">
+                <div className="flex-1 overflow-y-auto max-h-[220px] divide-y divide-zinc-100 dark:divide-zinc-800">
                   {networkLogs.slice().reverse().map((log, i) => (
                     <div key={i} className="py-2.5 flex items-center justify-between text-xs">
-                      <div className="font-mono text-stone-500 dark:text-stone-400">
+                      <div className="font-mono text-zinc-500 dark:text-zinc-400">
                         {new Date(log.timestamp).toLocaleTimeString()}
                       </div>
                       <div className="flex items-center gap-2">
@@ -1455,7 +1455,7 @@ export function ServiceMonitor({ adminKey }: { adminKey: string }) {
                           </span>
                         ) : (
                           <div className="flex items-center gap-1.5">
-                            <span className="text-stone-500 dark:text-stone-400">Ping:</span>
+                            <span className="text-zinc-500 dark:text-zinc-400">Ping:</span>
                             <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{log.value} ms</span>
                           </div>
                         )}
@@ -1523,11 +1523,11 @@ export default function AdminKeysDashboard() {
       <div className="flex flex-col items-center justify-center min-h-[60vh] p-4">
         <div className="card-3d p-8 rounded-2xl w-full max-w-md mx-auto">
           <div className="flex flex-col items-center mb-6">
-            <div className="p-3 bg-stone-100 dark:bg-zinc-800 rounded-full mb-4">
-              <Key className="w-8 h-8 text-amber-500" />
+            <div className="p-3 bg-zinc-100 dark:bg-zinc-800 rounded-full mb-4">
+              <Key className="w-8 h-8 text-orange-500" />
             </div>
             <h1 className="text-2xl font-display font-bold">Admin Portal</h1>
-            <p className="text-stone-500 dark:text-stone-400 text-sm mt-1">Requires Admin Key</p>
+            <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-1">Requires Admin Key</p>
           </div>
           
           <form onSubmit={handleLogin} className="space-y-4">
@@ -1560,7 +1560,7 @@ export default function AdminKeysDashboard() {
     <div className="w-full max-w-5xl mx-auto p-4 md:p-6 space-y-6">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-display font-bold flex items-center gap-3">
-          <Key className="w-8 h-8 text-amber-500" />
+          <Key className="w-8 h-8 text-orange-500" />
           API Keys Rotation Status
         </h1>
       </div>

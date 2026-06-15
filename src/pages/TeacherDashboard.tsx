@@ -717,22 +717,22 @@ export default function TeacherDashboard() {
 
       <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4 bg-black dark:bg-white text-white dark:text-black p-8 rounded-3xl relative overflow-hidden">
         <div className="relative z-10">
-          <h2 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">Admin Console</h2>
+          <h2 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">Admin Console</h2>
           <p className="opacity-80 mt-1">Data-driven teaching overview.</p>
         </div>
         <div className="relative z-10 flex text-left space-x-6">
            <div>
              <p className="text-sm font-bold opacity-60 uppercase mb-1">Class Progress</p>
-             <p className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">{classProgress}%</p>
+             <p className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">{classProgress}%</p>
            </div>
            <div>
              <p className="text-sm font-bold opacity-60 uppercase mb-1">Active Students</p>
-             <p className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500">{users.length}</p>
+             <p className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500">{users.length}</p>
            </div>
            {(user?.role === "teacher" || user?.role === "admin" || user?.role === "Admin") && (
              <div className="hidden md:block">
                <p className="text-sm font-bold opacity-60 uppercase mb-1">System Health</p>
-               <a href="#monitor" className="inline-flex items-center gap-2 bg-stone-100 hover:bg-stone-200 text-stone-900 border border-stone-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:text-stone-100 dark:border-zinc-700 px-4 py-2 rounded-xl transition text-sm font-bold">
+               <a href="#monitor" className="inline-flex items-center gap-2 bg-zinc-100 hover:bg-zinc-200 text-zinc-900 border border-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:text-zinc-100 dark:border-zinc-700 px-4 py-2 rounded-xl transition text-sm font-bold">
                  <Settings className="w-4 h-4" />
                  Monitor Keys
                </a>
@@ -744,7 +744,7 @@ export default function TeacherDashboard() {
 
       {(user?.role === "teacher" || user?.role === "admin" || user?.role === "Admin") && (
         <div className="md:hidden flex flex-col gap-2">
-          <a href="#monitor" className="inline-flex items-center gap-2 bg-stone-100/50 hover:bg-stone-200/50 text-stone-900 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50 dark:text-stone-100 px-4 py-3 rounded-xl transition text-sm font-bold w-full justify-center border border-stone-200 dark:border-zinc-800">
+          <a href="#monitor" className="inline-flex items-center gap-2 bg-zinc-100/50 hover:bg-zinc-200/50 text-zinc-900 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50 dark:text-zinc-100 px-4 py-3 rounded-xl transition text-sm font-bold w-full justify-center border border-zinc-200 dark:border-zinc-800">
             <Settings className="w-4 h-4" />
             API Keys Health Monitor
           </a>
@@ -799,7 +799,7 @@ export default function TeacherDashboard() {
               Option 3: Sinh Giáo Án Nhanh
             </div>
             
-            <h3 className="text-xl font-display font-medium flex items-center gap-2 text-stone-800 dark:text-stone-100">
+            <h3 className="text-xl font-display font-medium flex items-center gap-2 text-zinc-800 dark:text-zinc-100">
               <Layers className="w-5 h-5 text-violet-500" /> AI Tạo Giáo Án & Flashcard 
             </h3>
             
@@ -810,7 +810,7 @@ export default function TeacherDashboard() {
             <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
               <input
                 type="text"
-                className="flex-1 min-w-0 bg-stone-200/60 dark:bg-zinc-800/50 border border-amber-600/20 dark:border-amber-500/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-violet-500 outline-none transition font-medium text-base md:text-lg min-h-[3rem]"
+                className="flex-1 min-w-0 bg-zinc-200/60 dark:bg-zinc-800/50 border border-orange-600/20 dark:border-orange-500/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-violet-500 outline-none transition font-medium text-base md:text-lg min-h-[3rem]"
                 placeholder="Nhập chủ đề (Ví dụ: Định luật Newton)"
                 value={lessonTopic}
                 onChange={e => setLessonTopic(e.target.value)}
@@ -838,13 +838,13 @@ export default function TeacherDashboard() {
             )}
 
             {lessonPlanData && (
-              <div className="mt-6 bg-stone-100/60 dark:bg-zinc-900/50 p-4 rounded-xl space-y-4 border border-violet-500/20">
+              <div className="mt-6 bg-zinc-100/60 dark:bg-zinc-900/50 p-4 rounded-xl space-y-4 border border-violet-500/20">
                 <div>
                   <h4 className="font-bold text-violet-700 dark:text-violet-400 mb-2 border-b border-violet-500/20 pb-1">1. Lộ trình học ({lessonPlanData.roadmap?.length} bước)</h4>
                   <ul className="space-y-2">
                     {lessonPlanData.roadmap?.map((r: any, idx: number) => (
                       <li key={idx} className="text-sm">
-                        <strong className="text-stone-800 dark:text-stone-200">Bước {r.step}: {r.title}</strong> - <span className="opacity-80">{r.description}</span>
+                        <strong className="text-zinc-800 dark:text-zinc-200">Bước {r.step}: {r.title}</strong> - <span className="opacity-80">{r.description}</span>
                       </li>
                     ))}
                   </ul>
@@ -854,7 +854,7 @@ export default function TeacherDashboard() {
                   <ul className="list-disc pl-5 space-y-1">
                     {lessonPlanData.concepts?.map((c: any, idx: number) => (
                       <li key={idx} className="text-sm">
-                        <strong className="text-stone-800 dark:text-stone-200">{c.term}:</strong> <span className="opacity-80">{c.definition}</span>
+                        <strong className="text-zinc-800 dark:text-zinc-200">{c.term}:</strong> <span className="opacity-80">{c.definition}</span>
                       </li>
                     ))}
                   </ul>
@@ -883,14 +883,14 @@ export default function TeacherDashboard() {
                     </div>
 
                     {!isAddToExisting && (
-                      <div className="space-y-3 bg-stone-200/50 dark:bg-zinc-800/50 p-4 rounded-xl border border-stone-300/40 dark:border-zinc-700/50">
+                      <div className="space-y-3 bg-zinc-200/50 dark:bg-zinc-800/50 p-4 rounded-xl border border-zinc-300/40 dark:border-zinc-700/50">
                         <div>
                           <label className="text-xs font-bold uppercase opacity-70 mb-1 block">Tên Học Phần</label>
                           <input 
                             type="text" 
                             value={planTitle} 
                             onChange={(e) => setPlanTitle(e.target.value)} 
-                            className="w-full input-3d px-3 py-2 text-sm text-stone-900 dark:text-stone-100"
+                            className="w-full input-3d px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100"
                             placeholder="VD: Giáo án: Thế chiến thứ 2"
                           />
                         </div>
@@ -908,7 +908,7 @@ export default function TeacherDashboard() {
                                     setPlanSubject(e.target.value);
                                   }
                                 }}
-                                className="flex-1 input-3d px-3 py-2 text-sm text-stone-900 dark:text-stone-100 bg-stone-200/60 dark:bg-zinc-850"
+                                className="flex-1 input-3d px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 bg-zinc-200/60 dark:bg-zinc-850"
                               >
                                 <option value="">-- Chọn phân loại hiện có --</option>
                                 {existingSubjects.map(s => (
@@ -934,7 +934,7 @@ export default function TeacherDashboard() {
                                 type="text" 
                                 value={planSubject} 
                                 onChange={(e) => setPlanSubject(e.target.value)} 
-                                className="flex-1 input-3d px-3 py-2 text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400"
+                                className="flex-1 input-3d px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400"
                                 placeholder="Nhập danh mục mới (VD: Sinh học)"
                                 autoFocus
                               />
@@ -944,7 +944,7 @@ export default function TeacherDashboard() {
                                   setIsCreatingNewSubjectPlan(false);
                                   setPlanSubject(existingSubjects[0] || "");
                                 }}
-                                className="px-3 bg-stone-300 dark:bg-zinc-800 hover:bg-stone-400 text-stone-800 dark:text-stone-200 rounded-xl text-xs font-bold border border-stone-400/30"
+                                className="px-3 bg-zinc-300 dark:bg-zinc-800 hover:bg-zinc-400 text-zinc-800 dark:text-zinc-200 rounded-xl text-xs font-bold border border-zinc-400/30"
                               >
                                 Quay lại
                               </button>
@@ -958,7 +958,7 @@ export default function TeacherDashboard() {
                   <button 
                     onClick={handleSaveLessonPlanAsDeck}
                     disabled={isSavingPlan}
-                    className="w-full btn-3d bg-yellow-500 text-black py-3 rounded-xl disabled:opacity-50 flex items-center justify-center gap-2"
+                    className="w-full btn-3d bg-orange-500 text-black py-3 rounded-xl disabled:opacity-50 flex items-center justify-center gap-2"
                   >
                     {isSavingPlan ? (
                       <>
@@ -973,10 +973,10 @@ export default function TeacherDashboard() {
           </section>
 
           {/* BAN PHÁT NỘI CÔNG (XP & PT) CENTER */}
-          <section className="glass p-6 rounded-2xl relative overflow-hidden border border-amber-500/20 mb-6">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
-            <h3 className="text-xl font-cyber font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 flex items-center gap-2 mb-2">
-              <Sparkles className="w-5 h-5 text-amber-500 animate-pulse animate-spin-slow" />
+          <section className="glass p-6 rounded-2xl relative overflow-hidden border border-orange-500/20 mb-6">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl pointer-events-none" />
+            <h3 className="text-xl font-cyber font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 flex items-center gap-2 mb-2">
+              <Sparkles className="w-5 h-5 text-orange-500 animate-pulse animate-spin-slow" />
               Viện Nguyên Lão - Bàn Giao Cấp Độ & Tinh Hoa (XP & PT)
             </h3>
             <p className="text-xs opacity-75 mb-4 max-w-3xl leading-relaxed">
@@ -989,11 +989,11 @@ export default function TeacherDashboard() {
                 <select
                   value={rewardTargetId}
                   onChange={(e) => setRewardTargetId(e.target.value)}
-                  className="w-full bg-stone-100 dark:bg-zinc-900 border border-stone-300 dark:border-zinc-800 rounded-xl p-2.5 text-[10px] sm:text-xs font-bold"
+                  className="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 rounded-xl p-2.5 text-[10px] sm:text-xs font-bold"
                 >
                   <option value="">-- Chọn tu sĩ từ giang hồ --</option>
                   {user && (
-                    <option value={user.id} className="font-extrabold text-amber-600">
+                    <option value={user.id} className="font-extrabold text-orange-600">
                       Bản Thân (Admin - {user.name})
                     </option>
                   )}
@@ -1015,7 +1015,7 @@ export default function TeacherDashboard() {
                   placeholder="Ví dụ: +500 | -100"
                   value={rewardPoints}
                   onChange={(e) => setRewardPoints(e.target.value)}
-                  className="w-full bg-stone-100 dark:bg-zinc-900 border border-stone-300 dark:border-zinc-800 rounded-xl p-2.5 text-xs text-center font-mono font-bold"
+                  className="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 rounded-xl p-2.5 text-xs text-center font-mono font-bold"
                 />
               </div>
 
@@ -1026,7 +1026,7 @@ export default function TeacherDashboard() {
                   placeholder="Ví dụ: +1 | -2"
                   value={rewardLevels}
                   onChange={(e) => setRewardLevels(e.target.value)}
-                  className="w-full bg-stone-100 dark:bg-zinc-900 border border-stone-300 dark:border-zinc-800 rounded-xl p-2.5 text-xs text-center font-mono font-bold"
+                  className="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 rounded-xl p-2.5 text-xs text-center font-mono font-bold"
                 />
               </div>
 
@@ -1037,7 +1037,7 @@ export default function TeacherDashboard() {
                   placeholder="Ví dụ: +1 | -1"
                   value={rewardStreak}
                   onChange={(e) => setRewardStreak(e.target.value)}
-                  className="w-full bg-stone-100 dark:bg-zinc-900 border border-stone-300 dark:border-zinc-800 rounded-xl p-2.5 text-xs text-center font-mono font-bold"
+                  className="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 rounded-xl p-2.5 text-xs text-center font-mono font-bold"
                 />
               </div>
 
@@ -1048,7 +1048,7 @@ export default function TeacherDashboard() {
                   placeholder="Ví dụ: +30 | -15"
                   value={rewardStudyMinutes}
                   onChange={(e) => setRewardStudyMinutes(e.target.value)}
-                  className="w-full bg-stone-100 dark:bg-zinc-900 border border-stone-300 dark:border-zinc-800 rounded-xl p-2.5 text-xs text-center font-mono font-bold"
+                  className="w-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 rounded-xl p-2.5 text-xs text-center font-mono font-bold"
                 />
               </div>
 
@@ -1057,7 +1057,7 @@ export default function TeacherDashboard() {
                   type="button"
                   onClick={handleDispatchReward}
                   disabled={isDispatchingReward || !rewardTargetId}
-                  className="w-full bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-black font-extrabold text-sm py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 border-none cursor-pointer"
+                  className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-black font-extrabold text-sm py-3 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 border-none cursor-pointer"
                 >
                   {isDispatchingReward ? "Đang truyền công..." : "🔥 Ban Phát Sức Mạnh"}
                 </button>
@@ -1065,8 +1065,8 @@ export default function TeacherDashboard() {
             </div>
 
             {rewardMessage && (
-              <div className="mt-3 p-2.5 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-700 dark:text-amber-400 font-bold flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-amber-500 animate-spin-slow" />
+              <div className="mt-3 p-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-xs text-orange-700 dark:text-orange-400 font-bold flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-orange-500 animate-spin-slow" />
                 <span>{rewardMessage}</span>
               </div>
             )}
@@ -1085,7 +1085,7 @@ export default function TeacherDashboard() {
                   type="button"
                   onClick={handleSyncGhostUsers}
                   disabled={isSyncingGhostUsers}
-                  className="bg-stone-300/60 hover:bg-stone-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-stone-900 dark:text-stone-100 disabled:opacity-50 px-3 py-1.5 rounded-lg text-sm font-bold shadow-sm transition flex items-center gap-1.5 border-none cursor-pointer"
+                  className="bg-zinc-300/60 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 disabled:opacity-50 px-3 py-1.5 rounded-lg text-sm font-bold shadow-sm transition flex items-center gap-1.5 border-none cursor-pointer"
                   title="Dọn dẹp và đồng bộ các tài khoản đã bị xóa trên Firebase"
                 >
                   <RefreshCw className={cn("w-3.5 h-3.5", isSyncingGhostUsers && "animate-spin")} />
@@ -1118,7 +1118,7 @@ export default function TeacherDashboard() {
               <input
                 type="checkbox"
                 title="Chọn tất cả"
-                className="w-4 h-4 text-purple-600 rounded focus:ring-purple-500 bg-stone-200 border-stone-300 dark:bg-zinc-800 dark:border-zinc-700"
+                className="w-4 h-4 text-purple-600 rounded focus:ring-purple-500 bg-zinc-200 border-zinc-300 dark:bg-zinc-800 dark:border-zinc-700"
                 checked={users.length > 0 && selectedStudentIds.length === users.length}
                 onChange={(e) => {
                   if (e.target.checked) setSelectedStudentIds(users.map(u => u.id));
@@ -1136,11 +1136,11 @@ export default function TeacherDashboard() {
                   return hash % 2 === 0;
                 }).map(d => typeof d.title === 'string' ? d.title : JSON.stringify(d.title));
                 return (
-                  <div key={u.id} className="p-3 bg-stone-200/60 dark:bg-zinc-800/50 rounded-xl border border-amber-600/20 dark:border-amber-500/30 flex items-start gap-3">
+                  <div key={u.id} className="p-3 bg-zinc-200/60 dark:bg-zinc-800/50 rounded-xl border border-orange-600/20 dark:border-orange-500/30 flex items-start gap-3">
                     <input
                       type="checkbox"
                       title="Chọn học sinh"
-                      className="mt-1 w-4 h-4 text-purple-600 rounded focus:ring-purple-500 bg-stone-100 border-stone-300 dark:bg-zinc-900 dark:border-zinc-700 shrink-0 cursor-pointer"
+                      className="mt-1 w-4 h-4 text-purple-600 rounded focus:ring-purple-500 bg-zinc-100 border-zinc-300 dark:bg-zinc-900 dark:border-zinc-700 shrink-0 cursor-pointer"
                       checked={selectedStudentIds.includes(u.id)}
                       onChange={(e) => {
                         if (e.target.checked) setSelectedStudentIds(prev => [...prev, u.id]);
@@ -1151,8 +1151,8 @@ export default function TeacherDashboard() {
                       <div className="flex flex-col gap-2">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                           <div className="flex flex-wrap items-center gap-1.5 min-w-0">
-                            <span className="font-bold text-sm md:text-base break-words text-stone-900 dark:text-stone-100">{u.name}</span>
-                            <span className="text-[10px] sm:text-xs font-mono font-bold text-yellow-600 dark:text-yellow-400 shrink-0 bg-yellow-500/10 px-1.5 py-0.5 rounded">(XP: {u.points || 0})</span>
+                            <span className="font-bold text-sm md:text-base break-words text-zinc-900 dark:text-zinc-100">{u.name}</span>
+                            <span className="text-[10px] sm:text-xs font-mono font-bold text-orange-600 dark:text-orange-400 shrink-0 bg-orange-500/10 px-1.5 py-0.5 rounded">(XP: {u.points || 0})</span>
                             <span className="text-[10px] sm:text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded shrink-0">Progress: {u.averageMastery || 0}%</span>
                             <button
                               type="button"
@@ -1170,11 +1170,11 @@ export default function TeacherDashboard() {
                                 "px-2 py-0.5 rounded-full text-[10px] font-bold transition flex items-center gap-1 shrink-0 border border-transparent cursor-pointer",
                                 (u.isPro || u.isSchoolLover)
                                   ? "bg-pink-500/15 text-pink-600 dark:text-pink-400 border-pink-500/30 font-bold"
-                                  : "bg-stone-300/50 dark:bg-zinc-700/50 text-stone-500 dark:text-stone-400 hover:border-pink-500/30"
+                                  : "bg-zinc-300/50 dark:bg-zinc-700/50 text-zinc-500 dark:text-zinc-400 hover:border-pink-500/30"
                               )}
                               title={(u.isPro || u.isSchoolLover) ? "Bật Pro thành công. Click để hủy." : "Nhấp kích hoạt Pro"}
                             >
-                              <Heart className={cn("w-3 h-3", (u.isPro || u.isSchoolLover) ? "fill-pink-500 text-pink-500 animate-pulse" : "text-stone-400")} />
+                              <Heart className={cn("w-3 h-3", (u.isPro || u.isSchoolLover) ? "fill-pink-500 text-pink-500 animate-pulse" : "text-zinc-400")} />
                               <span>{u.isPro || u.isSchoolLover ? "Yêu trường (Pro)" : "Kích hoạt Pro"}</span>
                             </button>
                           </div>
@@ -1201,10 +1201,10 @@ export default function TeacherDashboard() {
           </section>
 
           <section className="glass p-6 rounded-2xl">
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-5 pb-3 border-b border-stone-200/40 dark:border-zinc-800/60">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-5 pb-3 border-b border-zinc-200/40 dark:border-zinc-800/60">
               <div className="flex flex-wrap items-center gap-3">
-                <h3 className="text-xl font-display font-black flex items-center gap-2 text-stone-900 dark:text-stone-100">
-                  <BookOpen className="w-5 h-5 text-yellow-500" /> Thư viện thẻ bài (Hệ thống & Tự tạo)
+                <h3 className="text-xl font-display font-black flex items-center gap-2 text-zinc-900 dark:text-zinc-100">
+                  <BookOpen className="w-5 h-5 text-orange-500" /> Thư viện thẻ bài (Hệ thống & Tự tạo)
                 </h3>
                 
                 <button
@@ -1213,8 +1213,8 @@ export default function TeacherDashboard() {
                   className={cn(
                     "px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer shadow-sm active:scale-95 border-none",
                     isLibraryExpanded
-                      ? "bg-amber-500 text-black hover:bg-amber-600"
-                      : "bg-amber-500/10 text-amber-500 border border-amber-500/20 hover:bg-amber-500/20 dark:text-amber-400 dark:border-amber-500/20"
+                      ? "bg-orange-500 text-black hover:bg-orange-600"
+                      : "bg-orange-500/10 text-orange-500 border border-orange-500/20 hover:bg-orange-500/20 dark:text-orange-400 dark:border-orange-500/20"
                   )}
                 >
                   {isLibraryExpanded ? (
@@ -1231,15 +1231,15 @@ export default function TeacherDashboard() {
                 </button>
 
                 {isLibraryExpanded && (
-                  <div className="flex bg-stone-100 dark:bg-zinc-900 rounded-lg p-0.5 border border-stone-250 dark:border-zinc-800/80 shrink-0">
+                  <div className="flex bg-zinc-100 dark:bg-zinc-900 rounded-lg p-0.5 border border-zinc-250 dark:border-zinc-800/80 shrink-0">
                     <button
                       type="button"
                       onClick={() => setLibraryViewMode("grid")}
                       className={cn(
                         "px-2.5 py-1 rounded text-[10px] font-black transition border-none cursor-pointer",
                         libraryViewMode === "grid"
-                          ? "bg-white dark:bg-zinc-800 text-yellow-600 dark:text-yellow-400 shadow-sm"
-                          : "text-stone-500 hover:text-stone-700"
+                          ? "bg-white dark:bg-zinc-800 text-orange-600 dark:text-orange-400 shadow-sm"
+                          : "text-zinc-500 hover:text-zinc-700"
                       )}
                     >
                       🎴 DẠNG CARD
@@ -1250,8 +1250,8 @@ export default function TeacherDashboard() {
                       className={cn(
                         "px-2.5 py-1 rounded text-[10px] font-black transition border-none cursor-pointer",
                         libraryViewMode === "markdown"
-                          ? "bg-white dark:bg-zinc-800 text-yellow-600 dark:text-yellow-400 shadow-sm"
-                          : "text-stone-500 hover:text-stone-700"
+                          ? "bg-white dark:bg-zinc-800 text-orange-600 dark:text-orange-400 shadow-sm"
+                          : "text-zinc-500 hover:text-zinc-700"
                       )}
                     >
                       📝 DẠNG MARKDOWN
@@ -1282,7 +1282,7 @@ export default function TeacherDashboard() {
                     </button>
                   </div>
                 )}
-                <Link to="/admin/create-cards" className="bg-yellow-500 text-black px-4 py-2 rounded-xl text-xs font-black shadow hover:bg-yellow-600 transition flex items-center gap-1.5 shrink-0 ml-auto lg:ml-0">
+                <Link to="/admin/create-cards" className="bg-orange-500 text-black px-4 py-2 rounded-xl text-xs font-black shadow hover:bg-orange-600 transition flex items-center gap-1.5 shrink-0 ml-auto lg:ml-0">
                   <Plus className="w-4 h-4 text-black stroke-[3]" /> Tạo học phần mới
                 </Link>
               </div>
@@ -1294,7 +1294,7 @@ export default function TeacherDashboard() {
                   <input
                     type="checkbox"
                     title="Chọn tất cả"
-                    className="w-4 h-4 text-purple-600 rounded focus:ring-purple-500 bg-stone-200 border-stone-300 dark:bg-zinc-800 dark:border-zinc-700 cursor-pointer"
+                    className="w-4 h-4 text-purple-600 rounded focus:ring-purple-500 bg-zinc-200 border-zinc-300 dark:bg-zinc-800 dark:border-zinc-700 cursor-pointer"
                     checked={decks.length > 0 && selectedDeckIds.length === decks.length}
                     onChange={(e) => {
                       if (e.target.checked) setSelectedDeckIds(decks.map(d => d.id));
@@ -1307,10 +1307,10 @@ export default function TeacherDashboard() {
                 {libraryViewMode === "markdown" ? (
                   /* Expanded Nested Markdown List representation inside Admin Dashboard */
                   <div className="space-y-4 animate-in fade-in duration-200">
-                    <div className="flex justify-between items-center bg-stone-100 dark:bg-zinc-900/60 p-2.5 rounded-xl">
+                    <div className="flex justify-between items-center bg-zinc-100 dark:bg-zinc-900/60 p-2.5 rounded-xl">
                       <div className="text-left">
                         <span className="text-[10px] font-black uppercase tracking-wide opacity-75 block">Cấu Trúc Thư Viện Đa Markdown Lồng Nhau</span>
-                        <span className="text-[9px] text-stone-500">Mỗi chuyên mục tương ứng với một mảng mỏng Markdown khép kín</span>
+                        <span className="text-[9px] text-zinc-500">Mỗi chuyên mục tương ứng với một mảng mỏng Markdown khép kín</span>
                       </div>
                       <button
                         type="button"
@@ -1318,14 +1318,14 @@ export default function TeacherDashboard() {
                           navigator.clipboard.writeText(generatedMarkdown);
                           alert("Đã sao chép cấu trúc Markdown lồng nhau của toàn bộ Thư viện!");
                         }}
-                        className="px-2.5 py-1.5 bg-yellow-500 text-black rounded-lg text-[10px] font-black uppercase transition hover:bg-yellow-600 flex items-center gap-1 border-none cursor-pointer"
+                        className="px-2.5 py-1.5 bg-orange-500 text-black rounded-lg text-[10px] font-black uppercase transition hover:bg-orange-600 flex items-center gap-1 border-none cursor-pointer"
                       >
                          <Check className="w-3 h-3" /> Sao chép Toàn bộ Markdown
                       </button>
                     </div>
                     
                     {/* Mục lớn là 1 Markdown */}
-                    <div className="p-4 bg-stone-50 dark:bg-zinc-900/40 rounded-xl border border-stone-200 dark:border-zinc-800/80">
+                    <div className="p-4 bg-zinc-50 dark:bg-zinc-900/40 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
                       <div className="markdown-body dark:prose-invert">
                         <ReactMarkdown>
                           {`# THƯ VIỆN HỌC PHẦN COSTUDY HENOSIS\n\n*Tổng số học phần hiện tại trong hệ thống: **${decks.length}** bộ thẻ học.*`}
@@ -1359,16 +1359,16 @@ export default function TeacherDashboard() {
                         }).join("\n");
 
                         return (
-                          <div key={subject} className="glass p-5 rounded-2xl border border-stone-200 dark:border-zinc-800/80 space-y-3 relative">
+                          <div key={subject} className="glass p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 space-y-3 relative">
                             <div 
-                              className="flex items-center justify-between border-b border-amber-600/20 dark:border-amber-500/30 pb-2 pt-2 px-1 gap-2 sticky top-0 z-10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md shadow-sm cursor-pointer"
+                              className="flex items-center justify-between border-b border-orange-600/20 dark:border-orange-500/30 pb-2 pt-2 px-1 gap-2 sticky top-0 z-10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md shadow-sm cursor-pointer"
                               onClick={() => toggleCategory(subject)}
                             >
                               <div className="flex items-center gap-2">
                                 <input
                                   type="checkbox"
                                   title="Chọn mọi bộ thẻ trong chuyên mục"
-                                  className="w-4 h-4 text-purple-650 rounded bg-stone-100 border-stone-300 dark:bg-zinc-900 cursor-pointer"
+                                  className="w-4 h-4 text-purple-650 rounded bg-zinc-100 border-zinc-300 dark:bg-zinc-900 cursor-pointer"
                                   checked={subjectDecks.every(d => selectedDeckIds.includes(d.id))}
                                   onChange={(e) => {
                                     const deckIds = subjectDecks.map(d => d.id);
@@ -1386,7 +1386,7 @@ export default function TeacherDashboard() {
                                       type="text"
                                       value={newCategoryName}
                                       onChange={(e) => setNewCategoryName(e.target.value)}
-                                      className="bg-white dark:bg-zinc-900 text-stone-900 dark:text-stone-100 border border-yellow-500 rounded-lg px-2.5 py-1 text-xs font-bold outline-none flex-1"
+                                      className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border border-orange-500 rounded-lg px-2.5 py-1 text-xs font-bold outline-none flex-1"
                                       placeholder="Tên category mới..."
                                       autoFocus
                                       onKeyDown={(e) => {
@@ -1405,7 +1405,7 @@ export default function TeacherDashboard() {
                                     <button
                                       type="button"
                                       onClick={() => setEditingCategory(null)}
-                                      className="p-1 px-2 bg-stone-200 dark:bg-zinc-800 text-stone-700 dark:text-stone-300 rounded-lg text-xs transition border-none cursor-pointer"
+                                      className="p-1 px-2 bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-lg text-xs transition border-none cursor-pointer"
                                     >
                                       Hủy
                                     </button>
@@ -1413,7 +1413,7 @@ export default function TeacherDashboard() {
                                 ) : (
                                   <div className="flex items-center gap-2">
                                     <span className="transform transition-transform opacity-70 text-xs" style={{transform: expandedCategories[subject] ? 'rotate(0deg)' : 'rotate(-90deg)'}}>▼</span>
-                                    <h4 className="text-xs font-black uppercase tracking-widest text-amber-600 dark:text-amber-500 flex items-center gap-1.5">
+                                    <h4 className="text-xs font-black uppercase tracking-widest text-orange-600 dark:text-orange-500 flex items-center gap-1.5">
                                       📂 {subject} <span className="opacity-60 text-[10px] font-bold font-mono">({subjectDecks.length} bộ)</span>
                                     </h4>
                                   </div>
@@ -1427,7 +1427,7 @@ export default function TeacherDashboard() {
                                     setNewCategoryName(subject);
                                     setEditingCategory(subject);
                                   }}
-                                  className="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-stone-100 dark:bg-zinc-855 text-stone-500 hover:text-yellow-600 dark:hover:text-yellow-450 border border-stone-200 dark:border-zinc-700 transition"
+                                  className="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-zinc-100 dark:bg-zinc-855 text-zinc-500 hover:text-orange-600 dark:hover:text-orange-450 border border-zinc-200 dark:border-zinc-700 transition"
                                   title="Đổi tên chuyên mục này"
                                 >
                                   ✍️ ĐỔI TÊN
@@ -1436,7 +1436,7 @@ export default function TeacherDashboard() {
                             </div>
 
                             {expandedCategories[subject] && (
-                              <div className="pl-6 text-xs text-stone-850 dark:text-stone-350 leading-relaxed font-sans mt-3">
+                              <div className="pl-6 text-xs text-zinc-850 dark:text-zinc-350 leading-relaxed font-sans mt-3">
                                 <div className="markdown-body dark:prose-invert">
                                   <ReactMarkdown>{categoryMarkdownList}</ReactMarkdown>
                                 </div>
@@ -1461,7 +1461,7 @@ export default function TeacherDashboard() {
                     ) as [string, Deck[]][]).map(([subject, subjectDecks]) => (
                       <div key={subject} className="space-y-3 relative">
                         <div 
-                           className="flex items-center justify-between border-b border-amber-600/20 dark:border-amber-500/30 pb-2 pt-2 px-1 gap-2 sticky top-0 z-10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md shadow-[0_4px_10px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_10px_-4px_rgba(0,0,0,0.3)] cursor-pointer"
+                           className="flex items-center justify-between border-b border-orange-600/20 dark:border-orange-500/30 pb-2 pt-2 px-1 gap-2 sticky top-0 z-10 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md shadow-[0_4px_10px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_10px_-4px_rgba(0,0,0,0.3)] cursor-pointer"
                            onClick={() => toggleCategory(subject)}
                         >
                           {editingCategory === subject ? (
@@ -1470,7 +1470,7 @@ export default function TeacherDashboard() {
                                 type="text"
                                 value={newCategoryName}
                                 onChange={(e) => setNewCategoryName(e.target.value)}
-                                className="bg-white dark:bg-zinc-900 text-stone-900 dark:text-stone-100 border border-yellow-500 rounded-lg px-2.5 py-1 text-xs font-bold outline-none flex-1"
+                                className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border border-orange-500 rounded-lg px-2.5 py-1 text-xs font-bold outline-none flex-1"
                                 placeholder="Tên category mới..."
                                 autoFocus
                                 onKeyDown={(e) => {
@@ -1489,7 +1489,7 @@ export default function TeacherDashboard() {
                               <button
                                 type="button"
                                 onClick={() => setEditingCategory(null)}
-                                className="p-1 px-2 bg-stone-200 dark:bg-zinc-800 text-stone-700 dark:text-stone-300 rounded-lg text-xs transition border-none cursor-pointer"
+                                className="p-1 px-2 bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-lg text-xs transition border-none cursor-pointer"
                               >
                                 Hủy
                               </button>
@@ -1498,7 +1498,7 @@ export default function TeacherDashboard() {
                             <>
                               <div className="flex items-center gap-2">
                                 <span className="transform transition-transform opacity-70 text-xs" style={{transform: expandedCategories[subject] ? 'rotate(0deg)' : 'rotate(-90deg)'}}>▼</span>
-                                <h4 className="text-xs font-black uppercase tracking-widest text-amber-600 dark:text-amber-500 flex items-center gap-1.5">
+                                <h4 className="text-xs font-black uppercase tracking-widest text-orange-600 dark:text-orange-500 flex items-center gap-1.5">
                                   📂 {subject} <span className="opacity-60 text-[10px] font-bold font-mono">({subjectDecks.length} bộ)</span>
                                 </h4>
                               </div>
@@ -1515,7 +1515,7 @@ export default function TeacherDashboard() {
                                       setSelectedDeckIds(prev => Array.from(new Set([...prev, ...deckIds])));
                                     }
                                   }}
-                                  className={`px-2 py-0.5 rounded text-[9px] font-black uppercase transition border border-stone-200 dark:border-zinc-700 cursor-pointer ${
+                                  className={`px-2 py-0.5 rounded text-[9px] font-black uppercase transition border border-zinc-200 dark:border-zinc-700 cursor-pointer ${
                                     subjectDecks.every(d => selectedDeckIds.includes(d.id))
                                       ? "bg-purple-600 text-white hover:bg-purple-700"
                                       : "bg-purple-100 hover:bg-purple-200 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 dark:hover:bg-purple-900/60"
@@ -1530,7 +1530,7 @@ export default function TeacherDashboard() {
                                     setNewCategoryName(subject);
                                     setEditingCategory(subject);
                                   }}
-                                  className="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-stone-100 dark:bg-zinc-800 text-stone-500 hover:text-yellow-600 dark:hover:text-yellow-450 border border-stone-200 dark:border-zinc-700 transition"
+                                  className="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-zinc-100 dark:bg-zinc-800 text-zinc-500 hover:text-orange-600 dark:hover:text-orange-450 border border-zinc-200 dark:border-zinc-700 transition"
                                   title="Đổi tên chuyên mục này"
                                 >
                                   ✍️ ĐỔI TÊN
@@ -1541,12 +1541,12 @@ export default function TeacherDashboard() {
                         </div>
                         
                         {expandedCategories[subject] && subjectDecks.map(deck => (
-                          <div key={deck.id} className="flex flex-col sm:flex-row justify-between sm:items-center p-3 gap-3 bg-stone-100 dark:bg-zinc-900/60 rounded-xl border border-stone-200/60 dark:border-zinc-800/50 hover:bg-stone-150/40 dark:hover:bg-zinc-850/30 transition-colors">
+                          <div key={deck.id} className="flex flex-col sm:flex-row justify-between sm:items-center p-3 gap-3 bg-zinc-100 dark:bg-zinc-900/60 rounded-xl border border-zinc-200/60 dark:border-zinc-800/50 hover:bg-zinc-150/40 dark:hover:bg-zinc-850/30 transition-colors">
                             <div className="flex items-start gap-3 flex-1 min-w-[150px]">
                               <input
                                 type="checkbox"
                                 title="Chọn học phần"
-                                className="mt-1 w-4 h-4 text-purple-600 rounded focus:ring-purple-500 bg-stone-100 border-stone-300 dark:bg-zinc-900 dark:border-zinc-700 shrink-0 cursor-pointer"
+                                className="mt-1 w-4 h-4 text-purple-600 rounded focus:ring-purple-500 bg-zinc-100 border-zinc-300 dark:bg-zinc-900 dark:border-zinc-700 shrink-0 cursor-pointer"
                                 checked={selectedDeckIds.includes(deck.id)}
                                 onChange={(e) => {
                                   if (e.target.checked) setSelectedDeckIds(prev => [...prev, deck.id]);
@@ -1555,10 +1555,10 @@ export default function TeacherDashboard() {
                                 onClick={(e) => e.stopPropagation()}
                               />
                               <div className="min-w-0 flex-1">
-                                <p className="font-bold truncate text-xs text-stone-850 dark:text-stone-100">{typeof deck.title === 'string' ? deck.title : JSON.stringify(deck.title)}</p>
+                                <p className="font-bold truncate text-xs text-zinc-850 dark:text-zinc-100">{typeof deck.title === 'string' ? deck.title : JSON.stringify(deck.title)}</p>
                                 <p className="text-[10px] opacity-65 flex flex-wrap items-center gap-1.5 mt-1 font-medium">
                                   <span>Số thẻ: {deck.cards?.length || 0}</span>
-                                  <span className="inline-block px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                                  <span className="inline-block px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20">
                                     {(() => {
                                       const systemDecks = ["deck_1", "deck_phil_2", "deck_math_1", "deck_math_2", "deck_physics_1", "deck_physics_2", "daily-quest", "remind-later-deck"];
                                       if (systemDecks.includes(deck.id) || !deck.createdBy || deck.createdBy === "system") {
@@ -1576,8 +1576,8 @@ export default function TeacherDashboard() {
                                 </p>
                               </div>
                             </div>
-                            <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-0 border-stone-200 dark:border-zinc-800 w-full sm:w-auto">
-                              <Link to={`/study/${deck.id}`} className="flex-1 sm:flex-none text-center bg-yellow-500 text-black px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:bg-yellow-600 transition shrink-0 whitespace-nowrap">
+                            <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-0 border-zinc-200 dark:border-zinc-800 w-full sm:w-auto">
+                              <Link to={`/study/${deck.id}`} className="flex-1 sm:flex-none text-center bg-orange-500 text-black px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:bg-orange-600 transition shrink-0 whitespace-nowrap">
                                 Xem / Sửa
                               </Link>
                               {(user?.role === "teacher" || user?.role === "admin" || user?.role === "Admin") && (
@@ -1599,8 +1599,8 @@ export default function TeacherDashboard() {
                 )}
               </div>
             ) : (
-              <div className="py-6 text-center border border-dashed border-stone-200/50 dark:border-zinc-800/40 rounded-xl bg-stone-200/5 dark:bg-zinc-800/5">
-                <p className="text-xs text-stone-500 dark:text-zinc-400 font-medium">🐾 Danh sách các bộ thẻ đang đóng. Hãy nhấn <strong className="text-amber-500">📂 Hiện thư viện</strong> để bung xem chi tiết mà không lo tràn trang!</p>
+              <div className="py-6 text-center border border-dashed border-zinc-200/50 dark:border-zinc-800/40 rounded-xl bg-zinc-200/5 dark:bg-zinc-800/5">
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">🐾 Danh sách các bộ thẻ đang đóng. Hãy nhấn <strong className="text-orange-500">📂 Hiện thư viện</strong> để bung xem chi tiết mà không lo tràn trang!</p>
               </div>
             )}</section></div><div className="space-y-8"><section className="glass p-6 rounded-2xl flex flex-col"><h3 className="text-xl font-display font-bold flex items-center gap-2 mb-2"><AlertCircle className="w-5 h-5 text-red-500" /> AI Weakness Detection</h3><p className="text-sm opacity-70 mb-6">Aggregate top forgotten concepts (cards marked as "X" or with lowest SM-2 scores).</p><div className="space-y-4 flex-1">
              {topWeakest.length > 0 ? topWeakest.map((wc, i) => (
@@ -1608,12 +1608,12 @@ export default function TeacherDashboard() {
                   <div className="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">Rank #{i+1}</div>
                   <div className="mb-2 pe-12">
                      <span className="font-bold text-lg text-red-700 dark:text-red-400">{typeof wc.front === 'string' ? wc.front : JSON.stringify(wc.front)}</span>
-                     <span className="ml-2 text-xs opacity-60 bg-stone-300/60 dark:bg-zinc-800/80 px-2 py-1 rounded-full uppercase tracking-wider">{typeof wc.subject === 'string' ? wc.subject : JSON.stringify(wc.subject)}</span>
+                     <span className="ml-2 text-xs opacity-60 bg-zinc-300/60 dark:bg-zinc-800/80 px-2 py-1 rounded-full uppercase tracking-wider">{typeof wc.subject === 'string' ? wc.subject : JSON.stringify(wc.subject)}</span>
                   </div>
                   <p className="text-sm opacity-90 line-clamp-2">{typeof wc.back === 'string' ? wc.back : JSON.stringify(wc.back)}</p>
                 </div>
              )) : (
-                <div className="flex flex-col items-center justify-center p-8 opacity-50 h-full border-2 border-dashed border-amber-600/20 dark:border-amber-500/30 rounded-xl">
+                <div className="flex flex-col items-center justify-center p-8 opacity-50 h-full border-2 border-dashed border-orange-600/20 dark:border-orange-500/30 rounded-xl">
                    <Target className="w-12 h-12 mb-2 opacity-50" />
                    <p className="font-bold">Hệ thống chưa phát hiện hổng kiến thức nghiêm trọng.</p>
                 </div>
@@ -1623,14 +1623,14 @@ export default function TeacherDashboard() {
         <GlobalActivityFeed />
 
       {user && (user.role === "teacher" || user.role === "admin" || user.role === "Admin") && (
-        <div id="monitor" className="pt-8 mt-8 border-t border-stone-200 dark:border-zinc-800/80 space-y-4">
-           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-4 rounded-2xl">
+        <div id="monitor" className="pt-8 mt-8 border-t border-zinc-200 dark:border-zinc-800/80 space-y-4">
+           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 rounded-2xl">
               <div>
-                 <h3 className="text-sm font-extrabold text-stone-800 dark:text-stone-100 flex items-center gap-2">
+                 <h3 className="text-sm font-extrabold text-zinc-800 dark:text-zinc-100 flex items-center gap-2">
                     <Activity className="w-4 h-4 text-emerald-500 animate-pulse" />
                     Cổng Giám Sát API Sức Khỏe Thực (Real-time Key Telemetry)
                  </h3>
-                 <p className="text-xs text-stone-500 mt-1">
+                 <p className="text-xs text-zinc-500 mt-1">
                     Hiển thị chi tiết trạng thái hoạt động, tỷ lệ xoay vòng và hệ số tải của từng cụm provider.
                  </p>
               </div>
@@ -1638,7 +1638,7 @@ export default function TeacherDashboard() {
                  Status: Live Monitor
               </div>
            </div>
-           <div className="rounded-2xl border border-stone-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/20 p-4 md:p-6 shadow-sm">
+           <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/20 p-4 md:p-6 shadow-sm">
               <ServiceMonitor adminKey={adminKey || localStorage.getItem("henosis_admin_key") || ""} />
            </div>
         </div>
@@ -1660,7 +1660,7 @@ export default function TeacherDashboard() {
               <button 
                 onClick={() => setShowConfirmDelete(null)}
                 disabled={isDeletingSet}
-                className="px-4 py-2 rounded-lg bg-stone-200 dark:bg-zinc-850 hover:bg-stone-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
+                className="px-4 py-2 rounded-lg bg-zinc-200 dark:bg-zinc-850 hover:bg-zinc-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
               >
                 Hủy bỏ
               </button>
@@ -1710,7 +1710,7 @@ export default function TeacherDashboard() {
                     "p-3 rounded-xl border text-xs font-bold transition flex flex-col gap-1 items-center text-center",
                     deleteMode === "hard"
                       ? "bg-red-500/10 border-red-500 text-red-600 dark:text-red-400"
-                      : "border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-850"
+                      : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850"
                   )}
                 >
                   <span>Xóa cứng (Hard)</span>
@@ -1722,8 +1722,8 @@ export default function TeacherDashboard() {
                   className={cn(
                     "p-3 rounded-xl border text-xs font-bold transition flex flex-col gap-1 items-center text-center",
                     deleteMode === "soft"
-                      ? "bg-amber-500/10 border-amber-500 text-amber-600 dark:text-amber-400"
-                      : "border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-850"
+                      ? "bg-orange-500/10 border-orange-500 text-orange-600 dark:text-orange-400"
+                      : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850"
                   )}
                 >
                   <span>Xóa mềm (Soft)</span>
@@ -1736,7 +1736,7 @@ export default function TeacherDashboard() {
               <button 
                 onClick={() => setStudentToDelete(null)}
                 disabled={isDeletingStudent}
-                className="px-4 py-2 rounded-lg bg-stone-200 dark:bg-zinc-850 hover:bg-stone-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
+                className="px-4 py-2 rounded-lg bg-zinc-200 dark:bg-zinc-850 hover:bg-zinc-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
               >
                 Hủy bỏ
               </button>
@@ -1745,7 +1745,7 @@ export default function TeacherDashboard() {
                 disabled={isDeletingStudent}
                 className={cn(
                   "px-4 py-2 rounded-lg text-white transition text-sm font-bold flex items-center gap-1.5",
-                  deleteMode === "hard" ? "bg-red-600 hover:bg-red-700" : "bg-amber-600 hover:bg-amber-700"
+                  deleteMode === "hard" ? "bg-red-600 hover:bg-red-700" : "bg-orange-600 hover:bg-orange-700"
                 )}
               >
                 {isDeletingStudent ? "Đang xử lý..." : "Xác nhận thực hiện"}
@@ -1775,7 +1775,7 @@ export default function TeacherDashboard() {
                     "p-3 rounded-xl border text-xs font-bold transition flex flex-col gap-1 items-center text-center",
                     showBulkConfirmDeleteStudents === "hard"
                       ? "bg-red-500/10 border-red-500 text-red-600 dark:text-red-400"
-                      : "border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-850"
+                      : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850"
                   )}
                 >
                   <span>Xóa cứng (Hard)</span>
@@ -1787,8 +1787,8 @@ export default function TeacherDashboard() {
                   className={cn(
                     "p-3 rounded-xl border text-xs font-bold transition flex flex-col gap-1 items-center text-center",
                     showBulkConfirmDeleteStudents === "soft"
-                      ? "bg-amber-500/10 border-amber-500 text-amber-600 dark:text-amber-400"
-                      : "border-stone-200 dark:border-zinc-800 hover:bg-stone-50 dark:hover:bg-zinc-850"
+                      ? "bg-orange-500/10 border-orange-500 text-orange-600 dark:text-orange-400"
+                      : "border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-850"
                   )}
                 >
                   <span>Xóa mềm (Soft)</span>
@@ -1801,7 +1801,7 @@ export default function TeacherDashboard() {
               <button 
                 onClick={() => setShowBulkConfirmDeleteStudents(null)}
                 disabled={isBulkDeletingStudents}
-                className="px-4 py-2 rounded-lg bg-stone-200 dark:bg-zinc-850 hover:bg-stone-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
+                className="px-4 py-2 rounded-lg bg-zinc-200 dark:bg-zinc-850 hover:bg-zinc-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
               >
                 Hủy bỏ
               </button>
@@ -1835,7 +1835,7 @@ export default function TeacherDashboard() {
                 disabled={isBulkDeletingStudents}
                 className={cn(
                   "px-4 py-2 rounded-lg text-white transition text-sm font-bold flex items-center gap-1.5",
-                  showBulkConfirmDeleteStudents === "hard" ? "bg-red-600 hover:bg-red-700" : "bg-amber-600 hover:bg-amber-700"
+                  showBulkConfirmDeleteStudents === "hard" ? "bg-red-600 hover:bg-red-700" : "bg-orange-600 hover:bg-orange-700"
                 )}
               >
                 {isBulkDeletingStudents ? "Đang xử lý..." : "Xác nhận thực hiện"}
@@ -1858,7 +1858,7 @@ export default function TeacherDashboard() {
               <button 
                 onClick={() => setShowBulkConfirmDeleteDecks(false)}
                 disabled={isBulkDeletingDecks}
-                className="px-4 py-2 rounded-lg bg-stone-200 dark:bg-zinc-850 hover:bg-stone-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
+                className="px-4 py-2 rounded-lg bg-zinc-200 dark:bg-zinc-850 hover:bg-zinc-300 dark:hover:bg-zinc-800 transition text-sm font-bold text-black dark:text-white"
               >
                 Hủy bỏ
               </button>
@@ -1893,7 +1893,7 @@ export default function TeacherDashboard() {
 
       {showMoveBulkModal && (
         <div className="modal-glass-overlay flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
-          <div className="modal-glass-content p-6 max-w-md w-full border border-yellow-500/30">
+          <div className="modal-glass-content p-6 max-w-md w-full border border-orange-500/30">
             <h4 className="text-lg font-black text-indigo-600 dark:text-indigo-400 flex items-center gap-2 mb-3">
               <FolderOpen className="w-5 h-5" /> Di dời {selectedDeckIds.length} bộ thẻ
             </h4>
@@ -1910,7 +1910,7 @@ export default function TeacherDashboard() {
                     setIsNewCategoryInput(!isNewCategoryInput);
                     setTargetMoveCategory("");
                   }}
-                  className="text-[10px] font-black uppercase text-yellow-600 dark:text-yellow-450 hover:underline border-none bg-none cursor-pointer"
+                  className="text-[10px] font-black uppercase text-orange-600 dark:text-orange-450 hover:underline border-none bg-none cursor-pointer"
                 >
                   {isNewCategoryInput ? "Chọn chuyên mục có sẵn" : "✍️ Nhập chuyên mục mới"}
                 </button>
@@ -1922,14 +1922,14 @@ export default function TeacherDashboard() {
                   placeholder="Điền tên chuyên mục mới..."
                   value={targetMoveCategory}
                   onChange={(e) => setTargetMoveCategory(e.target.value)}
-                  className="w-full bg-stone-50 dark:bg-zinc-900 border border-stone-250 dark:border-zinc-800 rounded-xl p-3 text-xs font-bold outline-none text-stone-900 dark:text-stone-100"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-250 dark:border-zinc-800 rounded-xl p-3 text-xs font-bold outline-none text-zinc-900 dark:text-zinc-100"
                   autoFocus
                 />
               ) : (
                 <select
                   value={targetMoveCategory}
                   onChange={(e) => setTargetMoveCategory(e.target.value)}
-                  className="w-full bg-stone-50 dark:bg-zinc-900 border border-stone-250 dark:border-zinc-800 rounded-xl p-3 text-xs font-bold outline-none text-stone-900 dark:text-stone-100"
+                  className="w-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-250 dark:border-zinc-800 rounded-xl p-3 text-xs font-bold outline-none text-zinc-900 dark:text-zinc-100"
                 >
                   <option value="">-- Chọn một chuyên mục --</option>
                   {existingSubjects.map((subj) => (
@@ -1946,7 +1946,7 @@ export default function TeacherDashboard() {
                 type="button"
                 onClick={() => setShowMoveBulkModal(false)}
                 disabled={isMovingBulk}
-                className="px-4 py-2 rounded-xl bg-stone-150 hover:bg-stone-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-xs font-bold transition text-stone-700 dark:text-stone-200 border-none cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-zinc-150 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-xs font-bold transition text-zinc-700 dark:text-zinc-200 border-none cursor-pointer"
               >
                 Hủy bỏ
               </button>

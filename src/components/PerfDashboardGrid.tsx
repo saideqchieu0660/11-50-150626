@@ -33,7 +33,7 @@ const FastMetricCard: React.FC<MetricCardProps> = ({
         transition: { duration: 0.2, ease: 'easeOut' },
       }}
       // Hardware acceleration triggers
-      className="relative overflow-hidden p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-stone-200/80 dark:border-zinc-800/80 hover:border-amber-500/50 dark:hover:border-amber-400/50 shadow-md hover:shadow-xl transition-colors duration-300 transform-gpu will-change-transform-opacity cursor-pointer group"
+      className="relative overflow-hidden p-6 rounded-2xl bg-white dark:bg-zinc-900/90 border border-zinc-200/80 dark:border-zinc-800/80 hover:border-orange-500/50 dark:hover:border-orange-400/50 shadow-md hover:shadow-xl transition-colors duration-300 transform-gpu will-change-transform-opacity cursor-pointer group"
       id={`perf-card-${delayIndex}`}
     >
       {/* Dynamic hardware-accelerated CSS gradient overlay to replace heavy real-time lights */}
@@ -45,8 +45,8 @@ const FastMetricCard: React.FC<MetricCardProps> = ({
       />
       
       <div className="flex items-center justify-between mb-4 relative z-10">
-        <div className="p-3 rounded-xl bg-stone-100 dark:bg-zinc-800 transform-gpu group-hover:scale-105 transition-transform duration-300">
-          <Icon className="w-6 h-6 text-stone-800 dark:text-stone-200" />
+        <div className="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800 transform-gpu group-hover:scale-105 transition-transform duration-300">
+          <Icon className="w-6 h-6 text-zinc-800 dark:text-zinc-200" />
         </div>
         <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 px-2 py-1 bg-emerald-500/10 rounded-full">
           {change}
@@ -54,10 +54,10 @@ const FastMetricCard: React.FC<MetricCardProps> = ({
       </div>
 
       <div className="relative z-10 space-y-1">
-        <h3 className="text-sm font-medium tracking-tight text-stone-500 dark:text-stone-400">
+        <h3 className="text-sm font-medium tracking-tight text-zinc-500 dark:text-zinc-400">
           {title}
         </h3>
-        <p className="text-2xl font-display font-black text-stone-900 dark:text-stone-50 tracking-tight">
+        <p className="text-2xl font-display font-black text-zinc-900 dark:text-zinc-50 tracking-tight">
           {value}
         </p>
       </div>
@@ -109,12 +109,12 @@ export default function PerfDashboardGrid() {
     <div className="w-full py-8 space-y-6">
       <div className="flex flex-col space-y-2">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-amber-500 animate-pulse" />
-          <h2 className="text-lg font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-600 dark:from-amber-200 dark:via-yellow-400 dark:to-amber-500 uppercase tracking-widest">
+          <Sparkles className="w-5 h-5 text-orange-500 animate-pulse" />
+          <h2 className="text-lg font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-700 via-orange-500 to-orange-600 dark:from-orange-200 dark:via-orange-400 dark:to-orange-500 uppercase tracking-widest">
             Bảng Điều Khiển Năng Suất
           </h2>
         </div>
-        <p className="text-xs text-stone-500 dark:text-stone-400 font-mono">
+        <p className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
           GPU-Accelerated Core // 60FPS Refresh Rate Lock
         </p>
       </div>

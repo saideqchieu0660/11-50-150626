@@ -28,7 +28,7 @@ const FlashcardRow = React.memo(function FlashcardRow({
 }: FlashcardRowProps) {
   return (
     <div 
-      className="p-2 bg-stone-100/60 dark:bg-zinc-800/40 rounded-lg border border-stone-200/40 dark:border-zinc-700/20 flex justify-between items-center gap-3 hover:border-amber-500/20 transition-colors h-[52px]"
+      className="p-2 bg-zinc-100/60 dark:bg-zinc-800/40 rounded-lg border border-zinc-200/40 dark:border-zinc-700/20 flex justify-between items-center gap-3 hover:border-orange-500/20 transition-colors h-[52px]"
       style={{ contentVisibility: 'auto', containIntrinsicSize: '0 52px' }}
     >
       <div className="flex-1 min-w-0">
@@ -37,12 +37,12 @@ const FlashcardRow = React.memo(function FlashcardRow({
             #{index + 1}
           </span>
           {card.wordForm && (
-            <span className="text-[9px] bg-stone-250 dark:bg-zinc-700 px-1 py-0.2 rounded text-stone-600 dark:text-zinc-400">
+            <span className="text-[9px] bg-zinc-250 dark:bg-zinc-700 px-1 py-0.2 rounded text-zinc-600 dark:text-zinc-400">
               {card.wordForm}
             </span>
           )}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 text-xs text-stone-700 dark:text-stone-300">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 text-xs text-zinc-700 dark:text-zinc-300">
           <p className="truncate"><span className="font-semibold opacity-50 mr-1 text-[10px]">F:</span>{card.front}</p>
           <p className="truncate opacity-80"><span className="font-semibold opacity-50 mr-1 text-[10px]">B:</span>{card.back}</p>
         </div>
@@ -51,14 +51,14 @@ const FlashcardRow = React.memo(function FlashcardRow({
       <div className="flex gap-0.5 shrink-0">
         <button
           onClick={() => onPlay(card)}
-          className="p-1 rounded hover:bg-stone-200 dark:hover:bg-zinc-750 opacity-70 hover:opacity-100 transition-opacity"
+          className="p-1 rounded hover:bg-zinc-200 dark:hover:bg-zinc-750 opacity-70 hover:opacity-100 transition-opacity"
           title="Học thẻ này"
         >
           <Play className="w-3.5 h-3.5 text-green-500" />
         </button>
         <button
           onClick={() => onEdit(card)}
-          className="p-1 rounded hover:bg-stone-200 dark:hover:bg-zinc-750 opacity-70 hover:opacity-100 transition-opacity"
+          className="p-1 rounded hover:bg-zinc-200 dark:hover:bg-zinc-750 opacity-70 hover:opacity-100 transition-opacity"
           title="Chỉnh sửa nhanh"
         >
           <Edit3 className="w-3.5 h-3.5 text-blue-500" />

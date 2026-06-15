@@ -26,6 +26,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     const savedEco = localStorage.getItem('isEcoMode') === 'true';
     setIsEcoMode(savedEco);
+    if (savedEco) {
+      document.documentElement.classList.add('eco-mode');
+    } else {
+      document.documentElement.classList.remove('eco-mode');
+    }
   }, []);
 
   const toggleEcoMode = () => {
@@ -72,18 +77,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     });
 
     transition.ready.then(() => {
-      const clipPath = [
-        `circle(0px at ${x}px ${y}px)`,
-        `circle(${endRadius}px at ${x}px ${y}px)`,
-      ];
-      
       document.documentElement.animate(
         {
-          clipPath: clipPath,
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ]
         },
         {
-          duration: 500,
-          easing: "ease-in-out",
+          duration: 400,
+          easing: "cubic-bezier(0.4, 0.0, 0.2, 1)",
           pseudoElement: "::view-transition-new(root)",
         }
       );

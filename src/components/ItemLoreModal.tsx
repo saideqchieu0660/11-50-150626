@@ -155,23 +155,23 @@ export function ItemLoreModal({ itemKey, onClose }: { itemKey: string, onClose: 
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
-      <div className="bg-stone-50 dark:bg-zinc-900 border border-amber-500/20 max-w-xl w-full rounded-2xl shadow-2xl overflow-hidden relative">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600"></div>
+      <div className="bg-zinc-50 dark:bg-zinc-900 border border-orange-500/20 max-w-xl w-full rounded-2xl shadow-2xl overflow-hidden relative">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600"></div>
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 bg-stone-200/50 dark:bg-zinc-800/50 hover:bg-stone-200 dark:hover:bg-zinc-700 rounded-full transition-colors"
+          className="absolute top-4 right-4 p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-full transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="p-8 pb-6">
           <div className="flex items-center gap-3 mb-6 pr-8">
-            <div className="p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-xl shrink-0">
+            <div className="p-3 bg-orange-500/10 text-orange-600 dark:text-orange-400 rounded-xl shrink-0">
               <BookOpen className="w-6 h-6" />
             </div>
             <div>
-              <h2 className="text-xl font-black font-display text-stone-900 dark:text-stone-50 leading-tight">{item.name}</h2>
-              <p className="text-xs uppercase font-bold tracking-wider text-amber-600 dark:text-amber-500 flex items-center gap-1.5 mt-1.5">
+              <h2 className="text-xl font-black font-display text-zinc-900 dark:text-zinc-50 leading-tight">{item.name}</h2>
+              <p className="text-xs uppercase font-bold tracking-wider text-orange-600 dark:text-orange-500 flex items-center gap-1.5 mt-1.5">
                 <Sparkles className="w-3.5 h-3.5 shrink-0" />
                 {item.mythology}
               </p>
@@ -179,35 +179,35 @@ export function ItemLoreModal({ itemKey, onClose }: { itemKey: string, onClose: 
           </div>
 
           <div className="space-y-6">
-            <div className="p-4 bg-stone-100 dark:bg-zinc-800/50 rounded-xl italic text-sm text-stone-700 dark:text-stone-300 leading-relaxed border-l-4 border-amber-500/50 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-amber-500/5 to-transparent pointer-events-none" />
+            <div className="p-4 bg-zinc-100 dark:bg-zinc-800/50 rounded-xl italic text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed border-l-4 border-orange-500/50 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-orange-500/5 to-transparent pointer-events-none" />
               "{item.lore}"
             </div>
 
             <div>
-               <h3 className="text-xs font-black uppercase text-stone-500 dark:text-stone-400 tracking-widest mb-2 flex items-center gap-1.5">
+               <h3 className="text-xs font-black uppercase text-zinc-500 dark:text-zinc-400 tracking-widest mb-2 flex items-center gap-1.5">
                   <Diamond className="w-3.5 h-3.5 text-blue-500" /> Mô Tả Giao Diện
                </h3>
-               <p className="text-sm font-semibold text-stone-800 dark:text-stone-200 bg-white dark:bg-zinc-800 p-3.5 rounded-xl border border-stone-200 dark:border-zinc-700 shadow-sm leading-relaxed">
+               <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 bg-white dark:bg-zinc-800 p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-700 shadow-sm leading-relaxed">
                   {item.uiDescription}
                </p>
             </div>
 
             <div>
-               <h3 className="text-xs font-black uppercase text-stone-500 dark:text-stone-400 tracking-widest mb-2 flex items-center gap-1.5">
+               <h3 className="text-xs font-black uppercase text-zinc-500 dark:text-zinc-400 tracking-widest mb-2 flex items-center gap-1.5">
                   <Target className="w-3.5 h-3.5 text-red-500" /> Tính Năng Thực Tế
                </h3>
-               <p className="text-sm font-medium text-stone-800 dark:text-stone-200 bg-amber-50 dark:bg-amber-950/20 p-3.5 rounded-xl border border-amber-500/20 shadow-inner leading-relaxed">
+               <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200 bg-orange-50 dark:bg-orange-950/20 p-3.5 rounded-xl border border-orange-500/20 shadow-inner leading-relaxed">
                   {item.appFunction}
                </p>
             </div>
           </div>
         </div>
 
-        <div className="p-4 bg-stone-100/50 dark:bg-zinc-800/50 border-t border-stone-200 dark:border-zinc-800 flex justify-end">
+        <div className="p-4 bg-zinc-100/50 dark:bg-zinc-800/50 border-t border-zinc-200 dark:border-zinc-800 flex justify-end">
           <button
             onClick={onClose}
-            className="px-6 py-2.5 bg-stone-800 hover:bg-stone-900 dark:bg-stone-100 dark:hover:bg-white text-stone-50 dark:text-stone-900 text-sm font-bold rounded-xl transition-all shadow border border-transparent hover:border-amber-500/30 active:scale-95 cursor-pointer"
+            className="px-6 py-2.5 bg-zinc-800 hover:bg-zinc-900 dark:bg-zinc-100 dark:hover:bg-white text-zinc-50 dark:text-zinc-900 text-sm font-bold rounded-xl transition-all shadow border border-transparent hover:border-orange-500/30 active:scale-95 cursor-pointer"
           >
             Đóng Biên Niên Sử
           </button>

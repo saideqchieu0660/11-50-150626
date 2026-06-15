@@ -67,24 +67,24 @@ export function DetailedStatsModal({ isOpen, onClose, userId }: DetailedStatsMod
         onClick={onClose}
       />
       
-      <div className="relative w-full max-w-3xl bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-zinc-800 p-6 animate-in zoom-in-95 duration-200">
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-stone-100 dark:border-zinc-800">
+      <div className="relative w-full max-w-3xl bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 p-6 animate-in zoom-in-95 duration-200">
+        <div className="flex items-center justify-between mb-6 pb-4 border-b border-zinc-100 dark:border-zinc-800">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-violet-500/10 rounded-xl text-violet-600 dark:text-violet-400">
               <TrendingUp className="w-6 h-6" />
             </div>
             <div>
-              <h2 className="text-xl font-display font-extrabold text-stone-900 dark:text-stone-100">
+              <h2 className="text-xl font-display font-extrabold text-zinc-900 dark:text-zinc-100">
                 Thống Kê Chi Tiết (7 Ngày)
               </h2>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                 Theo dõi tiến độ thẻ Master và thẻ đã học mỗi ngày
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-stone-100 dark:hover:bg-zinc-800 rounded-full transition text-stone-500"
+            className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition text-zinc-500"
           >
             <X className="w-5 h-5" />
           </button>
@@ -123,7 +123,7 @@ export function DetailedStatsModal({ isOpen, onClose, userId }: DetailedStatsMod
              <div className="text-violet-600 dark:text-violet-400 font-bold mb-1 flex items-center gap-2">
                 <BarChart3 className="w-4 h-4" /> Tổng Học
              </div>
-             <div className="text-2xl font-black text-stone-800 dark:text-stone-200">
+             <div className="text-2xl font-black text-zinc-800 dark:text-zinc-200">
                {chartData.reduce((acc, curr) => acc + curr["Đã học"], 0)} <span className="text-sm font-medium opacity-60">thẻ</span>
              </div>
           </div>
@@ -131,7 +131,7 @@ export function DetailedStatsModal({ isOpen, onClose, userId }: DetailedStatsMod
              <div className="text-emerald-600 dark:text-emerald-400 font-bold mb-1 flex items-center gap-2">
                 <TrendingUp className="w-4 h-4" /> Tổng Master
              </div>
-             <div className="text-2xl font-black text-stone-800 dark:text-stone-200">
+             <div className="text-2xl font-black text-zinc-800 dark:text-zinc-200">
                {chartData.reduce((acc, curr) => acc + curr["Master (Nhớ)"], 0)} <span className="text-sm font-medium opacity-60">thẻ</span>
              </div>
           </div>
