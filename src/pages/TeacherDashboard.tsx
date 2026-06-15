@@ -3,6 +3,7 @@ import { store, Deck } from "../lib/store";
 import { FileText, Upload, AlertCircle, AlertTriangle, BarChart3, Users, CheckCircle2, TrendingUp, Target, FileUp, Activity, BookOpen, Shield, Trash2, FolderOpen, Inbox, Layers, Settings, Check, X, RefreshCw, Plus, Heart, LogOut, ChevronDown, ChevronUp, Lock, Sparkles } from "lucide-react";
 import { Navigate, Link } from "react-router-dom";
 import { cn } from "../lib/utils";
+import { CustomDeckSelect } from "../components/CustomDeckSelect";
 import { safeRequest } from "../utils/apiClient";
 import ReactMarkdown from "react-markdown";
 import ErrorNotification from "../components/ErrorNotification";
@@ -865,36 +866,20 @@ export default function TeacherDashboard() {
                   <div className="space-y-4 mb-4">
                     <div className="p-4 bg-violet-600/5 dark:bg-violet-500/10 border border-violet-600/20 dark:border-violet-500/30 rounded-2xl shadow-sm">
                        <label className="text-xs font-black uppercase opacity-75 mb-1.5 block tracking-wide">THÊM VÀO BỘ THẺ SẴN CÓ</label>
-                       <select
-                         className="w-full text-xs p-3 bg-white/60 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:ring-2 focus:ring-violet-500 transition font-bold appearance-none cursor-pointer"
+                       <CustomDeckSelect
+                         decks={localDecks}
                          value={isAddToExisting && selectedExistingDeckId ? selectedExistingDeckId : "new"}
-                         onChange={(e) => {
-                           if (e.target.value === "new") {
+                         onChange={(val) => {
+                           if (val === "new") {
                              setIsAddToExisting(false);
                              setSelectedExistingDeckId("");
                            } else {
                              setIsAddToExisting(true);
-                             setSelectedExistingDeckId(e.target.value);
+                             setSelectedExistingDeckId(val);
                            }
                          }}
                          disabled={isSavingPlan}
-                       >
-                         <option value="new">+ TẠO BỘ BÀI MỚI (Lên cấu hình bên dưới)</option>
-                         {Object.entries(localDecks.reduce((acc, deck) => {
-                           const subj = (deck.subject || "Tự chọn").trim();
-                           if (!acc[subj]) acc[subj] = [];
-                           acc[subj].push(deck);
-                           return acc;
-                         }, {} as Record<string, any[]>)).map(([subject, subjectDecks]: [string, any[]]) => (
-                           <optgroup key={subject} label={`📂 ${subject} (${subjectDecks.length} bộ)`}>
-                             {subjectDecks.map((d: any) => (
-                               <option key={d.id} value={d.id}>
-                                 {d.title} ({d.cards?.length || 0} thẻ)
-                               </option>
-                             ))}
-                           </optgroup>
-                         ))}
-                       </select>
+                       />
                     </div>
 
                     {!isAddToExisting && (
@@ -1636,8 +1621,6 @@ export default function TeacherDashboard() {
           </div>
         </section>
         <GlobalActivityFeed />
-      </div>
-    </div>
 
       {user && (user.role === "teacher" || user.role === "admin" || user.role === "Admin") && (
         <div id="monitor" className="pt-8 mt-8 border-t border-stone-200 dark:border-zinc-800/80 space-y-4">
@@ -1660,6 +1643,9 @@ export default function TeacherDashboard() {
            </div>
         </div>
       )}
+
+      </div>
+    </div>
 
       {showConfirmDelete && (
         <div className="modal-glass-overlay flex items-center justify-center p-4">

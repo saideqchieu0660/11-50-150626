@@ -20,6 +20,7 @@ import {
   Activity,
 } from "lucide-react";
 import { cn } from "../lib/utils.js";
+import { CustomDeckSelect } from "./CustomDeckSelect";
 import { db, auth } from "../lib/firebase.js";
 import {
   collection,
@@ -1723,50 +1724,24 @@ Acknowledge this protocol. Execute all text transformations deterministically at
             <label className="text-xs font-black uppercase tracking-wide text-stone-850 dark:text-stone-200">
               THÊM THẺ HỌC VÀO BỘ THẺ SẴN CÓ
             </label>
-            <select
-              className="w-full text-xs sm:text-sm p-3 bg-white/80 dark:bg-zinc-950/80 border border-stone-200 dark:border-zinc-700/80 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 transition font-bold appearance-none cursor-pointer"
+            <CustomDeckSelect
+              decks={store.getDecks()}
               value={
                 isAddToExisting && selectedExistingDeckId
                   ? selectedExistingDeckId
                   : "new"
               }
-              onChange={(e) => {
-                if (e.target.value === "new") {
+              onChange={(val) => {
+                if (val === "new") {
                   setIsAddToExisting(false);
                   setSelectedExistingDeckId("");
                 } else {
                   setIsAddToExisting(true);
-                  setSelectedExistingDeckId(e.target.value);
+                  setSelectedExistingDeckId(val);
                 }
               }}
               disabled={isAutomating}
-            >
-              <option value="new">
-                + TẠO BỘ BÀI MỚI (Lên cấu hình bên dưới)
-              </option>
-              {Object.entries(
-                store.getDecks().reduce(
-                  (acc, deck) => {
-                    const subj = (deck.subject || "Tự chọn").trim();
-                    if (!acc[subj]) acc[subj] = [];
-                    acc[subj].push(deck);
-                    return acc;
-                  },
-                  {} as Record<string, any[]>,
-                ),
-              ).map(([subject, subjectDecks]) => (
-                <optgroup
-                  key={subject}
-                  label={`📂 ${subject} (${subjectDecks.length} bộ)`}
-                >
-                  {subjectDecks.map((d) => (
-                    <option key={d.id} value={d.id}>
-                      {d.title} ({d.cards?.length || 0} thẻ)
-                    </option>
-                  ))}
-                </optgroup>
-              ))}
-            </select>
+            />
 
             {!isAddToExisting && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-200 pt-2 border-t border-stone-200/40 dark:border-zinc-800/40">
@@ -2869,50 +2844,24 @@ Acknowledge this protocol. Execute all text transformations deterministically at
                 <label className="text-xs font-black uppercase tracking-wide text-stone-850 dark:text-stone-200">
                   THÊM THẺ HỌC VÀO BỘ THẺ SẴN CÓ
                 </label>
-                <select
-                  className="w-full text-xs sm:text-sm p-3 bg-white/80 dark:bg-zinc-950/80 border border-stone-200 dark:border-zinc-700/80 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 transition font-bold appearance-none cursor-pointer"
+                <CustomDeckSelect
+                  decks={store.getDecks()}
                   value={
                     isAddToExisting && selectedExistingDeckId
                       ? selectedExistingDeckId
                       : "new"
                   }
-                  onChange={(e) => {
-                    if (e.target.value === "new") {
+                  onChange={(val) => {
+                    if (val === "new") {
                       setIsAddToExisting(false);
                       setSelectedExistingDeckId("");
                     } else {
                       setIsAddToExisting(true);
-                      setSelectedExistingDeckId(e.target.value);
+                      setSelectedExistingDeckId(val);
                     }
                   }}
                   disabled={isProcessing}
-                >
-                  <option value="new">
-                    + TẠO BỘ BÀI MỚI (Lên cấu hình bên dưới)
-                  </option>
-                  {Object.entries(
-                    store.getDecks().reduce(
-                      (acc, deck) => {
-                        const subj = (deck.subject || "Tự chọn").trim();
-                        if (!acc[subj]) acc[subj] = [];
-                        acc[subj].push(deck);
-                        return acc;
-                      },
-                      {} as Record<string, any[]>,
-                    ),
-                  ).map(([subject, subjectDecks]) => (
-                    <optgroup
-                      key={subject}
-                      label={`📂 ${subject} (${subjectDecks.length} bộ)`}
-                    >
-                      {subjectDecks.map((d) => (
-                        <option key={d.id} value={d.id}>
-                          {d.title} ({d.cards?.length || 0} thẻ)
-                        </option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
+                />
 
                 {!isAddToExisting && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-200 pt-2 border-t border-stone-200/40 dark:border-zinc-800/40">

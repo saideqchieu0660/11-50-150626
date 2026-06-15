@@ -28,6 +28,7 @@ import {
   Save
 } from "lucide-react";
 import { cn } from "../lib/utils";
+import { CustomDeckSelect } from "./CustomDeckSelect";
 import localforage from "localforage";
 import ErrorNotification from "./ErrorNotification";
 import { store, Deck } from "../lib/store";
@@ -2738,36 +2739,20 @@ Hoặc dán toàn bộ đoạn văn bài đọc IELTS/TOEFL vào đây. AI sẽ 
            <div className="space-y-4">
               <div className="p-4 bg-yellow-500/5 dark:bg-zinc-900/30 border border-yellow-500/10 dark:border-zinc-800/80 rounded-2xl space-y-3.5 shadow-sm">
                  <label className="text-xs font-black uppercase opacity-75 mb-1.5 block tracking-wide">THÊM THẺ HỌC VÀO BỘ THẺ SẴN CÓ</label>
-                 <select
-                   className="w-full text-xs p-3 bg-white/60 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:ring-2 focus:ring-yellow-500 transition font-bold appearance-none cursor-pointer"
+                 <CustomDeckSelect
+                   decks={store.getDecks()}
                    value={isAddToExisting && selectedExistingDeckId ? selectedExistingDeckId : "new"}
-                   onChange={(e) => {
-                     if (e.target.value === "new") {
+                   onChange={(val) => {
+                     if (val === "new") {
                        setIsAddToExisting(false);
                        setSelectedExistingDeckId("");
                      } else {
                        setIsAddToExisting(true);
-                       setSelectedExistingDeckId(e.target.value);
+                       setSelectedExistingDeckId(val);
                      }
                    }}
                    disabled={isProcessing}
-                 >
-                   <option value="new">+ TẠO BỘ BÀI MỚI (Lên cấu hình bên dưới)</option>
-                   {Object.entries(store.getDecks().reduce((acc, deck) => {
-                     const subj = (deck.subject || "Tự chọn").trim();
-                     if (!acc[subj]) acc[subj] = [];
-                     acc[subj].push(deck);
-                     return acc;
-                   }, {} as Record<string, any[]>)).map(([subject, subjectDecks]) => (
-                     <optgroup key={subject} label={`📂 ${subject} (${subjectDecks.length} bộ)`}>
-                       {subjectDecks.map((d) => (
-                         <option key={d.id} value={d.id}>
-                           {d.title} ({d.cards?.length || 0} thẻ)
-                         </option>
-                       ))}
-                     </optgroup>
-                   ))}
-                 </select>
+                 />
               </div>
 
            {/* Manual creation form details */}

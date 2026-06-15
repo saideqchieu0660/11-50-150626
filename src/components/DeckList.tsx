@@ -1,9 +1,10 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { Play, BookOpen, Search, X, ChevronLeft, ChevronRight, Sparkles, Pin, PinOff, Clock } from 'lucide-react';
+import { Play, BookOpen, Search, X, ChevronLeft, ChevronRight, Sparkles, Pin, PinOff, Clock, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Deck, store } from '../lib/store';
 import { useTheme } from '../components/ThemeProvider';
+import { cn } from '../lib/utils';
 
 interface DeckListProps {
   decks: Deck[];
@@ -11,6 +12,7 @@ interface DeckListProps {
   groupBySubject?: boolean;
   onCategoryQuiz?: (subject: string, subjectDecks: Deck[]) => void;
   onCategoryReviewHardCards?: (subject: string, subjectDecks: Deck[]) => void;
+  onCategoryStudyAll?: (subject: string, subjectDecks: Deck[]) => void;
   isAdmin?: boolean;
 }
 
@@ -74,7 +76,7 @@ const TiltCard = ({ children, delayIdx, className = "" }: { children: React.Reac
   );
 };
 
-export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onCategoryQuiz, onCategoryReviewHardCards, isAdmin = false }: DeckListProps) => {
+export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onCategoryQuiz, onCategoryReviewHardCards, onCategoryStudyAll, isAdmin = false }: DeckListProps) => {
   const currentUser = store.getCurrentUser();
   const [pinnedDecks, setPinnedDecks] = useState<string[]>(() => {
     const saved = localStorage.getItem(`pinned_decks_${currentUser?.id || 'guest'}`);
@@ -311,9 +313,52 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                         <BookOpen className="w-6 h-6" />
                       </span>
                       <div className="flex items-baseline gap-3">
-                        <h4 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-stone-100 tracking-tight uppercase">
-                          {subject}
-                        </h4>
+                        {editingCategory === subject ? (
+                          <div className="flex items-center gap-2">
+                            <input
+                              type="text"
+                              value={newCategoryName}
+                              onChange={(e) => setNewCategoryName(e.target.value)}
+                              className="text-2xl sm:text-3xl font-black bg-stone-100 dark:bg-zinc-800 text-stone-900 dark:text-stone-100 rounded-lg px-2 py-1 outline-none border border-stone-300 dark:border-zinc-700 w-full max-w-[200px]"
+                              autoFocus
+                              disabled={isSavingCategoryName}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter') handleRenameCategory(subject, newCategoryName);
+                                if (e.key === 'Escape') setEditingCategory(null);
+                              }}
+                            />
+                            <button
+                              onClick={() => handleRenameCategory(subject, newCategoryName)}
+                              disabled={isSavingCategoryName}
+                              className="p-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg shadow-sm"
+                            >
+                              <Check className="w-5 h-5" />
+                            </button>
+                            <button
+                              onClick={() => setEditingCategory(null)}
+                              disabled={isSavingCategoryName}
+                              className="p-2 bg-stone-300 dark:bg-zinc-700 hover:bg-stone-400 dark:hover:bg-zinc-600 text-stone-800 dark:text-stone-200 rounded-lg shadow-sm"
+                            >
+                              <X className="w-5 h-5" />
+                            </button>
+                          </div>
+                        ) : (
+                          <h4 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-stone-100 tracking-tight uppercase flex items-center gap-2">
+                            {subject}
+                            {isAdmin && subject !== "📌 ĐÃ GHIM" && (
+                              <button
+                                onClick={() => {
+                                  setEditingCategory(subject);
+                                  setNewCategoryName(subject);
+                                }}
+                                className="ml-2 text-stone-400 hover:text-amber-500 p-1.5 rounded-lg hover:bg-amber-100 dark:hover:bg-zinc-800 transition"
+                                title="Đổi tên danh mục"
+                              >
+                                <Sparkles className="w-4 h-4" />
+                              </button>
+                            )}
+                          </h4>
+                        )}
                         <span className="text-sm sm:text-base font-black opacity-60 text-amber-600 dark:text-amber-400">
                           ({subjectDecks.length} bộ học)
                         </span>
@@ -323,20 +368,41 @@ export const DeckList = ({ decks, showSearch = true, groupBySubject = false, onC
                     <div className="flex items-center gap-3">
                       {onCategoryReviewHardCards && (() => {
                          const remindIds = JSON.parse(localStorage.getItem("remind_later_items") || "[]");
-                         const hardCardsInCat = subjectDecks.flatMap(d => d.cards || []).filter(c => remindIds.includes(c.id));
-                         if (hardCardsInCat.length > 0) {
-                           return (
-                             <button
-                               onClick={() => onCategoryReviewHardCards(subject, subjectDecks)}
-                               className="mr-1 text-xs font-black bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 text-white px-4 py-2.5 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-red-500/50 cursor-pointer shrink-0"
-                               title={`Ôn lại ${hardCardsInCat.length} thẻ khó trong mục này`}
-                             >
-                               <span className="flex items-center justify-center bg-white/20 rounded-full w-5 h-5 text-[10px]">{hardCardsInCat.length}</span>
-                               <span className="hidden leading-none sm:inline">Ôn Thẻ X</span>
-                             </button>
-                           );
-                         }
-                         return null;
+                         const hardCardsInCat = subjectDecks.flatMap(d => d.cards || []).filter(c => c.isHard === true || remindIds.includes(c.id));
+                         return (
+                           <button
+                             onClick={() => hardCardsInCat.length > 0 && onCategoryReviewHardCards(subject, subjectDecks)}
+                             disabled={hardCardsInCat.length === 0}
+                             className={cn(
+                               "mr-1 text-xs font-black text-white px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5 focus:outline-none shrink-0",
+                               hardCardsInCat.length > 0
+                                 ? "bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(239,68,68,0.4)] cursor-pointer"
+                                 : "bg-red-300 dark:bg-red-900/50 opacity-50 cursor-not-allowed"
+                             )}
+                             title={hardCardsInCat.length > 0 ? `Ôn lại ${hardCardsInCat.length} thẻ khó trong mục này` : `Không có thẻ nào bị đánh dấu X trong mục này`}
+                           >
+                             <span className="flex items-center justify-center bg-white/20 rounded-full w-5 h-5 text-[10px]">{hardCardsInCat.length}</span>
+                             <span className="hidden leading-none sm:inline">Ôn Thẻ X</span>
+                             <span className="sm:hidden leading-none">Thẻ X</span>
+                           </button>
+                         );
+                      })()}
+                      {onCategoryStudyAll && (() => {
+                        const allCardsCount = subjectDecks.reduce((acc, d) => acc + (d.cards?.length || 0), 0);
+                        if (allCardsCount > 0) {
+                          return (
+                            <button
+                              onClick={() => onCategoryStudyAll(subject, subjectDecks)}
+                              className="mr-1 text-xs font-black bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-4 py-2.5 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-md flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500/50 cursor-pointer shrink-0"
+                              title={`Học toàn bộ ${allCardsCount} thẻ trong mục này`}
+                            >
+                              <BookOpen className="w-4 h-4 text-white shrink-0" />
+                              <span className="hidden leading-none sm:inline">Học Toàn Bộ</span>
+                              <span className="sm:hidden leading-none">Học Hết</span>
+                            </button>
+                          );
+                        }
+                        return null;
                       })()}
                       {onCategoryQuiz && (
                         <button

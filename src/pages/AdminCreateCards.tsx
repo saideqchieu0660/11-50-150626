@@ -21,6 +21,7 @@ import { store, Flashcard, Deck } from "../lib/store";
 import { db } from "../lib/firebase";
 import { doc, setDoc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
 import { safeRequest } from "../utils/apiClient";
+import { CustomDeckSelect } from "../components/CustomDeckSelect";
 
 // Helper function for Retry with Exponential Backoff
 async function runWithRetryAndBackoff<T>(
@@ -427,28 +428,12 @@ export default function AdminCreateCards() {
             </h2>
 
             <div className="space-y-4 relative z-10">
-              <select
-                className="w-full p-4 bg-white/60 dark:bg-zinc-900/60 border border-stone-200 dark:border-zinc-700 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 transition font-medium appearance-none"
+              <CustomDeckSelect
+                decks={decks}
                 value={selectedDeckId}
-                onChange={(e) => setSelectedDeckId(e.target.value)}
+                onChange={(val) => setSelectedDeckId(val)}
                 disabled={editingBatchCardId !== null}
-              >
-                <option value="new">+ Tạo bộ bài mới (Tạo New Deck)</option>
-                {Object.entries(decks.reduce((acc, deck) => {
-                  const subj = (deck.subject || "Tự chọn").trim();
-                  if (!acc[subj]) acc[subj] = [];
-                  acc[subj].push(deck);
-                  return acc;
-                }, {} as Record<string, typeof decks>)).map(([subject, subjectDecks]) => (
-                  <optgroup key={subject} label={`📂 ${subject} (${subjectDecks.length} bộ)`}>
-                    {subjectDecks.map((d) => (
-                      <option key={d.id} value={d.id}>
-                        {d.title} ({d.cards?.length || 0} thẻ)
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
+              />
 
               {selectedDeckId === "new" && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in zoom-in duration-300">

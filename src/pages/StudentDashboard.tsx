@@ -988,9 +988,8 @@ export default function StudentDashboard() {
   }, []);
   
   const remindLaterCards = React.useMemo(() => {
-    if (remindLaterCardIds.length === 0) return [];
-    const allCards = decks.flatMap(d => d.cards || []);
-    return allCards.filter(c => remindLaterCardIds.includes(c.id));
+    const allCards = decks.flatMap(d => (d.cards || []).map(c => ({ ...c, originDeckId: d.id, originDeckTitle: d.title })));
+    return allCards.filter(c => c.isHard === true || remindLaterCardIds.includes(c.id));
   }, [decks, remindLaterCardIds]);
 
   const remindLaterCount = remindLaterCards.length;
@@ -1012,13 +1011,13 @@ export default function StudentDashboard() {
        ownerId: "system"
     };
     
-    store.setTempDeck(remindDeck);
+    store.setTempDeck(remindDeck as any);
     setShowRemindLaterModal(false);
     navigate("/study/remind-later-deck");
   };
 
   const startCategoryRemindLaterStudy = React.useCallback((subject: string, subjectDecks: Deck[]) => {
-    const hardCards = subjectDecks.flatMap(d => d.cards || []).filter(c => remindLaterCardIds.includes(c.id));
+    const hardCards = subjectDecks.flatMap(d => (d.cards || []).map(c => ({ ...c, originDeckId: d.id, originDeckTitle: d.title }))).filter(c => c.isHard === true || remindLaterCardIds.includes(c.id));
     if (hardCards.length === 0) return;
 
     const remindDeck = {
@@ -1033,7 +1032,25 @@ export default function StudentDashboard() {
     
     store.setTempDeck(remindDeck as any);
     navigate(`/study/${remindDeck.id}`);
-  }, [remindLaterCardIds, navigate]);
+  }, [navigate]);
+  
+  const startCategoryStudyAll = React.useCallback((subject: string, subjectDecks: Deck[]) => {
+    const allCards = subjectDecks.flatMap(d => (d.cards || []).map(c => ({ ...c, originDeckId: d.id, originDeckTitle: d.title })));
+    if (allCards.length === 0) return;
+
+    const allDeck = {
+       id: `study-all-${subject.replace(/\s+/g, '-')}`,
+       title: `Học Toàn Bộ: ${subject}`,
+       subject: subject,
+       description: `Bộ thẻ gồm toàn bộ từ vựng trong phân mục ${subject}.`,
+       cards: allCards,
+       createdAt: new Date().toISOString(),
+       ownerId: "system"
+    };
+    
+    store.setTempDeck(allDeck as any);
+    navigate(`/study/${allDeck.id}`);
+  }, [navigate]);
   
   const streakCelebratedRef = useRef(false);
 
@@ -2287,7 +2304,7 @@ export default function StudentDashboard() {
                <DeckList decks={decks.slice(0, 4)} showSearch={false} />
             ) : (
                <div className="glass p-4 rounded-2xl border border-stone-200/50 dark:border-zinc-800/50 animate-in fade-in duration-300">
-                  <DeckList decks={decks} showSearch={true} groupBySubject={true} onCategoryQuiz={(subject, subjectDecks) => setActiveQuizSetup({ subject, decks: subjectDecks })} />
+                  <DeckList decks={decks} showSearch={true} groupBySubject={true} onCategoryQuiz={(subject, subjectDecks) => setActiveQuizSetup({ subject, decks: subjectDecks })} onCategoryReviewHardCards={startCategoryRemindLaterStudy} onCategoryStudyAll={startCategoryStudyAll} isAdmin={user?.role === 'admin' || user?.role === 'Admin'} />
                </div>
             )}
 
@@ -2519,7 +2536,7 @@ export default function StudentDashboard() {
           </div>
 
           <div className="glass p-6 md:p-8 rounded-3xl border border-stone-200/50 dark:border-zinc-800/50 bg-white/40 dark:bg-black/40 backdrop-blur-xl shadow-xl">
-            <DeckList decks={decks} showSearch={true} groupBySubject={true} onCategoryQuiz={(subject, subjectDecks) => setActiveQuizSetup({ subject, decks: subjectDecks })} onCategoryReviewHardCards={startCategoryRemindLaterStudy} />
+            <DeckList decks={decks} showSearch={true} groupBySubject={true} onCategoryQuiz={(subject, subjectDecks) => setActiveQuizSetup({ subject, decks: subjectDecks })} onCategoryReviewHardCards={startCategoryRemindLaterStudy} onCategoryStudyAll={startCategoryStudyAll} isAdmin={user?.role === 'admin' || user?.role === 'Admin'} />
           </div>
         </motion.div>
       )}
@@ -2538,26 +2555,6 @@ export default function StudentDashboard() {
                💡 Kỷ lục trích xuất 1000 thẻ học siêu tốc nhờ Concurrency Pool 8 Keys xoay vòng cực mượt!
              </div>
              <DocumentConverter />
-
-             <div data-tour="step-2" className="mt-8 pt-8 border-t border-stone-200 dark:border-zinc-800/80 space-y-4">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-4 rounded-2xl">
-                   <div>
-                      <h3 className="text-sm font-extrabold text-stone-800 dark:text-stone-100 flex items-center gap-2">
-                         <Activity className="w-4 h-4 text-emerald-500 animate-pulse" />
-                         Cổng Giám Sát API Sức Khỏe Thực (Real-time Key Telemetry)
-                      </h3>
-                      <p className="text-xs text-stone-500 mt-1">
-                         Hiển thị chi tiết trạng thái hoạt động, tỷ lệ xoay vòng và hệ số tải của từng cụm provider (Gemini, OpenRouter, DeepInfra).
-                      </p>
-                   </div>
-                   <div className="flex items-center gap-1.5 self-end md:self-auto uppercase tracking-wider font-mono text-[9px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-extrabold px-2.5 py-1 rounded-full border border-emerald-500/20 shadow-sm animate-pulse">
-                      Status: Live Monitor
-                   </div>
-                </div>
-                <div className="rounded-2xl border border-stone-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/20 p-4 md:p-6 shadow-sm">
-                   <ServiceMonitor adminKey={localStorage.getItem("henosis_admin_key") || ""} />
-                </div>
-             </div>
           </div>
         </motion.div>
       )}
@@ -5288,9 +5285,23 @@ export default function StudentDashboard() {
                           </button>
                           <button 
                             onClick={() => {
-                              const updatedIds = remindLaterCardIds.filter(id => id !== card.id);
-                              setRemindLaterCardIds(updatedIds);
-                              localStorage.setItem("remind_later_items", JSON.stringify(updatedIds));
+                              if (user) {
+                                import("../lib/offlineSync").then(({ OfflineSyncQueue }) => {
+                                  OfflineSyncQueue.enqueueCardState(user.id, card.id, { isWeakCard: false });
+                                });
+                                // Optmistically update store if possible, though listener will catch it soon
+                                const localStoreDecks = store.getDecks();
+                                const targetDeck = localStoreDecks.find(d => d.id === card.originDeckId);
+                                if (targetDeck) {
+                                   const targetCard = targetDeck.cards.find(c => c.id === card.id);
+                                   if (targetCard) targetCard.isHard = false;
+                                }
+                              } else {
+                                // Guest mode fallback
+                                const updatedIds = remindLaterCardIds.filter(id => id !== card.id);
+                                setRemindLaterCardIds(updatedIds);
+                                localStorage.setItem("remind_later_items", JSON.stringify(updatedIds));
+                              }
                             }}
                             className="p-2.5 rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition-all border-none cursor-pointer"
                             title="Xóa khỏi danh sách nhắc nhở"
@@ -5394,6 +5405,28 @@ export default function StudentDashboard() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {user && (user.role === "teacher" || user.role === "admin" || user.role === "Admin") && (
+        <div id="monitor" className="max-w-[7xl] mx-auto w-full pt-8 mt-8 space-y-4 px-4 sm:px-6 lg:px-8">
+           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-stone-50 dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 p-4 rounded-2xl">
+              <div>
+                 <h3 className="text-sm font-extrabold text-stone-800 dark:text-stone-100 flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-emerald-500 animate-pulse" />
+                    Cổng Giám Sát API Sức Khỏe Thực (Real-time Key Telemetry)
+                 </h3>
+                 <p className="text-xs text-stone-500 mt-1">
+                    Hiển thị chi tiết trạng thái hoạt động, tỷ lệ xoay vòng và hệ số tải của từng cụm provider.
+                 </p>
+              </div>
+              <div className="flex items-center gap-1.5 self-end md:self-auto uppercase tracking-wider font-mono text-[9px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-extrabold px-2.5 py-1 rounded-full border border-emerald-500/20 shadow-sm animate-pulse">
+                 Status: Live Monitor
+              </div>
+           </div>
+           <div className="rounded-2xl border border-stone-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/20 p-4 md:p-6 shadow-sm">
+              <ServiceMonitor adminKey={localStorage.getItem("henosis_admin_key") || ""} />
+           </div>
+        </div>
+      )}
 
       <InteractiveTutorial 
         isOpen={showTutorial} 
