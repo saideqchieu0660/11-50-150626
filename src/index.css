@@ -11,7 +11,7 @@
   --spacing: calc(0.25rem * var(--ui-density, 1));
   --font-sans: "Inter", sans-serif;
   --font-display: "Playfair Display", serif;
-  --font-roman: "Cormorant Garamond", "Playfair Display", serif;
+  --font-roman: "Cormorant GARAMOND", "Playfair Display", serif;
   --font-serif: "Playfair Display", serif;
   --font-mono: "JetBrains Mono", monospace;
 
@@ -19,52 +19,6 @@
   --color-gold-500: #f97316;
   --color-gold-600: #ea580c;
   --color-cyber-gold: #f97316;
-}
-
-/* Custom Cyberpunk & Monochromatic Utilities */
-.cyber-glow {
-  box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 0 30px rgba(249, 115, 22, 0.15);
-}
-
-.cyber-glow-heavy {
-  box-shadow: 0 0 25px rgba(249, 115, 22, 0.6), 0 0 50px rgba(249, 115, 22, 0.3);
-}
-
-.cyber-inset-glow {
-  box-shadow: inset 0 0 15px rgba(249, 115, 22, 0.25);
-}
-
-.clip-cyber-corner {
-  clip-path: polygon(
-    0 0, 
-    calc(100% - calc(0.9375rem * var(--app-font-scale, 1))) 0, 
-    100% calc(0.9375rem * var(--app-font-scale, 1)), 
-    100% 100%, 
-    calc(0.9375rem * var(--app-font-scale, 1)) 100%, 
-    0 calc(100% - calc(0.9375rem * var(--app-font-scale, 1)))
-  );
-}
-
-.clip-cyber-sm {
-  clip-path: polygon(
-    0 0, 
-    calc(100% - calc(0.5rem * var(--app-font-scale, 1))) 0, 
-    100% calc(0.5rem * var(--app-font-scale, 1)), 
-    100% 100%, 
-    calc(0.5rem * var(--app-font-scale, 1)) 100%, 
-    0 calc(100% - calc(0.5rem * var(--app-font-scale, 1)))
-  );
-}
-
-.scanline::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 2;
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
 }
 
 @layer base {
@@ -77,32 +31,22 @@
   }
   body {
     background-color: #fafafa;
-    /* Gentle ivory museum background */
   }
   .dark body {
     @apply text-zinc-300;
-    
-    background-color: #09090b; /* zinc-950 */
-    /* Removed heavy animated gradients */
-  }
-  
-  /* Disable heavy background loops on mobile and tablet to preserve battery & INP */
-  @media (max-width: 1024px) {
-    body, .dark body {
-      animation: none !important;
-      background-position: center center !important;
-    }
+    background-color: #09090b; /* zinc-950 solid background */
+    animation: none !important;
   }
 
-  /* KILL BACKDROP BLUR GLOBALLY FOR 60FPS ON POTATO DEVICES */
+  /* KILL BACKDROP BLUR & HEAVY FILTERS GLOBALLY FOR 60FPS ON POTATO DEVICES */
   * {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    box-shadow: none !important; /* Stripping heavy shadows */
   }
 
-  /* Keyboard Navigation Focus Management */
   *:focus-visible {
-    outline: 1px solid rgba(249, 115, 22, 0.5); /* Thin orange focus */
+    outline: 1px solid rgba(249, 115, 22, 0.5);
     outline-offset: 2px;
     border-radius: 2px;
     transition: outline-color 0.15s ease-out;
@@ -127,8 +71,8 @@ p, span, div, .font-sans {
 }
 
 p, .subtext, .chat-stream, .numeric {
-  font-weight: 300 !important; /* font-light */
-  letter-spacing: 0.025em; /* tracking-wide */
+  font-weight: 300 !important;
+  letter-spacing: 0.025em;
 }
 
 strong, b {
@@ -137,12 +81,78 @@ strong, b {
 
 /* ========================================================================= */
 /* OLYMPUS HIGH-ARTISTRY GREEK ETHEREAL SYSTEM */
-/* STRICT 60FPS: NO BOX-SHADOW, NO BACKDROP-FILTER, ONLY TRANSFORM & OPACITY */
+/* STRICT 60FPS: ONLY TRANSFORM & OPACITY */
 /* ========================================================================= */
 
-/* 1. Constellation Geometry */
+/* 1. Constellation Sparkle Background */
+@keyframes sparklePulse {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.3);
+  }
+}
+
+.sparkle-star {
+  fill: #ea580c;
+  animation: sparklePulse infinite ease-in-out;
+  will-change: opacity, transform;
+  transform-origin: center;
+}
+.dark .sparkle-star {
+  fill: #f97316;
+}
+
+/* Marble overlay using svg data uri */
+.marble-overlay {
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-size: cover;
+  will-change: opacity;
+}
+.dark .marble-overlay {
+  opacity: 0.05;
+}
+
+/* Navigation button ripple */
+.nav-button-ripple {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+.nav-button-ripple::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(234,88,12,0.15) 0%, transparent 60%);
+  transform: translate(-50%, -50%) scale(0.1);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-out;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform, opacity;
+}
+.dark .nav-button-ripple::before {
+  background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 60%);
+}
+.nav-button-ripple:hover::before, .nav-button-ripple:active::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+.nav-button-ripple > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. Constellation Geometry */
 .constellation-line {
-  stroke: rgba(228, 228, 231, 0.4); /* stroke-zinc-200/40 for Light mode */
+  stroke: rgba(228, 228, 231, 0.4);
   stroke-width: 1px;
   fill: none;
   transition: stroke 0.3s ease;
@@ -150,20 +160,19 @@ strong, b {
 }
 
 .dark .constellation-line {
-  stroke: rgba(39, 39, 42, 1); /* stroke-zinc-800 for Dark mode */
+  stroke: rgba(39, 39, 42, 1);
 }
 
 .constellation-line.active,
 *:hover > .constellation-line {
-  stroke: #ea580c; /* Hermetic Orange */
+  stroke: #ea580c;
 }
 
 .dark .constellation-line.active,
 .dark *:hover > .constellation-line {
-  stroke: #f97316; /* Vulcan Orange */
+  stroke: #f97316;
 }
 
-/* Auto-inject constellation lines into headers for the artistic vibe */
 h1::after, h2::after {
   content: "";
   display: block;
@@ -189,17 +198,13 @@ h1:hover::after, h2:hover::after {
 
 /* 2. The Prometheus Pulse */
 @keyframes prometheusPulse {
-  0% {
+  0%, 100% {
     transform: scale(1);
     opacity: 0.8;
   }
   50% {
     transform: scale(1.15);
     opacity: 0.15;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
   }
 }
 
@@ -237,7 +242,7 @@ h1:hover::after, h2:hover::after {
 .stone-carved:active svg[class*="lucide"],
 .stone-carved:hover svg[class*="lucide"] {
   transform: translateY(-2px);
-  stroke: #ea580c !important; /* Forces the orange thin-stroke interaction */
+  stroke: #ea580c !important;
   transition: transform 0.2s ease, stroke 0.2s ease;
   will-change: transform;
 }
@@ -254,44 +259,6 @@ svg[class*="lucide"] {
   will-change: transform;
 }
 
-
-@keyframes gradientFlow {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
-}
-
-@keyframes rainbowText {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-rainbow-text {
-  background-size: 200% auto;
-  animation: rainbowText 4s linear infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-150%); }
-  100% { transform: translateX(150%); }
-}
-
-/* Custom Scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(156, 163, 175, 0.5);
-  border-radius: 10px;
-}
-.dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(107, 114, 128, 0.5);
-}
 
 /* Theme Transition logic using View Transitions API Ethereal Optimization */
 .theme-transition::view-transition-old(root),
@@ -310,18 +277,19 @@ svg[class*="lucide"] {
 
 /* Layer 1: Ethereal Glass / Minimalism */
 .card-3d, .glass {
-  @apply relative text-left bg-white dark:bg-zinc-950 transition-all z-10 rounded-xl;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: none;
+  @apply relative text-left bg-white dark:bg-zinc-950 rounded-xl transition-all duration-300;
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Crisp line border */
+  box-shadow: none !important;
+  background-image: none !important;
   will-change: transform;
 }
 
 .dark .card-3d, .dark .glass {
-  border: 1px solid rgba(249, 115, 22, 0.1); /* Pale gold / ivory */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Crisp dark mode border */
 }
 
-.card-3d::before, .glass::before {
-  display: none; /* Remove legacy gradients */
+.card-3d::before, .glass::before, .card-3d::after, .glass::after {
+  display: none !important;
 }
 
 @media (hover: hover) {
@@ -335,16 +303,17 @@ svg[class*="lucide"] {
 /* Layer 2: Ethereal Buttons */
 .btn-3d {
   @apply relative overflow-hidden transition-all duration-200 ease-out font-light rounded-lg tracking-wide border;
-  box-shadow: none;
+  box-shadow: none !important;
   background: transparent;
+  border-color: rgba(0, 0, 0, 0.1);
 }
 .dark .btn-3d {
-  border-color: rgba(249, 115, 22, 0.15);
+  border-color: rgba(255, 255, 255, 0.1);
   color: rgba(250, 250, 250, 0.9);
 }
 
-.btn-3d::after {
-  display: none;
+.btn-3d::after, .btn-3d::before {
+  display: none !important;
 }
 
 @media (hover: hover) {
@@ -356,46 +325,33 @@ svg[class*="lucide"] {
 
 .btn-3d:active {
   transform: translateY(2px) scale(0.97);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
-
-.dark .btn-3d:active {
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
 
 .btn-3d-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  @apply text-white border-none;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
-  background-size: 200% 200%;
-  animation: gradientFlow 4s ease infinite;
+  @apply text-white border-none bg-orange-600 dark:bg-orange-500;
+  box-shadow: none !important;
 }
 
 @media (hover: hover) {
   .btn-3d-primary:hover {
-    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.6) !important;
-    background-position: 100% 50%;
+    @apply bg-orange-700 dark:bg-orange-600;
   }
 }
 
-.btn-3d-primary:active {
-  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4) !important;
-}
-
-
-/* Inputs & Form Fields 3D effect */
+/* Inputs & Form Fields */
 .input-3d {
-  @apply bg-white/95 dark:bg-zinc-900/90 backdrop-blur-lg border border-stone-200 dark:border-zinc-800 rounded-xl shadow-inner focus:shadow-lg transition-all duration-300 ease-out outline-none focus:ring-2 focus:ring-purple-500/50;
-  will-change: box-shadow, border-color;
+  @apply bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-xl transition-all duration-300 ease-out outline-none focus:ring-1 focus:ring-orange-500/50;
+  box-shadow: none !important;
 }
 
 /* Layer 3: Glass Modals (Highest Z-index) */
 .modal-glass-overlay {
-  @apply fixed inset-0 z-40 bg-white/20 dark:bg-black/60 backdrop-blur-md transition-all duration-300 ease-out;
+  @apply fixed inset-0 z-40 bg-zinc-100/80 dark:bg-zinc-950/80 transition-all duration-300 ease-out;
+  backdrop-filter: none !important;
 }
 .modal-glass-content {
-  @apply relative z-50 bg-white dark:bg-zinc-950 backdrop-blur-2xl border border-white/60 dark:border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] transition-all duration-300 ease-out sm:rounded-[2rem] overflow-hidden;
+  @apply relative z-50 bg-white dark:bg-zinc-950 border border-black/5 dark:border-white/10 transition-all duration-300 ease-out sm:rounded-[2rem] overflow-hidden;
+  box-shadow: none !important;
 }
 
 /* 3D Flip Card CSS */
@@ -414,35 +370,16 @@ svg[class*="lucide"] {
   transform: rotateY(180deg);
 }
 
-/* Shimmer utility */
-.shimmer-bar {
-  position: relative;
-  overflow: hidden;
-}
-.shimmer-bar::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  animation: shimmer 2s infinite;
-}
-
 /* Eco Mode / Fix Lag Styles (Strict Performance Optimization) */
-.eco-mode body {
+.eco-mode body, .eco-mode .dark body {
   animation: none !important;
   background-image: none !important;
-  background-color: #f3f4f6 !important;
+}
+.eco-mode body {
+  background-color: #fafafa !important;
 }
 .eco-mode.dark body {
-  background-color: #050505 !important;
+  background-color: #09090b !important;
 }
 .eco-mode * {
   animation: none !important;
@@ -454,68 +391,46 @@ svg[class*="lucide"] {
   filter: none !important;
 }
 
-/* We still want flip animation but simplified in eco-mode? No, flip without transition means instant flip - which is extremely fast and performant. */
-
 .eco-mode [class*="animate-"] {
   animation: none !important;
   transition: none !important;
-}
-
-.eco-mode body, .eco-mode main {
-  background-image: none !important;
 }
 
 .eco-mode .card-3d:hover, .eco-mode .glass:hover {
   transform: none !important;
 }
 
-/* Ensure glass panels & 3D cards have solid, opaque backgrounds in eco-mode because backdrop-filter is disabled */
 .eco-mode .glass, .eco-mode .card-3d {
   background-color: #ffffff !important;
   border-color: #cbd5e1 !important;
   color: #000000 !important;
 }
 .eco-mode.dark .glass, .eco-mode.dark .card-3d {
-  background-color: #111827 !important; /* solid deep slate */
+  background-color: #09090b !important;
   border-color: #1e293b !important;
   color: #ffffff !important;
 }
 
 .eco-mode .transform-style-3d {
-  /* Keep standard 3D rendering so backface-visibility functions correctly on flip */
   transform-style: preserve-3d !important;
 }
 .eco-mode .backface-hidden {
-  /* ALWAYS keep hidden on flip to prevent mirroring and text overlay visual corruption */
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
-  
-  /* Guarantee High Typography Contrast & Regular Display */
   background-color: #ffffff !important;
   color: #000000 !important;
   border-color: #cbd5e1 !important;
 }
 .eco-mode.dark .backface-hidden {
-  /* Slate-950 for deep solid contrast */
-  background-color: #090d16 !important;
+  background-color: #09090b !important;
   color: #ffffff !important;
   border-color: #1e293b !important;
 }
 .eco-mode .backface-hidden * {
-  /* Ensure children element texts are perfectly visible on target background colors */
   text-shadow: none !important;
 }
-.eco-mode.dark .backface-hidden * {
-  text-shadow: none !important;
-}
-.eco-mode .shimmer-bar::after {
-  animation: none !important;
-}
 
-/* Typography Scale Factor Overrides are now handled dynamically by scaling the root html's font-size.
-   This allows standard Tailwind rem-based values (paddings, margins, widths, fonts) to scale proportionally together without layout breakage. */
-
-/* Critical component scaling via --app-font-scale. Gentle scaling to prevent content squeezing. */
+/* Scaling */
 .card-3d, .glass {
   margin-bottom: calc(0.5rem + 0.25rem * var(--app-font-scale, 1)) !important;
   border-radius: calc(0.75rem + 0.25rem * var(--app-font-scale, 1)) !important;
@@ -532,5 +447,3 @@ svg[class*="lucide"] {
 .modal-glass-content {
   border-radius: calc(1rem + 0.5rem * var(--app-font-scale, 1)) !important;
 }
-
-

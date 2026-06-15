@@ -882,7 +882,7 @@ function Layout({ children }: { children: React.ReactNode }) {
           )}
           {user && (
             <a href="https://t.me/+O50q6ltXTzwxMzk1" target="_blank" rel="noopener noreferrer" 
-               className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-orange-500/20 dark:border-orange-500/40 bg-orange-500/10 hover:bg-orange-500 hover:text-black transition text-zinc-800 dark:text-zinc-200 font-medium text-xs md:text-sm"
+               className="nav-button-ripple "
                title="Hỗ trợ (Telegram)">
               <MessageCircle className="w-4 h-4 text-orange-600 dark:text-orange-500" />
               <span>Hỗ trợ Telegram</span>
@@ -899,11 +899,11 @@ function Layout({ children }: { children: React.ReactNode }) {
             <span className="hidden sm:inline">{isEcoMode ? "Mượt" : "Fix Lag"}</span>
           </button>
 
-          <button onClick={toggleTheme} className="hidden md:flex p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition flex-shrink-0" aria-label="Toggle Theme">
+          <button onClick={toggleTheme} className="nav-button-ripple " aria-label="Toggle Theme">
             {theme === "dark" ? <Sun className="w-5 h-5 text-orange-500" /> : <Moon className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />}
           </button>
 
-          <button onClick={toggleFullscreen} className="hidden md:flex p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition flex-shrink-0 text-zinc-700 dark:text-zinc-300" title={isFullscreen ? "Thoát toàn màn hình" : "Toàn màn hình"} aria-label="Toggle Fullscreen">
+          <button onClick={toggleFullscreen} className="nav-button-ripple " title={isFullscreen ? "Thoát toàn màn hình" : "Toàn màn hình"} aria-label="Toggle Fullscreen">
             {isFullscreen ? <Minimize className="w-5 h-5 text-orange-600 dark:text-orange-500" /> : <Maximize className="w-5 h-5 hover:scale-105 transition-transform" />}
           </button>
 
